@@ -1,0 +1,22 @@
+{
+	"name": "@clawpilot/types",
+	"version": "1.115.0",
+	"description": "TypeScript type definitions for ClawPilot.",
+	"publishConfig": {
+		"access": "public",
+		"name": "@clawpilot/types",
+		"registry": "https://registry.npmjs.org/"
+	},
+	"author": "ClawPilot Team",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/abhiramvishal/clawpilot.git"
+	},
+	"bugs": {
+		"url": "https://github.com/abhiramvishal/clawpilot/issues"
+	},
+	"homepage": "https://clawpilot.com",
+	"keywords": ["roo", "clawpilot", "ai"],
+	"files": ["dist"]
+}

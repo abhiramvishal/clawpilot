@@ -1,0 +1,7 @@
+{
+	"name": "@clawpilot/config-typescript",
+	"private": true,
+	"publishConfig": {
+		"access": "public"
+	}
+}
