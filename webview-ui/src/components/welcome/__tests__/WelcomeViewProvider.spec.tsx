@@ -51,9 +51,9 @@ vi.mock("../../common/Tab", () => ({
 	TabContent: ({ children }: any) => <div data-testid="tab-content">{children}</div>,
 }))
 
-// Mock RooHero
-vi.mock("../RooHero", () => ({
-	default: () => <div data-testid="roo-hero">Roo Hero</div>,
+// Mock ClawHero
+vi.mock("../ClawHero", () => ({
+	default: () => <div data-testid="claw-hero">Claw Hero</div>,
 }))
 
 // Mock lucide-react icons

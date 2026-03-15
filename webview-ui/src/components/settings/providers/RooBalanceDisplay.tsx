@@ -1,10 +1,10 @@
 import { VSCodeLink } from "@vscode/webview-ui-toolkit/react"
 
-import { useRooCreditBalance } from "@/components/ui/hooks/useRooCreditBalance"
+import { useClawCreditBalance } from "@/components/ui/hooks/useClawCreditBalance"
 import { useExtensionState } from "@src/context/ExtensionStateContext"
 
 export const RooBalanceDisplay = () => {
-	const { data: balance } = useRooCreditBalance()
+	const { data: balance } = useClawCreditBalance()
 	const { cloudApiUrl } = useExtensionState()
 
 	if (balance === null || balance === undefined) {
