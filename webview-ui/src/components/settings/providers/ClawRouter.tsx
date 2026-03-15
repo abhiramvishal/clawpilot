@@ -11,7 +11,7 @@ import { Button } from "@src/components/ui"
 
 import { ModelPicker } from "../ModelPicker"
 
-type RooProps = {
+type ClawRouterProps = {
 	apiConfiguration: ProviderSettings
 	setApiConfigurationField: (field: keyof ProviderSettings, value: ProviderSettings[keyof ProviderSettings]) => void
 	routerModels?: RouterModels
@@ -21,7 +21,7 @@ type RooProps = {
 	simplifySettings?: boolean
 }
 
-export const Roo = ({
+export const ClawRouter = ({
 	apiConfiguration,
 	setApiConfigurationField,
 	routerModels,
@@ -29,7 +29,7 @@ export const Roo = ({
 	organizationAllowList,
 	modelValidationError,
 	simplifySettings,
-}: RooProps) => {
+}: ClawRouterProps) => {
 	const { t } = useAppTranslation()
 
 	return (

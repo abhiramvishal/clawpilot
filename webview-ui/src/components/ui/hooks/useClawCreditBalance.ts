@@ -8,7 +8,7 @@ import { vscode } from "@src/utils/vscode"
  * Hook to fetch ClawPilot Cloud credit balance
  * Returns the balance in dollars or null if unavailable
  */
-export const useRooCreditBalance = () => {
+export const useClawCreditBalance = () => {
 	const [balance, setBalance] = useState<number | null>(null)
 	const [isLoading, setIsLoading] = useState(false)
 	const [error, setError] = useState<string | null>(null)

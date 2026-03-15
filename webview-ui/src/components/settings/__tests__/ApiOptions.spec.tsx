@@ -213,9 +213,9 @@ vi.mock("../providers/LiteLLM", () => ({
 	),
 }))
 
-// Mock Roo provider for tests
-vi.mock("../providers/Roo", () => ({
-	Roo: ({ cloudIsAuthenticated }: any) => (
+// Mock ClawRouter provider for tests
+vi.mock("../providers/ClawRouter", () => ({
+	ClawRouter: ({ cloudIsAuthenticated }: any) => (
 		<div data-testid="roo-provider">{cloudIsAuthenticated ? "Authenticated" : "Not Authenticated"}</div>
 	),
 }))

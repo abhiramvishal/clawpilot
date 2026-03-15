@@ -3,15 +3,15 @@ import { render, screen } from "@testing-library/react"
 import { RooBalanceDisplay } from "../RooBalanceDisplay"
 
 // Mock the hooks
-vi.mock("@/components/ui/hooks/useRooCreditBalance", () => ({
-	useRooCreditBalance: vi.fn(),
+vi.mock("@/components/ui/hooks/useClawCreditBalance", () => ({
+	useClawCreditBalance: vi.fn(),
 }))
 
 vi.mock("@src/context/ExtensionStateContext", () => ({
 	useExtensionState: vi.fn(),
 }))
 
-import { useRooCreditBalance } from "@/components/ui/hooks/useRooCreditBalance"
+import { useClawCreditBalance } from "@/components/ui/hooks/useClawCreditBalance"
 import { useExtensionState } from "@src/context/ExtensionStateContext"
 
 describe("RooBalanceDisplay", () => {
@@ -23,7 +23,7 @@ describe("RooBalanceDisplay", () => {
 	})
 
 	it("should render balance formatted to 2 decimal places", () => {
-		;(useRooCreditBalance as any).mockReturnValue({
+		;(useClawCreditBalance as any).mockReturnValue({
 			data: 12.34,
 			isLoading: false,
 			error: null,
@@ -35,7 +35,7 @@ describe("RooBalanceDisplay", () => {
 	})
 
 	it("should format balance to 2 decimal places when value has 1 decimal", () => {
-		;(useRooCreditBalance as any).mockReturnValue({
+		;(useClawCreditBalance as any).mockReturnValue({
 			data: 7.8,
 			isLoading: false,
 			error: null,
@@ -47,7 +47,7 @@ describe("RooBalanceDisplay", () => {
 	})
 
 	it("should format whole numbers with 2 decimal places", () => {
-		;(useRooCreditBalance as any).mockReturnValue({
+		;(useClawCreditBalance as any).mockReturnValue({
 			data: 5,
 			isLoading: false,
 			error: null,
@@ -59,7 +59,7 @@ describe("RooBalanceDisplay", () => {
 	})
 
 	it("should return null when balance is null", () => {
-		;(useRooCreditBalance as any).mockReturnValue({
+		;(useClawCreditBalance as any).mockReturnValue({
 			data: null,
 			isLoading: false,
 			error: null,
@@ -71,7 +71,7 @@ describe("RooBalanceDisplay", () => {
 	})
 
 	it("should return null when balance is undefined", () => {
-		;(useRooCreditBalance as any).mockReturnValue({
+		;(useClawCreditBalance as any).mockReturnValue({
 			data: undefined,
 			isLoading: false,
 			error: null,
@@ -83,7 +83,7 @@ describe("RooBalanceDisplay", () => {
 	})
 
 	it("should return null when there is an error", () => {
-		;(useRooCreditBalance as any).mockReturnValue({
+		;(useClawCreditBalance as any).mockReturnValue({
 			data: null,
 			isLoading: false,
 			error: "Failed to fetch balance",
@@ -95,7 +95,7 @@ describe("RooBalanceDisplay", () => {
 	})
 
 	it("should render when balance is zero", () => {
-		;(useRooCreditBalance as any).mockReturnValue({
+		;(useClawCreditBalance as any).mockReturnValue({
 			data: 0,
 			isLoading: false,
 			error: null,

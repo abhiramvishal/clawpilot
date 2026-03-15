@@ -82,7 +82,7 @@ import {
 	OpenRouter,
 	QwenCode,
 	Requesty,
-	Roo,
+	ClawRouter,
 	SambaNova,
 	Unbound,
 	Vertex,
@@ -704,7 +704,7 @@ const ApiOptions = ({
 					)}
 
 					{selectedProvider === "roo" && (
-						<Roo
+						<ClawRouter
 							apiConfiguration={apiConfiguration}
 							setApiConfigurationField={setApiConfigurationField}
 							routerModels={routerModels}

@@ -5,15 +5,10 @@ if [ "$branch" = "main" ]; then
   exit 1
 fi
 
-# Detect if running on Windows and use pnpm.cmd, otherwise use pnpm.
-if [ "$OS" = "Windows_NT" ]; then
-  pnpm_cmd="pnpm.cmd"
+if command -v pnpm >/dev/null 2>&1; then
+  pnpm_cmd="pnpm"
 else
-  if command -v pnpm >/dev/null 2>&1; then
-    pnpm_cmd="pnpm"
-  else
-    pnpm_cmd="npx pnpm"
-  fi
+  pnpm_cmd="npx pnpm"
 fi
 
 $pnpm_cmd run check-types
