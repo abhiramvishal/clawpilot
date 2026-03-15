@@ -6,18 +6,16 @@ if [ "$branch" = "main" ]; then
 fi
 
 # Detect if running on Windows and use pnpm.cmd, otherwise use pnpm.
-if [ "$OS" = "Windows_NT" ]; then
+if [ "$OS" = "Windows_NT" ] && command -v pnpm.cmd >/dev/null 2>&1; then
   pnpm_cmd="pnpm.cmd"
+elif command -v pnpm >/dev/null 2>&1; then
+  pnpm_cmd="pnpm"
 else
-  if command -v pnpm >/dev/null 2>&1; then
-    pnpm_cmd="pnpm"
-  else
-    pnpm_cmd="npx pnpm"
-  fi
+  pnpm_cmd="npx pnpm"
 fi
 
 # Detect if running on Windows and use npx.cmd, otherwise use npx.
-if [ "$OS" = "Windows_NT" ]; then
+if [ "$OS" = "Windows_NT" ] && command -v npx.cmd >/dev/null 2>&1; then
   npx_cmd="npx.cmd"
 else
   npx_cmd="npx"
