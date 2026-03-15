@@ -12,6 +12,12 @@ else
 fi
 
 npx_cmd="npx"
+# Detect if running on Windows and use npx.cmd, otherwise use npx.
+if [ "$OS" = "Windows_NT" ] && command -v npx.cmd >/dev/null 2>&1; then
+  npx_cmd="npx.cmd"
+else
+  npx_cmd="npx"
+fi
 
 $npx_cmd lint-staged
 $pnpm_cmd lint
