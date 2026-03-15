@@ -52,7 +52,7 @@ import { loadRooLastModelSelection, saveRooLastModelSelection } from "@/lib/roo-
 import { normalizeCreateRunForSubmit } from "@/lib/normalize-create-run"
 
 import { useOpenRouterModels } from "@/hooks/use-open-router-models"
-import { useClawPilotCloudModels } from "@/hooks/use-clawpilot-cloud-models"
+import { useClawPilotCloudModels } from "@/hooks/use-roo-code-cloud-models"
 
 import {
 	Button,
@@ -124,7 +124,8 @@ export function NewRun() {
 
 	const openRouter = useOpenRouterModels()
 	const rooCodeCloud = useClawPilotCloudModels()
-	const models = provider === "openrouter" ? openRouter.data : rooCodeCloud.data
+	const models: { id: string; name: string }[] | undefined =
+		provider === "openrouter" ? openRouter.data : rooCodeCloud.data
 	const searchValue = provider === "openrouter" ? openRouter.searchValue : rooCodeCloud.searchValue
 	const setSearchValue = provider === "openrouter" ? openRouter.setSearchValue : rooCodeCloud.setSearchValue
 	const onFilter = provider === "openrouter" ? openRouter.onFilter : rooCodeCloud.onFilter
