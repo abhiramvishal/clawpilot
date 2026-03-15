@@ -896,7 +896,7 @@ describe("Context Management", () => {
 			const cwd = "/test/project"
 			const mockRooIgnoreController = {
 				filterPaths: vi.fn(),
-			} as unknown as import("../../ignore/RooIgnoreController").RooIgnoreController
+			} as unknown as import("../../ignore/ClawIgnoreController").ClawIgnoreController
 
 			const result = await manageContext({
 				messages: messagesWithSmallContent,

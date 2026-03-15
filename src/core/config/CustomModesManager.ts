@@ -10,7 +10,7 @@ import { type ModeConfig, type PromptComponent, customModesSettingsSchema, modeC
 
 import { fileExistsAtPath } from "../../utils/fs"
 import { getWorkspacePath } from "../../utils/path"
-import { getGlobalRooDirectory } from "../../services/roo-config"
+import { getGlobalClawDirectory } from "../../services/roo-config"
 import { logger } from "../../utils/logging"
 import { GlobalFileNames } from "../../shared/globalFileNames"
 import { ensureSettingsDirectoryExists } from "../../utils/globalContext"
@@ -659,7 +659,7 @@ export class CustomModesManager {
 
 			if (isGlobalMode) {
 				// For global modes, check in global .roo directory
-				const globalRooDir = getGlobalRooDirectory()
+				const globalRooDir = getGlobalClawDirectory()
 				modeRulesDir = path.join(globalRooDir, `rules-${slug}`)
 			} else {
 				// For project modes, check in workspace .roo directory
@@ -760,7 +760,7 @@ export class CustomModesManager {
 			let baseDir: string
 			if (isGlobalMode) {
 				// For global modes, use the global .roo directory
-				baseDir = getGlobalRooDirectory()
+				baseDir = getGlobalClawDirectory()
 			} else {
 				// For project modes, use the workspace directory
 				const workspacePath = getWorkspacePath()
@@ -853,7 +853,7 @@ export class CustomModesManager {
 		let rulesFolderPath: string
 
 		if (source === "global") {
-			baseDir = getGlobalRooDirectory()
+			baseDir = getGlobalClawDirectory()
 			rulesFolderPath = path.join(baseDir, `rules-${importMode.slug}`)
 		} else {
 			const workspacePath = getWorkspacePath()

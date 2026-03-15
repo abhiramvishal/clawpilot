@@ -21,14 +21,14 @@ import { handleOpenAIError } from "./utils/openai-error-handler"
 import { generateImageWithProvider, generateImageWithImagesApi, ImageGenerationResult } from "./utils/image-generation"
 import { t } from "../../i18n"
 
-// Extend OpenAI's CompletionUsage to include Roo specific fields
-interface RooUsage extends OpenAI.CompletionUsage {
+// Extend OpenAI's CompletionUsage to include Claw-specific fields
+interface ClawUsage extends OpenAI.CompletionUsage {
 	cache_creation_input_tokens?: number
 	cost?: number
 }
 
-// Add custom interface for Roo params to support reasoning
-type RooChatCompletionParams = OpenAI.Chat.ChatCompletionCreateParamsStreaming & {
+// Add custom interface for Claw params to support reasoning
+type ClawChatCompletionParams = OpenAI.Chat.ChatCompletionCreateParamsStreaming & {
 	reasoning?: RooReasoningParams
 }
 
@@ -37,14 +37,14 @@ function getSessionToken(): string {
 	return token ?? "unauthenticated"
 }
 
-export class RooHandler extends BaseOpenAiCompatibleProvider<string> {
+export class ClawHandler extends BaseOpenAiCompatibleProvider<string> {
 	private fetcherBaseURL: string
 	private currentReasoningDetails: any[] = []
 
 	constructor(options: ApiHandlerOptions) {
-		const sessionToken = options.rooApiKey ?? getSessionToken()
+		const sessionToken = options.clawApiKey ?? getSessionToken()
 
-		let baseURL = process.env.ROO_CODE_PROVIDER_URL ?? "https://api.clawpilot.com/proxy"
+		let baseURL = process.env.CLAW_PILOT_PROVIDER_URL ?? "https://api.clawpilot.com/proxy"
 
 		// Ensure baseURL ends with /v1 for OpenAI client, but don't duplicate it
 		if (!baseURL.endsWith("/v1")) {
@@ -66,7 +66,7 @@ export class RooHandler extends BaseOpenAiCompatibleProvider<string> {
 		this.fetcherBaseURL = baseURL.endsWith("/v1") ? baseURL.slice(0, -3) : baseURL
 
 		this.loadDynamicModels(this.fetcherBaseURL, sessionToken).catch((error) => {
-			console.error("[RooHandler] Failed to load dynamic models:", error)
+			console.error("[ClawHandler] Failed to load dynamic models:", error)
 		})
 	}
 
@@ -98,7 +98,7 @@ export class RooHandler extends BaseOpenAiCompatibleProvider<string> {
 		const max_tokens = params.maxTokens ?? undefined
 		const temperature = params.temperature ?? this.defaultTemperature
 
-		const rooParams: RooChatCompletionParams = {
+		const clawParams: ClawChatCompletionParams = {
 			model,
 			max_tokens,
 			temperature,
@@ -111,8 +111,8 @@ export class RooHandler extends BaseOpenAiCompatibleProvider<string> {
 		}
 
 		try {
-			this.client.apiKey = this.options.rooApiKey ?? getSessionToken()
-			return this.client.chat.completions.create(rooParams, requestOptions)
+			this.client.apiKey = this.options.clawApiKey ?? getSessionToken()
+			return this.client.chat.completions.create(clawParams, requestOptions)
 		} catch (error) {
 			throw handleOpenAIError(error, this.providerName)
 		}
@@ -132,16 +132,16 @@ export class RooHandler extends BaseOpenAiCompatibleProvider<string> {
 			this.currentReasoningDetails = []
 
 			const headers: Record<string, string> = {
-				"X-Roo-App-Version": Package.version,
+				"X-Claw-App-Version": Package.version,
 			}
 
 			if (metadata?.taskId) {
-				headers["X-Roo-Task-ID"] = metadata.taskId
+				headers["X-Claw-Task-ID"] = metadata.taskId
 			}
 
 			const stream = await this.createStream(systemPrompt, messages, metadata, { headers })
 
-			let lastUsage: RooUsage | undefined = undefined
+			let lastUsage: ClawUsage | undefined = undefined
 			// Accumulator for reasoning_details FROM the API.
 			// We preserve the original shape of reasoning_details to prevent malformed responses.
 			const reasoningDetailsAccumulator = new Map<
@@ -283,7 +283,7 @@ export class RooHandler extends BaseOpenAiCompatibleProvider<string> {
 				}
 
 				if (chunk.usage) {
-					lastUsage = chunk.usage as RooUsage
+					lastUsage = chunk.usage as ClawUsage
 				}
 			}
 
@@ -327,14 +327,14 @@ export class RooHandler extends BaseOpenAiCompatibleProvider<string> {
 				hasTaskId: Boolean(metadata?.taskId),
 			}
 
-			console.error(`[RooHandler] Error during message streaming: ${JSON.stringify(errorContext)}`)
+			console.error(`[ClawHandler] Error during message streaming: ${JSON.stringify(errorContext)}`)
 
 			throw error
 		}
 	}
 	override async completePrompt(prompt: string): Promise<string> {
 		// Update API key before making request to ensure we use the latest session token
-		this.client.apiKey = this.options.rooApiKey ?? getSessionToken()
+		this.client.apiKey = this.options.clawApiKey ?? getSessionToken()
 		return super.completePrompt(prompt)
 	}
 
@@ -348,7 +348,7 @@ export class RooHandler extends BaseOpenAiCompatibleProvider<string> {
 			})
 		} catch (error) {
 			// Enhanced error logging with more context
-			console.error("[RooHandler] Error loading dynamic models:", {
+			console.error("[ClawHandler] Error loading dynamic models:", {
 				error: error instanceof Error ? error.message : String(error),
 				stack: error instanceof Error ? error.stack : undefined,
 				baseURL,
@@ -400,7 +400,7 @@ export class RooHandler extends BaseOpenAiCompatibleProvider<string> {
 		inputImage?: string,
 		apiMethod?: ImageGenerationApiMethod,
 	): Promise<ImageGenerationResult> {
-		const sessionToken = this.options.rooApiKey ?? getSessionToken()
+		const sessionToken = this.options.clawApiKey ?? getSessionToken()
 
 		if (!sessionToken || sessionToken === "unauthenticated") {
 			return {
@@ -433,3 +433,6 @@ export class RooHandler extends BaseOpenAiCompatibleProvider<string> {
 		})
 	}
 }
+
+// Backward compatibility alias
+export { ClawHandler as RooHandler }

@@ -9,10 +9,10 @@ import type { SystemPromptSettings } from "../types"
 
 import { LANGUAGES } from "../../../shared/language"
 import {
-	getRooDirectoriesForCwd,
-	getAllRooDirectoriesForCwd,
+	getClawDirectoriesForCwd,
+	getAllClawDirectoriesForCwd,
 	getAgentsDirectoriesForCwd,
-	getGlobalRooDirectory,
+	getGlobalClawDirectory,
 } from "../../../services/roo-config"
 
 /**
@@ -206,7 +206,7 @@ function formatDirectoryContent(files: Array<{ filename: string; content: string
 export async function loadRuleFiles(cwd: string, enableSubfolderRules: boolean = false): Promise<string> {
 	const rules: string[] = []
 	// Use recursive discovery only if enableSubfolderRules is true
-	const rooDirectories = enableSubfolderRules ? await getAllRooDirectoriesForCwd(cwd) : getRooDirectoriesForCwd(cwd)
+	const rooDirectories = enableSubfolderRules ? await getAllClawDirectoriesForCwd(cwd) : getClawDirectoriesForCwd(cwd)
 
 	// Check for .roo/rules/ directories in order (global, project-local, and optionally subfolders)
 	for (const rooDir of rooDirectories) {
@@ -403,8 +403,8 @@ export async function addCustomInstructions(
 		const modeRules: string[] = []
 		// Use recursive discovery only if enableSubfolderRules is true
 		const rooDirectories = enableSubfolderRules
-			? await getAllRooDirectoriesForCwd(cwd)
-			: getRooDirectoriesForCwd(cwd)
+			? await getAllClawDirectoriesForCwd(cwd)
+			: getClawDirectoriesForCwd(cwd)
 
 		// Check for .roo/rules-${mode}/ directories in order (global, project-local, and optionally subfolders)
 		for (const rooDir of rooDirectories) {

@@ -3,7 +3,7 @@
 import type { Mock } from "vitest"
 
 import { formatResponse } from "../responses"
-import { RooIgnoreController, LOCK_TEXT_SYMBOL } from "../../ignore/RooIgnoreController"
+import { ClawIgnoreController, LOCK_TEXT_SYMBOL } from "../../ignore/ClawIgnoreController"
 import { fileExistsAtPath } from "../../../utils/fs"
 import * as fs from "fs/promises"
 import { toPosix } from "./utils"
@@ -75,13 +75,13 @@ describe("RooIgnore Response Formatting", () => {
 		})
 	})
 
-	describe("formatResponse.formatFilesList with RooIgnoreController", () => {
+	describe("formatResponse.formatFilesList with ClawIgnoreController", () => {
 		/**
 		 * Tests file listing with rooignore controller
 		 */
 		it("should format files list with lock symbols for ignored files", async () => {
 			// Create controller
-			const controller = new RooIgnoreController(TEST_CWD)
+			const controller = new ClawIgnoreController(TEST_CWD)
 			await controller.initialize()
 
 			// Mock validateAccess to control which files are ignored
@@ -125,7 +125,7 @@ describe("RooIgnore Response Formatting", () => {
 		 */
 		it("should hide ignored files when showRooIgnoredFiles is false", async () => {
 			// Create controller
-			const controller = new RooIgnoreController(TEST_CWD)
+			const controller = new ClawIgnoreController(TEST_CWD)
 			await controller.initialize()
 
 			// Mock validateAccess to control which files are ignored
@@ -176,7 +176,7 @@ describe("RooIgnore Response Formatting", () => {
 		 */
 		it("should handle truncation with RooIgnoreController", async () => {
 			// Create controller
-			const controller = new RooIgnoreController(TEST_CWD)
+			const controller = new ClawIgnoreController(TEST_CWD)
 			await controller.initialize()
 
 			// Format with controller and truncation flag
@@ -196,9 +196,9 @@ describe("RooIgnore Response Formatting", () => {
 		/**
 		 * Tests formatFilesList handles empty results
 		 */
-		it("should handle empty file list with RooIgnoreController", async () => {
+		it("should handle empty file list with ClawIgnoreController", async () => {
 			// Create controller
-			const controller = new RooIgnoreController(TEST_CWD)
+			const controller = new ClawIgnoreController(TEST_CWD)
 			await controller.initialize()
 
 			// Format with empty files array
@@ -215,7 +215,7 @@ describe("RooIgnore Response Formatting", () => {
 		 */
 		it("should format .rooignore instructions for the LLM", async () => {
 			// Create controller
-			const controller = new RooIgnoreController(TEST_CWD)
+			const controller = new ClawIgnoreController(TEST_CWD)
 			await controller.initialize()
 
 			// Get instructions
@@ -242,7 +242,7 @@ describe("RooIgnore Response Formatting", () => {
 			mockFileExists.mockResolvedValue(false)
 
 			// Create controller without .rooignore
-			const controller = new RooIgnoreController(TEST_CWD)
+			const controller = new ClawIgnoreController(TEST_CWD)
 			await controller.initialize()
 
 			// Should return undefined

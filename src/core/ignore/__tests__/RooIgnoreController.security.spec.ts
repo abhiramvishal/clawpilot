@@ -2,7 +2,7 @@
 
 import type { Mock } from "vitest"
 
-import { RooIgnoreController } from "../RooIgnoreController"
+import { ClawIgnoreController } from "../ClawIgnoreController"
 import * as path from "path"
 import * as fs from "fs/promises"
 import { fileExistsAtPath } from "../../../utils/fs"
@@ -29,9 +29,9 @@ vi.mock("vscode", () => {
 	}
 })
 
-describe("RooIgnoreController Security Tests", () => {
+describe("ClawIgnoreController Security Tests", () => {
 	const TEST_CWD = "/test/path"
-	let controller: RooIgnoreController
+	let controller: ClawIgnoreController
 	let mockFileExists: Mock<typeof fileExistsAtPath>
 	let mockReadFile: Mock<typeof fs.readFile>
 
@@ -48,7 +48,7 @@ describe("RooIgnoreController Security Tests", () => {
 		mockReadFile.mockResolvedValue("node_modules\n.git\nsecrets/**\n*.log\nprivate/")
 
 		// Create and initialize controller
-		controller = new RooIgnoreController(TEST_CWD)
+		controller = new ClawIgnoreController(TEST_CWD)
 		await controller.initialize()
 	})
 

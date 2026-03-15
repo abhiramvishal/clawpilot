@@ -139,7 +139,7 @@ export class API extends EventEmitter<ClawPilotEvents> implements ClawPilotAPI {
 						try {
 							const models = await getModels({
 								provider: "roo" as const,
-								baseUrl: process.env.ROO_CODE_PROVIDER_URL ?? "https://api.clawpilot.com/proxy",
+								baseUrl: process.env.CLAW_PILOT_PROVIDER_URL ?? "https://api.clawpilot.com/proxy",
 								apiKey: CloudService.hasInstance()
 									? CloudService.instance.authService?.getSessionToken()
 									: undefined,

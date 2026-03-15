@@ -2,7 +2,7 @@
 
 import type { Mock } from "vitest"
 
-import { RooIgnoreController, LOCK_TEXT_SYMBOL } from "../RooIgnoreController"
+import { ClawIgnoreController, LOCK_TEXT_SYMBOL } from "../ClawIgnoreController"
 import * as vscode from "vscode"
 import * as path from "path"
 import * as fs from "fs/promises"
@@ -42,9 +42,9 @@ vi.mock("vscode", () => {
 	}
 })
 
-describe("RooIgnoreController", () => {
+describe("ClawIgnoreController", () => {
 	const TEST_CWD = "/test/path"
-	let controller: RooIgnoreController
+	let controller: ClawIgnoreController
 	let mockFileExists: Mock<typeof fileExistsAtPath>
 	let mockReadFile: Mock<typeof fs.readFile>
 	let mockWatcher: any
@@ -73,7 +73,7 @@ describe("RooIgnoreController", () => {
 		mockRealpathSync.mockImplementation((filePath) => filePath.toString())
 
 		// Create controller
-		controller = new RooIgnoreController(TEST_CWD)
+		controller = new ClawIgnoreController(TEST_CWD)
 	})
 
 	describe("initialization", () => {
@@ -215,7 +215,7 @@ describe("RooIgnoreController", () => {
 		it("should allow all access when no .rooignore content", async () => {
 			// Create a new controller with no .rooignore
 			mockFileExists.mockResolvedValue(false)
-			const emptyController = new RooIgnoreController(TEST_CWD)
+			const emptyController = new ClawIgnoreController(TEST_CWD)
 			await emptyController.initialize()
 
 			// All paths should be allowed
@@ -308,7 +308,7 @@ describe("RooIgnoreController", () => {
 		it("should allow all commands when no .rooignore exists", async () => {
 			// Create a new controller with no .rooignore
 			mockFileExists.mockResolvedValue(false)
-			const emptyController = new RooIgnoreController(TEST_CWD)
+			const emptyController = new ClawIgnoreController(TEST_CWD)
 			await emptyController.initialize()
 
 			// All commands should be allowed
@@ -452,7 +452,7 @@ describe("RooIgnoreController", () => {
 			mockFileExists.mockResolvedValue(false) // Initially no file exists
 
 			// Create and initialize controller with no .rooignore
-			controller = new RooIgnoreController(TEST_CWD)
+			controller = new ClawIgnoreController(TEST_CWD)
 			await controller.initialize()
 
 			// Initial state check

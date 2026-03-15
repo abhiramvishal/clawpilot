@@ -18,12 +18,12 @@ import fs from "fs/promises"
  *
  * @example Usage:
  * ```typescript
- * const globalDir = getGlobalRooDirectory()
+ * const globalDir = getGlobalClawDirectory()
  * // Returns: "/Users/john/.roo" (on macOS/Linux)
  * // Returns: "C:\\Users\\john\\.roo" (on Windows)
  * ```
  */
-export function getGlobalRooDirectory(): string {
+export function getGlobalClawDirectory(): string {
 	const homeDir = os.homedir()
 	return path.join(homeDir, ".roo")
 }
@@ -80,10 +80,10 @@ export function getProjectAgentsDirectoryForCwd(cwd: string): string {
  *
  * @example
  * ```typescript
- * const projectDir = getProjectRooDirectoryForCwd('/Users/john/my-project')
+ * const projectDir = getProjectClawDirectoryForCwd('/Users/john/my-project')
  * // Returns: "/Users/john/my-project/.roo"
  *
- * const windowsProjectDir = getProjectRooDirectoryForCwd('C:\\Users\\john\\my-project')
+ * const windowsProjectDir = getProjectClawDirectoryForCwd('C:\\Users\\john\\my-project')
  * // Returns: "C:\\Users\\john\\my-project\\.roo"
  * ```
  *
@@ -101,7 +101,7 @@ export function getProjectAgentsDirectoryForCwd(cwd: string): string {
  * └── package.json
  * ```
  */
-export function getProjectRooDirectoryForCwd(cwd: string): string {
+export function getProjectClawDirectoryForCwd(cwd: string): string {
 	return path.join(cwd, ".roo")
 }
 
@@ -164,7 +164,7 @@ export async function readFileIfExists(filePath: string): Promise<string | null>
  *
  * @example
  * ```typescript
- * const subfolderRoos = await discoverSubfolderRooDirectories('/Users/john/monorepo')
+ * const subfolderRoos = await discoverSubfolderClawDirectories('/Users/john/monorepo')
  * // Returns:
  * // [
  * //   '/Users/john/monorepo/package-a/.roo',
@@ -189,7 +189,7 @@ export async function readFileIfExists(filePath: string): Promise<string | null>
  *             └── rules/
  * ```
  */
-export async function discoverSubfolderRooDirectories(cwd: string): Promise<string[]> {
+export async function discoverSubfolderClawDirectories(cwd: string): Promise<string[]> {
 	try {
 		// Dynamic import to avoid vscode dependency at module load time
 		// This is necessary because file-search.ts imports vscode, which is not
@@ -247,7 +247,7 @@ export async function discoverSubfolderRooDirectories(cwd: string): Promise<stri
  * @example
  * ```typescript
  * // For a project at /Users/john/my-project
- * const directories = getRooDirectoriesForCwd('/Users/john/my-project')
+ * const directories = getClawDirectoriesForCwd('/Users/john/my-project')
  * // Returns:
  * // [
  * //   '/Users/john/.roo',           // Global directory
@@ -271,14 +271,14 @@ export async function discoverSubfolderRooDirectories(cwd: string): Promise<stri
  *         └── index.ts
  * ```
  */
-export function getRooDirectoriesForCwd(cwd: string): string[] {
+export function getClawDirectoriesForCwd(cwd: string): string[] {
 	const directories: string[] = []
 
 	// Add global directory first
-	directories.push(getGlobalRooDirectory())
+	directories.push(getGlobalClawDirectory())
 
 	// Add project-local directory second
-	directories.push(getProjectRooDirectoryForCwd(cwd))
+	directories.push(getProjectClawDirectoryForCwd(cwd))
 
 	return directories
 }
@@ -292,7 +292,7 @@ export function getRooDirectoriesForCwd(cwd: string): string[] {
  * @example
  * ```typescript
  * // For a monorepo at /Users/john/monorepo with .roo in subfolders
- * const directories = await getAllRooDirectoriesForCwd('/Users/john/monorepo')
+ * const directories = await getAllClawDirectoriesForCwd('/Users/john/monorepo')
  * // Returns:
  * // [
  * //   '/Users/john/.roo',                    // Global directory
@@ -302,17 +302,17 @@ export function getRooDirectoriesForCwd(cwd: string): string[] {
  * // ]
  * ```
  */
-export async function getAllRooDirectoriesForCwd(cwd: string): Promise<string[]> {
+export async function getAllClawDirectoriesForCwd(cwd: string): Promise<string[]> {
 	const directories: string[] = []
 
 	// Add global directory first
-	directories.push(getGlobalRooDirectory())
+	directories.push(getGlobalClawDirectory())
 
 	// Add project-local directory second
-	directories.push(getProjectRooDirectoryForCwd(cwd))
+	directories.push(getProjectClawDirectoryForCwd(cwd))
 
 	// Discover and add subfolder .roo directories
-	const subfolderDirs = await discoverSubfolderRooDirectories(cwd)
+	const subfolderDirs = await discoverSubfolderClawDirectories(cwd)
 	directories.push(...subfolderDirs)
 
 	return directories
@@ -337,7 +337,7 @@ export async function getAgentsDirectoriesForCwd(cwd: string): Promise<string[]>
 	directories.push(cwd)
 
 	// Get all subfolder .roo directories
-	const subfolderRooDirs = await discoverSubfolderRooDirectories(cwd)
+	const subfolderRooDirs = await discoverSubfolderClawDirectories(cwd)
 
 	// Extract parent directories (remove .roo from path)
 	for (const rooDir of subfolderRooDirs) {
@@ -358,7 +358,7 @@ export async function getAgentsDirectoriesForCwd(cwd: string): Promise<string[]>
  * @example
  * ```typescript
  * // Load rules configuration for a project
- * const config = await loadConfiguration('rules/rules.md', '/Users/john/my-project')
+ * const config = await loadClawConfiguration('rules/rules.md', '/Users/john/my-project')
  *
  * // Returns:
  * // {
@@ -383,7 +383,7 @@ export async function getAgentsDirectoriesForCwd(cwd: string): Promise<string[]>
  * - 'templates/component.tsx'
  * ```
  *
- * @example Merging behavior:
+ * @example Merging behavior (loadClawConfiguration):
  * ```
  * // If only global exists:
  * { global: "content", project: null, merged: "content" }
@@ -399,7 +399,7 @@ export async function getAgentsDirectoriesForCwd(cwd: string): Promise<string[]>
  * }
  * ```
  */
-export async function loadConfiguration(
+export async function loadClawConfiguration(
 	relativePath: string,
 	cwd: string,
 ): Promise<{
@@ -407,8 +407,8 @@ export async function loadConfiguration(
 	project: string | null
 	merged: string
 }> {
-	const globalDir = getGlobalRooDirectory()
-	const projectDir = getProjectRooDirectoryForCwd(cwd)
+	const globalDir = getGlobalClawDirectory()
+	const projectDir = getProjectClawDirectoryForCwd(cwd)
 
 	const globalFilePath = path.join(globalDir, relativePath)
 	const projectFilePath = path.join(projectDir, relativePath)
@@ -440,5 +440,10 @@ export async function loadConfiguration(
 	}
 }
 
-// Export with backward compatibility alias
-export const loadRooConfiguration: typeof loadConfiguration = loadConfiguration
+// Backward compatibility aliases
+export const getGlobalRooDirectory = getGlobalClawDirectory
+export const getProjectRooDirectoryForCwd = getProjectClawDirectoryForCwd
+export const discoverSubfolderRooDirectories = discoverSubfolderClawDirectories
+export const getRooDirectoriesForCwd = getClawDirectoriesForCwd
+export const getAllRooDirectoriesForCwd = getAllClawDirectoriesForCwd
+export const loadRooConfiguration = loadClawConfiguration

@@ -1,4 +1,4 @@
-import { RooModelsResponseSchema, type ModelInfo, type ModelRecord } from "@clawpilot/types"
+import { ClawModelsResponseSchema, type ModelInfo, type ModelRecord } from "@clawpilot/types"
 
 import { parseApiPrice } from "../../../shared/cost"
 
@@ -13,7 +13,7 @@ import { resolveVersionedSettings, type VersionedSettings } from "./versionedSet
  * @returns A promise that resolves to a record of model IDs to model info
  * @throws Will throw an error if the request fails or the response is not as expected.
  */
-export async function getRooModels(baseUrl: string, apiKey?: string): Promise<ModelRecord> {
+export async function getClawModels(baseUrl: string, apiKey?: string): Promise<ModelRecord> {
 	// Construct the models endpoint URL early so it's available in catch block for logging
 	// Strip trailing /v1 or /v1/ to avoid /v1/v1/models
 	const normalizedBase = baseUrl.replace(/\/?v1\/?$/, "")
@@ -48,7 +48,7 @@ export async function getRooModels(baseUrl: string, apiKey?: string): Promise<Mo
 					errorBody = "(unable to read response body)"
 				}
 
-				console.error(`[getRooModels] HTTP error:`, {
+				console.error(`[getClawModels] HTTP error:`, {
 					status: response.status,
 					statusText: response.statusText,
 					url,
@@ -62,7 +62,7 @@ export async function getRooModels(baseUrl: string, apiKey?: string): Promise<Mo
 			const models: ModelRecord = {}
 
 			// Validate response against schema
-			const parsed = RooModelsResponseSchema.safeParse(data)
+			const parsed = ClawModelsResponseSchema.safeParse(data)
 
 			if (!parsed.success) {
 				console.error("Error fetching ClawPilot Cloud models: Unexpected response format", data)
@@ -162,7 +162,7 @@ export async function getRooModels(baseUrl: string, apiKey?: string): Promise<Mo
 		}
 	} catch (error: any) {
 		// Enhanced error logging
-		console.error("[getRooModels] Error fetching ClawPilot Cloud models:", {
+		console.error("[getClawModels] Error fetching ClawPilot Cloud models:", {
 			message: error.message || String(error),
 			name: error.name,
 			stack: error.stack,
@@ -190,3 +190,6 @@ export async function getRooModels(baseUrl: string, apiKey?: string): Promise<Mo
 		throw new Error(`Failed to fetch ClawPilot Cloud models: ${error.message || "An unknown error occurred."}`)
 	}
 }
+
+// Backward compatibility alias
+export { getClawModels as getRooModels }

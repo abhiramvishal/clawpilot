@@ -8,7 +8,7 @@ import { CodeIndexServiceFactory } from "./service-factory"
 import { CodeIndexSearchService } from "./search-service"
 import { CodeIndexOrchestrator } from "./orchestrator"
 import { CacheManager } from "./cache-manager"
-import { RooIgnoreController } from "../../core/ignore/RooIgnoreController"
+import { ClawIgnoreController } from "../../core/ignore/ClawIgnoreController"
 import fs from "fs/promises"
 import ignore from "ignore"
 import path from "path"
@@ -386,8 +386,8 @@ export class CodeIndexManager {
 			})
 		}
 
-		// Create RooIgnoreController instance
-		const rooIgnoreController = new RooIgnoreController(workspacePath)
+		// Create ClawIgnoreController instance
+		const rooIgnoreController = new ClawIgnoreController(workspacePath)
 		await rooIgnoreController.initialize()
 
 		// (Re)Create shared service instances

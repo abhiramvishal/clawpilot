@@ -15,7 +15,7 @@ import { DEFAULT_LINE_LIMIT } from "../prompts/tools/native-tools/read_file"
 
 import { FileContextTracker } from "../context-tracking/FileContextTracker"
 
-import { RooIgnoreController } from "../ignore/RooIgnoreController"
+import { ClawIgnoreController } from "../ignore/ClawIgnoreController"
 import { getCommand, type Command } from "../../services/command/commands"
 import { buildSkillResult, resolveSkillContentForMode, type SkillLookup } from "../../services/skills/skillInvocation"
 import type { SkillContent } from "../../shared/skills"
@@ -100,7 +100,7 @@ export async function parseMentions(
 	text: string,
 	cwd: string,
 	fileContextTracker?: FileContextTracker,
-	rooIgnoreController?: RooIgnoreController,
+	rooIgnoreController?: ClawIgnoreController,
 	showRooIgnoredFiles: boolean = false,
 	includeDiagnosticMessages: boolean = true,
 	maxDiagnosticMessages: number = 50,

@@ -125,11 +125,11 @@ vitest.mock("../../providers/fetchers/modelCache", () => ({
 }))
 
 // Import after mocks are set up
-import { RooHandler } from "../roo"
+import { ClawHandler } from "../roo"
 import { CloudService } from "@clawpilot/cloud"
 
-describe("RooHandler", () => {
-	let handler: RooHandler
+describe("ClawHandler", () => {
+	let handler: ClawHandler
 	let mockOptions: ApiHandlerOptions
 	const systemPrompt = "You are a helpful assistant."
 	const messages: Anthropic.Messages.MessageParam[] = [
@@ -152,41 +152,41 @@ describe("RooHandler", () => {
 
 	describe("constructor", () => {
 		it("should initialize with valid session token", () => {
-			handler = new RooHandler(mockOptions)
-			expect(handler).toBeInstanceOf(RooHandler)
+			handler = new ClawHandler(mockOptions)
+			expect(handler).toBeInstanceOf(ClawHandler)
 			expect(handler.getModel().id).toBe(mockOptions.apiModelId)
 		})
 
 		it("should not throw error if CloudService is not available", () => {
 			mockHasInstanceFn.mockReturnValue(false)
 			expect(() => {
-				new RooHandler(mockOptions)
+				new ClawHandler(mockOptions)
 			}).not.toThrow()
 			// Constructor should succeed even without CloudService
-			const handler = new RooHandler(mockOptions)
-			expect(handler).toBeInstanceOf(RooHandler)
+			const handler = new ClawHandler(mockOptions)
+			expect(handler).toBeInstanceOf(ClawHandler)
 		})
 
 		it("should not throw error if session token is not available", () => {
 			mockHasInstanceFn.mockReturnValue(true)
 			mockGetSessionTokenFn.mockReturnValue(null)
 			expect(() => {
-				new RooHandler(mockOptions)
+				new ClawHandler(mockOptions)
 			}).not.toThrow()
 			// Constructor should succeed even without session token
-			const handler = new RooHandler(mockOptions)
-			expect(handler).toBeInstanceOf(RooHandler)
+			const handler = new ClawHandler(mockOptions)
+			expect(handler).toBeInstanceOf(ClawHandler)
 		})
 
 		it("should initialize with default model if no model specified", () => {
-			handler = new RooHandler({})
-			expect(handler).toBeInstanceOf(RooHandler)
+			handler = new ClawHandler({})
+			expect(handler).toBeInstanceOf(ClawHandler)
 			expect(handler.getModel().id).toBe(rooDefaultModelId)
 		})
 
 		it("should pass correct configuration to base class", () => {
-			handler = new RooHandler(mockOptions)
-			expect(handler).toBeInstanceOf(RooHandler)
+			handler = new ClawHandler(mockOptions)
+			expect(handler).toBeInstanceOf(ClawHandler)
 			// The handler should be initialized with correct base URL and API key
 			// We can't directly test the parent class constructor, but we can verify the handler works
 			expect(handler).toBeDefined()
@@ -195,7 +195,7 @@ describe("RooHandler", () => {
 
 	describe("createMessage", () => {
 		beforeEach(() => {
-			handler = new RooHandler(mockOptions)
+			handler = new ClawHandler(mockOptions)
 		})
 
 		it("should update API key before making request", async () => {
@@ -304,7 +304,7 @@ describe("RooHandler", () => {
 				}),
 				expect.objectContaining({
 					headers: expect.objectContaining({
-						"X-Roo-App-Version": expect.any(String),
+						"X-Claw-App-Version": expect.any(String),
 					}),
 				}),
 			)
@@ -313,7 +313,7 @@ describe("RooHandler", () => {
 
 	describe("completePrompt", () => {
 		beforeEach(() => {
-			handler = new RooHandler(mockOptions)
+			handler = new ClawHandler(mockOptions)
 		})
 
 		it("should complete prompt successfully", async () => {
@@ -370,7 +370,7 @@ describe("RooHandler", () => {
 
 	describe("getModel", () => {
 		beforeEach(() => {
-			handler = new RooHandler(mockOptions)
+			handler = new ClawHandler(mockOptions)
 		})
 
 		it("should return model info for specified model", () => {
@@ -383,7 +383,7 @@ describe("RooHandler", () => {
 		})
 
 		it("should return default model when no model specified", () => {
-			const handlerWithoutModel = new RooHandler({})
+			const handlerWithoutModel = new ClawHandler({})
 			const modelInfo = handlerWithoutModel.getModel()
 			expect(modelInfo.id).toBe(rooDefaultModelId)
 			expect(modelInfo.info).toBeDefined()
@@ -393,7 +393,7 @@ describe("RooHandler", () => {
 		})
 
 		it("should handle unknown model ID with fallback info", () => {
-			const handlerWithUnknownModel = new RooHandler({
+			const handlerWithUnknownModel = new ClawHandler({
 				apiModelId: "unknown-model-id",
 			})
 			const modelInfo = handlerWithUnknownModel.getModel()
@@ -413,7 +413,7 @@ describe("RooHandler", () => {
 			const testModelIds = ["xai/grok-code-fast-1", "roo/sonic", "deepseek/deepseek-chat-v3.1"]
 
 			for (const modelId of testModelIds) {
-				const handlerWithModel = new RooHandler({ apiModelId: modelId })
+				const handlerWithModel = new ClawHandler({ apiModelId: modelId })
 				const modelInfo = handlerWithModel.getModel()
 				expect(modelInfo.id).toBe(modelId)
 				expect(modelInfo.info).toBeDefined()
@@ -424,7 +424,7 @@ describe("RooHandler", () => {
 		})
 
 		it("should return cached model info with settings applied from API", () => {
-			const handlerWithMinimax = new RooHandler({
+			const handlerWithMinimax = new ClawHandler({
 				apiModelId: "minimax/minimax-m2:free",
 			})
 			const modelInfo = handlerWithMinimax.getModel()
@@ -436,7 +436,7 @@ describe("RooHandler", () => {
 
 	describe("temperature and model configuration", () => {
 		it("should use default temperature of 0", async () => {
-			handler = new RooHandler(mockOptions)
+			handler = new ClawHandler(mockOptions)
 			const stream = handler.createMessage(systemPrompt, messages)
 			for await (const _chunk of stream) {
 				// Consume stream
@@ -448,14 +448,14 @@ describe("RooHandler", () => {
 				}),
 				expect.objectContaining({
 					headers: expect.objectContaining({
-						"X-Roo-App-Version": expect.any(String),
+						"X-Claw-App-Version": expect.any(String),
 					}),
 				}),
 			)
 		})
 
 		it("should respect custom temperature setting", async () => {
-			handler = new RooHandler({
+			handler = new ClawHandler({
 				...mockOptions,
 				modelTemperature: 0.9,
 			})
@@ -470,7 +470,7 @@ describe("RooHandler", () => {
 				}),
 				expect.objectContaining({
 					headers: expect.objectContaining({
-						"X-Roo-App-Version": expect.any(String),
+						"X-Claw-App-Version": expect.any(String),
 					}),
 				}),
 			)
@@ -479,8 +479,8 @@ describe("RooHandler", () => {
 		it("should use correct API endpoint", () => {
 			// The base URL should be set to Roo's API endpoint
 			// We can't directly test the OpenAI client configuration, but we can verify the handler initializes
-			handler = new RooHandler(mockOptions)
-			expect(handler).toBeInstanceOf(RooHandler)
+			handler = new ClawHandler(mockOptions)
+			expect(handler).toBeInstanceOf(ClawHandler)
 			// The handler should work with the Roo API endpoint
 		})
 	})
@@ -490,8 +490,8 @@ describe("RooHandler", () => {
 			const testToken = "test-session-token-123"
 			mockGetSessionTokenFn.mockReturnValue(testToken)
 
-			handler = new RooHandler(mockOptions)
-			expect(handler).toBeInstanceOf(RooHandler)
+			handler = new ClawHandler(mockOptions)
+			expect(handler).toBeInstanceOf(ClawHandler)
 			expect(mockGetSessionTokenFn).toHaveBeenCalled()
 		})
 
@@ -514,11 +514,11 @@ describe("RooHandler", () => {
 				})
 
 				expect(() => {
-					new RooHandler(mockOptions)
+					new ClawHandler(mockOptions)
 				}).not.toThrow()
 				// Constructor should succeed even with undefined auth service
-				const handler = new RooHandler(mockOptions)
-				expect(handler).toBeInstanceOf(RooHandler)
+				const handler = new ClawHandler(mockOptions)
+				expect(handler).toBeInstanceOf(ClawHandler)
 			} finally {
 				// Restore original mock implementation
 				if (originalGetSessionToken) {
@@ -533,17 +533,17 @@ describe("RooHandler", () => {
 			mockGetSessionTokenFn.mockReturnValue("")
 
 			expect(() => {
-				new RooHandler(mockOptions)
+				new ClawHandler(mockOptions)
 			}).not.toThrow()
 			// Constructor should succeed even with empty session token
-			const handler = new RooHandler(mockOptions)
-			expect(handler).toBeInstanceOf(RooHandler)
+			const handler = new ClawHandler(mockOptions)
+			expect(handler).toBeInstanceOf(ClawHandler)
 		})
 	})
 
 	describe("reasoning effort support", () => {
 		it("should include reasoning with enabled: false when not enabled", async () => {
-			handler = new RooHandler(mockOptions)
+			handler = new ClawHandler(mockOptions)
 			const stream = handler.createMessage(systemPrompt, messages)
 			for await (const _chunk of stream) {
 				// Consume stream
@@ -559,14 +559,14 @@ describe("RooHandler", () => {
 				}),
 				expect.objectContaining({
 					headers: expect.objectContaining({
-						"X-Roo-App-Version": expect.any(String),
+						"X-Claw-App-Version": expect.any(String),
 					}),
 				}),
 			)
 		})
 
 		it("should include reasoning with enabled: false when explicitly disabled", async () => {
-			handler = new RooHandler({
+			handler = new ClawHandler({
 				...mockOptions,
 				enableReasoningEffort: false,
 			})
@@ -581,14 +581,14 @@ describe("RooHandler", () => {
 				}),
 				expect.objectContaining({
 					headers: expect.objectContaining({
-						"X-Roo-App-Version": expect.any(String),
+						"X-Claw-App-Version": expect.any(String),
 					}),
 				}),
 			)
 		})
 
 		it("should include reasoning with enabled: true and effort: low", async () => {
-			handler = new RooHandler({
+			handler = new ClawHandler({
 				...mockOptions,
 				reasoningEffort: "low",
 			})
@@ -603,14 +603,14 @@ describe("RooHandler", () => {
 				}),
 				expect.objectContaining({
 					headers: expect.objectContaining({
-						"X-Roo-App-Version": expect.any(String),
+						"X-Claw-App-Version": expect.any(String),
 					}),
 				}),
 			)
 		})
 
 		it("should include reasoning with enabled: true and effort: medium", async () => {
-			handler = new RooHandler({
+			handler = new ClawHandler({
 				...mockOptions,
 				reasoningEffort: "medium",
 			})
@@ -625,14 +625,14 @@ describe("RooHandler", () => {
 				}),
 				expect.objectContaining({
 					headers: expect.objectContaining({
-						"X-Roo-App-Version": expect.any(String),
+						"X-Claw-App-Version": expect.any(String),
 					}),
 				}),
 			)
 		})
 
 		it("should include reasoning with enabled: true and effort: high", async () => {
-			handler = new RooHandler({
+			handler = new ClawHandler({
 				...mockOptions,
 				reasoningEffort: "high",
 			})
@@ -647,14 +647,14 @@ describe("RooHandler", () => {
 				}),
 				expect.objectContaining({
 					headers: expect.objectContaining({
-						"X-Roo-App-Version": expect.any(String),
+						"X-Claw-App-Version": expect.any(String),
 					}),
 				}),
 			)
 		})
 
 		it("should not include reasoning for minimal (treated as none)", async () => {
-			handler = new RooHandler({
+			handler = new ClawHandler({
 				...mockOptions,
 				reasoningEffort: "minimal",
 			})
@@ -669,7 +669,7 @@ describe("RooHandler", () => {
 		})
 
 		it("should handle enableReasoningEffort: false overriding reasoningEffort setting", async () => {
-			handler = new RooHandler({
+			handler = new ClawHandler({
 				...mockOptions,
 				enableReasoningEffort: false,
 				reasoningEffort: "high",
@@ -686,7 +686,7 @@ describe("RooHandler", () => {
 				}),
 				expect.objectContaining({
 					headers: expect.objectContaining({
-						"X-Roo-App-Version": expect.any(String),
+						"X-Claw-App-Version": expect.any(String),
 					}),
 				}),
 			)
@@ -695,7 +695,7 @@ describe("RooHandler", () => {
 
 	describe("tool calls handling", () => {
 		beforeEach(() => {
-			handler = new RooHandler(mockOptions)
+			handler = new ClawHandler(mockOptions)
 		})
 
 		it("should yield raw tool call chunks when tool_calls present", async () => {

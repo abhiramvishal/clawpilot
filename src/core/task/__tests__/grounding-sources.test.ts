@@ -123,8 +123,8 @@ vi.mock("../../environment/getEnvironmentDetails", () => ({
 	getEnvironmentDetails: vi.fn().mockResolvedValue(""),
 }))
 
-// Mock RooIgnoreController
-vi.mock("../../ignore/RooIgnoreController")
+// Mock ClawIgnoreController
+vi.mock("../../ignore/ClawIgnoreController")
 
 // Mock condense
 vi.mock("../../condense", () => ({

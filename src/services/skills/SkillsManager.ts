@@ -4,7 +4,7 @@ import * as vscode from "vscode"
 import matter from "gray-matter"
 
 import type { ClineProvider } from "../../core/webview/ClineProvider"
-import { getGlobalRooDirectory, getGlobalAgentsDirectory, getProjectAgentsDirectoryForCwd } from "../roo-config"
+import { getGlobalClawDirectory, getGlobalAgentsDirectory, getProjectAgentsDirectoryForCwd } from "../roo-config"
 import { directoryExists, fileExists } from "../roo-config"
 import { SkillMetadata, SkillContent } from "../../shared/skills"
 import { modes, getAllModes } from "../../shared/modes"
@@ -366,7 +366,7 @@ export class SkillsManager {
 		// Determine base directory
 		let baseDir: string
 		if (source === "global") {
-			baseDir = getGlobalRooDirectory()
+			baseDir = getGlobalClawDirectory()
 		} else {
 			const provider = this.providerRef.deref()
 			if (!provider?.cwd) {
@@ -475,7 +475,7 @@ Add your skill instructions here.
 		// Determine base directory
 		let baseDir: string
 		if (source === "global") {
-			baseDir = getGlobalRooDirectory()
+			baseDir = getGlobalClawDirectory()
 		} else {
 			const provider = this.providerRef.deref()
 			if (!provider?.cwd) {
@@ -572,7 +572,7 @@ Add your skill instructions here.
 		}>
 	> {
 		const dirs: Array<{ dir: string; source: "global" | "project"; mode?: string }> = []
-		const globalRooDir = getGlobalRooDirectory()
+		const globalRooDir = getGlobalClawDirectory()
 		const globalAgentsDir = getGlobalAgentsDirectory()
 		const provider = this.providerRef.deref()
 		const projectRooDir = provider?.cwd ? path.join(provider.cwd, ".roo") : null
@@ -655,7 +655,7 @@ Add your skill instructions here.
 		if (!provider?.cwd) return
 
 		// Watch for changes in skills directories
-		const globalRooDir = getGlobalRooDirectory()
+		const globalRooDir = getGlobalClawDirectory()
 		const globalAgentsDir = getGlobalAgentsDirectory()
 		const projectRooDir = path.join(provider.cwd, ".roo")
 		const projectAgentsDir = getProjectAgentsDirectoryForCwd(provider.cwd)

@@ -24,7 +24,7 @@ import { getLiteLLMModels } from "./litellm"
 import { GetModelsOptions } from "../../../shared/api"
 import { getOllamaModels } from "./ollama"
 import { getLMStudioModels } from "./lmstudio"
-import { getRooModels } from "./roo"
+import { getClawModels } from "./roo"
 
 const memoryCache = new NodeCache({ stdTTL: 5 * 60, checkperiod: 5 * 60 })
 
@@ -87,8 +87,9 @@ async function fetchModelsFromProvider(options: GetModelsOptions): Promise<Model
 			break
 		case "roo": {
 			// ClawPilot Cloud provider requires baseUrl and optional apiKey
-			const rooBaseUrl = options.baseUrl ?? process.env.ROO_CODE_PROVIDER_URL ?? "https://api.clawpilot.com/proxy"
-			models = await getRooModels(rooBaseUrl, options.apiKey)
+			const rooBaseUrl =
+				options.baseUrl ?? process.env.CLAW_PILOT_PROVIDER_URL ?? "https://api.clawpilot.com/proxy"
+			models = await getClawModels(rooBaseUrl, options.apiKey)
 			break
 		}
 		default: {

@@ -369,7 +369,7 @@ const qwenCodeSchema = apiModelIdProviderModelSchema.extend({
 
 const rooSchema = apiModelIdProviderModelSchema.extend({
 	// Can use cloud authentication or provide an API key (cli).
-	rooApiKey: z.string().optional(),
+	clawApiKey: z.string().optional(),
 })
 
 const vercelAiGatewaySchema = baseProviderSettingsSchema.extend({

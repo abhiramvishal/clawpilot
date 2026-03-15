@@ -2,7 +2,7 @@ import { safeWriteJson } from "../../utils/safeWriteJson"
 import * as path from "path"
 import * as os from "os"
 import * as fs from "fs/promises"
-import { getRooDirectoriesForCwd } from "../../services/roo-config/index.js"
+import { getClawDirectoriesForCwd } from "../../services/roo-config/index.js"
 import pWaitFor from "p-wait-for"
 import * as vscode from "vscode"
 
@@ -62,7 +62,7 @@ import { getOpenAiModels } from "../../api/providers/openai"
 import { getVsCodeLmModels } from "../../api/providers/vscode-lm"
 import { openMention } from "../mentions"
 import { resolveImageMentions } from "../mentions/resolveImageMentions"
-import { RooIgnoreController } from "../ignore/RooIgnoreController"
+import { ClawIgnoreController } from "../ignore/ClawIgnoreController"
 import { getWorkspacePath } from "../../utils/path"
 import { isPathOutsideWorkspace } from "../../utils/pathUtils"
 import { Mode, defaultModeSlug } from "../../shared/modes"
@@ -993,7 +993,7 @@ export const webviewMessageHandler = async (
 					key: "roo",
 					options: {
 						provider: "roo",
-						baseUrl: process.env.ROO_CODE_PROVIDER_URL ?? "https://api.clawpilot.com/proxy",
+						baseUrl: process.env.CLAW_PILOT_PROVIDER_URL ?? "https://api.clawpilot.com/proxy",
 						apiKey: CloudService.hasInstance()
 							? CloudService.instance.authService?.getSessionToken()
 							: undefined,
@@ -1118,7 +1118,7 @@ export const webviewMessageHandler = async (
 			try {
 				const rooOptions = {
 					provider: "roo" as const,
-					baseUrl: process.env.ROO_CODE_PROVIDER_URL ?? "https://api.clawpilot.com/proxy",
+					baseUrl: process.env.CLAW_PILOT_PROVIDER_URL ?? "https://api.clawpilot.com/proxy",
 					apiKey: CloudService.hasInstance()
 						? CloudService.instance.authService?.getSessionToken()
 						: undefined,
@@ -1768,14 +1768,14 @@ export const webviewMessageHandler = async (
 					20, // Use default limit, as filtering is now done in the backend
 				)
 
-				// Get the RooIgnoreController from the current task, or create a new one
+				// Get the ClawIgnoreController from the current task, or create a new one
 				const currentTask = provider.getCurrentTask()
 				let rooIgnoreController = currentTask?.rooIgnoreController
-				let tempController: RooIgnoreController | undefined
+				let tempController: ClawIgnoreController | undefined
 
 				// If no current task or no controller, create a temporary one
 				if (!rooIgnoreController) {
-					tempController = new RooIgnoreController(workspacePath)
+					tempController = new ClawIgnoreController(workspacePath)
 					await tempController.initialize()
 					rooIgnoreController = tempController
 				}
@@ -1784,7 +1784,7 @@ export const webviewMessageHandler = async (
 					// Get showRooIgnoredFiles setting from state
 					const { showRooIgnoredFiles = false } = (await provider.getState()) ?? {}
 
-					// Filter results using RooIgnoreController if showRooIgnoredFiles is false
+					// Filter results using ClawIgnoreController if showRooIgnoredFiles is false
 					let filteredResults = results
 					if (!showRooIgnoredFiles && rooIgnoreController) {
 						const allowedPaths = rooIgnoreController.filterPaths(results.map((r) => r.path))
@@ -1824,7 +1824,7 @@ export const webviewMessageHandler = async (
 		}
 		case "refreshCustomTools": {
 			try {
-				const toolDirs = getRooDirectoriesForCwd(getCurrentCwd()).map((dir) => path.join(dir, "tools"))
+				const toolDirs = getClawDirectoriesForCwd(getCurrentCwd()).map((dir) => path.join(dir, "tools"))
 				await customToolRegistry.loadFromDirectories(toolDirs)
 
 				await provider.postMessageToWebview({

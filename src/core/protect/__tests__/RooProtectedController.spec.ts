@@ -1,12 +1,12 @@
 import path from "path"
-import { RooProtectedController } from "../RooProtectedController"
+import { ClawProtectedController } from "../ClawProtectedController"
 
-describe("RooProtectedController", () => {
+describe("ClawProtectedController", () => {
 	const TEST_CWD = "/test/workspace"
-	let controller: RooProtectedController
+	let controller: ClawProtectedController
 
 	beforeEach(() => {
-		controller = new RooProtectedController(TEST_CWD)
+		controller = new ClawProtectedController(TEST_CWD)
 	})
 
 	describe("isWriteProtected", () => {
@@ -152,7 +152,7 @@ describe("RooProtectedController", () => {
 
 	describe("getProtectedPatterns", () => {
 		it("should return the list of protected patterns", () => {
-			const patterns = RooProtectedController.getProtectedPatterns()
+			const patterns = ClawProtectedController.getProtectedPatterns()
 
 			expect(patterns).toEqual([
 				".rooignore",

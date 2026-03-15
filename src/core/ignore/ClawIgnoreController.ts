@@ -12,7 +12,7 @@ export const LOCK_TEXT_SYMBOL = "\u{1F512}"
  * Designed to be instantiated once in Cline.ts and passed to file manipulation services.
  * Uses the 'ignore' library to support standard .gitignore syntax in .rooignore files.
  */
-export class RooIgnoreController {
+export class ClawIgnoreController {
 	private cwd: string
 	private ignoreInstance: Ignore
 	private disposables: vscode.Disposable[] = []

@@ -49,7 +49,7 @@ export function getProviderSettings(
 			if (model) config.vercelAiGatewayModelId = model
 			break
 		case "roo":
-			if (apiKey) config.rooApiKey = apiKey
+			if (apiKey) config.clawApiKey = apiKey
 			if (model) config.apiModelId = model
 			break
 		default:

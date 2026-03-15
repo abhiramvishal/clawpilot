@@ -27,18 +27,18 @@ vi.mock("../../search/file-search", () => ({
 }))
 
 import {
-	getGlobalRooDirectory,
+	getGlobalClawDirectory,
 	getGlobalAgentsDirectory,
-	getProjectRooDirectoryForCwd,
+	getProjectClawDirectoryForCwd,
 	getProjectAgentsDirectoryForCwd,
 	directoryExists,
 	fileExists,
 	readFileIfExists,
-	getRooDirectoriesForCwd,
-	getAllRooDirectoriesForCwd,
+	getClawDirectoriesForCwd,
+	getAllClawDirectoriesForCwd,
 	getAgentsDirectoriesForCwd,
-	discoverSubfolderRooDirectories,
-	loadConfiguration,
+	discoverSubfolderClawDirectories,
+	loadClawConfiguration,
 } from "../index"
 
 describe("RooConfigService", () => {
@@ -51,23 +51,23 @@ describe("RooConfigService", () => {
 		vi.restoreAllMocks()
 	})
 
-	describe("getGlobalRooDirectory", () => {
+	describe("getGlobalClawDirectory", () => {
 		it("should return correct path for global .roo directory", () => {
-			const result = getGlobalRooDirectory()
+			const result = getGlobalClawDirectory()
 			expect(result).toBe(path.join("/mock/home", ".roo"))
 		})
 
 		it("should handle different home directories", () => {
 			mockHomedir.mockReturnValue("/different/home")
-			const result = getGlobalRooDirectory()
+			const result = getGlobalClawDirectory()
 			expect(result).toBe(path.join("/different/home", ".roo"))
 		})
 	})
 
-	describe("getProjectRooDirectoryForCwd", () => {
+	describe("getProjectClawDirectoryForCwd", () => {
 		it("should return correct path for given cwd", () => {
 			const cwd = "/custom/project/path"
-			const result = getProjectRooDirectoryForCwd(cwd)
+			const result = getProjectClawDirectoryForCwd(cwd)
 			expect(result).toBe(path.join(cwd, ".roo"))
 		})
 	})
@@ -236,23 +236,23 @@ describe("RooConfigService", () => {
 		})
 	})
 
-	describe("getRooDirectoriesForCwd", () => {
+	describe("getClawDirectoriesForCwd", () => {
 		it("should return directories for given cwd", () => {
 			const cwd = "/custom/project/path"
 
-			const result = getRooDirectoriesForCwd(cwd)
+			const result = getClawDirectoriesForCwd(cwd)
 
 			expect(result).toEqual([path.join("/mock/home", ".roo"), path.join(cwd, ".roo")])
 		})
 	})
 
-	describe("loadConfiguration", () => {
+	describe("loadClawConfiguration", () => {
 		it("should load global configuration only when project does not exist", async () => {
 			const error = new Error("ENOENT") as any
 			error.code = "ENOENT"
 			mockReadFile.mockResolvedValueOnce("global content").mockRejectedValueOnce(error)
 
-			const result = await loadConfiguration("rules/rules.md", "/project/path")
+			const result = await loadClawConfiguration("rules/rules.md", "/project/path")
 
 			expect(result).toEqual({
 				global: "global content",
@@ -266,7 +266,7 @@ describe("RooConfigService", () => {
 			error.code = "ENOENT"
 			mockReadFile.mockRejectedValueOnce(error).mockResolvedValueOnce("project content")
 
-			const result = await loadConfiguration("rules/rules.md", "/project/path")
+			const result = await loadClawConfiguration("rules/rules.md", "/project/path")
 
 			expect(result).toEqual({
 				global: null,
@@ -278,7 +278,7 @@ describe("RooConfigService", () => {
 		it("should merge global and project configurations with project overriding global", async () => {
 			mockReadFile.mockResolvedValueOnce("global content").mockResolvedValueOnce("project content")
 
-			const result = await loadConfiguration("rules/rules.md", "/project/path")
+			const result = await loadClawConfiguration("rules/rules.md", "/project/path")
 
 			expect(result).toEqual({
 				global: "global content",
@@ -292,7 +292,7 @@ describe("RooConfigService", () => {
 			error.code = "ENOENT"
 			mockReadFile.mockRejectedValueOnce(error).mockRejectedValueOnce(error)
 
-			const result = await loadConfiguration("rules/rules.md", "/project/path")
+			const result = await loadClawConfiguration("rules/rules.md", "/project/path")
 
 			expect(result).toEqual({
 				global: null,
@@ -306,7 +306,7 @@ describe("RooConfigService", () => {
 			error.code = "EACCES"
 			mockReadFile.mockRejectedValueOnce(error)
 
-			await expect(loadConfiguration("rules/rules.md", "/project/path")).rejects.toThrow("Permission denied")
+			await expect(loadClawConfiguration("rules/rules.md", "/project/path")).rejects.toThrow("Permission denied")
 		})
 
 		it("should propagate unexpected errors from project file read", async () => {
@@ -317,24 +317,24 @@ describe("RooConfigService", () => {
 
 			mockReadFile.mockRejectedValueOnce(globalError).mockRejectedValueOnce(projectError)
 
-			await expect(loadConfiguration("rules/rules.md", "/project/path")).rejects.toThrow("Permission denied")
+			await expect(loadClawConfiguration("rules/rules.md", "/project/path")).rejects.toThrow("Permission denied")
 		})
 
 		it("should use correct file paths", async () => {
 			mockReadFile.mockResolvedValue("content")
 
-			await loadConfiguration("rules/rules.md", "/project/path")
+			await loadClawConfiguration("rules/rules.md", "/project/path")
 
 			expect(mockReadFile).toHaveBeenCalledWith(path.join("/mock/home", ".roo", "rules/rules.md"), "utf-8")
 			expect(mockReadFile).toHaveBeenCalledWith(path.join("/project/path", ".roo", "rules/rules.md"), "utf-8")
 		})
 	})
 
-	describe("discoverSubfolderRooDirectories", () => {
+	describe("discoverSubfolderClawDirectories", () => {
 		it("should return empty array when no subfolder .roo directories found", async () => {
 			mockExecuteRipgrep.mockResolvedValue([])
 
-			const result = await discoverSubfolderRooDirectories("/project/path")
+			const result = await discoverSubfolderClawDirectories("/project/path")
 
 			expect(result).toEqual([])
 		})
@@ -346,7 +346,7 @@ describe("RooConfigService", () => {
 				{ path: "package-b/.roo/rules-code/rule.md", type: "file" },
 			])
 
-			const result = await discoverSubfolderRooDirectories("/project/path")
+			const result = await discoverSubfolderClawDirectories("/project/path")
 
 			expect(result).toEqual([
 				path.join("/project/path", "package-a", ".roo"),
@@ -361,7 +361,7 @@ describe("RooConfigService", () => {
 				{ path: "mango/.roo/rules/rule.md", type: "file" },
 			])
 
-			const result = await discoverSubfolderRooDirectories("/project/path")
+			const result = await discoverSubfolderClawDirectories("/project/path")
 
 			expect(result).toEqual([
 				path.join("/project/path", "apple", ".roo"),
@@ -377,7 +377,7 @@ describe("RooConfigService", () => {
 				{ path: "subfolder/.roo/rules/rule.md", type: "file" },
 			])
 
-			const result = await discoverSubfolderRooDirectories("/project/path")
+			const result = await discoverSubfolderClawDirectories("/project/path")
 
 			// Should only include subfolder, not root
 			expect(result).toEqual([path.join("/project/path", "subfolder", ".roo")])
@@ -389,7 +389,7 @@ describe("RooConfigService", () => {
 				{ path: "packages/utils/.roo/rules-code/rule.md", type: "file" },
 			])
 
-			const result = await discoverSubfolderRooDirectories("/project/path")
+			const result = await discoverSubfolderClawDirectories("/project/path")
 
 			expect(result).toEqual([
 				path.join("/project/path", "packages/core", ".roo"),
@@ -400,7 +400,7 @@ describe("RooConfigService", () => {
 		it("should return empty array on ripgrep error", async () => {
 			mockExecuteRipgrep.mockRejectedValue(new Error("ripgrep failed"))
 
-			const result = await discoverSubfolderRooDirectories("/project/path")
+			const result = await discoverSubfolderClawDirectories("/project/path")
 
 			expect(result).toEqual([])
 		})
@@ -412,7 +412,7 @@ describe("RooConfigService", () => {
 				{ path: "package-a/.roo/rules-code/rule3.md", type: "file" },
 			])
 
-			const result = await discoverSubfolderRooDirectories("/project/path")
+			const result = await discoverSubfolderClawDirectories("/project/path")
 
 			// Should only include package-a/.roo once
 			expect(result).toEqual([path.join("/project/path", "package-a", ".roo")])
@@ -427,7 +427,7 @@ describe("RooConfigService", () => {
 				{ path: "package-d/.roo/config/settings.json", type: "file" },
 			])
 
-			const result = await discoverSubfolderRooDirectories("/project/path")
+			const result = await discoverSubfolderClawDirectories("/project/path")
 
 			expect(result).toEqual([
 				path.join("/project/path", "package-a", ".roo"),
@@ -438,11 +438,11 @@ describe("RooConfigService", () => {
 		})
 	})
 
-	describe("getAllRooDirectoriesForCwd", () => {
+	describe("getAllClawDirectoriesForCwd", () => {
 		it("should return global, project, and subfolder directories", async () => {
 			mockExecuteRipgrep.mockResolvedValueOnce([{ path: "subfolder/.roo/rules/rule.md", type: "file" }])
 
-			const result = await getAllRooDirectoriesForCwd("/project/path")
+			const result = await getAllClawDirectoriesForCwd("/project/path")
 
 			expect(result).toEqual([
 				path.join("/mock/home", ".roo"), // global
@@ -454,7 +454,7 @@ describe("RooConfigService", () => {
 		it("should return only global and project when no subfolders", async () => {
 			mockExecuteRipgrep.mockResolvedValue([])
 
-			const result = await getAllRooDirectoriesForCwd("/project/path")
+			const result = await getAllClawDirectoriesForCwd("/project/path")
 
 			expect(result).toEqual([path.join("/mock/home", ".roo"), path.join("/project/path", ".roo")])
 		})
@@ -465,7 +465,7 @@ describe("RooConfigService", () => {
 				{ path: "apple/.roo/rules/rule.md", type: "file" },
 			])
 
-			const result = await getAllRooDirectoriesForCwd("/project/path")
+			const result = await getAllClawDirectoriesForCwd("/project/path")
 
 			expect(result).toEqual([
 				path.join("/mock/home", ".roo"), // global first

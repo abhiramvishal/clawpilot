@@ -86,7 +86,7 @@ const GLOBAL_AGENTS_DIR = p(HOME_DIR, ".agents")
 
 // Mock roo-config
 vi.mock("../../roo-config", () => ({
-	getGlobalRooDirectory: () => GLOBAL_ROO_DIR,
+	getGlobalClawDirectory: () => GLOBAL_ROO_DIR,
 	getGlobalAgentsDirectory: () => GLOBAL_AGENTS_DIR,
 	getProjectAgentsDirectoryForCwd: (cwd: string) => p(cwd, ".agents"),
 	directoryExists: mockDirectoryExists,
