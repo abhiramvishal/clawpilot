@@ -215,8 +215,8 @@ function requestModes(host: ExtensionHost): Promise<ModeLike[]> {
 	})
 }
 
-function requestRooModels(host: ExtensionHost): Promise<ModelRecord> {
-	return requestFromExtension(host, "requestRooModels", (message) => {
+function requestClawModels(host: ExtensionHost): Promise<ModelRecord> {
+	return requestFromExtension(host, "requestClawModels", (message) => {
 		if (message.type !== "singleRouterModelFetchResponse") {
 			return undefined
 		}
@@ -299,7 +299,7 @@ export async function listModels(options: BaseListOptions): Promise<void> {
 	const format = parseFormat(options.format)
 
 	await withHostAndSignalHandlers(options, { ephemeral: true }, async (host) => {
-		const models = await requestRooModels(host)
+		const models = await requestClawModels(host)
 
 		if (format === "json") {
 			outputJson({ models })

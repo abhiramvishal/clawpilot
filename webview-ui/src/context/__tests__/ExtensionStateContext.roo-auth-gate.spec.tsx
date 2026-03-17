@@ -26,7 +26,7 @@ describe("ExtensionStateContext Roo auth gate", () => {
 		)
 	}
 
-	it("does not post requestRooModels when auth flips and provider !== 'roo'", async () => {
+	it("does not post requestClawModels when auth flips and provider !== 'roo'", async () => {
 		render(
 			<ExtensionStateContextProvider>
 				<div />
@@ -42,12 +42,12 @@ describe("ExtensionStateContext Roo auth gate", () => {
 		// Should NOT fire auth-driven Roo refresh
 		await waitFor(() => {
 			const calls = (vscode.postMessage as any).mock.calls as any[][]
-			const hasRequest = calls.some((c) => c[0]?.type === "requestRooModels")
+			const hasRequest = calls.some((c) => c[0]?.type === "requestClawModels")
 			expect(hasRequest).toBe(false)
 		})
 	})
 
-	it("posts requestRooModels when auth flips and provider === 'roo'", async () => {
+	it("posts requestClawModels when auth flips and provider === 'roo'", async () => {
 		render(
 			<ExtensionStateContextProvider>
 				<div />
@@ -69,7 +69,7 @@ describe("ExtensionStateContext Roo auth gate", () => {
 		})
 
 		await waitFor(() => {
-			expect(vscode.postMessage).toHaveBeenCalledWith({ type: "requestRooModels" })
+			expect(vscode.postMessage).toHaveBeenCalledWith({ type: "requestClawModels" })
 		})
 	})
 })

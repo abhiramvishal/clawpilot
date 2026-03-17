@@ -11,8 +11,8 @@ import type { ApiHandlerOptions } from "../../shared/api"
 import { ApiStream } from "../transform/stream"
 import { getModelParams } from "../transform/model-params"
 import { convertToOpenAiMessages } from "../transform/openai-format"
-import type { RooReasoningParams } from "../transform/reasoning"
-import { getRooReasoning } from "../transform/reasoning"
+import type { ClawReasoningParams } from "../transform/reasoning"
+import { getClawReasoning } from "../transform/reasoning"
 
 import type { ApiHandlerCreateMessageMetadata } from "../index"
 import { BaseOpenAiCompatibleProvider } from "./base-openai-compatible-provider"
@@ -29,7 +29,7 @@ interface ClawUsage extends OpenAI.CompletionUsage {
 
 // Add custom interface for Claw params to support reasoning
 type ClawChatCompletionParams = OpenAI.Chat.ChatCompletionCreateParamsStreaming & {
-	reasoning?: RooReasoningParams
+	reasoning?: ClawReasoningParams
 }
 
 function getSessionToken(): string {
@@ -87,8 +87,8 @@ export class ClawHandler extends BaseOpenAiCompatibleProvider<string> {
 			defaultTemperature: this.defaultTemperature,
 		})
 
-		// Get Roo-specific reasoning parameters
-		const reasoning = getRooReasoning({
+		// Get Claw-specific reasoning parameters
+		const reasoning = getClawReasoning({
 			model: info,
 			reasoningBudget: params.reasoningBudget,
 			reasoningEffort: params.reasoningEffort,

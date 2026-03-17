@@ -162,7 +162,7 @@ export const globalSettingsSchema = z.object({
 
 	maxOpenTabsContext: z.number().optional(),
 	maxWorkspaceFiles: z.number().optional(),
-	showRooIgnoredFiles: z.boolean().optional(),
+	showClawIgnoredFiles: z.boolean().optional(),
 	enableSubfolderRules: z.boolean().optional(),
 	maxImageFileSize: z.number().optional(),
 	maxTotalImageSize: z.number().optional(),
@@ -365,7 +365,7 @@ export const EVALS_SETTINGS: ClawPilotSettings = {
 	maxOpenTabsContext: 20,
 	maxWorkspaceFiles: 200,
 	maxGitStatusFiles: 20,
-	showRooIgnoredFiles: true,
+	showClawIgnoredFiles: true,
 
 	includeDiagnosticMessages: true,
 	maxDiagnosticMessages: 50,

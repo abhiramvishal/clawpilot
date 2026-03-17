@@ -13,7 +13,7 @@ vi.mock("@clawpilot/cloud", () => ({
 	},
 }))
 
-describe("webviewMessageHandler - requestRooCreditBalance", () => {
+describe("webviewMessageHandler - requestClawCreditBalance", () => {
 	let mockProvider: any
 
 	beforeEach(() => {
@@ -30,7 +30,7 @@ describe("webviewMessageHandler - requestRooCreditBalance", () => {
 		vi.clearAllMocks()
 	})
 
-	it("should handle requestRooCreditBalance and return balance", async () => {
+	it("should handle requestClawCreditBalance and return balance", async () => {
 		const mockBalance = 42.75
 		const requestId = "test-request-id"
 
@@ -40,13 +40,13 @@ describe("webviewMessageHandler - requestRooCreditBalance", () => {
 		await webviewMessageHandler(
 			mockProvider as any,
 			{
-				type: "requestRooCreditBalance",
+				type: "requestClawCreditBalance",
 				requestId,
 			} as any,
 		)
 
 		expect(mockProvider.postMessageToWebview).toHaveBeenCalledWith({
-			type: "rooCreditBalance",
+			type: "clawCreditBalance",
 			requestId,
 			values: { balance: mockBalance },
 		})
@@ -62,13 +62,13 @@ describe("webviewMessageHandler - requestRooCreditBalance", () => {
 		await webviewMessageHandler(
 			mockProvider as any,
 			{
-				type: "requestRooCreditBalance",
+				type: "requestClawCreditBalance",
 				requestId,
 			} as any,
 		)
 
 		expect(mockProvider.postMessageToWebview).toHaveBeenCalledWith({
-			type: "rooCreditBalance",
+			type: "clawCreditBalance",
 			requestId,
 			values: { error: errorMessage },
 		})
@@ -82,13 +82,13 @@ describe("webviewMessageHandler - requestRooCreditBalance", () => {
 		await webviewMessageHandler(
 			mockProvider as any,
 			{
-				type: "requestRooCreditBalance",
+				type: "requestClawCreditBalance",
 				requestId,
 			} as any,
 		)
 
 		expect(mockProvider.postMessageToWebview).toHaveBeenCalledWith({
-			type: "rooCreditBalance",
+			type: "clawCreditBalance",
 			requestId,
 			values: { error: "Cloud service not available" },
 		})
@@ -103,13 +103,13 @@ describe("webviewMessageHandler - requestRooCreditBalance", () => {
 		await webviewMessageHandler(
 			mockProvider as any,
 			{
-				type: "requestRooCreditBalance",
+				type: "requestClawCreditBalance",
 				requestId,
 			} as any,
 		)
 
 		expect(mockProvider.postMessageToWebview).toHaveBeenCalledWith({
-			type: "rooCreditBalance",
+			type: "clawCreditBalance",
 			requestId,
 			values: { error: "Cloud service not available" },
 		})

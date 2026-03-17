@@ -119,7 +119,7 @@ Otherwise, if you have not completed the task and do not need additional informa
 		files: string[],
 		didHitLimit: boolean,
 		rooIgnoreController: ClawIgnoreController | undefined,
-		showRooIgnoredFiles: boolean,
+		showClawIgnoredFiles: boolean,
 		rooProtectedController?: ClawProtectedController,
 	): string => {
 		const sorted = files
@@ -163,7 +163,7 @@ Otherwise, if you have not completed the task and do not need additional informa
 
 				if (isIgnored) {
 					// If file is ignored and we're not showing ignored files, skip it
-					if (!showRooIgnoredFiles) {
+					if (!showClawIgnoredFiles) {
 						continue
 					}
 					// Otherwise, mark it with a lock symbol

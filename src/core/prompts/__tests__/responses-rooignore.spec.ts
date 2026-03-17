@@ -121,9 +121,9 @@ describe("RooIgnore Response Formatting", () => {
 		})
 
 		/**
-		 * Tests formatFilesList when showRooIgnoredFiles is set to false
+		 * Tests formatFilesList when showClawIgnoredFiles is set to false
 		 */
-		it("should hide ignored files when showRooIgnoredFiles is false", async () => {
+		it("should hide ignored files when showClawIgnoredFiles is false", async () => {
 			// Create controller
 			const controller = new ClawIgnoreController(TEST_CWD)
 			await controller.initialize()
@@ -147,13 +147,13 @@ describe("RooIgnore Response Formatting", () => {
 				"secrets/keys.json", // ignored
 			]
 
-			// Format with controller and showRooIgnoredFiles = false
+			// Format with controller and showClawIgnoredFiles = false
 			const result = formatResponse.formatFilesList(
 				TEST_CWD,
 				files,
 				false,
 				controller as any,
-				false, // showRooIgnoredFiles = false
+				false, // showClawIgnoredFiles = false
 			)
 
 			// Should contain allowed files

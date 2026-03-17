@@ -534,7 +534,7 @@ describe("ClineProvider", () => {
 			maxOpenTabsContext: 20,
 			maxWorkspaceFiles: 200,
 			telemetrySetting: "unset",
-			showRooIgnoredFiles: false,
+			showClawIgnoredFiles: false,
 			enableSubfolderRules: false,
 			renderContext: "sidebar",
 			maxImageFileSize: 5,
@@ -964,24 +964,24 @@ describe("ClineProvider", () => {
 		expect(provider.providerSettingsManager.activateProfile).toHaveBeenCalledWith({ id: "config-id-123" })
 	})
 
-	test("handles showRooIgnoredFiles setting", async () => {
+	test("handles showClawIgnoredFiles setting", async () => {
 		await provider.resolveWebviewView(mockWebviewView)
 		const messageHandler = (mockWebviewView.webview.onDidReceiveMessage as any).mock.calls[0][0]
 
 		// Default value should be false
-		expect((await provider.getState()).showRooIgnoredFiles).toBe(false)
+		expect((await provider.getState()).showClawIgnoredFiles).toBe(false)
 
-		// Test showRooIgnoredFiles with true
-		await messageHandler({ type: "updateSettings", updatedSettings: { showRooIgnoredFiles: true } })
-		expect(mockContext.globalState.update).toHaveBeenCalledWith("showRooIgnoredFiles", true)
+		// Test showClawIgnoredFiles with true
+		await messageHandler({ type: "updateSettings", updatedSettings: { showClawIgnoredFiles: true } })
+		expect(mockContext.globalState.update).toHaveBeenCalledWith("showClawIgnoredFiles", true)
 		expect(mockPostMessage).toHaveBeenCalled()
-		expect((await provider.getState()).showRooIgnoredFiles).toBe(true)
+		expect((await provider.getState()).showClawIgnoredFiles).toBe(true)
 
-		// Test showRooIgnoredFiles with false
-		await messageHandler({ type: "updateSettings", updatedSettings: { showRooIgnoredFiles: false } })
-		expect(mockContext.globalState.update).toHaveBeenCalledWith("showRooIgnoredFiles", false)
+		// Test showClawIgnoredFiles with false
+		await messageHandler({ type: "updateSettings", updatedSettings: { showClawIgnoredFiles: false } })
+		expect(mockContext.globalState.update).toHaveBeenCalledWith("showClawIgnoredFiles", false)
 		expect(mockPostMessage).toHaveBeenCalled()
-		expect((await provider.getState()).showRooIgnoredFiles).toBe(false)
+		expect((await provider.getState()).showClawIgnoredFiles).toBe(false)
 	})
 
 	test("handles updatePrompt message correctly", async () => {

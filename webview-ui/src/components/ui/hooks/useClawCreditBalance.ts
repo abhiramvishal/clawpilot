@@ -20,7 +20,7 @@ export const useClawCreditBalance = () => {
 		const handleMessage = (event: MessageEvent) => {
 			const message: ExtensionMessage = event.data
 
-			if (message.type === "rooCreditBalance" && message.requestId === requestId) {
+			if (message.type === "clawCreditBalance" && message.requestId === requestId) {
 				window.removeEventListener("message", handleMessage)
 				clearTimeout(timeout)
 
@@ -44,7 +44,7 @@ export const useClawCreditBalance = () => {
 
 		window.addEventListener("message", handleMessage)
 
-		vscode.postMessage({ type: "requestRooCreditBalance", requestId })
+		vscode.postMessage({ type: "requestClawCreditBalance", requestId })
 
 		return () => {
 			window.removeEventListener("message", handleMessage)

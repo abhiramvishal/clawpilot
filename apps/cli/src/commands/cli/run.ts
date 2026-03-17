@@ -103,7 +103,7 @@ async function warmRooModels(host: ExtensionHost): Promise<void> {
 		}, ROO_MODEL_WARMUP_TIMEOUT_MS)
 
 		host.on("extensionWebviewMessage", onMessage)
-		host.sendToExtension({ type: "requestRooModels" })
+		host.sendToExtension({ type: "requestClawModels" })
 	})
 }
 

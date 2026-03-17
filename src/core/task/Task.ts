@@ -81,7 +81,7 @@ import { RepoPerTaskCheckpointService } from "../../services/checkpoints"
 // integrations
 import { DiffViewProvider } from "../../integrations/editor/DiffViewProvider"
 import { findToolName } from "../../integrations/misc/export-markdown"
-import { RooTerminalProcess } from "../../integrations/terminal/types"
+import { ClawTerminalProcess } from "../../integrations/terminal/types"
 import { TerminalRegistry } from "../../integrations/terminal/TerminalRegistry"
 import { OutputInterceptor } from "../../integrations/terminal/OutputInterceptor"
 
@@ -298,7 +298,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 	rooIgnoreController?: ClawIgnoreController
 	rooProtectedController?: ClawProtectedController
 	fileContextTracker: FileContextTracker
-	terminalProcess?: RooTerminalProcess
+	terminalProcess?: ClawTerminalProcess
 
 	// Editing
 	diffViewProvider: DiffViewProvider
@@ -2595,7 +2595,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 			const provider = this.providerRef.deref()
 			const state = provider ? await provider.getState() : undefined
 
-			const showRooIgnoredFiles = state?.showRooIgnoredFiles ?? false
+			const showClawIgnoredFiles = state?.showClawIgnoredFiles ?? false
 			const includeDiagnosticMessages = state?.includeDiagnosticMessages ?? true
 			const maxDiagnosticMessages = state?.maxDiagnosticMessages ?? 50
 			const currentMode = state?.mode ?? defaultModeSlug
@@ -2605,7 +2605,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 				cwd: this.cwd,
 				fileContextTracker: this.fileContextTracker,
 				rooIgnoreController: this.rooIgnoreController,
-				showRooIgnoredFiles,
+				showClawIgnoredFiles,
 				includeDiagnosticMessages,
 				maxDiagnosticMessages,
 				skillsManager: provider?.getSkillsManager(),

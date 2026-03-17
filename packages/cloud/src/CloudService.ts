@@ -119,7 +119,7 @@ export class CloudService extends EventEmitter<CloudServiceEvents> implements Di
 			// For testing you can create a token with:
 			// `pnpm --filter @clawpilot-cloud/roomote-cli development auth job-token --job-id 1 --user-id user_2xmBhejNeDTwanM8CgIOnMgVxzC --org-id org_2wbhchVXZMQl8OS1yt0mrDazCpW`
 			// The token will last for 1 hour.
-			const cloudToken = process.env.ROO_CODE_CLOUD_TOKEN
+			const cloudToken = process.env.CLAW_PILOT_CLOUD_TOKEN
 
 			if (cloudToken && cloudToken.length > 0) {
 				this._authService = new StaticTokenAuthService(this.context, cloudToken, this.log)
@@ -133,7 +133,7 @@ export class CloudService extends EventEmitter<CloudServiceEvents> implements Di
 			await this._authService.initialize()
 
 			// Check for static settings environment variable.
-			const staticOrgSettings = process.env.ROO_CODE_CLOUD_ORG_SETTINGS
+			const staticOrgSettings = process.env.CLAW_PILOT_CLOUD_ORG_SETTINGS
 
 			if (staticOrgSettings && staticOrgSettings.length > 0) {
 				this._settingsService = new StaticSettingsService(staticOrgSettings, this.log)

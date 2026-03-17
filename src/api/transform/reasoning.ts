@@ -12,7 +12,7 @@ export type OpenRouterReasoningParams = {
 	exclude?: boolean
 }
 
-export type RooReasoningParams = {
+export type ClawReasoningParams = {
 	enabled?: boolean
 	effort?: ReasoningEffortExtended
 }
@@ -55,11 +55,11 @@ export const getOpenRouterReasoning = ({
 				: undefined
 			: undefined
 
-export const getRooReasoning = ({
+export const getClawReasoning = ({
 	model,
 	reasoningEffort,
 	settings,
-}: GetModelReasoningOptions): RooReasoningParams | undefined => {
+}: GetModelReasoningOptions): ClawReasoningParams | undefined => {
 	// Check if model supports reasoning effort
 	if (!model.supportsReasoningEffort) {
 		return undefined
@@ -80,7 +80,7 @@ export const getRooReasoning = ({
 		return { enabled: false }
 	}
 
-	// For Roo models that support reasoning effort, absence of a selection should be
+	// For Claw models that support reasoning effort, absence of a selection should be
 	// treated as an explicit "off" signal so that the backend does not auto-enable
 	// reasoning. This aligns with the default behavior in tests.
 	if (!reasoningEffort) {
@@ -93,7 +93,7 @@ export const getRooReasoning = ({
 		return undefined
 	}
 
-	// For Roo, "minimal" is treated as "none" for effort-based reasoning – we omit
+	// For Claw, "minimal" is treated as "none" for effort-based reasoning - we omit
 	// the reasoning field entirely instead of sending an explicit effort.
 	if (reasoningEffort === "minimal") {
 		return undefined
@@ -103,6 +103,9 @@ export const getRooReasoning = ({
 	// with the selected effort.
 	return { enabled: true, effort: reasoningEffort as ReasoningEffortExtended }
 }
+
+export type { ClawReasoningParams as RooReasoningParams }
+export { getClawReasoning as getRooReasoning }
 
 export const getAnthropicReasoning = ({
 	model,

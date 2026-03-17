@@ -94,7 +94,7 @@ const WelcomeViewProvider = () => {
 		// Landing screen - always trigger auth with Roo
 		if (selectedProvider === null) {
 			setAuthOrigin("landing")
-			vscode.postMessage({ type: "rooCloudSignIn", useProviderSignup: true })
+			vscode.postMessage({ type: "clawCloudSignIn", useProviderSignup: true })
 			setAuthInProgress(true)
 		}
 		// Provider Selection screen
@@ -112,7 +112,7 @@ const WelcomeViewProvider = () => {
 			} else {
 				// Need to authenticate
 				setAuthOrigin("providerSelection")
-				vscode.postMessage({ type: "rooCloudSignIn", useProviderSignup: true })
+				vscode.postMessage({ type: "clawCloudSignIn", useProviderSignup: true })
 				setAuthInProgress(true)
 			}
 		} else {
@@ -164,7 +164,7 @@ const WelcomeViewProvider = () => {
 		setTimeout(() => {
 			if (url.trim() && url.includes("://") && url.includes("/auth/clerk/callback")) {
 				setManualErrorMessage(false)
-				vscode.postMessage({ type: "rooCloudManualUrl", text: url.trim() })
+				vscode.postMessage({ type: "clawCloudManualUrl", text: url.trim() })
 			}
 		}, 100)
 	}
@@ -173,14 +173,14 @@ const WelcomeViewProvider = () => {
 		const url = manualUrl.trim()
 		if (url && url.includes("://") && url.includes("/auth/clerk/callback")) {
 			setManualErrorMessage(false)
-			vscode.postMessage({ type: "rooCloudManualUrl", text: url })
+			vscode.postMessage({ type: "clawCloudManualUrl", text: url })
 		} else {
 			setManualErrorMessage(true)
 		}
 	}, [manualUrl])
 
 	const handleOpenSignupUrl = () => {
-		vscode.postMessage({ type: "rooCloudSignIn", useProviderSignup: false })
+		vscode.postMessage({ type: "clawCloudSignIn", useProviderSignup: false })
 	}
 
 	// Render the waiting for cloud state

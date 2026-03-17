@@ -69,7 +69,7 @@ export interface ExtensionStateContextType extends ExtensionState {
 	setAlwaysAllowMcp: (value: boolean) => void
 	setAlwaysAllowModeSwitch: (value: boolean) => void
 	setAlwaysAllowSubtasks: (value: boolean) => void
-	setShowRooIgnoredFiles: (value: boolean) => void
+	setShowClawIgnoredFiles: (value: boolean) => void
 	setEnableSubfolderRules: (value: boolean) => void
 	setShowAnnouncement: (value: boolean) => void
 	setAllowedCommands: (value: string[]) => void
@@ -223,7 +223,7 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 		maxWorkspaceFiles: 200,
 		cwd: "",
 		telemetrySetting: "unset",
-		showRooIgnoredFiles: true, // Default to showing .rooignore'd files with lock symbol (current behavior).
+		showClawIgnoredFiles: true, // Default to showing .rooignore'd files with lock symbol (current behavior).
 		enableSubfolderRules: false, // Default to disabled - must be enabled to load rules from subdirectories
 		renderContext: "sidebar",
 		maxReadFileLine: -1, // Default max line limit for read_file tool (-1 for default)
@@ -480,7 +480,7 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 		const currentProvider = state.apiConfiguration?.apiProvider
 		if (!prevCloudIsAuthenticated && currentAuth && currentProvider === "roo") {
 			// User just authenticated and Roo is the active provider - refresh Roo models
-			vscode.postMessage({ type: "requestRooModels" })
+			vscode.postMessage({ type: "requestClawModels" })
 		}
 		setPrevCloudIsAuthenticated(currentAuth)
 	}, [state.cloudIsAuthenticated, prevCloudIsAuthenticated, state.apiConfiguration?.apiProvider])
@@ -559,7 +559,7 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 		setMaxOpenTabsContext: (value) => setState((prevState) => ({ ...prevState, maxOpenTabsContext: value })),
 		setMaxWorkspaceFiles: (value) => setState((prevState) => ({ ...prevState, maxWorkspaceFiles: value })),
 		setTelemetrySetting: (value) => setState((prevState) => ({ ...prevState, telemetrySetting: value })),
-		setShowRooIgnoredFiles: (value) => setState((prevState) => ({ ...prevState, showRooIgnoredFiles: value })),
+		setShowClawIgnoredFiles: (value) => setState((prevState) => ({ ...prevState, showClawIgnoredFiles: value })),
 		setEnableSubfolderRules: (value) => setState((prevState) => ({ ...prevState, enableSubfolderRules: value })),
 		setAwsUsePromptCache: (value) => setState((prevState) => ({ ...prevState, awsUsePromptCache: value })),
 		setMaxImageFileSize: (value) => setState((prevState) => ({ ...prevState, maxImageFileSize: value })),

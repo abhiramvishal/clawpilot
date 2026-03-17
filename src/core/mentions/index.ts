@@ -101,7 +101,7 @@ export async function parseMentions(
 	cwd: string,
 	fileContextTracker?: FileContextTracker,
 	rooIgnoreController?: ClawIgnoreController,
-	showRooIgnoredFiles: boolean = false,
+	showClawIgnoredFiles: boolean = false,
 	includeDiagnosticMessages: boolean = true,
 	maxDiagnosticMessages: number = 50,
 	skillsManager?: SkillLookup,
@@ -188,7 +188,7 @@ export async function parseMentions(
 					mentionPath,
 					cwd,
 					rooIgnoreController,
-					showRooIgnoredFiles,
+					showClawIgnoredFiles,
 					fileContextTracker,
 				)
 				contentBlocks.push(fileResult)
@@ -266,7 +266,7 @@ async function getFileOrFolderContentWithMetadata(
 	mentionPath: string,
 	cwd: string,
 	rooIgnoreController?: any,
-	showRooIgnoredFiles: boolean = false,
+	showClawIgnoredFiles: boolean = false,
 	fileContextTracker?: FileContextTracker,
 ): Promise<MentionContentBlock> {
 	const unescapedPath = unescapeSpaces(mentionPath)
@@ -338,7 +338,7 @@ async function getFileOrFolderContentWithMetadata(
 					isIgnored = !rooIgnoreController.validateAccess(entryPath)
 				}
 
-				if (isIgnored && !showRooIgnoredFiles) {
+				if (isIgnored && !showClawIgnoredFiles) {
 					continue
 				}
 

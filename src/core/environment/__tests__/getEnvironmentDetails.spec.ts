@@ -80,7 +80,7 @@ describe("getEnvironmentDetails", () => {
 			experiments: {},
 			customInstructions: "test instructions",
 			language: "en",
-			showRooIgnoredFiles: false,
+			showClawIgnoredFiles: false,
 		}
 
 		mockProvider = {

@@ -44,7 +44,7 @@ export const ClawRouter = ({
 				<div className="flex flex-col gap-2">
 					<Button
 						variant="primary"
-						onClick={() => vscode.postMessage({ type: "rooCloudSignIn" })}
+						onClick={() => vscode.postMessage({ type: "clawCloudSignIn" })}
 						className="w-fit">
 						{t("settings:providers.roo.connectButton")}
 					</Button>

@@ -49,7 +49,7 @@ describe("webviewMessageHandler - searchFiles with RooIgnore filtering", () => {
 		} as unknown as ClineProvider
 	})
 
-	it("should filter results using ClawIgnoreController when showRooIgnoredFiles is false", async () => {
+	it("should filter results using ClawIgnoreController when showClawIgnoredFiles is false", async () => {
 		// Setup mock results from file search
 		const mockResults = [
 			{ path: "src/index.ts", type: "file" as const, label: "index.ts" },
@@ -58,9 +58,9 @@ describe("webviewMessageHandler - searchFiles with RooIgnore filtering", () => {
 		]
 		mockSearchWorkspaceFiles.mockResolvedValue(mockResults)
 
-		// Setup state with showRooIgnoredFiles = false
+		// Setup state with showClawIgnoredFiles = false
 		;(mockClineProvider.getState as Mock).mockResolvedValue({
-			showRooIgnoredFiles: false,
+			showClawIgnoredFiles: false,
 		})
 
 		// Setup filter to exclude secrets folder
@@ -89,7 +89,7 @@ describe("webviewMessageHandler - searchFiles with RooIgnore filtering", () => {
 		})
 	})
 
-	it("should not filter results when showRooIgnoredFiles is true", async () => {
+	it("should not filter results when showClawIgnoredFiles is true", async () => {
 		// Setup mock results from file search
 		const mockResults = [
 			{ path: "src/index.ts", type: "file" as const, label: "index.ts" },
@@ -97,9 +97,9 @@ describe("webviewMessageHandler - searchFiles with RooIgnore filtering", () => {
 		]
 		mockSearchWorkspaceFiles.mockResolvedValue(mockResults)
 
-		// Setup state with showRooIgnoredFiles = true
+		// Setup state with showClawIgnoredFiles = true
 		;(mockClineProvider.getState as Mock).mockResolvedValue({
-			showRooIgnoredFiles: true,
+			showClawIgnoredFiles: true,
 		})
 
 		// No current task
@@ -130,9 +130,9 @@ describe("webviewMessageHandler - searchFiles with RooIgnore filtering", () => {
 		]
 		mockSearchWorkspaceFiles.mockResolvedValue(mockResults)
 
-		// Setup state with showRooIgnoredFiles = false
+		// Setup state with showClawIgnoredFiles = false
 		;(mockClineProvider.getState as Mock).mockResolvedValue({
-			showRooIgnoredFiles: false,
+			showClawIgnoredFiles: false,
 		})
 
 		// Create a mock task with its own ClawIgnoreController
@@ -191,7 +191,7 @@ describe("webviewMessageHandler - searchFiles with RooIgnore filtering", () => {
 
 		// Setup state
 		;(mockClineProvider.getState as Mock).mockResolvedValue({
-			showRooIgnoredFiles: false,
+			showClawIgnoredFiles: false,
 		})
 		;(mockClineProvider.getCurrentTask as Mock).mockReturnValue(null)
 
@@ -210,7 +210,7 @@ describe("webviewMessageHandler - searchFiles with RooIgnore filtering", () => {
 		})
 	})
 
-	it("should default showRooIgnoredFiles to false when state is null", async () => {
+	it("should default showClawIgnoredFiles to false when state is null", async () => {
 		// Setup mock results from file search
 		const mockResults = [{ path: "src/index.ts", type: "file" as const, label: "index.ts" }]
 		mockSearchWorkspaceFiles.mockResolvedValue(mockResults)
@@ -230,7 +230,7 @@ describe("webviewMessageHandler - searchFiles with RooIgnore filtering", () => {
 			requestId: "test-request-default",
 		})
 
-		// Verify filterPaths was called (showRooIgnoredFiles defaults to false)
+		// Verify filterPaths was called (showClawIgnoredFiles defaults to false)
 		expect(mockFilterPaths).toHaveBeenCalled()
 	})
 
@@ -241,7 +241,7 @@ describe("webviewMessageHandler - searchFiles with RooIgnore filtering", () => {
 
 		// Setup state
 		;(mockClineProvider.getState as Mock).mockResolvedValue({
-			showRooIgnoredFiles: false,
+			showClawIgnoredFiles: false,
 		})
 
 		// Setup filter
@@ -267,7 +267,7 @@ describe("webviewMessageHandler - searchFiles with RooIgnore filtering", () => {
 
 		// Setup state
 		;(mockClineProvider.getState as Mock).mockResolvedValue({
-			showRooIgnoredFiles: false,
+			showClawIgnoredFiles: false,
 		})
 
 		// Create a mock task with its own ClawIgnoreController

@@ -91,7 +91,7 @@ describe("ContextManagementSettings", () => {
 		listApiConfigMeta: [],
 		maxOpenTabsContext: 20,
 		maxWorkspaceFiles: 200,
-		showRooIgnoredFiles: false,
+		showClawIgnoredFiles: false,
 		profileThresholds: {},
 		includeDiagnosticMessages: true,
 		maxDiagnosticMessages: 50,
@@ -418,7 +418,7 @@ describe("ContextManagementSettings", () => {
 	it("handles undefined optional props gracefully", () => {
 		const propsWithUndefined = {
 			...defaultProps,
-			showRooIgnoredFiles: undefined,
+			showClawIgnoredFiles: undefined,
 		}
 
 		expect(() => {

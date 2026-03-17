@@ -1113,7 +1113,7 @@ export const webviewMessageHandler = async (
 			}
 			break
 		}
-		case "requestRooModels": {
+		case "requestClawModels": {
 			// Specific handler for Roo models only - flushes cache to ensure fresh auth token is used
 			try {
 				const rooOptions = {
@@ -1146,7 +1146,7 @@ export const webviewMessageHandler = async (
 			}
 			break
 		}
-		case "requestRooCreditBalance": {
+		case "requestClawCreditBalance": {
 			// Fetch Roo credit balance using CloudAPI
 			const requestId = message.requestId
 			try {
@@ -1157,14 +1157,14 @@ export const webviewMessageHandler = async (
 				const balance = await CloudService.instance.cloudAPI.creditBalance()
 
 				provider.postMessageToWebview({
-					type: "rooCreditBalance",
+					type: "clawCreditBalance",
 					requestId,
 					values: { balance },
 				})
 			} catch (error) {
 				const errorMessage = error instanceof Error ? error.message : String(error)
 				provider.postMessageToWebview({
-					type: "rooCreditBalance",
+					type: "clawCreditBalance",
 					requestId,
 					values: { error: errorMessage },
 				})
@@ -1781,12 +1781,12 @@ export const webviewMessageHandler = async (
 				}
 
 				try {
-					// Get showRooIgnoredFiles setting from state
-					const { showRooIgnoredFiles = false } = (await provider.getState()) ?? {}
+					// Get showClawIgnoredFiles setting from state
+					const { showClawIgnoredFiles = false } = (await provider.getState()) ?? {}
 
-					// Filter results using ClawIgnoreController if showRooIgnoredFiles is false
+					// Filter results using ClawIgnoreController if showClawIgnoredFiles is false
 					let filteredResults = results
-					if (!showRooIgnoredFiles && rooIgnoreController) {
+					if (!showClawIgnoredFiles && rooIgnoreController) {
 						const allowedPaths = rooIgnoreController.filterPaths(results.map((r) => r.path))
 						filteredResults = results.filter((r) => allowedPaths.includes(r.path))
 					}
@@ -2334,7 +2334,7 @@ export const webviewMessageHandler = async (
 			provider.postMessageToWebview({ type: "action", action: "cloudButtonClicked" })
 			break
 		}
-		case "rooCloudSignIn": {
+		case "clawCloudSignIn": {
 			try {
 				TelemetryService.instance.captureEvent(TelemetryEventName.AUTHENTICATION_INITIATED)
 				// Use provider signup flow if useProviderSignup is explicitly true
@@ -2357,7 +2357,7 @@ export const webviewMessageHandler = async (
 			}
 			break
 		}
-		case "rooCloudSignOut": {
+		case "clawCloudSignOut": {
 			try {
 				await CloudService.instance.logout()
 				await provider.postStateToWebview()
@@ -2408,7 +2408,7 @@ export const webviewMessageHandler = async (
 			}
 			break
 		}
-		case "rooCloudManualUrl": {
+		case "clawCloudManualUrl": {
 			try {
 				if (!message.text) {
 					vscode.window.showErrorMessage(t("common:errors.manual_url_empty"))
@@ -2452,7 +2452,7 @@ export const webviewMessageHandler = async (
 		}
 		case "clearCloudAuthSkipModel": {
 			// Clear the flag that indicates auth completed without model selection
-			await provider.context.globalState.update("roo-auth-skip-model", undefined)
+			await provider.context.globalState.update("claw-auth-skip-model", undefined)
 			await provider.postStateToWebview()
 			break
 		}
