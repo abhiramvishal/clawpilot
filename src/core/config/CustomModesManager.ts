@@ -90,7 +90,7 @@ export class CustomModesManager {
 		}
 	}
 
-	private async getWorkspaceRoomodes(): Promise<string | undefined> {
+	private async getWorkspaceClawmodes(): Promise<string | undefined> {
 		const workspaceFolders = vscode.workspace.workspaceFolders
 
 		if (!workspaceFolders || workspaceFolders.length === 0) {
@@ -98,9 +98,9 @@ export class CustomModesManager {
 		}
 
 		const workspaceRoot = getWorkspacePath()
-		const roomodesPath = path.join(workspaceRoot, ROOMODES_FILENAME)
-		const exists = await fileExistsAtPath(roomodesPath)
-		return exists ? roomodesPath : undefined
+		const clawmodesPath = path.join(workspaceRoot, ROOMODES_FILENAME)
+		const exists = await fileExistsAtPath(clawmodesPath)
+		return exists ? clawmodesPath : undefined
 	}
 
 	/**
@@ -295,7 +295,7 @@ export class CustomModesManager {
 				}
 
 				// Get modes from .roomodes if it exists (takes precedence)
-				const roomodesPath = await this.getWorkspaceRoomodes()
+				const roomodesPath = await this.getWorkspaceClawmodes()
 				const roomodesModes = roomodesPath ? await this.loadModesFromFile(roomodesPath) : []
 
 				// Merge modes from both sources (.roomodes takes precedence)
@@ -366,7 +366,7 @@ export class CustomModesManager {
 		const settingsModes = await this.loadModesFromFile(settingsPath)
 
 		// Get modes from .roomodes if it exists.
-		const roomodesPath = await this.getWorkspaceRoomodes()
+		const roomodesPath = await this.getWorkspaceClawmodes()
 		const roomodesModes = roomodesPath ? await this.loadModesFromFile(roomodesPath) : []
 
 		// Create maps to store modes by source.
@@ -495,7 +495,7 @@ export class CustomModesManager {
 
 	private async refreshMergedState(): Promise<void> {
 		const settingsPath = await this.getCustomModesFilePath()
-		const roomodesPath = await this.getWorkspaceRoomodes()
+		const roomodesPath = await this.getWorkspaceClawmodes()
 
 		const settingsModes = await this.loadModesFromFile(settingsPath)
 		const roomodesModes = roomodesPath ? await this.loadModesFromFile(roomodesPath) : []
@@ -511,7 +511,7 @@ export class CustomModesManager {
 	public async deleteCustomMode(slug: string, fromMarketplace = false): Promise<void> {
 		try {
 			const settingsPath = await this.getCustomModesFilePath()
-			const roomodesPath = await this.getWorkspaceRoomodes()
+			const roomodesPath = await this.getWorkspaceClawmodes()
 
 			const settingsModes = await this.loadModesFromFile(settingsPath)
 			const roomodesModes = roomodesPath ? await this.loadModesFromFile(roomodesPath) : []
