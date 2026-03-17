@@ -1,6 +1,6 @@
 import { z } from "zod"
 
-export const ROO_LAST_MODEL_SELECTION_KEY = "evals-roo-last-model-selection"
+export const CLAW_LAST_MODEL_SELECTION_KEY = "evals-claw-last-model-selection"
 
 const modelIdListSchema = z.array(z.string())
 
@@ -54,23 +54,23 @@ function normalizeModelIds(modelIds: string[]): string[] {
 	return Array.from(unique)
 }
 
-export function loadRooLastModelSelection(): string[] {
+export function loadClawLastModelSelection(): string[] {
 	if (!hasLocalStorage()) return []
 
-	const parsed = modelIdListSchema.safeParse(tryParseJson(safeGetItem(ROO_LAST_MODEL_SELECTION_KEY)))
+	const parsed = modelIdListSchema.safeParse(tryParseJson(safeGetItem(CLAW_LAST_MODEL_SELECTION_KEY)))
 	if (!parsed.success) return []
 
 	return normalizeModelIds(parsed.data)
 }
 
-export function saveRooLastModelSelection(modelIds: string[]): void {
+export function saveClawLastModelSelection(modelIds: string[]): void {
 	if (!hasLocalStorage()) return
 
 	const normalized = normalizeModelIds(modelIds)
 	if (normalized.length === 0) {
-		safeRemoveItem(ROO_LAST_MODEL_SELECTION_KEY)
+		safeRemoveItem(CLAW_LAST_MODEL_SELECTION_KEY)
 		return
 	}
 
-	safeSetItem(ROO_LAST_MODEL_SELECTION_KEY, JSON.stringify(normalized))
+	safeSetItem(CLAW_LAST_MODEL_SELECTION_KEY, JSON.stringify(normalized))
 }

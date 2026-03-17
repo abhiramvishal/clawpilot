@@ -1,8 +1,8 @@
 import {
-	loadRooLastModelSelection,
-	ROO_LAST_MODEL_SELECTION_KEY,
-	saveRooLastModelSelection,
-} from "../roo-last-model-selection"
+	loadClawLastModelSelection,
+	CLAW_LAST_MODEL_SELECTION_KEY,
+	saveClawLastModelSelection,
+} from "../claw-last-model-selection"
 
 class LocalStorageMock implements Storage {
 	private store = new Map<string, string>()
@@ -39,21 +39,21 @@ beforeEach(() => {
 	})
 })
 
-describe("roo-last-model-selection", () => {
+describe("claw-last-model-selection", () => {
 	it("saves and loads (deduped + trimmed)", () => {
-		saveRooLastModelSelection([" roo/model-a ", "roo/model-a", "roo/model-b"])
-		expect(loadRooLastModelSelection()).toEqual(["roo/model-a", "roo/model-b"])
+		saveClawLastModelSelection([" roo/model-a ", "roo/model-a", "roo/model-b"])
+		expect(loadClawLastModelSelection()).toEqual(["roo/model-a", "roo/model-b"])
 	})
 
 	it("ignores invalid JSON", () => {
-		localStorage.setItem(ROO_LAST_MODEL_SELECTION_KEY, "{this is not json")
-		expect(loadRooLastModelSelection()).toEqual([])
+		localStorage.setItem(CLAW_LAST_MODEL_SELECTION_KEY, "{this is not json")
+		expect(loadClawLastModelSelection()).toEqual([])
 	})
 
 	it("clears when empty", () => {
-		localStorage.setItem(ROO_LAST_MODEL_SELECTION_KEY, JSON.stringify(["roo/model-a"]))
-		saveRooLastModelSelection([])
-		expect(localStorage.getItem(ROO_LAST_MODEL_SELECTION_KEY)).toBeNull()
+		localStorage.setItem(CLAW_LAST_MODEL_SELECTION_KEY, JSON.stringify(["roo/model-a"]))
+		saveClawLastModelSelection([])
+		expect(localStorage.getItem(CLAW_LAST_MODEL_SELECTION_KEY)).toBeNull()
 	})
 
 	it("does not throw if localStorage access fails", () => {
@@ -72,7 +72,7 @@ describe("roo-last-model-selection", () => {
 			configurable: true,
 		})
 
-		expect(() => loadRooLastModelSelection()).not.toThrow()
-		expect(() => saveRooLastModelSelection(["roo/model-a"])).not.toThrow()
+		expect(() => loadClawLastModelSelection()).not.toThrow()
+		expect(() => saveClawLastModelSelection(["roo/model-a"])).not.toThrow()
 	})
 })

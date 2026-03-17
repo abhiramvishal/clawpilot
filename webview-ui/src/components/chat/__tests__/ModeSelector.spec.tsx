@@ -25,8 +25,8 @@ vi.mock("@/i18n/TranslationContext", () => ({
 	}),
 }))
 
-vi.mock("@/components/ui/hooks/useRooPortal", () => ({
-	useRooPortal: () => document.body,
+vi.mock("@/components/ui/hooks/useClawPortal", () => ({
+	useClawPortal: () => document.body,
 }))
 
 vi.mock("@/utils/TelemetryClient", () => ({

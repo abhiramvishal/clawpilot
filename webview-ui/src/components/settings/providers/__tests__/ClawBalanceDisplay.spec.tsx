@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from "vitest"
 import { render, screen } from "@testing-library/react"
-import { RooBalanceDisplay } from "../RooBalanceDisplay"
+import { ClawBalanceDisplay } from "../ClawBalanceDisplay"
 
 // Mock the hooks
 vi.mock("@/components/ui/hooks/useClawCreditBalance", () => ({
@@ -14,7 +14,7 @@ vi.mock("@src/context/ExtensionStateContext", () => ({
 import { useClawCreditBalance } from "@/components/ui/hooks/useClawCreditBalance"
 import { useExtensionState } from "@src/context/ExtensionStateContext"
 
-describe("RooBalanceDisplay", () => {
+describe("ClawBalanceDisplay", () => {
 	beforeEach(() => {
 		vi.clearAllMocks()
 		;(useExtensionState as any).mockReturnValue({
@@ -29,7 +29,7 @@ describe("RooBalanceDisplay", () => {
 			error: null,
 		})
 
-		render(<RooBalanceDisplay />)
+		render(<ClawBalanceDisplay />)
 
 		expect(screen.getByText("$12.34")).toBeInTheDocument()
 	})
@@ -41,7 +41,7 @@ describe("RooBalanceDisplay", () => {
 			error: null,
 		})
 
-		render(<RooBalanceDisplay />)
+		render(<ClawBalanceDisplay />)
 
 		expect(screen.getByText("$7.80")).toBeInTheDocument()
 	})
@@ -53,7 +53,7 @@ describe("RooBalanceDisplay", () => {
 			error: null,
 		})
 
-		render(<RooBalanceDisplay />)
+		render(<ClawBalanceDisplay />)
 
 		expect(screen.getByText("$5.00")).toBeInTheDocument()
 	})
@@ -65,7 +65,7 @@ describe("RooBalanceDisplay", () => {
 			error: null,
 		})
 
-		const { container } = render(<RooBalanceDisplay />)
+		const { container } = render(<ClawBalanceDisplay />)
 
 		expect(container.firstChild).toBeNull()
 	})
@@ -77,7 +77,7 @@ describe("RooBalanceDisplay", () => {
 			error: null,
 		})
 
-		const { container } = render(<RooBalanceDisplay />)
+		const { container } = render(<ClawBalanceDisplay />)
 
 		expect(container.firstChild).toBeNull()
 	})
@@ -89,7 +89,7 @@ describe("RooBalanceDisplay", () => {
 			error: "Failed to fetch balance",
 		})
 
-		const { container } = render(<RooBalanceDisplay />)
+		const { container } = render(<ClawBalanceDisplay />)
 
 		expect(container.firstChild).toBeNull()
 	})
@@ -101,7 +101,7 @@ describe("RooBalanceDisplay", () => {
 			error: null,
 		})
 
-		render(<RooBalanceDisplay />)
+		render(<ClawBalanceDisplay />)
 
 		expect(screen.getByText("$0.00")).toBeInTheDocument()
 	})

@@ -216,13 +216,13 @@ vi.mock("../providers/LiteLLM", () => ({
 // Mock ClawRouter provider for tests
 vi.mock("../providers/ClawRouter", () => ({
 	ClawRouter: ({ cloudIsAuthenticated }: any) => (
-		<div data-testid="roo-provider">{cloudIsAuthenticated ? "Authenticated" : "Not Authenticated"}</div>
+		<div data-testid="claw-provider">{cloudIsAuthenticated ? "Authenticated" : "Not Authenticated"}</div>
 	),
 }))
 
-// Mock RooBalanceDisplay for tests
-vi.mock("../providers/RooBalanceDisplay", () => ({
-	RooBalanceDisplay: () => <div data-testid="roo-balance-display">Balance: $10.00</div>,
+// Mock ClawBalanceDisplay for tests
+vi.mock("../providers/ClawBalanceDisplay", () => ({
+	ClawBalanceDisplay: () => <div data-testid="claw-balance-display">Balance: $10.00</div>,
 }))
 
 vi.mock("@src/components/ui/hooks/useSelectedModel", () => ({
@@ -584,7 +584,7 @@ describe("ApiOptions", () => {
 				},
 			})
 
-			expect(screen.getByTestId("roo-balance-display")).toBeInTheDocument()
+			expect(screen.getByTestId("claw-balance-display")).toBeInTheDocument()
 		})
 
 		it("does not show balance display when not authenticated", () => {
@@ -601,7 +601,7 @@ describe("ApiOptions", () => {
 				},
 			})
 
-			expect(screen.queryByTestId("roo-balance-display")).not.toBeInTheDocument()
+			expect(screen.queryByTestId("claw-balance-display")).not.toBeInTheDocument()
 		})
 
 		it("pins roo provider to the top when not on welcome screen", () => {

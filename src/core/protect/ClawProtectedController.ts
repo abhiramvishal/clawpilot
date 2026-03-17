@@ -13,14 +13,14 @@ export class ClawProtectedController {
 
 	// Predefined list of protected Claw configuration patterns
 	private static readonly PROTECTED_PATTERNS = [
-		".rooignore",
-		".roomodes",
-		".roorules*",
+		".clawignore",
+		".clawmodes",
+		".clawrules*",
 		".clinerules*",
-		".roo/**",
+		".claw/**",
 		".vscode/**",
 		"*.code-workspace",
-		".rooprotected", // For future use
+		".clawprotected", // For future use
 		"AGENTS.md",
 		"AGENT.md",
 	]

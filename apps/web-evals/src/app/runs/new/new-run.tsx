@@ -48,7 +48,7 @@ import {
 } from "@/lib/schemas"
 import { cn } from "@/lib/utils"
 
-import { loadRooLastModelSelection, saveRooLastModelSelection } from "@/lib/roo-last-model-selection"
+import { loadClawLastModelSelection, saveClawLastModelSelection } from "@/lib/claw-last-model-selection"
 import { normalizeCreateRunForSubmit } from "@/lib/normalize-create-run"
 
 import { useOpenRouterModels } from "@/hooks/use-open-router-models"
@@ -275,21 +275,21 @@ export function NewRun() {
 		setPrevProvider(provider)
 	}, [provider, prevProvider, modelSelections, setValue, getValues, importedSettings, configSelections])
 
-	// When switching to Roo provider, restore last-used selection if current selection is empty
+	// When switching to Claw provider, restore last-used selection if current selection is empty
 	useEffect(() => {
 		if (provider !== "roo") return
 		if (selectedModelIds.length > 0) return
 
-		const last = loadRooLastModelSelection()
+		const last = loadClawLastModelSelection()
 		if (last.length > 0) {
 			applyModelIds(last)
 		}
 	}, [applyModelIds, provider, selectedModelIds.length])
 
-	// Persist last-used Roo provider model selection
+	// Persist last-used Claw provider model selection
 	useEffect(() => {
 		if (provider !== "roo") return
-		saveRooLastModelSelection(selectedModelIds)
+		saveClawLastModelSelection(selectedModelIds)
 	}, [provider, selectedModelIds])
 
 	// Extract unique languages from exercises

@@ -3,7 +3,7 @@ import { VSCodeLink } from "@vscode/webview-ui-toolkit/react"
 import { useClawCreditBalance } from "@/components/ui/hooks/useClawCreditBalance"
 import { useExtensionState } from "@src/context/ExtensionStateContext"
 
-export const RooBalanceDisplay = () => {
+export const ClawBalanceDisplay = () => {
 	const { data: balance } = useClawCreditBalance()
 	const { cloudApiUrl } = useExtensionState()
 

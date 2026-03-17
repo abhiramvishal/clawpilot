@@ -136,14 +136,14 @@ vi.mock("../QueuedMessages", () => ({
 // Mock ClawTips component
 vi.mock("@src/components/welcome/ClawTips", () => ({
 	default: function MockClawTips() {
-		return <div data-testid="roo-tips">Tips content</div>
+		return <div data-testid="claw-tips">Tips content</div>
 	},
 }))
 
 // Mock ClawHero component
 vi.mock("@src/components/welcome/ClawHero", () => ({
 	default: function MockClawHero() {
-		return <div data-testid="roo-hero">Hero content</div>
+		return <div data-testid="claw-hero">Hero content</div>
 	},
 }))
 
@@ -761,9 +761,9 @@ describe("ChatView - DismissibleUpsell Display Tests", () => {
 			// Should not show DismissibleUpsell during active task
 			expect(queryByTestId("dismissible-upsell")).not.toBeInTheDocument()
 			// Should not show ClawTips either since the entire welcome screen is hidden during active tasks
-			expect(queryByTestId("roo-tips")).not.toBeInTheDocument()
+			expect(queryByTestId("claw-tips")).not.toBeInTheDocument()
 			// Should not show ClawHero either since the entire welcome screen is hidden during active tasks
-			expect(queryByTestId("roo-hero")).not.toBeInTheDocument()
+			expect(queryByTestId("claw-hero")).not.toBeInTheDocument()
 		})
 	})
 
@@ -784,7 +784,7 @@ describe("ChatView - DismissibleUpsell Display Tests", () => {
 
 		// Should not show DismissibleUpsell but should show ClawTips
 		expect(queryByTestId("dismissible-upsell")).not.toBeInTheDocument()
-		expect(getByTestId("roo-tips")).toBeInTheDocument()
+		expect(getByTestId("claw-tips")).toBeInTheDocument()
 	})
 
 	it("shows ClawTips when user has fewer than 6 tasks (instead of DismissibleUpsell)", () => {
@@ -803,7 +803,7 @@ describe("ChatView - DismissibleUpsell Display Tests", () => {
 
 		// Should not show DismissibleUpsell but should show ClawTips
 		expect(queryByTestId("dismissible-upsell")).not.toBeInTheDocument()
-		expect(getByTestId("roo-tips")).toBeInTheDocument()
+		expect(getByTestId("claw-tips")).toBeInTheDocument()
 	})
 })
 

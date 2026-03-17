@@ -10,7 +10,7 @@ export const LOCK_TEXT_SYMBOL = "\u{1F512}"
 /**
  * Controls LLM access to files by enforcing ignore patterns.
  * Designed to be instantiated once in Cline.ts and passed to file manipulation services.
- * Uses the 'ignore' library to support standard .gitignore syntax in .rooignore files.
+ * Uses the 'ignore' library to support standard .gitignore syntax in .clawignore files.
  */
 export class ClawIgnoreController {
 	private cwd: string
@@ -22,7 +22,7 @@ export class ClawIgnoreController {
 		this.cwd = cwd
 		this.ignoreInstance = ignore()
 		this.rooIgnoreContent = undefined
-		// Set up file watcher for .rooignore
+		// Set up file watcher for .clawignore
 		this.setupFileWatcher()
 	}
 
@@ -35,10 +35,10 @@ export class ClawIgnoreController {
 	}
 
 	/**
-	 * Set up the file watcher for .rooignore changes
+	 * Set up the file watcher for .clawignore changes
 	 */
 	private setupFileWatcher(): void {
-		const rooignorePattern = new vscode.RelativePattern(this.cwd, ".rooignore")
+		const rooignorePattern = new vscode.RelativePattern(this.cwd, ".clawignore")
 		const fileWatcher = vscode.workspace.createFileSystemWatcher(rooignorePattern)
 
 		// Watch for changes and updates
@@ -59,24 +59,24 @@ export class ClawIgnoreController {
 	}
 
 	/**
-	 * Load custom patterns from .rooignore if it exists
+	 * Load custom patterns from .clawignore if it exists
 	 */
 	private async loadRooIgnore(): Promise<void> {
 		try {
 			// Reset ignore instance to prevent duplicate patterns
 			this.ignoreInstance = ignore()
-			const ignorePath = path.join(this.cwd, ".rooignore")
+			const ignorePath = path.join(this.cwd, ".clawignore")
 			if (await fileExistsAtPath(ignorePath)) {
 				const content = await fs.readFile(ignorePath, "utf8")
 				this.rooIgnoreContent = content
 				this.ignoreInstance.add(content)
-				this.ignoreInstance.add(".rooignore")
+				this.ignoreInstance.add(".clawignore")
 			} else {
 				this.rooIgnoreContent = undefined
 			}
 		} catch (error) {
 			// Should never happen: reading file failed even though it exists
-			console.error("Unexpected error loading .rooignore:", error)
+			console.error("Unexpected error loading .clawignore:", error)
 		}
 	}
 
@@ -87,7 +87,7 @@ export class ClawIgnoreController {
 	 * @returns true if file is accessible, false if ignored
 	 */
 	validateAccess(filePath: string): boolean {
-		// Always allow access if .rooignore does not exist
+		// Always allow access if .clawignore does not exist
 		if (!this.rooIgnoreContent) {
 			return true
 		}
@@ -104,7 +104,7 @@ export class ClawIgnoreController {
 				realPath = absolutePath
 			}
 
-			// Convert real path to relative for .rooignore checking
+			// Convert real path to relative for .clawignore checking
 			const relativePath = path.relative(this.cwd, realPath).toPosix()
 
 			// Check if the real path is ignored
@@ -121,7 +121,7 @@ export class ClawIgnoreController {
 	 * @returns path of file that is being accessed if it is being accessed, undefined if command is allowed
 	 */
 	validateCommand(command: string): string | undefined {
-		// Always allow if no .rooignore exists
+		// Always allow if no .clawignore exists
 		if (!this.rooIgnoreContent) {
 			return undefined
 		}
@@ -200,14 +200,14 @@ export class ClawIgnoreController {
 	}
 
 	/**
-	 * Get formatted instructions about the .rooignore file for the LLM
-	 * @returns Formatted instructions or undefined if .rooignore doesn't exist
+	 * Get formatted instructions about the .clawignore file for the LLM
+	 * @returns Formatted instructions or undefined if .clawignore doesn't exist
 	 */
 	getInstructions(): string | undefined {
 		if (!this.rooIgnoreContent) {
 			return undefined
 		}
 
-		return `# .rooignore\n\n(The following is provided by a root-level .rooignore file where the user has specified files and directories that should not be accessed. When using list_files, you'll notice a ${LOCK_TEXT_SYMBOL} next to files that are blocked. Attempting to access the file's contents e.g. through read_file will result in an error.)\n\n${this.rooIgnoreContent}\n.rooignore`
+		return `# .clawignore\n\n(The following is provided by a root-level .clawignore file where the user has specified files and directories that should not be accessed. When using list_files, you'll notice a ${LOCK_TEXT_SYMBOL} next to files that are blocked. Attempting to access the file's contents e.g. through read_file will result in an error.)\n\n${this.rooIgnoreContent}\n.clawignore`
 	}
 }

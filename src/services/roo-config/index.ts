@@ -25,7 +25,7 @@ import fs from "fs/promises"
  */
 export function getGlobalClawDirectory(): string {
 	const homeDir = os.homedir()
-	return path.join(homeDir, ".roo")
+	return path.join(homeDir, ".claw")
 }
 
 /**
@@ -102,7 +102,7 @@ export function getProjectAgentsDirectoryForCwd(cwd: string): string {
  * ```
  */
 export function getProjectClawDirectoryForCwd(cwd: string): string {
-	return path.join(cwd, ".roo")
+	return path.join(cwd, ".claw")
 }
 
 /**
@@ -203,7 +203,7 @@ export async function discoverSubfolderClawDirectories(cwd: string): Promise<str
 			"--hidden",
 			"--follow",
 			"-g",
-			"**/.roo/**",
+			"**/.claw/**",
 			"-g",
 			"!node_modules/**",
 			"-g",
@@ -215,14 +215,14 @@ export async function discoverSubfolderClawDirectories(cwd: string): Promise<str
 
 		// Extract unique .roo directory paths
 		const rooDirs = new Set<string>()
-		const rootRooDir = path.join(cwd, ".roo")
+		const rootRooDir = path.join(cwd, ".claw")
 
 		for (const result of results) {
 			// Match paths like "subfolder/.roo/anything" or "subfolder/nested/.roo/anything"
 			// Handle both forward slashes (Unix) and backslashes (Windows)
-			const match = result.path.match(/^(.+?)[/\\]\.roo[/\\]/)
+			const match = result.path.match(/^(.+?)[/\\]\.claw[/\\]/)
 			if (match) {
-				const rooDir = path.join(cwd, match[1], ".roo")
+				const rooDir = path.join(cwd, match[1], ".claw")
 				// Exclude the root .roo directory (already handled by getProjectRooDirectoryForCwd)
 				if (rooDir !== rootRooDir) {
 					rooDirs.add(rooDir)
