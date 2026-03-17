@@ -2,7 +2,7 @@ import { Fzf } from "fzf"
 
 import type { ModeConfig, Command } from "@clawpilot/types"
 
-import { mentionRegex } from "@roo/context-mentions"
+import { mentionRegex } from "@claw/context-mentions"
 
 import { escapeSpaces } from "./path-mentions"
 

@@ -1,5 +1,5 @@
 import type { ClineMessage, ClineSayTool } from "@clawpilot/types"
-import { safeJsonParse } from "@roo/core"
+import { safeJsonParse } from "@claw/core"
 
 /** File-edit tool names from ClineSayTool["tool"] (packages/types). */
 const FILE_EDIT_TOOLS = new Set<string>(["editedExistingFile", "appliedDiff", "newFileCreated"])

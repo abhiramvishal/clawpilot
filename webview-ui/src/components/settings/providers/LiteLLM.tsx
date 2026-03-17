@@ -8,7 +8,7 @@ import {
 	litellmDefaultModelId,
 } from "@clawpilot/types"
 
-import { RouterName } from "@roo/api"
+import { RouterName } from "@claw/api"
 
 import { vscode } from "@src/utils/vscode"
 import { useExtensionState } from "@src/context/ExtensionStateContext"

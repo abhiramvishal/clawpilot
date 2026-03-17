@@ -1,4 +1,4 @@
-// npx vitest core/ignore/__tests__/RooIgnoreController.security.spec.ts
+// npx vitest core/ignore/__tests__/ClawIgnoreController.security.spec.ts
 
 import type { Mock } from "vitest"
 

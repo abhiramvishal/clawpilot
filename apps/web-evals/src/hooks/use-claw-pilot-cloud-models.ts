@@ -2,7 +2,7 @@ import { z } from "zod"
 import { useQuery } from "@tanstack/react-query"
 import { useFuzzyModelSearch } from "./use-fuzzy-model-search"
 
-export const rooCodeCloudModelSchema = z.object({
+export const clawPilotCloudModelSchema = z.object({
 	object: z.literal("model"),
 	id: z.string(),
 	name: z.string(),
@@ -30,7 +30,7 @@ export const rooCodeCloudModelSchema = z.object({
 	deprecated: z.boolean().optional(),
 })
 
-export type ClawPilotCloudModel = z.infer<typeof rooCodeCloudModelSchema>
+export type ClawPilotCloudModel = z.infer<typeof clawPilotCloudModelSchema>
 
 export const getClawPilotCloudModels = async (): Promise<ClawPilotCloudModel[]> => {
 	const response = await fetch("https://api.clawpilot.com/proxy/v1/models")
@@ -42,7 +42,7 @@ export const getClawPilotCloudModels = async (): Promise<ClawPilotCloudModel[]> 
 	const result = z
 		.object({
 			object: z.literal("list"),
-			data: z.array(rooCodeCloudModelSchema),
+			data: z.array(clawPilotCloudModelSchema),
 		})
 		.safeParse(await response.json())
 

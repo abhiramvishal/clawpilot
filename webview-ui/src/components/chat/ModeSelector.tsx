@@ -4,7 +4,7 @@ import { Check, X } from "lucide-react"
 
 import { type ModeConfig, type CustomModePrompts, TelemetryEventName } from "@clawpilot/types"
 
-import { type Mode, getAllModes, defaultModeSlug } from "@roo/modes"
+import { type Mode, getAllModes, defaultModeSlug } from "@claw/modes"
 
 import { vscode } from "@/utils/vscode"
 import { telemetryClient } from "@/utils/TelemetryClient"

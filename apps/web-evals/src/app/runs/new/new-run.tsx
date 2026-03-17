@@ -52,7 +52,7 @@ import { loadClawLastModelSelection, saveClawLastModelSelection } from "@/lib/cl
 import { normalizeCreateRunForSubmit } from "@/lib/normalize-create-run"
 
 import { useOpenRouterModels } from "@/hooks/use-open-router-models"
-import { useClawPilotCloudModels } from "@/hooks/use-roo-code-cloud-models"
+import { useClawPilotCloudModels } from "@/hooks/use-claw-pilot-cloud-models"
 
 import {
 	Button,

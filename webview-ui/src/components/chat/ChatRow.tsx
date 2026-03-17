@@ -13,10 +13,10 @@ import type {
 	ClineSayTool,
 } from "@clawpilot/types"
 
-import { Mode } from "@roo/modes"
+import { Mode } from "@claw/modes"
 
-import { COMMAND_OUTPUT_STRING } from "@roo/combineCommandSequences"
-import { safeJsonParse } from "@roo/core"
+import { COMMAND_OUTPUT_STRING } from "@claw/combineCommandSequences"
+import { safeJsonParse } from "@claw/core"
 
 import { useExtensionState } from "@src/context/ExtensionStateContext"
 import { findMatchingResourceOrTemplate } from "@src/utils/mcp"

@@ -21,12 +21,12 @@ import {
 	DEFAULT_CHECKPOINT_TIMEOUT_SECONDS,
 } from "@clawpilot/types"
 
-import { findLastIndex } from "@roo/array"
+import { findLastIndex } from "@claw/array"
 
-import { checkExistKey } from "@roo/checkExistApiConfig"
-import { Mode, defaultModeSlug, defaultPrompts } from "@roo/modes"
-import { CustomSupportPrompts } from "@roo/support-prompt"
-import { experimentDefault } from "@roo/experiments"
+import { checkExistKey } from "@claw/checkExistApiConfig"
+import { Mode, defaultModeSlug, defaultPrompts } from "@claw/modes"
+import { CustomSupportPrompts } from "@claw/support-prompt"
+import { experimentDefault } from "@claw/experiments"
 
 import { vscode } from "@src/utils/vscode"
 import { convertTextMateToHljs } from "@src/utils/textMateToHljs"
