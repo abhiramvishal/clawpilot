@@ -224,11 +224,11 @@ export type ContextManagementOptions = {
 	/** Optional environment details string to include in the condensed summary */
 	environmentDetails?: string
 	/** Optional array of file paths read by Roo during the task (will be folded via tree-sitter) */
-	filesReadByRoo?: string[]
-	/** Optional current working directory for resolving file paths (required if filesReadByRoo is provided) */
+	filesReadByClaw?: string[]
+	/** Optional current working directory for resolving file paths (required if filesReadByClaw is provided) */
 	cwd?: string
 	/** Optional controller for file access validation */
-	rooIgnoreController?: ClawIgnoreController
+	clawIgnoreController?: ClawIgnoreController
 }
 
 export type ContextManagementResult = SummarizeResponse & {
@@ -259,9 +259,9 @@ export async function manageContext({
 	currentProfileId,
 	metadata,
 	environmentDetails,
-	filesReadByRoo,
+	filesReadByClaw,
 	cwd,
-	rooIgnoreController,
+	clawIgnoreController,
 }: ContextManagementOptions): Promise<ContextManagementResult> {
 	let error: string | undefined
 	let errorDetails: string | undefined
@@ -316,9 +316,9 @@ export async function manageContext({
 				customCondensingPrompt,
 				metadata,
 				environmentDetails,
-				filesReadByRoo,
+				filesReadByClaw,
 				cwd,
-				rooIgnoreController,
+				clawIgnoreController,
 			})
 			if (result.error) {
 				error = result.error

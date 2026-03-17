@@ -1636,11 +1636,11 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 		}
 	}
 
-	private async getFilesReadByRooSafely(context: string): Promise<string[] | undefined> {
+	private async getFilesReadByClawSafely(context: string): Promise<string[] | undefined> {
 		try {
-			return await this.fileContextTracker.getFilesReadByRoo()
+			return await this.fileContextTracker.getFilesReadByClaw()
 		} catch (error) {
-			console.error(`[Task#${context}] Failed to get files read by Roo:`, error)
+			console.error(`[Task#${context}] Failed to get files read by Claw:`, error)
 			return undefined
 		}
 	}
@@ -1693,7 +1693,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 		// Generate environment details to include in the condensed summary
 		const environmentDetails = await getEnvironmentDetails(this, true)
 
-		const filesReadByRoo = await this.getFilesReadByRooSafely("condenseContext")
+		const filesReadByClaw = await this.getFilesReadByClawSafely("condenseContext")
 
 		const {
 			messages,
@@ -1712,9 +1712,9 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 			customCondensingPrompt,
 			metadata,
 			environmentDetails,
-			filesReadByRoo,
+			filesReadByClaw,
 			cwd: this.cwd,
-			rooIgnoreController: this.rooIgnoreController,
+			clawIgnoreController: this.rooIgnoreController,
 		})
 		if (error) {
 			await this.say(
@@ -4106,9 +4106,9 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 				: undefined
 
 			// Get files read by Roo for code folding - only when context management will run
-			const contextMgmtFilesReadByRoo =
+			const contextMgmtFilesReadByClaw =
 				contextManagementWillRun && autoCondenseContext
-					? await this.getFilesReadByRooSafely("attemptApiRequest")
+					? await this.getFilesReadByClawSafely("attemptApiRequest")
 					: undefined
 
 			try {
@@ -4127,9 +4127,9 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 					currentProfileId,
 					metadata: contextMgmtMetadata,
 					environmentDetails: contextMgmtEnvironmentDetails,
-					filesReadByRoo: contextMgmtFilesReadByRoo,
+					filesReadByClaw: contextMgmtFilesReadByClaw,
 					cwd: this.cwd,
-					rooIgnoreController: this.rooIgnoreController,
+					clawIgnoreController: this.rooIgnoreController,
 				})
 				if (truncateResult.messages !== this.apiConversationHistory) {
 					await this.overwriteApiConversationHistory(truncateResult.messages)

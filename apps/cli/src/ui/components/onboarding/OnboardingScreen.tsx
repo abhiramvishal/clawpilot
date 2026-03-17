@@ -16,7 +16,7 @@ export function OnboardingScreen({ onSelect }: OnboardingScreenProps) {
 			<Text dimColor>Welcome! How would you like to connect to an LLM provider?</Text>
 			<Select
 				options={[
-					{ label: "Connect to ClawPilot Cloud", value: OnboardingProviderChoice.Roo },
+					{ label: "Connect to ClawPilot Cloud", value: OnboardingProviderChoice.Claw },
 					{ label: "Bring your own API key", value: OnboardingProviderChoice.Byok },
 				]}
 				onChange={(value: string) => {

@@ -27,7 +27,7 @@ export const runTaskInVscode = async ({ run, task, publish, logger, jobToken }: 
 	const prompt = fs.readFileSync(path.resolve(EVALS_REPO_PATH, `prompts/${language}.md`), "utf-8")
 	const workspacePath = path.resolve(EVALS_REPO_PATH, language, exercise)
 	const ipcSocketPath = path.resolve(os.tmpdir(), `evals-${run.id}-${task.id}.sock`)
-	const env = { ROO_CODE_IPC_SOCKET_PATH: ipcSocketPath }
+	const env = { CLAW_PILOT_IPC_SOCKET_PATH: ipcSocketPath }
 	const controller = new AbortController()
 	const cancelSignal = controller.signal
 	const containerized = isDockerContainer()
@@ -38,7 +38,7 @@ export const runTaskInVscode = async ({ run, task, publish, logger, jobToken }: 
 		: `code --disable-workspace-trust -n ${workspacePath}`
 
 	if (jobToken) {
-		codeCommand = `ROO_CODE_CLOUD_TOKEN=${jobToken} ${codeCommand}`
+		codeCommand = `CLAW_PILOT_CLOUD_TOKEN=${jobToken} ${codeCommand}`
 	}
 
 	logger.info(codeCommand)
@@ -101,7 +101,7 @@ export const runTaskInVscode = async ({ run, task, publish, logger, jobToken }: 
 	const loggableSays: ClineSay[] = [
 		"error",
 		"command_output",
-		"rooignore_error",
+		"clawignore_error",
 		"diff_error",
 		"condense_context",
 		"condense_context_error",

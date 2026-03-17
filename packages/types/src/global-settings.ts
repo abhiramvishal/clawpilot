@@ -89,7 +89,7 @@ export const globalSettingsSchema = z.object({
 	dismissedUpsells: z.array(z.string()).optional(),
 
 	// Image generation settings (experimental) - flattened for simplicity
-	imageGenerationProvider: z.enum(["openrouter", "roo"]).optional(),
+	imageGenerationProvider: z.enum(["openrouter", "claw"]).optional(),
 	openRouterImageApiKey: z.string().optional(),
 	openRouterImageGenerationSelectedModel: z.string().optional(),
 
@@ -242,7 +242,8 @@ export const GLOBAL_SETTINGS_KEYS = globalSettingsSchema.keyof().options
  * ClawPilotSettings
  */
 
-export const rooCodeSettingsSchema = providerSettingsSchema.merge(globalSettingsSchema)
+export const clawPilotSettingsSchema = providerSettingsSchema.merge(globalSettingsSchema)
+export { clawPilotSettingsSchema as rooCodeSettingsSchema }
 
 export type ClawPilotSettings = GlobalSettings & ProviderSettings
 

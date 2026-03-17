@@ -38,7 +38,7 @@ export interface FoldedFileContextOptions {
 	/** The current working directory for resolving relative paths */
 	cwd: string
 	/** Optional ClawIgnoreController for file access validation */
-	rooIgnoreController?: ClawIgnoreController
+	clawIgnoreController?: ClawIgnoreController
 }
 
 /**
@@ -77,7 +77,7 @@ export async function generateFoldedFileContext(
 	filePaths: string[],
 	options: FoldedFileContextOptions,
 ): Promise<FoldedFileContextResult> {
-	const { maxCharacters = 50000, cwd, rooIgnoreController } = options
+	const { maxCharacters = 50000, cwd, clawIgnoreController } = options
 
 	const result: FoldedFileContextResult = {
 		content: "",
@@ -102,7 +102,7 @@ export async function generateFoldedFileContext(
 
 		try {
 			// Get the folded definitions using tree-sitter
-			const definitions = await parseSourceCodeDefinitionsForFile(absolutePath, rooIgnoreController)
+			const definitions = await parseSourceCodeDefinitionsForFile(absolutePath, clawIgnoreController)
 
 			if (!definitions || isTreeSitterErrorString(definitions)) {
 				// File type not supported, no definitions found, or error accessing file

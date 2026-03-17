@@ -1,13 +1,13 @@
 import {
-	rooCliOutputFormats,
-	type RooCliCost,
-	type RooCliEventType,
-	type RooCliFinalOutput,
-	type RooCliOutputFormat,
-	type RooCliQueueItem,
-	type RooCliStreamEvent,
-	type RooCliToolResult,
-	type RooCliToolUse,
+	clawCliOutputFormats,
+	type ClawCliCost,
+	type ClawCliEventType,
+	type ClawCliFinalOutput,
+	type ClawCliOutputFormat,
+	type ClawCliQueueItem,
+	type ClawCliStreamEvent,
+	type ClawCliToolResult,
+	type ClawCliToolUse,
 } from "@clawpilot/types"
 
 /**
@@ -26,9 +26,9 @@ import {
 /**
  * Output format options for the CLI.
  */
-export const OUTPUT_FORMATS = rooCliOutputFormats
+export const OUTPUT_FORMATS = clawCliOutputFormats
 
-export type OutputFormat = RooCliOutputFormat
+export type OutputFormat = ClawCliOutputFormat
 
 export function isValidOutputFormat(format: string): format is OutputFormat {
 	return (OUTPUT_FORMATS as readonly string[]).includes(format)
@@ -37,24 +37,24 @@ export function isValidOutputFormat(format: string): format is OutputFormat {
 /**
  * Event type discriminators for JSON output.
  */
-export type JsonEventType = RooCliEventType
+export type JsonEventType = ClawCliEventType
 
-export type JsonEventQueueItem = RooCliQueueItem
+export type JsonEventQueueItem = ClawCliQueueItem
 
 /**
  * Tool use information for tool_use events.
  */
-export type JsonEventToolUse = RooCliToolUse
+export type JsonEventToolUse = ClawCliToolUse
 
 /**
  * Tool result information for tool_result events.
  */
-export type JsonEventToolResult = RooCliToolResult
+export type JsonEventToolResult = ClawCliToolResult
 
 /**
  * Cost and token usage information.
  */
-export type JsonEventCost = RooCliCost
+export type JsonEventCost = ClawCliCost
 
 /**
  * Base JSON event structure.
@@ -64,7 +64,7 @@ export type JsonEventCost = RooCliCost
  * - Each delta includes `id` for easy correlation
  * - Final message has `done: true`
  */
-export type JsonEvent = RooCliStreamEvent & {
+export type JsonEvent = ClawCliStreamEvent & {
 	/** Event type discriminator */
 	type: JsonEventType
 	/** Protocol schema version (included on system.init) */
@@ -107,7 +107,7 @@ export type JsonEvent = RooCliStreamEvent & {
  * Final JSON output for "json" mode (single object at end).
  * Contains the result and accumulated messages.
  */
-export type JsonFinalOutput = RooCliFinalOutput & {
+export type JsonFinalOutput = ClawCliFinalOutput & {
 	/** Final result type */
 	type: "result"
 	/** Whether the task succeeded */

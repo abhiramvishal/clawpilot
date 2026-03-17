@@ -44,7 +44,7 @@ export type FlagOptions = {
 }
 
 export enum OnboardingProviderChoice {
-	Roo = "roo",
+	Claw = "claw",
 	Byok = "byok",
 }
 

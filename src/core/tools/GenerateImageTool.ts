@@ -58,7 +58,7 @@ export class GenerateImageTool extends BaseTool<"generate_image"> {
 
 		const accessAllowed = task.rooIgnoreController?.validateAccess(relPath)
 		if (!accessAllowed) {
-			await task.say("rooignore_error", relPath)
+			await task.say("clawignore_error", relPath)
 			pushToolResult(formatResponse.rooIgnoreError(relPath))
 			return
 		}
@@ -79,7 +79,7 @@ export class GenerateImageTool extends BaseTool<"generate_image"> {
 
 			const inputImageAccessAllowed = task.rooIgnoreController?.validateAccess(inputImagePath)
 			if (!inputImageAccessAllowed) {
-				await task.say("rooignore_error", inputImagePath)
+				await task.say("clawignore_error", inputImagePath)
 				pushToolResult(formatResponse.rooIgnoreError(inputImagePath))
 				return
 			}
@@ -190,7 +190,7 @@ export class GenerateImageTool extends BaseTool<"generate_image"> {
 			}
 
 			let result
-			if (modelProvider === "roo") {
+			if (modelProvider === "claw") {
 				// Use ClawPilot Cloud provider (supports both chat completions and images API)
 				const rooHandler = new RooHandler({} as any)
 				result = await rooHandler.generateImage(prompt, selectedModel, inputImageData, apiMethod)

@@ -35,9 +35,10 @@ export async function getEnvironmentDetails(cline: Task, includeFileDetails: boo
 		.map((absolutePath) => path.relative(cline.cwd, absolutePath))
 		.slice(0, maxWorkspaceFiles)
 
-	// Filter paths through rooIgnoreController
-	const allowedVisibleFiles = cline.rooIgnoreController
-		? cline.rooIgnoreController.filterPaths(visibleFilePaths)
+	// Filter paths through clawIgnoreController
+	const clawIgnoreController = cline.rooIgnoreController
+	const allowedVisibleFiles = clawIgnoreController
+		? clawIgnoreController.filterPaths(visibleFilePaths)
 		: visibleFilePaths.map((p) => p.toPosix()).join("\n")
 
 	if (allowedVisibleFiles) {
@@ -55,9 +56,9 @@ export async function getEnvironmentDetails(cline: Task, includeFileDetails: boo
 		.map((absolutePath) => path.relative(cline.cwd, absolutePath).toPosix())
 		.slice(0, maxTabs)
 
-	// Filter paths through rooIgnoreController
-	const allowedOpenTabs = cline.rooIgnoreController
-		? cline.rooIgnoreController.filterPaths(openTabPaths)
+	// Filter paths through clawIgnoreController
+	const allowedOpenTabs = clawIgnoreController
+		? clawIgnoreController.filterPaths(openTabPaths)
 		: openTabPaths.map((p) => p.toPosix()).join("\n")
 
 	if (allowedOpenTabs) {
@@ -248,7 +249,7 @@ export async function getEnvironmentDetails(cline: Task, includeFileDetails: boo
 					cline.cwd,
 					files,
 					didHitLimit,
-					cline.rooIgnoreController,
+					clawIgnoreController,
 					showClawIgnoredFiles,
 				)
 
