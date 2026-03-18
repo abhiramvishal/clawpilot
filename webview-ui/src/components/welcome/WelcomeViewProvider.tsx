@@ -23,7 +23,7 @@ import { Trans } from "react-i18next"
 import { ArrowLeft, ArrowRight, BadgeInfo, Brain, TriangleAlert } from "lucide-react"
 import { buildDocLink } from "@/utils/docLinks"
 
-type ProviderOption = "roo" | "custom"
+type ProviderOption = "claw" | "custom"
 type AuthOrigin = "landing" | "providerSelection"
 
 const WelcomeViewProvider = () => {
@@ -59,13 +59,13 @@ const WelcomeViewProvider = () => {
 				vscode.postMessage({ type: "clearCloudAuthSkipModel" })
 			} else {
 				// Auth completed from provider signup flow - save the config now
-				const rooConfig: ProviderSettings = {
-					apiProvider: "roo",
+				const clawConfig: ProviderSettings = {
+					apiProvider: "claw",
 				}
 				vscode.postMessage({
 					type: "upsertApiConfiguration",
 					text: currentApiConfigName,
-					apiConfiguration: rooConfig,
+					apiConfiguration: clawConfig,
 				})
 				setAuthInProgress(false)
 				setShowManualEntry(false)
@@ -98,16 +98,16 @@ const WelcomeViewProvider = () => {
 			setAuthInProgress(true)
 		}
 		// Provider Selection screen
-		else if (selectedProvider === "roo") {
+		else if (selectedProvider === "claw") {
 			if (cloudIsAuthenticated) {
 				// Already authenticated - save config and finish
-				const rooConfig: ProviderSettings = {
-					apiProvider: "roo",
+				const clawConfig: ProviderSettings = {
+					apiProvider: "claw",
 				}
 				vscode.postMessage({
 					type: "upsertApiConfiguration",
 					text: currentApiConfigName,
-					apiConfiguration: rooConfig,
+					apiConfiguration: clawConfig,
 				})
 			} else {
 				// Need to authenticate
@@ -130,8 +130,8 @@ const WelcomeViewProvider = () => {
 	}, [selectedProvider, cloudIsAuthenticated, apiConfiguration, currentApiConfigName])
 
 	const handleNoAccount = useCallback(() => {
-		// Navigate to Provider Selection, defaulting to Roo option
-		setSelectedProvider("roo")
+		// Navigate to Provider Selection, defaulting to Claw option
+		setSelectedProvider("claw")
 	}, [])
 
 	const handleBackToLanding = useCallback(() => {
@@ -325,7 +325,7 @@ const WelcomeViewProvider = () => {
 		)
 	}
 
-	// Provider Selection screen - shown when selectedProvider is "roo" or "custom"
+	// Provider Selection screen - shown when selectedProvider is "claw" or "custom"
 	return (
 		<Tab>
 			<TabContent className="flex flex-col gap-4 p-6 justify-center">
@@ -345,7 +345,7 @@ const WelcomeViewProvider = () => {
 							setSelectedProvider(target.value as ProviderOption)
 						}}>
 						{/* ClawPilot Router Option */}
-						<VSCodeRadio value="roo" className="flex items-start gap-2">
+						<VSCodeRadio value="claw" className="flex items-start gap-2">
 							<div className="flex-1 space-y-1 cursor-pointer">
 								<p className="text-lg font-semibold block -mt-1">
 									{t("welcome:providerSignup.rooCloudProvider")}

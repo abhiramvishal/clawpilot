@@ -19,7 +19,7 @@ vi.mock("i18next", () => ({
 import { getModelValidationError, validateApiConfigurationExcludingModelErrors, validateBedrockArn } from "../validate"
 
 describe("Model Validation Functions", () => {
-	const mockRouterModels: RouterModels = {
+	const mockRouterModels = {
 		openrouter: {
 			"valid-model": {
 				maxTokens: 8192,
@@ -44,9 +44,8 @@ describe("Model Validation Functions", () => {
 		ollama: {},
 		lmstudio: {},
 		"vercel-ai-gateway": {},
-		roo: {},
 		claw: {},
-	}
+	} as unknown as RouterModels
 
 	const allowAllOrganization: OrganizationAllowList = {
 		allowAll: true,

@@ -569,7 +569,7 @@ describe("ApiOptions", () => {
 		})
 	})
 
-	describe("Roo provider tests", () => {
+	describe("Claw provider tests", () => {
 		it("shows balance display when authenticated", () => {
 			// Mock useExtensionState to return authenticated state
 			const useExtensionStateMock = vi.spyOn(ExtensionStateContext, "useExtensionState")
@@ -580,7 +580,7 @@ describe("ApiOptions", () => {
 
 			renderApiOptions({
 				apiConfiguration: {
-					apiProvider: "roo",
+					apiProvider: "claw",
 				},
 			})
 
@@ -597,14 +597,14 @@ describe("ApiOptions", () => {
 
 			renderApiOptions({
 				apiConfiguration: {
-					apiProvider: "roo",
+					apiProvider: "claw",
 				},
 			})
 
 			expect(screen.queryByTestId("claw-balance-display")).not.toBeInTheDocument()
 		})
 
-		it("pins roo provider to the top when not on welcome screen", () => {
+		it("pins claw provider to the top when not on welcome screen", () => {
 			// Mock useExtensionState to ensure no filtering
 			const useExtensionStateMock = vi.spyOn(ExtensionStateContext, "useExtensionState")
 			useExtensionStateMock.mockReturnValue({
@@ -624,18 +624,18 @@ describe("ApiOptions", () => {
 			// Filter out the placeholder option (empty value)
 			const providerOptions = options.filter((opt) => opt.value !== "")
 
-			// Find the roo option
-			const rooOption = providerOptions.find((opt) => opt.value === "roo")
+			// Find the claw option
+			const clawOption = providerOptions.find((opt) => opt.value === "claw")
 
-			// If roo is available, verify it's pinned to the top
-			if (rooOption) {
-				expect(providerOptions[0].value).toBe("roo")
+			// If claw is available, verify it's pinned to the top
+			if (clawOption) {
+				expect(providerOptions[0].value).toBe("claw")
 			}
 
 			useExtensionStateMock.mockRestore()
 		})
 
-		it("filters out roo provider on welcome screen", () => {
+		it("filters out claw provider on welcome screen", () => {
 			// Mock useExtensionState to ensure no filtering
 			const useExtensionStateMock = vi.spyOn(ExtensionStateContext, "useExtensionState")
 			useExtensionStateMock.mockReturnValue({
@@ -655,9 +655,9 @@ describe("ApiOptions", () => {
 			// Filter out the placeholder option (empty value)
 			const providerOptions = options.filter((opt) => opt.value !== "")
 
-			// Check that roo is NOT in the list when on welcome screen
-			const rooOption = providerOptions.find((opt) => opt.value === "roo")
-			expect(rooOption).toBeUndefined()
+			// Check that claw is NOT in the list when on welcome screen
+			const clawOption = providerOptions.find((opt) => opt.value === "claw")
+			expect(clawOption).toBeUndefined()
 
 			useExtensionStateMock.mockRestore()
 		})

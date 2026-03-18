@@ -49,7 +49,7 @@ import { internationalZAiDefaultModelId, mainlandZAiDefaultModelId } from "./zai
 import { minimaxDefaultModelId } from "./minimax.js"
 
 // Import the ProviderName type from provider-settings to avoid duplication
-import type { ProviderName } from "../provider-settings.js"
+import type { ProviderNameWithRetired } from "../provider-settings.js"
 
 /**
  * Get the default model ID for a given provider.
@@ -57,7 +57,7 @@ import type { ProviderName } from "../provider-settings.js"
  * Used as a fallback when provider models are still loading.
  */
 export function getProviderDefaultModelId(
-	provider: ProviderName,
+	provider: ProviderNameWithRetired,
 	options: { isChina?: boolean } = { isChina: false },
 ): string {
 	switch (provider) {
@@ -103,8 +103,10 @@ export function getProviderDefaultModelId(
 			return sambaNovaDefaultModelId
 		case "fireworks":
 			return fireworksDefaultModelId
-		case "roo":
 		case "claw":
+			return rooDefaultModelId
+		case "roo":
+			// Legacy fallthrough: treat "roo" as "claw"
 			return rooDefaultModelId
 		case "qwen-code":
 			return qwenCodeDefaultModelId
