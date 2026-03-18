@@ -387,15 +387,15 @@ export class CodeIndexManager {
 		}
 
 		// Create ClawIgnoreController instance
-		const rooIgnoreController = new ClawIgnoreController(workspacePath)
-		await rooIgnoreController.initialize()
+		const clawIgnoreController = new ClawIgnoreController(workspacePath)
+		await clawIgnoreController.initialize()
 
 		// (Re)Create shared service instances
 		const { embedder, vectorStore, scanner, fileWatcher } = this._serviceFactory.createServices(
 			this.context,
 			this._cacheManager!,
 			ignoreInstance,
-			rooIgnoreController,
+			clawIgnoreController,
 		)
 
 		// Validate embedder configuration before proceeding

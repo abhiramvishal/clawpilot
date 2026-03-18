@@ -61,7 +61,7 @@ export class DirectoryScanner implements IDirectoryScanner {
 	/**
 	 * Recursively scans a directory for code blocks in supported files.
 	 * @param directoryPath The directory to scan
-	 * @param rooIgnoreController Optional ClawIgnoreController instance for filtering
+	 * @param clawIgnoreController Optional ClawIgnoreController instance for filtering
 	 * @param context VS Code ExtensionContext for cache storage
 	 * @param onError Optional error handler callback
 	 * @returns Promise<{codeBlocks: CodeBlock[], stats: {processed: number, skipped: number}}> Array of parsed code blocks and processing stats
@@ -88,7 +88,7 @@ export class DirectoryScanner implements IDirectoryScanner {
 
 		await ignoreController.initialize()
 
-		// Filter paths using .rooignore
+		// Filter paths using .clawignore
 		const allowedPaths = ignoreController.filterPaths(filePaths)
 
 		// Filter by supported extensions, ignore patterns, and excluded directories

@@ -100,7 +100,7 @@ export async function parseMentions(
 	text: string,
 	cwd: string,
 	fileContextTracker?: FileContextTracker,
-	rooIgnoreController?: ClawIgnoreController,
+	clawIgnoreController?: ClawIgnoreController,
 	showClawIgnoredFiles: boolean = false,
 	includeDiagnosticMessages: boolean = true,
 	maxDiagnosticMessages: number = 50,
@@ -187,7 +187,7 @@ export async function parseMentions(
 				const fileResult = await getFileOrFolderContentWithMetadata(
 					mentionPath,
 					cwd,
-					rooIgnoreController,
+					clawIgnoreController,
 					showClawIgnoredFiles,
 					fileContextTracker,
 				)
@@ -265,7 +265,7 @@ export async function parseMentions(
 async function getFileOrFolderContentWithMetadata(
 	mentionPath: string,
 	cwd: string,
-	rooIgnoreController?: any,
+	clawIgnoreController?: any,
 	showClawIgnoredFiles: boolean = false,
 	fileContextTracker?: FileContextTracker,
 ): Promise<MentionContentBlock> {
@@ -287,7 +287,7 @@ async function getFileOrFolderContentWithMetadata(
 					content: `[read_file for '${mentionPath}']\nNote: Binary file omitted from context.`,
 				}
 			}
-			if (rooIgnoreController && !rooIgnoreController.validateAccess(unescapedPath)) {
+			if (clawIgnoreController && !clawIgnoreController.validateAccess(unescapedPath)) {
 				return {
 					type: "file",
 					path: mentionPath,
@@ -334,8 +334,8 @@ async function getFileOrFolderContentWithMetadata(
 				const entryPath = path.join(absPath, entry.name)
 
 				let isIgnored = false
-				if (rooIgnoreController) {
-					isIgnored = !rooIgnoreController.validateAccess(entryPath)
+				if (clawIgnoreController) {
+					isIgnored = !clawIgnoreController.validateAccess(entryPath)
 				}
 
 				if (isIgnored && !showClawIgnoredFiles) {

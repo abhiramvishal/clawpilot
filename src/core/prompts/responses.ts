@@ -30,13 +30,13 @@ export const formatResponse = {
 			error,
 		}),
 
-	rooIgnoreError: (path: string) =>
+	clawIgnoreError: (path: string) =>
 		JSON.stringify({
 			status: "error",
 			type: "access_denied",
-			message: "Access blocked by .rooignore",
+			message: "Access blocked by .clawignore",
 			path,
-			suggestion: "Try to continue without this file, or ask the user to update the .rooignore file",
+			suggestion: "Try to continue without this file, or ask the user to update the .clawignore file",
 		}),
 
 	noToolsUsed: () => {
@@ -118,7 +118,7 @@ Otherwise, if you have not completed the task and do not need additional informa
 		absolutePath: string,
 		files: string[],
 		didHitLimit: boolean,
-		rooIgnoreController: ClawIgnoreController | undefined,
+		clawIgnoreController: ClawIgnoreController | undefined,
 		showClawIgnoredFiles: boolean,
 		rooProtectedController?: ClawProtectedController,
 	): string => {
@@ -152,14 +152,14 @@ Otherwise, if you have not completed the task and do not need additional informa
 
 		let rooIgnoreParsed: string[] = sorted
 
-		if (rooIgnoreController) {
+		if (clawIgnoreController) {
 			rooIgnoreParsed = []
 			for (const filePath of sorted) {
 				// path is relative to absolute path, not cwd
 				// validateAccess expects either path relative to cwd or absolute path
 				// otherwise, for validating against ignore patterns like "assets/icons", we would end up with just "icons", which would result in the path not being ignored.
 				const absoluteFilePath = path.resolve(absolutePath, filePath)
-				const isIgnored = !rooIgnoreController.validateAccess(absoluteFilePath)
+				const isIgnored = !clawIgnoreController.validateAccess(absoluteFilePath)
 
 				if (isIgnored) {
 					// If file is ignored and we're not showing ignored files, skip it

@@ -10,12 +10,12 @@ describe("ClawProtectedController", () => {
 	})
 
 	describe("isWriteProtected", () => {
-		it("should protect .rooignore file", () => {
-			expect(controller.isWriteProtected(".rooignore")).toBe(true)
+		it("should protect .clawignore file", () => {
+			expect(controller.isWriteProtected(".clawignore")).toBe(true)
 		})
 
 		it("should protect files in .roo directory", () => {
-			expect(controller.isWriteProtected(".roo/config.json")).toBe(true)
+			expect(controller.isWriteProtected(".claw/config.json")).toBe(true)
 			expect(controller.isWriteProtected(".roo/settings/user.json")).toBe(true)
 			expect(controller.isWriteProtected(".roo/modes/custom.json")).toBe(true)
 		})
@@ -76,20 +76,20 @@ describe("ClawProtectedController", () => {
 		})
 
 		it("should handle nested paths correctly", () => {
-			expect(controller.isWriteProtected(".roo/config.json")).toBe(true) // .roo/** matches at root
-			expect(controller.isWriteProtected("nested/.rooignore")).toBe(true) // .rooignore matches anywhere by default
+			expect(controller.isWriteProtected(".claw/config.json")).toBe(true) // .roo/** matches at root
+			expect(controller.isWriteProtected("nested/.clawignore")).toBe(true) // .clawignore matches anywhere by default
 			expect(controller.isWriteProtected("nested/.roomodes")).toBe(true) // .roomodes matches anywhere by default
 			expect(controller.isWriteProtected("nested/.roorules.md")).toBe(true) // .roorules* matches anywhere by default
 		})
 
 		it("should handle absolute paths by converting to relative", () => {
-			const absolutePath = path.join(TEST_CWD, ".rooignore")
+			const absolutePath = path.join(TEST_CWD, ".clawignore")
 			expect(controller.isWriteProtected(absolutePath)).toBe(true)
 		})
 
 		it("should handle paths with different separators", () => {
 			expect(controller.isWriteProtected(".roo\\config.json")).toBe(true)
-			expect(controller.isWriteProtected(".roo/config.json")).toBe(true)
+			expect(controller.isWriteProtected(".claw/config.json")).toBe(true)
 		})
 
 		it("should not throw for absolute paths outside cwd", () => {
@@ -100,11 +100,11 @@ describe("ClawProtectedController", () => {
 
 	describe("getProtectedFiles", () => {
 		it("should return set of protected files from a list", () => {
-			const files = ["src/index.ts", ".rooignore", "package.json", ".roo/config.json", "README.md"]
+			const files = ["src/index.ts", ".clawignore", "package.json", ".claw/config.json", "README.md"]
 
 			const protectedFiles = controller.getProtectedFiles(files)
 
-			expect(protectedFiles).toEqual(new Set([".rooignore", ".roo/config.json"]))
+			expect(protectedFiles).toEqual(new Set([".clawignore", ".claw/config.json"]))
 		})
 
 		it("should return empty set when no files are protected", () => {
@@ -118,14 +118,14 @@ describe("ClawProtectedController", () => {
 
 	describe("annotatePathsWithProtection", () => {
 		it("should annotate paths with protection status", () => {
-			const files = ["src/index.ts", ".rooignore", ".roo/config.json", "package.json"]
+			const files = ["src/index.ts", ".clawignore", ".claw/config.json", "package.json"]
 
 			const annotated = controller.annotatePathsWithProtection(files)
 
 			expect(annotated).toEqual([
 				{ path: "src/index.ts", isProtected: false },
-				{ path: ".rooignore", isProtected: true },
-				{ path: ".roo/config.json", isProtected: true },
+				{ path: ".clawignore", isProtected: true },
+				{ path: ".claw/config.json", isProtected: true },
 				{ path: "package.json", isProtected: false },
 			])
 		})
@@ -144,7 +144,7 @@ describe("ClawProtectedController", () => {
 
 			expect(instructions).toContain("# Protected Files")
 			expect(instructions).toContain("write-protected")
-			expect(instructions).toContain(".rooignore")
+			expect(instructions).toContain(".clawignore")
 			expect(instructions).toContain(".roo/**")
 			expect(instructions).toContain("\u{1F6E1}") // Shield symbol
 		})
@@ -155,7 +155,7 @@ describe("ClawProtectedController", () => {
 			const patterns = ClawProtectedController.getProtectedPatterns()
 
 			expect(patterns).toEqual([
-				".rooignore",
+				".clawignore",
 				".roomodes",
 				".roorules*",
 				".clinerules*",

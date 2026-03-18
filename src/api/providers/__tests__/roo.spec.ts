@@ -125,7 +125,7 @@ vitest.mock("../../providers/fetchers/modelCache", () => ({
 }))
 
 // Import after mocks are set up
-import { ClawHandler } from "../roo"
+import { ClawHandler } from "../claw"
 import { CloudService } from "@clawpilot/cloud"
 
 describe("ClawHandler", () => {

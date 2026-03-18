@@ -36,7 +36,7 @@ export async function getEnvironmentDetails(cline: Task, includeFileDetails: boo
 		.slice(0, maxWorkspaceFiles)
 
 	// Filter paths through clawIgnoreController
-	const clawIgnoreController = cline.rooIgnoreController
+	const clawIgnoreController = cline.clawIgnoreController
 	const allowedVisibleFiles = clawIgnoreController
 		? clawIgnoreController.filterPaths(visibleFilePaths)
 		: visibleFilePaths.map((p) => p.toPosix()).join("\n")

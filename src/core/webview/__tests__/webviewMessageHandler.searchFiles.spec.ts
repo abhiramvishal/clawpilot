@@ -143,7 +143,7 @@ describe("webviewMessageHandler - searchFiles with RooIgnore filtering", () => {
 		}
 		;(mockClineProvider.getCurrentTask as Mock).mockReturnValue({
 			taskId: "test-task-id",
-			rooIgnoreController: taskRooIgnoreController,
+			clawIgnoreController: taskRooIgnoreController,
 		})
 
 		await webviewMessageHandler(mockClineProvider, {
@@ -280,7 +280,7 @@ describe("webviewMessageHandler - searchFiles with RooIgnore filtering", () => {
 		}
 		;(mockClineProvider.getCurrentTask as Mock).mockReturnValue({
 			taskId: "test-task-id",
-			rooIgnoreController: taskRooIgnoreController,
+			clawIgnoreController: taskRooIgnoreController,
 		})
 
 		await webviewMessageHandler(mockClineProvider, {

@@ -41,8 +41,8 @@ vi.mock("fs/promises", () => ({
 	},
 }))
 
-// Mock the roo-config service
-vi.mock("../../../../services/roo-config", () => ({
+// Mock the claw-config service
+vi.mock("../../../../services/claw-config", () => ({
 	getClawDirectoriesForCwd: mockGetRooDirectoriesForCwd,
 	getAllClawDirectoriesForCwd: mockGetAllRooDirectoriesForCwd,
 	getAgentsDirectoriesForCwd: mockGetAgentsDirectoriesForCwd,

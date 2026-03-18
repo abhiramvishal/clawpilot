@@ -2,7 +2,7 @@ import fs from "fs/promises"
 import * as path from "path"
 import { Dirent } from "fs"
 import matter from "gray-matter"
-import { getGlobalClawDirectory, getProjectClawDirectoryForCwd } from "../roo-config"
+import { getGlobalClawDirectory, getProjectClawDirectoryForCwd } from "../claw-config"
 import { getBuiltInCommands, getBuiltInCommand } from "./built-in-commands"
 
 /**

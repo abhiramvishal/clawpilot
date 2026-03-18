@@ -94,7 +94,7 @@ describe("getEnvironmentDetails", () => {
 			fileContextTracker: {
 				getAndClearRecentlyModifiedFiles: vi.fn().mockReturnValue([]),
 			} as unknown as FileContextTracker,
-			rooIgnoreController: {
+			clawIgnoreController: {
 				filterPaths: vi.fn((paths: string[]) => paths.join("\n")),
 				cwd: mockCwd,
 				ignoreInstance: {},
@@ -174,7 +174,7 @@ describe("getEnvironmentDetails", () => {
 			mockCwd,
 			["file1.ts", "file2.ts"],
 			false,
-			mockCline.rooIgnoreController,
+			mockCline.clawIgnoreController,
 			false,
 		)
 	})

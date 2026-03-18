@@ -108,10 +108,10 @@ export class ApplyPatchTool extends BaseTool<"apply_patch"> {
 				const absolutePath = path.resolve(task.cwd, relPath)
 
 				// Check access permissions
-				const accessAllowed = task.rooIgnoreController?.validateAccess(relPath)
+				const accessAllowed = task.clawIgnoreController?.validateAccess(relPath)
 				if (!accessAllowed) {
 					await task.say("clawignore_error", relPath)
-					pushToolResult(formatResponse.rooIgnoreError(relPath))
+					pushToolResult(formatResponse.clawIgnoreError(relPath))
 					return
 				}
 
@@ -375,10 +375,10 @@ export class ApplyPatchTool extends BaseTool<"apply_patch"> {
 			const moveAbsolutePath = path.resolve(task.cwd, change.movePath)
 
 			// Validate destination path access permissions
-			const moveAccessAllowed = task.rooIgnoreController?.validateAccess(change.movePath)
+			const moveAccessAllowed = task.clawIgnoreController?.validateAccess(change.movePath)
 			if (!moveAccessAllowed) {
 				await task.say("clawignore_error", change.movePath)
-				pushToolResult(formatResponse.rooIgnoreError(change.movePath))
+				pushToolResult(formatResponse.clawIgnoreError(change.movePath))
 				await task.diffViewProvider.reset()
 				return
 			}

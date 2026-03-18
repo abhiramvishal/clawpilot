@@ -141,7 +141,7 @@ export async function regexSearchFiles(
 	directoryPath: string,
 	regex: string,
 	filePattern?: string,
-	rooIgnoreController?: ClawIgnoreController,
+	clawIgnoreController?: ClawIgnoreController,
 ): Promise<string> {
 	const vscodeAppRoot = vscode.env.appRoot
 	const rgPath = await getBinPath(vscodeAppRoot)
@@ -221,8 +221,8 @@ export async function regexSearchFiles(
 	// console.log(results)
 
 	// Filter results using ClawIgnoreController if provided
-	const filteredResults = rooIgnoreController
-		? results.filter((result) => rooIgnoreController.validateAccess(result.file))
+	const filteredResults = clawIgnoreController
+		? results.filter((result) => clawIgnoreController.validateAccess(result.file))
 		: results
 
 	return formatResults(filteredResults, cwd)

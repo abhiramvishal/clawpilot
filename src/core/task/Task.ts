@@ -295,7 +295,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 	}
 
 	toolRepetitionDetector: ToolRepetitionDetector
-	rooIgnoreController?: ClawIgnoreController
+	clawIgnoreController?: ClawIgnoreController
 	rooProtectedController?: ClawProtectedController
 	fileContextTracker: FileContextTracker
 	terminalProcess?: ClawTerminalProcess
@@ -475,11 +475,11 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 		this.instanceId = crypto.randomUUID().slice(0, 8)
 		this.taskNumber = -1
 
-		this.rooIgnoreController = new ClawIgnoreController(this.cwd)
+		this.clawIgnoreController = new ClawIgnoreController(this.cwd)
 		this.rooProtectedController = new ClawProtectedController(this.cwd)
 		this.fileContextTracker = new FileContextTracker(provider, this.taskId)
 
-		this.rooIgnoreController.initialize().catch((error) => {
+		this.clawIgnoreController.initialize().catch((error) => {
 			console.error("Failed to initialize ClawIgnoreController:", error)
 		})
 
@@ -1714,7 +1714,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 			environmentDetails,
 			filesReadByClaw,
 			cwd: this.cwd,
-			clawIgnoreController: this.rooIgnoreController,
+			clawIgnoreController: this.clawIgnoreController,
 		})
 		if (error) {
 			await this.say(
@@ -2349,9 +2349,9 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 			})
 
 		try {
-			if (this.rooIgnoreController) {
-				this.rooIgnoreController.dispose()
-				this.rooIgnoreController = undefined
+			if (this.clawIgnoreController) {
+				this.clawIgnoreController.dispose()
+				this.clawIgnoreController = undefined
 			}
 		} catch (error) {
 			console.error("Error disposing ClawIgnoreController:", error)
@@ -2604,7 +2604,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 				userContent: currentUserContent,
 				cwd: this.cwd,
 				fileContextTracker: this.fileContextTracker,
-				rooIgnoreController: this.rooIgnoreController,
+				clawIgnoreController: this.clawIgnoreController,
 				showClawIgnoredFiles,
 				includeDiagnosticMessages,
 				maxDiagnosticMessages,
@@ -3764,7 +3764,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 			})
 		}
 
-		const rooIgnoreInstructions = this.rooIgnoreController?.getInstructions()
+		const clawIgnoreInstructions = this.clawIgnoreController?.getInstructions()
 
 		const state = await this.providerRef.deref()?.getState()
 
@@ -3800,7 +3800,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 				customInstructions,
 				experiments,
 				language,
-				rooIgnoreInstructions,
+				clawIgnoreInstructions,
 				{
 					todoListEnabled: apiConfiguration?.todoListEnabled ?? true,
 					useAgentRules:
@@ -4129,7 +4129,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 					environmentDetails: contextMgmtEnvironmentDetails,
 					filesReadByClaw: contextMgmtFilesReadByClaw,
 					cwd: this.cwd,
-					clawIgnoreController: this.rooIgnoreController,
+					clawIgnoreController: this.clawIgnoreController,
 				})
 				if (truncateResult.messages !== this.apiConversationHistory) {
 					await this.overwriteApiConversationHistory(truncateResult.messages)

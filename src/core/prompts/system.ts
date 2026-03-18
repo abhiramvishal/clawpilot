@@ -50,7 +50,7 @@ async function generatePrompt(
 	globalCustomInstructions?: string,
 	experiments?: Record<string, boolean>,
 	language?: string,
-	rooIgnoreInstructions?: string,
+	clawIgnoreInstructions?: string,
 	settings?: SystemPromptSettings,
 	todoList?: TodoItem[],
 	modelId?: string,
@@ -102,7 +102,7 @@ ${getObjectiveSection()}
 
 ${await addCustomInstructions(baseInstructions, globalCustomInstructions || "", cwd, mode, {
 	language: language ?? formatLanguage(vscode.env.language),
-	rooIgnoreInstructions,
+	clawIgnoreInstructions,
 	settings,
 })}`
 
@@ -121,7 +121,7 @@ export const SYSTEM_PROMPT = async (
 	globalCustomInstructions?: string,
 	experiments?: Record<string, boolean>,
 	language?: string,
-	rooIgnoreInstructions?: string,
+	clawIgnoreInstructions?: string,
 	settings?: SystemPromptSettings,
 	todoList?: TodoItem[],
 	modelId?: string,
@@ -149,7 +149,7 @@ export const SYSTEM_PROMPT = async (
 		globalCustomInstructions,
 		experiments,
 		language,
-		rooIgnoreInstructions,
+		clawIgnoreInstructions,
 		settings,
 		todoList,
 		modelId,

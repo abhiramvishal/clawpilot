@@ -13,7 +13,7 @@ import {
 	getAllClawDirectoriesForCwd,
 	getAgentsDirectoriesForCwd,
 	getGlobalClawDirectory,
-} from "../../../services/roo-config"
+} from "../../../services/claw-config"
 
 /**
  * Safely read a file and return its trimmed content
@@ -386,7 +386,7 @@ export async function addCustomInstructions(
 	mode: string,
 	options: {
 		language?: string
-		rooIgnoreInstructions?: string
+		clawIgnoreInstructions?: string
 		settings?: SystemPromptSettings
 	} = {},
 ): Promise<string> {
@@ -468,8 +468,8 @@ export async function addCustomInstructions(
 		}
 	}
 
-	if (options.rooIgnoreInstructions) {
-		rules.push(options.rooIgnoreInstructions)
+	if (options.clawIgnoreInstructions) {
+		rules.push(options.clawIgnoreInstructions)
 	}
 
 	// Add AGENTS.md content if enabled (default: true)

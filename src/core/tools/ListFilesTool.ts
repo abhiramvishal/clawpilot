@@ -44,7 +44,7 @@ export class ListFilesTool extends BaseTool<"list_files"> {
 				absolutePath,
 				files,
 				didHitLimit,
-				task.rooIgnoreController,
+				task.clawIgnoreController,
 				showClawIgnoredFiles,
 				task.rooProtectedController,
 			)

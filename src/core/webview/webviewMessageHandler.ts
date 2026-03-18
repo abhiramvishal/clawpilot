@@ -2,7 +2,7 @@ import { safeWriteJson } from "../../utils/safeWriteJson"
 import * as path from "path"
 import * as os from "os"
 import * as fs from "fs/promises"
-import { getClawDirectoriesForCwd } from "../../services/roo-config/index.js"
+import { getClawDirectoriesForCwd } from "../../services/claw-config/index.js"
 import pWaitFor from "p-wait-for"
 import * as vscode from "vscode"
 
@@ -182,7 +182,7 @@ export const webviewMessageHandler = async (
 			text,
 			images,
 			cwd: getCurrentCwd(),
-			rooIgnoreController: currentTask?.rooIgnoreController,
+			clawIgnoreController: currentTask?.clawIgnoreController,
 			maxImageFileSize: state.maxImageFileSize,
 			maxTotalImageSize: state.maxTotalImageSize,
 		})
@@ -955,6 +955,7 @@ export const webviewMessageHandler = async (
 						ollama: {},
 						lmstudio: {},
 						roo: {},
+						claw: {},
 					}
 
 			const safeGetModels = async (options: GetModelsOptions): Promise<ModelRecord> => {
@@ -993,6 +994,16 @@ export const webviewMessageHandler = async (
 					key: "roo",
 					options: {
 						provider: "roo",
+						baseUrl: process.env.CLAW_PILOT_PROVIDER_URL ?? "https://api.clawpilot.com/proxy",
+						apiKey: CloudService.hasInstance()
+							? CloudService.instance.authService?.getSessionToken()
+							: undefined,
+					},
+				},
+				{
+					key: "claw",
+					options: {
+						provider: "claw",
 						baseUrl: process.env.CLAW_PILOT_PROVIDER_URL ?? "https://api.clawpilot.com/proxy",
 						apiKey: CloudService.hasInstance()
 							? CloudService.instance.authService?.getSessionToken()
@@ -1770,14 +1781,14 @@ export const webviewMessageHandler = async (
 
 				// Get the ClawIgnoreController from the current task, or create a new one
 				const currentTask = provider.getCurrentTask()
-				let rooIgnoreController = currentTask?.rooIgnoreController
+				let clawIgnoreController = currentTask?.clawIgnoreController
 				let tempController: ClawIgnoreController | undefined
 
 				// If no current task or no controller, create a temporary one
-				if (!rooIgnoreController) {
+				if (!clawIgnoreController) {
 					tempController = new ClawIgnoreController(workspacePath)
 					await tempController.initialize()
-					rooIgnoreController = tempController
+					clawIgnoreController = tempController
 				}
 
 				try {
@@ -1786,8 +1797,8 @@ export const webviewMessageHandler = async (
 
 					// Filter results using ClawIgnoreController if showClawIgnoredFiles is false
 					let filteredResults = results
-					if (!showClawIgnoredFiles && rooIgnoreController) {
-						const allowedPaths = rooIgnoreController.filterPaths(results.map((r) => r.path))
+					if (!showClawIgnoredFiles && clawIgnoreController) {
+						const allowedPaths = clawIgnoreController.filterPaths(results.map((r) => r.path))
 						filteredResults = results.filter((r) => allowedPaths.includes(r.path))
 					}
 

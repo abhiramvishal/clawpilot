@@ -204,7 +204,7 @@ export class CodeIndexServiceFactory {
 		vectorStore: IVectorStore,
 		cacheManager: CacheManager,
 		ignoreInstance: Ignore,
-		rooIgnoreController?: ClawIgnoreController,
+		clawIgnoreController?: ClawIgnoreController,
 	): IFileWatcher {
 		// Get the configurable batch size from VSCode settings
 		let batchSize: number
@@ -223,7 +223,7 @@ export class CodeIndexServiceFactory {
 			embedder,
 			vectorStore,
 			ignoreInstance,
-			rooIgnoreController,
+			clawIgnoreController,
 			batchSize,
 		)
 	}
@@ -236,7 +236,7 @@ export class CodeIndexServiceFactory {
 		context: vscode.ExtensionContext,
 		cacheManager: CacheManager,
 		ignoreInstance: Ignore,
-		rooIgnoreController?: ClawIgnoreController,
+		clawIgnoreController?: ClawIgnoreController,
 	): {
 		embedder: IEmbedder
 		vectorStore: IVectorStore
@@ -258,7 +258,7 @@ export class CodeIndexServiceFactory {
 			vectorStore,
 			cacheManager,
 			ignoreInstance,
-			rooIgnoreController,
+			clawIgnoreController,
 		)
 
 		return {

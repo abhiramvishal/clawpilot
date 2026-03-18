@@ -6,7 +6,7 @@ import type { ProviderSettings, ModeConfig, ModelInfo } from "@clawpilot/types"
 import { customToolRegistry, formatNative } from "@clawpilot/core"
 
 import type { ClineProvider } from "../webview/ClineProvider"
-import { getClawDirectoriesForCwd } from "../../services/roo-config/index.js"
+import { getClawDirectoriesForCwd } from "../../services/claw-config/index.js"
 
 import { getNativeTools, getMcpServerTools } from "../prompts/tools/native-tools"
 import {

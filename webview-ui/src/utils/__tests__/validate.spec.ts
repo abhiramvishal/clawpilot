@@ -45,6 +45,7 @@ describe("Model Validation Functions", () => {
 		lmstudio: {},
 		"vercel-ai-gateway": {},
 		roo: {},
+		claw: {},
 	}
 
 	const allowAllOrganization: OrganizationAllowList = {

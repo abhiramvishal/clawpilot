@@ -1,12 +1,12 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest"
-import { getRooModels } from "../roo"
+import { getClawModels } from "../claw"
 import { Package } from "../../../../shared/package"
 
 // Mock fetch globally
 const mockFetch = vi.fn()
 global.fetch = mockFetch as any
 
-describe("getRooModels", () => {
+describe("getClawModels", () => {
 	const baseUrl = "https://api.clawpilot.com/proxy"
 	const apiKey = "test-api-key"
 
@@ -50,7 +50,7 @@ describe("getRooModels", () => {
 			json: async () => mockResponse,
 		})
 
-		const models = await getRooModels(baseUrl, apiKey)
+		const models = await getClawModels(baseUrl, apiKey)
 
 		expect(mockFetch).toHaveBeenCalledWith(
 			"https://api.clawpilot.com/proxy/v1/models",
@@ -109,7 +109,7 @@ describe("getRooModels", () => {
 			json: async () => mockResponse,
 		})
 
-		const models = await getRooModels(baseUrl, apiKey)
+		const models = await getClawModels(baseUrl, apiKey)
 
 		expect(models["test/reasoning-required-model"]).toEqual({
 			maxTokens: 8192,
@@ -158,7 +158,7 @@ describe("getRooModels", () => {
 			json: async () => mockResponse,
 		})
 
-		const models = await getRooModels(baseUrl, apiKey)
+		const models = await getClawModels(baseUrl, apiKey)
 
 		expect(models["test/normal-model"]).toEqual({
 			maxTokens: 8192,
@@ -207,7 +207,7 @@ describe("getRooModels", () => {
 			json: async () => mockResponse,
 		})
 
-		const models = await getRooModels(baseUrl)
+		const models = await getClawModels(baseUrl)
 
 		expect(mockFetch).toHaveBeenCalledWith(
 			"https://api.clawpilot.com/proxy/v1/models",
@@ -228,7 +228,7 @@ describe("getRooModels", () => {
 			statusText: "Unauthorized",
 		})
 
-		await expect(getRooModels(baseUrl, apiKey)).rejects.toThrow(
+		await expect(getClawModels(baseUrl, apiKey)).rejects.toThrow(
 			"Failed to fetch ClawPilot Cloud models: HTTP 401: Unauthorized",
 		)
 	})
@@ -239,7 +239,7 @@ describe("getRooModels", () => {
 
 		mockFetch.mockRejectedValueOnce(abortError)
 
-		await expect(getRooModels(baseUrl, apiKey)).rejects.toThrow(
+		await expect(getClawModels(baseUrl, apiKey)).rejects.toThrow(
 			"Failed to fetch ClawPilot Cloud models: Request timed out",
 		)
 	})
@@ -254,7 +254,7 @@ describe("getRooModels", () => {
 			json: async () => invalidResponse,
 		})
 
-		await expect(getRooModels(baseUrl, apiKey)).rejects.toThrow(
+		await expect(getClawModels(baseUrl, apiKey)).rejects.toThrow(
 			"Failed to fetch ClawPilot Cloud models: Unexpected response format",
 		)
 	})
@@ -270,7 +270,7 @@ describe("getRooModels", () => {
 			json: async () => mockResponse,
 		})
 
-		await getRooModels("https://api.clawpilot.com/proxy/v1", apiKey)
+		await getClawModels("https://api.clawpilot.com/proxy/v1", apiKey)
 
 		expect(mockFetch).toHaveBeenCalledWith("https://api.clawpilot.com/proxy/v1/models", expect.any(Object))
 	})
@@ -303,7 +303,7 @@ describe("getRooModels", () => {
 			json: async () => mockResponse,
 		})
 
-		const models = await getRooModels(baseUrl, apiKey)
+		const models = await getClawModels(baseUrl, apiKey)
 
 		expect(models["test/deprecated-model"].deprecated).toBe(true)
 	})
@@ -336,7 +336,7 @@ describe("getRooModels", () => {
 			json: async () => mockResponse,
 		})
 
-		const models = await getRooModels(baseUrl, apiKey)
+		const models = await getClawModels(baseUrl, apiKey)
 
 		expect(models["test/vision-model"].supportsImages).toBe(true)
 	})
@@ -369,7 +369,7 @@ describe("getRooModels", () => {
 			json: async () => mockResponse,
 		})
 
-		const models = await getRooModels(baseUrl, apiKey)
+		const models = await getClawModels(baseUrl, apiKey)
 
 		expect(models["test/reasoning-model"].supportsReasoningEffort).toBe(true)
 	})
@@ -403,7 +403,7 @@ describe("getRooModels", () => {
 			json: async () => mockResponse,
 		})
 
-		const models = await getRooModels(baseUrl, apiKey)
+		const models = await getClawModels(baseUrl, apiKey)
 
 		expect(models["test/cache-model"].supportsPromptCache).toBe(true)
 		expect(models["test/cache-model"].cacheReadsPrice).toBe(50) // 0.00005 * 1_000_000
@@ -437,7 +437,7 @@ describe("getRooModels", () => {
 			json: async () => mockResponse,
 		})
 
-		const models = await getRooModels(baseUrl, apiKey)
+		const models = await getClawModels(baseUrl, apiKey)
 
 		expect(Object.keys(models)).toHaveLength(0)
 	})
@@ -469,7 +469,7 @@ describe("getRooModels", () => {
 			json: async () => mockResponse,
 		})
 
-		const models = await getRooModels(baseUrl, apiKey)
+		const models = await getClawModels(baseUrl, apiKey)
 
 		expect(models["test/no-description"].description).toBe("Model Name")
 	})
@@ -477,7 +477,7 @@ describe("getRooModels", () => {
 	it("should handle network errors", async () => {
 		mockFetch.mockRejectedValueOnce(new TypeError("Network error"))
 
-		await expect(getRooModels(baseUrl, apiKey)).rejects.toThrow(
+		await expect(getClawModels(baseUrl, apiKey)).rejects.toThrow(
 			"Failed to fetch ClawPilot Cloud models: No response from server",
 		)
 	})
@@ -510,7 +510,7 @@ describe("getRooModels", () => {
 			json: async () => mockResponse,
 		})
 
-		const models = await getRooModels(baseUrl, apiKey)
+		const models = await getClawModels(baseUrl, apiKey)
 
 		expect(models["test/model-with-temp"].defaultTemperature).toBe(0.6)
 	})
@@ -542,7 +542,7 @@ describe("getRooModels", () => {
 			json: async () => mockResponse,
 		})
 
-		const models = await getRooModels(baseUrl, apiKey)
+		const models = await getClawModels(baseUrl, apiKey)
 
 		expect(models["test/model-no-temp"].defaultTemperature).toBeUndefined()
 	})
@@ -575,7 +575,7 @@ describe("getRooModels", () => {
 			json: async () => mockResponse,
 		})
 
-		const models = await getRooModels(baseUrl, apiKey)
+		const models = await getClawModels(baseUrl, apiKey)
 
 		expect(models["test/native-tools-model"]).toBeDefined()
 	})
@@ -608,7 +608,7 @@ describe("getRooModels", () => {
 			json: async () => mockResponse,
 		})
 
-		const models = await getRooModels(baseUrl, apiKey)
+		const models = await getClawModels(baseUrl, apiKey)
 
 		expect(models["test/model-without-tool-tags"]).toBeDefined()
 	})
@@ -641,7 +641,7 @@ describe("getRooModels", () => {
 			json: async () => mockResponse,
 		})
 
-		const models = await getRooModels(baseUrl, apiKey)
+		const models = await getClawModels(baseUrl, apiKey)
 
 		expect(models["test/tool-use-model"]).toBeDefined()
 	})
@@ -674,7 +674,7 @@ describe("getRooModels", () => {
 			json: async () => mockResponse,
 		})
 
-		const models = await getRooModels(baseUrl, apiKey)
+		const models = await getClawModels(baseUrl, apiKey)
 
 		expect(models["test/stealth-model"].isStealthModel).toBe(true)
 	})
@@ -707,7 +707,7 @@ describe("getRooModels", () => {
 			json: async () => mockResponse,
 		})
 
-		const models = await getRooModels(baseUrl, apiKey)
+		const models = await getClawModels(baseUrl, apiKey)
 
 		expect(models["test/non-stealth-model"].isStealthModel).toBeUndefined()
 	})
@@ -745,7 +745,7 @@ describe("getRooModels", () => {
 			json: async () => mockResponse,
 		})
 
-		const models = await getRooModels(baseUrl, apiKey)
+		const models = await getClawModels(baseUrl, apiKey)
 
 		expect(models["test/model-with-settings"].includedTools).toEqual(["apply_patch"])
 		expect(models["test/model-with-settings"].excludedTools).toEqual(["apply_diff", "write_to_file"])
@@ -785,7 +785,7 @@ describe("getRooModels", () => {
 			json: async () => mockResponse,
 		})
 
-		const models = await getRooModels(baseUrl, apiKey)
+		const models = await getClawModels(baseUrl, apiKey)
 		const model = models["test/dynamic-settings-model"] as any
 
 		// Arbitrary settings should be passed through
@@ -834,7 +834,7 @@ describe("getRooModels", () => {
 			json: async () => mockResponse,
 		})
 
-		const models = await getRooModels(baseUrl, apiKey)
+		const models = await getClawModels(baseUrl, apiKey)
 
 		// Versioned settings should be used instead of plain settings
 		expect(models["test/versioned-model"].includedTools).toEqual(["apply_patch", "search_replace"])
@@ -878,7 +878,7 @@ describe("getRooModels", () => {
 			json: async () => mockResponse,
 		})
 
-		const models = await getRooModels(baseUrl, apiKey)
+		const models = await getClawModels(baseUrl, apiKey)
 
 		// Should use plain settings since no versioned settings match current version
 		expect(models["test/old-version-model"].includedTools).toEqual(["apply_patch"])
@@ -918,7 +918,7 @@ describe("getRooModels", () => {
 			json: async () => mockResponse,
 		})
 
-		const models = await getRooModels(baseUrl, apiKey)
+		const models = await getClawModels(baseUrl, apiKey)
 		const model = models["test/versioned-only-model"] as Record<string, unknown>
 
 		expect(model.customFeature).toBe(true)
@@ -962,7 +962,7 @@ describe("getRooModels", () => {
 			json: async () => mockResponse,
 		})
 
-		const models = await getRooModels(baseUrl, apiKey)
+		const models = await getClawModels(baseUrl, apiKey)
 		const model = models["test/multi-version-model"] as Record<string, unknown>
 
 		// Should use 3.0.0 version settings (highest that's <= current plugin version)
@@ -1008,7 +1008,7 @@ describe("getRooModels", () => {
 		;(Package as { name: string }).name = "clawpilot-nightly"
 
 		try {
-			const models = await getRooModels(baseUrl, apiKey)
+			const models = await getClawModels(baseUrl, apiKey)
 			const model = models["test/nightly-version-model"] as Record<string, unknown>
 
 			// Should pick the highest available versionedSettings even though 3.36.3 > 0.0.7465
