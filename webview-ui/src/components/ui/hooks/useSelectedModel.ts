@@ -318,6 +318,13 @@ function getSelectedModel({
 			const info = models?.[id]
 			return { id, info }
 		}
+		case "roo": {
+			// Legacy alias support: read from Claw model cache.
+			const models = routerModels?.claw ?? {}
+			const id = getValidatedModelId(apiConfiguration.apiModelId, models, defaultModelId)
+			const info = models?.[id]
+			return { id, info }
+		}
 		case "qwen-code": {
 			const id = apiConfiguration.apiModelId ?? defaultModelId
 			const info = qwenCodeModels[id as keyof typeof qwenCodeModels]
@@ -340,7 +347,7 @@ function getSelectedModel({
 		// case "anthropic":
 		// case "fake-ai":
 		default: {
-			provider satisfies "anthropic" | "gemini-cli" | "fake-ai" | "claw"
+			provider satisfies "anthropic" | "gemini-cli" | "fake-ai" | "claw" | "roo"
 			const id = apiConfiguration.apiModelId ?? defaultModelId
 			const baseInfo = anthropicModels[id as keyof typeof anthropicModels]
 
