@@ -30,7 +30,7 @@
 		"@clawpilot/config-typescript": "workspace:^",
 		"@types/node": "^24.1.0",
 		"globals": "^16.3.0",
-		"tsup": "^8.4.0",
+		"tsup": "^8.5.1",
 		"vitest": "^3.2.3"
 	}
 }
