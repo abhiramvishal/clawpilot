@@ -85,7 +85,6 @@ async function fetchModelsFromProvider(options: GetModelsOptions): Promise<Model
 		case "vercel-ai-gateway":
 			models = await getVercelAiGatewayModels()
 			break
-		case "roo":
 		case "claw": {
 			// ClawPilot Cloud provider requires baseUrl and optional apiKey
 			const clawBaseUrl =
