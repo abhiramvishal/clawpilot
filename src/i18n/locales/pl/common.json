@@ -111,8 +111,8 @@
 			"thinking_complete_safety": "(Myślenie zakończone, ale dane wyjściowe zostały zablokowane przez ustawienia bezpieczeństwa.)",
 			"thinking_complete_recitation": "(Myślenie zakończone, ale dane wyjściowe zostały zablokowane przez kontrolę recytacji.)"
 		},
-		"roo": {
-			"authenticationRequired": "Dostawca Roo wymaga uwierzytelnienia w chmurze. Zaloguj się do ClawPilot Cloud."
+		"claw": {
+			"authenticationRequired": "Dostawca Claw wymaga uwierzytelnienia w chmurze. Zaloguj się do ClawPilot Cloud."
 		},
 		"api": {
 			"invalidKeyInvalidChars": "Klucz API zawiera nieprawidłowe znaki.",
@@ -192,7 +192,7 @@
 		"enter_valid_path": "Wprowadź prawidłową ścieżkę"
 	},
 	"input": {
-		"task_prompt": "Co ma zrobić Roo?",
+		"task_prompt": "Co ma zrobić Claw?",
 		"task_placeholder": "Wpisz swoje zadanie tutaj"
 	},
 	"settings": {

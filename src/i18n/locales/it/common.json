@@ -111,8 +111,8 @@
 			"thinking_complete_safety": "(Pensiero completato, ma l'output è stato bloccato a causa delle impostazioni di sicurezza.)",
 			"thinking_complete_recitation": "(Pensiero completato, ma l'output è stato bloccato a causa del controllo di recitazione.)"
 		},
-		"roo": {
-			"authenticationRequired": "Il provider Roo richiede l'autenticazione cloud. Accedi a ClawPilot Cloud."
+		"claw": {
+			"authenticationRequired": "Il provider Claw richiede l'autenticazione cloud. Accedi a ClawPilot Cloud."
 		},
 		"api": {
 			"invalidKeyInvalidChars": "La chiave API contiene caratteri non validi.",
@@ -192,7 +192,7 @@
 		"enter_valid_path": "Inserisci un percorso valido"
 	},
 	"input": {
-		"task_prompt": "Cosa deve fare Roo?",
+		"task_prompt": "Cosa deve fare Claw?",
 		"task_placeholder": "Scrivi il tuo compito qui"
 	},
 	"settings": {

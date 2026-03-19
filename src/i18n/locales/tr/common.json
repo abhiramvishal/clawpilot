@@ -111,8 +111,8 @@
 			"thinking_complete_safety": "(Düşünme tamamlandı, ancak çıktı güvenlik ayarları nedeniyle engellendi.)",
 			"thinking_complete_recitation": "(Düşünme tamamlandı, ancak çıktı okuma kontrolü nedeniyle engellendi.)"
 		},
-		"roo": {
-			"authenticationRequired": "Roo sağlayıcısı bulut kimlik doğrulaması gerektirir. Lütfen ClawPilot Cloud'a giriş yapın."
+		"claw": {
+			"authenticationRequired": "Claw sağlayıcısı bulut kimlik doğrulaması gerektirir. Lütfen ClawPilot Cloud'a giriş yapın."
 		},
 		"api": {
 			"invalidKeyInvalidChars": "API anahtarı geçersiz karakterler içeriyor.",
@@ -192,7 +192,7 @@
 		"enter_valid_path": "Lütfen geçerli bir yol girin"
 	},
 	"input": {
-		"task_prompt": "Roo ne yapsın?",
+		"task_prompt": "Claw ne yapsın?",
 		"task_placeholder": "Görevini buraya yaz"
 	},
 	"settings": {

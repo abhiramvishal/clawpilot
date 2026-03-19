@@ -242,7 +242,7 @@
 			},
 			"protected": {
 				"label": "保護されたファイルを含める",
-				"description": "Rooが保護されたファイル（.rooignoreや.roo/設定ファイルなど）を承認なしで作成・編集することを許可します。"
+				"description": "Clawが保護されたファイル（.clawignoreや.claw/設定ファイルなど）を承認なしで作成・編集することを許可します。"
 			}
 		},
 		"mcp": {
@@ -671,7 +671,7 @@
 		},
 		"enableSubfolderRules": {
 			"label": "サブフォルダルールを有効化",
-			"description": "サブディレクトリから.roo/rulesとAGENTS.mdファイルを再帰的に検出してロードします。パッケージごとのルールを持つモノレポに便利です。"
+			"description": "サブディレクトリから.claw/rulesとAGENTS.mdファイルを再帰的に検出してロードします。パッケージごとのルールを持つモノレポに便利です。"
 		}
 	},
 	"terminal": {
@@ -815,9 +815,9 @@
 		},
 		"CUSTOM_TOOLS": {
 			"name": "カスタムツールを有効化",
-			"description": "有効にすると、Rooはプロジェクトの.roo/toolsディレクトリまたはグローバルツール用の~/.roo/toolsからカスタムTypeScript/JavaScriptツールを読み込んで使用できます。注意：これらのツールは自動的に承認されます。",
+			"description": "有効にすると、Clawはプロジェクトの.claw/toolsディレクトリまたはグローバルツール用の~/.claw/toolsからカスタムTypeScript/JavaScriptツールを読み込んで使用できます。注意：これらのツールは自動的に承認されます。",
 			"toolsHeader": "利用可能なカスタムツール",
-			"noTools": "カスタムツールが読み込まれていません。プロジェクトの.roo/toolsディレクトリまたはグローバルツール用の~/.roo/toolsに.tsまたは.jsファイルを追加してください。",
+			"noTools": "カスタムツールが読み込まれていません。プロジェクトの.claw/toolsディレクトリまたはグローバルツール用の~/.claw/toolsに.tsまたは.jsファイルを追加してください。",
 			"refreshButton": "更新",
 			"refreshing": "更新中...",
 			"refreshSuccess": "ツールが正常に更新されました",
