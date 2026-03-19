@@ -434,16 +434,16 @@ const ApiOptions = ({
 			label,
 		}))
 
-		// Pin "roo" to the top if not on welcome screen
+		// Pin "claw" to the top if not on welcome screen
 		if (!fromWelcomeView) {
-			const rooIndex = options.findIndex((opt) => opt.value === "roo")
+			const rooIndex = options.findIndex((opt) => opt.value === "claw")
 			if (rooIndex > 0) {
 				const [rooOption] = options.splice(rooIndex, 1)
 				options.unshift(rooOption)
 			}
 		} else {
-			// Filter out roo from the welcome view
-			const filteredOptions = options.filter((opt) => opt.value !== "roo")
+			// Filter out claw from the welcome view
+			const filteredOptions = options.filter((opt) => opt.value !== "claw")
 			options.length = 0
 			options.push(...filteredOptions)
 

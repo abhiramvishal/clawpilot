@@ -46,7 +46,7 @@ export const ClawRouter = ({
 						variant="primary"
 						onClick={() => vscode.postMessage({ type: "clawCloudSignIn" })}
 						className="w-fit">
-						{t("settings:providers.roo.connectButton")}
+						{t("settings:providers.claw.connectButton")}
 					</Button>
 				</div>
 			)}

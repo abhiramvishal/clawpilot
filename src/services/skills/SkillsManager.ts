@@ -372,7 +372,7 @@ export class SkillsManager {
 			if (!provider?.cwd) {
 				throw new Error(t("skills:errors.no_workspace"))
 			}
-			baseDir = path.join(provider.cwd, ".roo")
+			baseDir = path.join(provider.cwd, ".claw")
 		}
 
 		// Always use the generic skills directory (mode info stored in frontmatter now)
@@ -481,7 +481,7 @@ Add your skill instructions here.
 			if (!provider?.cwd) {
 				throw new Error(t("skills:errors.no_workspace"))
 			}
-			baseDir = path.join(provider.cwd, ".roo")
+			baseDir = path.join(provider.cwd, ".claw")
 		}
 
 		// Determine source and destination directories
@@ -657,7 +657,7 @@ Add your skill instructions here.
 		// Watch for changes in skills directories
 		const globalRooDir = getGlobalClawDirectory()
 		const globalAgentsDir = getGlobalAgentsDirectory()
-		const projectRooDir = path.join(provider.cwd, ".roo")
+		const projectRooDir = path.join(provider.cwd, ".claw")
 		const projectAgentsDir = getProjectAgentsDirectoryForCwd(provider.cwd)
 
 		// Watch global .roo skills directory
