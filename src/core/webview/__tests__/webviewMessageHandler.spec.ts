@@ -324,7 +324,7 @@ describe("webviewMessageHandler - requestRouterModels", () => {
 		expect(mockGetModels).toHaveBeenCalledWith({ provider: "vercel-ai-gateway" })
 		expect(mockGetModels).toHaveBeenCalledWith(
 			expect.objectContaining({
-				provider: "roo",
+				provider: "claw",
 				baseUrl: expect.any(String),
 			}),
 		)
@@ -538,7 +538,7 @@ describe("webviewMessageHandler - requestRouterModels", () => {
 			type: "singleRouterModelFetchResponse",
 			success: false,
 			error: "Roo API error",
-			values: { provider: "roo" },
+			values: { provider: "claw" },
 		})
 
 		expect(mockClineProvider.postMessageToWebview).toHaveBeenCalledWith({

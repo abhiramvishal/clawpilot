@@ -954,7 +954,6 @@ export const webviewMessageHandler = async (
 						unbound: {},
 						ollama: {},
 						lmstudio: {},
-						roo: {},
 						claw: {},
 					}
 

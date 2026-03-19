@@ -91,7 +91,7 @@ vitest.mock("../../providers/fetchers/modelCache", () => ({
 	getModels: vitest.fn(),
 	flushModels: vitest.fn(),
 	getModelsFromCache: vitest.fn((provider: string) => {
-		if (provider === "roo") {
+		if (provider === "claw") {
 			return {
 				"xai/grok-code-fast-1": {
 					maxTokens: 16_384,

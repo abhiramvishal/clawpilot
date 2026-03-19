@@ -305,7 +305,7 @@ describe("extension.ts", () => {
 
 			// Verify refreshModels was called with correct parameters including session token
 			expect(mockRefreshModels).toHaveBeenCalledWith({
-				provider: "roo",
+				provider: "claw",
 				baseUrl: expect.any(String),
 				apiKey: "test-session-token",
 			})
@@ -341,7 +341,7 @@ describe("extension.ts", () => {
 			})
 
 			// Verify flushModels was called to clear the cache on logout
-			expect(flushModels).toHaveBeenCalledWith({ provider: "roo" }, false)
+			expect(flushModels).toHaveBeenCalledWith({ provider: "claw" }, false)
 		})
 	})
 })

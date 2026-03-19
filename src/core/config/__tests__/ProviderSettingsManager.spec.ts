@@ -232,15 +232,15 @@ describe("ProviderSettingsManager", () => {
 						default: {
 							config: {},
 							id: "default",
-							apiProvider: "roo",
+							apiProvider: "claw",
 							apiModelId: "roo/code-supernova", // Old model ID
 						},
 						test: {
-							apiProvider: "roo",
+							apiProvider: "claw",
 							apiModelId: "roo/code-supernova", // Old model ID
 						},
 						existing: {
-							apiProvider: "roo",
+							apiProvider: "claw",
 							apiModelId: "roo/code-supernova-1-million", // Already migrated
 						},
 						otherProvider: {
@@ -284,7 +284,7 @@ describe("ProviderSettingsManager", () => {
 					currentApiConfigName: "default",
 					apiConfigs: {
 						default: {
-							apiProvider: "roo",
+							apiProvider: "claw",
 							apiModelId: "roo/code-supernova",
 							id: "default",
 						},
@@ -314,7 +314,7 @@ describe("ProviderSettingsManager", () => {
 					currentApiConfigName: "default",
 					apiConfigs: {
 						default: {
-							apiProvider: "roo",
+							apiProvider: "claw",
 							apiModelId: "roo/code-supernova", // Old model again
 							id: "default",
 						},
