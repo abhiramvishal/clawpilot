@@ -312,9 +312,10 @@ function getSelectedModel({
 			const info = fireworksModels[id as keyof typeof fireworksModels]
 			return { id, info }
 		}
-		case "roo": {
-			const id = getValidatedModelId(apiConfiguration.apiModelId, routerModels.roo, defaultModelId)
-			const info = routerModels.roo?.[id]
+		case "claw": {
+			const models = routerModels?.claw ?? {}
+			const id = getValidatedModelId(apiConfiguration.apiModelId, models, defaultModelId)
+			const info = models?.[id]
 			return { id, info }
 		}
 		case "qwen-code": {
@@ -339,7 +340,7 @@ function getSelectedModel({
 		// case "anthropic":
 		// case "fake-ai":
 		default: {
-			provider satisfies "anthropic" | "gemini-cli" | "fake-ai"
+			provider satisfies "anthropic" | "gemini-cli" | "fake-ai" | "claw" | "roo"
 			const id = apiConfiguration.apiModelId ?? defaultModelId
 			const baseInfo = anthropicModels[id as keyof typeof anthropicModels]
 

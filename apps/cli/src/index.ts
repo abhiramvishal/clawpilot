@@ -17,7 +17,7 @@ import {
 const program = new Command()
 
 program
-	.name("roo")
+	.name("claw")
 	.description("ClawPilot CLI - starts an interactive session by default, use -p/--print for non-interactive output")
 	.version(VERSION)
 	.enablePositionalOptions()
@@ -45,7 +45,7 @@ program
 	.option("-d, --debug", "Enable debug output (includes detailed debug information)", false)
 	.option("-a, --require-approval", "Require manual approval for actions", false)
 	.option("-k, --api-key <key>", "API key for the LLM provider")
-	.option("--provider <provider>", "API provider (roo, anthropic, openai, openrouter, etc.)")
+	.option("--provider <provider>", "API provider (claw, anthropic, openai, openrouter, etc.)")
 	.option("-m, --model <model>", "Model to use", DEFAULT_FLAGS.model)
 	.option("--mode <mode>", "Mode to start in (code, architect, ask, debug, etc.)", DEFAULT_FLAGS.mode)
 	.option("--terminal-shell <path>", "Absolute path to shell executable for inline terminal commands")
@@ -79,7 +79,7 @@ const applyListOptions = (command: Command) =>
 	command
 		.option("-w, --workspace <path>", "Workspace directory path (defaults to current working directory)")
 		.option("-e, --extension <path>", "Path to the extension bundle directory")
-		.option("-k, --api-key <key>", "Roo API key (falls back to saved login/session token)")
+		.option("-k, --api-key <key>", "ClawPilot API key (falls back to saved login/session token)")
 		.option("--format <format>", 'Output format: "json" (default) or "text"', "json")
 		.option("-d, --debug", "Enable debug output", false)
 
@@ -117,7 +117,7 @@ applyListOptions(listCommand.command("modes").description("List available modes"
 	},
 )
 
-applyListOptions(listCommand.command("models").description("List available Roo models")).action(
+applyListOptions(listCommand.command("models").description("List available Claw models")).action(
 	async (options: Parameters<typeof listModels>[0]) => {
 		await runListAction(() => listModels(options))
 	},

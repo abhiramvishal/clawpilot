@@ -15,13 +15,13 @@ export const REASONING_EFFORTS = [...reasoningEffortsExtended, "unspecified", "d
  */
 export const FOLLOWUP_TIMEOUT_SECONDS = 60
 
-export const ASCII_ROO = `  _,'   ___
+export const ASCII_CLAW = `  _,'   ___
  <__\\__/   \\
     \\_  /  _\\
       \\,\\ / \\\\
         //   \\\\
       ,/'     \`\\_,`
 
-export const AUTH_BASE_URL = process.env.ROO_AUTH_BASE_URL ?? "https://app.clawpilot.com"
+export const AUTH_BASE_URL = process.env.CLAW_PILOT_AUTH_BASE_URL ?? "https://app.clawpilot.com"
 
-export const SDK_BASE_URL = process.env.ROO_SDK_BASE_URL ?? "https://cloud-api.clawpilot.com"
+export const SDK_BASE_URL = process.env.CLAW_PILOT_SDK_BASE_URL ?? "https://cloud-api.clawpilot.com"

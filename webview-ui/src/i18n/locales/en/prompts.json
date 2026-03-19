@@ -49,11 +49,11 @@
 		"title": "Mode-specific Custom Instructions (optional)",
 		"resetToDefault": "Reset to default",
 		"description": "Add behavioral guidelines specific to {{modeName}} mode.",
-		"loadFromFile": "Custom instructions specific to {{mode}} mode can also be loaded from the <span>.roo/rules-{{slug}}/</span> folder in your workspace or from the global <0>.roo/rules-{{slug}}/</0> (.roorules-{{slug}} and .clinerules-{{slug}} are deprecated and will stop working soon)."
+		"loadFromFile": "Custom instructions specific to {{mode}} mode can also be loaded from the <span>.claw/rules-{{slug}}/</span> folder in your workspace or from the global <0>.claw/rules-{{slug}}/</0> (.clawrules-{{slug}} and .clinerules-{{slug}} are deprecated and will stop working soon)."
 	},
 	"exportMode": {
 		"title": "Export Mode",
-		"description": "Export this mode with rules from the .roo/rules-{{slug}}/ folder combined into a shareable YAML file. The original files remain unchanged.",
+		"description": "Export this mode with rules from the .claw/rules-{{slug}}/ folder combined into a shareable YAML file. The original files remain unchanged.",
 		"exporting": "Exporting..."
 	},
 	"importMode": {
@@ -62,17 +62,17 @@
 		"importing": "Importing...",
 		"global": {
 			"label": "Global Level",
-			"description": "Available across all projects. If the exported mode contained rules files, they will be recreated in the global .roo/rules-{slug}/ folder."
+			"description": "Available across all projects. If the exported mode contained rules files, they will be recreated in the global .claw/rules-{slug}/ folder."
 		},
 		"project": {
 			"label": "Project Level",
-			"description": "Only available in this workspace. If the exported mode contained rules files, they will be recreated in .roo/rules-{slug}/ folder."
+			"description": "Only available in this workspace. If the exported mode contained rules files, they will be recreated in .claw/rules-{slug}/ folder."
 		}
 	},
 	"globalCustomInstructions": {
 		"title": "Custom Instructions for All Modes",
 		"description": "These instructions apply to all modes. They provide a base set of behaviors that can be enhanced by mode-specific instructions below. <0>Learn more</0>",
-		"loadFromFile": "Instructions can also be loaded from the <span>.roo/rules/</span> folder in your workspace or from the global <0>.roo/rules/</0> (.roorules and .clinerules are deprecated and will stop working soon)."
+		"loadFromFile": "Instructions can also be loaded from the <span>.claw/rules/</span> folder in your workspace or from the global <0>.claw/rules/</0> (.clawrules and .clinerules are deprecated and will stop working soon)."
 	},
 	"systemPrompt": {
 		"preview": "Preview System Prompt",

@@ -115,14 +115,14 @@ vi.mock("../QueuedMessages", () => ({
 // Mock ClawTips component
 vi.mock("@src/components/welcome/ClawTips", () => ({
 	default: function MockClawTips() {
-		return <div data-testid="roo-tips">Tips content</div>
+		return <div data-testid="claw-tips">Tips content</div>
 	},
 }))
 
 // Mock ClawHero component
 vi.mock("@src/components/welcome/ClawHero", () => ({
 	default: function MockClawHero() {
-		return <div data-testid="roo-hero">Hero content</div>
+		return <div data-testid="claw-hero">Hero content</div>
 	},
 }))
 

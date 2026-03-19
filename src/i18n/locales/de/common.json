@@ -111,8 +111,8 @@
 			"thinking_complete_safety": "(Denken abgeschlossen, aber die Ausgabe wurde aufgrund von Sicherheitseinstellungen blockiert.)",
 			"thinking_complete_recitation": "(Denken abgeschlossen, aber die Ausgabe wurde aufgrund der Rezitationsprüfung blockiert.)"
 		},
-		"roo": {
-			"authenticationRequired": "Roo-Anbieter erfordert Cloud-Authentifizierung. Bitte melde dich bei ClawPilot Cloud an."
+		"claw": {
+			"authenticationRequired": "Claw-Anbieter erfordert Cloud-Authentifizierung. Bitte melde dich bei ClawPilot Cloud an."
 		},
 		"openAiCodex": {
 			"notAuthenticated": "Nicht bei OpenAI Codex authentifiziert. Bitte melde dich über den OpenAI Codex OAuth-Flow an.",
@@ -192,7 +192,7 @@
 		"enter_valid_path": "Bitte gib einen gültigen Pfad ein"
 	},
 	"input": {
-		"task_prompt": "Was soll Roo tun?",
+		"task_prompt": "Was soll Claw tun?",
 		"task_placeholder": "Gib deine Aufgabe hier ein"
 	},
 	"settings": {

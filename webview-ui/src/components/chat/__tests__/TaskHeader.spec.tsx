@@ -79,8 +79,8 @@ vi.mock("@src/components/cloud/CloudUpsellDialog", () => ({
 	CloudUpsellDialog: () => null,
 }))
 
-// Mock findLastIndex from @roo/array
-vi.mock("@roo/array", () => ({
+// Mock findLastIndex from @claw/array
+vi.mock("@claw/array", () => ({
 	findLastIndex: (array: any[], predicate: (item: any) => boolean) => {
 		for (let i = array.length - 1; i >= 0; i--) {
 			if (predicate(array[i])) {
@@ -105,9 +105,9 @@ vi.mock("@/components/ui/hooks/useSelectedModel", () => ({
 	}),
 }))
 
-// Mock getModelMaxOutputTokens from @roo/api
+// Mock getModelMaxOutputTokens from @claw/api
 let mockMaxOutputTokens = 0
-vi.mock("@roo/api", () => ({
+vi.mock("@claw/api", () => ({
 	getModelMaxOutputTokens: () => mockMaxOutputTokens,
 }))
 

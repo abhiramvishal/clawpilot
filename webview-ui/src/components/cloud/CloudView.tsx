@@ -16,8 +16,7 @@ import { Button } from "@/components/ui/button"
 import { OrganizationSwitcher } from "./OrganizationSwitcher"
 import { StandardTooltip } from "../ui"
 
-// Define the production URL constant locally to avoid importing from cloud package in tests
-const PRODUCTION_ROO_CODE_API_URL = "https://app.clawpilot.com"
+const PRODUCTION_CLAW_PILOT_API_URL = "https://app.clawpilot.com"
 
 type CloudViewProps = {
 	userInfo: CloudUserInfo | null
@@ -80,7 +79,7 @@ export const CloudView = ({ userInfo, isAuthenticated, cloudApiUrl, organization
 		// Send telemetry for cloud connect action
 		// NOTE: Using ACCOUNT_* telemetry events for backward compatibility with analytics
 		telemetryClient.capture(TelemetryEventName.ACCOUNT_CONNECT_CLICKED)
-		vscode.postMessage({ type: "rooCloudSignIn" })
+		vscode.postMessage({ type: "clawCloudSignIn" })
 
 		// Start auth in progress state - show "Having trouble?" immediately for debugging
 		setAuthInProgress(true)
@@ -93,7 +92,7 @@ export const CloudView = ({ userInfo, isAuthenticated, cloudApiUrl, organization
 		// Auto-trigger authentication when a complete URL is pasted (with slight delay to ensure full paste is processed)
 		setTimeout(() => {
 			if (url.trim() && url.includes("://") && url.includes("/auth/clerk/callback")) {
-				vscode.postMessage({ type: "rooCloudManualUrl", text: url.trim() })
+				vscode.postMessage({ type: "clawCloudManualUrl", text: url.trim() })
 			}
 		}, 100)
 	}
@@ -102,7 +101,7 @@ export const CloudView = ({ userInfo, isAuthenticated, cloudApiUrl, organization
 		if (e.key === "Enter") {
 			const url = manualUrl.trim()
 			if (url && url.includes("://") && url.includes("/auth/clerk/callback")) {
-				vscode.postMessage({ type: "rooCloudManualUrl", text: url })
+				vscode.postMessage({ type: "clawCloudManualUrl", text: url })
 			}
 		}
 	}
@@ -121,14 +120,14 @@ export const CloudView = ({ userInfo, isAuthenticated, cloudApiUrl, organization
 		// Send telemetry for cloud logout action
 		// NOTE: Using ACCOUNT_* telemetry events for backward compatibility with analytics
 		telemetryClient.capture(TelemetryEventName.ACCOUNT_LOGOUT_CLICKED)
-		vscode.postMessage({ type: "rooCloudSignOut" })
+		vscode.postMessage({ type: "clawCloudSignOut" })
 	}
 
 	const handleVisitCloudWebsite = () => {
 		// Send telemetry for cloud website visit
 		// NOTE: Using ACCOUNT_* telemetry events for backward compatibility with analytics
 		telemetryClient.capture(TelemetryEventName.ACCOUNT_CONNECT_CLICKED)
-		const cloudUrl = cloudApiUrl || PRODUCTION_ROO_CODE_API_URL
+		const cloudUrl = cloudApiUrl || PRODUCTION_CLAW_PILOT_API_URL
 		vscode.postMessage({ type: "openExternal", url: cloudUrl })
 	}
 
@@ -280,7 +279,7 @@ export const CloudView = ({ userInfo, isAuthenticated, cloudApiUrl, organization
 						</div>
 					</>
 				)}
-				{cloudApiUrl && cloudApiUrl !== PRODUCTION_ROO_CODE_API_URL && (
+				{cloudApiUrl && cloudApiUrl !== PRODUCTION_CLAW_PILOT_API_URL && (
 					<div className="ml-4 mt-6 flex">
 						<div className="inline-flex items-center gap-2 text-xs">
 							<TriangleAlert className="size-3 text-vscode-descriptionForeground" />

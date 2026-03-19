@@ -111,8 +111,8 @@
 			"thinking_complete_safety": "(Nadenken voltooid, maar uitvoer is geblokkeerd vanwege veiligheidsinstellingen.)",
 			"thinking_complete_recitation": "(Nadenken voltooid, maar uitvoer is geblokkeerd vanwege recitatiecontrole.)"
 		},
-		"roo": {
-			"authenticationRequired": "Roo provider vereist cloud authenticatie. Log in bij ClawPilot Cloud."
+		"claw": {
+			"authenticationRequired": "Claw provider vereist cloud authenticatie. Log in bij ClawPilot Cloud."
 		},
 		"api": {
 			"invalidKeyInvalidChars": "API-sleutel bevat ongeldige karakters.",
@@ -192,7 +192,7 @@
 		"enter_valid_path": "Voer een geldig pad in"
 	},
 	"input": {
-		"task_prompt": "Wat moet Roo doen?",
+		"task_prompt": "Wat moet Claw doen?",
 		"task_placeholder": "Typ hier je taak"
 	},
 	"settings": {

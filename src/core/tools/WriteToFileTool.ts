@@ -47,11 +47,11 @@ export class WriteToFileTool extends BaseTool<"write_to_file"> {
 			return
 		}
 
-		const accessAllowed = task.rooIgnoreController?.validateAccess(relPath)
+		const accessAllowed = task.clawIgnoreController?.validateAccess(relPath)
 
 		if (!accessAllowed) {
-			await task.say("rooignore_error", relPath)
-			pushToolResult(formatResponse.rooIgnoreError(relPath))
+			await task.say("clawignore_error", relPath)
+			pushToolResult(formatResponse.clawIgnoreError(relPath))
 			return
 		}
 

@@ -242,7 +242,7 @@
 			},
 			"protected": {
 				"label": "Korumalı dosyaları dahil et",
-				"description": "Roo'nun korumalı dosyaları (.rooignore ve .roo/ yapılandırma dosyaları gibi) onay gerektirmeden oluşturmasına ve düzenlemesine izin ver."
+				"description": "Claw'ın korumalı dosyaları (.clawignore ve .claw/ yapılandırma dosyaları gibi) onay gerektirmeden oluşturmasına ve düzenlemesine izin ver."
 			}
 		},
 		"mcp": {
@@ -671,7 +671,7 @@
 		},
 		"enableSubfolderRules": {
 			"label": "Alt klasör kurallarını etkinleştir",
-			"description": "Alt dizinlerden .roo/rules ve AGENTS.md dosyalarını yinelemeli olarak keşfet ve yükle. Paket başına kuralları olan monorepo'lar için kullanışlı."
+			"description": "Alt dizinlerden .claw/rules ve AGENTS.md dosyalarını yinelemeli olarak keşfet ve yükle. Paket başına kuralları olan monorepo'lar için kullanışlı."
 		}
 	},
 	"terminal": {
@@ -815,9 +815,9 @@
 		},
 		"CUSTOM_TOOLS": {
 			"name": "Özel araçları etkinleştir",
-			"description": "Etkinleştirildiğinde, Roo projenizin .roo/tools dizininden veya global araçlar için ~/.roo/tools dizininden özel TypeScript/JavaScript araçlarını yükleyebilir ve kullanabilir. Not: Bu araçlar otomatik olarak onaylanacaktır.",
+			"description": "Etkinleştirildiğinde, Claw projenizin .claw/tools dizininden veya global araçlar için ~/.claw/tools dizininden özel TypeScript/JavaScript araçlarını yükleyebilir ve kullanabilir. Not: Bu araçlar otomatik olarak onaylanacaktır.",
 			"toolsHeader": "Kullanılabilir Özel Araçlar",
-			"noTools": "Özel araç yüklenmedi. Projenizin .roo/tools dizinine veya global araçlar için ~/.roo/tools dizinine .ts veya .js dosyaları ekleyin.",
+			"noTools": "Özel araç yüklenmedi. Projenizin .claw/tools dizinine veya global araçlar için ~/.claw/tools dizinine .ts veya .js dosyaları ekleyin.",
 			"refreshButton": "Yenile",
 			"refreshing": "Yenileniyor...",
 			"refreshSuccess": "Araçlar başarıyla yenilendi",

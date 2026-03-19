@@ -25,11 +25,11 @@ export const runTaskWithCli = async ({ run, task, publish, logger, jobToken }: R
 
 	const env: Record<string, string> = {
 		...(process.env as Record<string, string>),
-		ROO_CODE_IPC_SOCKET_PATH: ipcSocketPath,
+		CLAW_PILOT_IPC_SOCKET_PATH: ipcSocketPath,
 	}
 
 	if (jobToken) {
-		env.ROO_CODE_CLOUD_TOKEN = jobToken
+		env.CLAW_PILOT_CLOUD_TOKEN = jobToken
 	}
 
 	const controller = new AbortController()
@@ -167,7 +167,7 @@ export const runTaskWithCli = async ({ run, task, publish, logger, jobToken }: R
 	let taskAbortedAt: number | undefined
 	let taskTimedOut: boolean = false
 	const taskMetricsId = taskMetrics.id // Already set, no need to wait for TaskStarted.
-	let rooTaskId: string | undefined
+	let clawTaskId: string | undefined
 	let isClientDisconnected = false
 	const accumulatedToolUsage: ToolUsage = {}
 
@@ -195,11 +195,11 @@ export const runTaskWithCli = async ({ run, task, publish, logger, jobToken }: R
 
 		// Handle task lifecycle events.
 		// For CLI mode, we already created taskMetrics before connecting to IPC,
-		// but we still want to capture the rooTaskId from TaskStarted if we receive it.
+		// but we still want to capture the clawTaskId from TaskStarted if we receive it.
 		if (eventName === ClawPilotEventName.TaskStarted) {
 			taskStartedAt = Date.now()
-			rooTaskId = payload[0]
-			logger.info(`received TaskStarted event, rooTaskId: ${rooTaskId}`)
+			clawTaskId = payload[0]
+			logger.info(`received TaskStarted event, clawTaskId: ${clawTaskId}`)
 		}
 
 		if (eventName === ClawPilotEventName.TaskToolFailed) {
@@ -261,7 +261,7 @@ export const runTaskWithCli = async ({ run, task, publish, logger, jobToken }: R
 		taskTimedOut = true
 		logger.error("time limit reached")
 
-		if (rooTaskId && !isClientDisconnected) {
+		if (clawTaskId && !isClientDisconnected) {
 			logger.info("cancelling task")
 			client.sendCommand({ commandName: TaskCommandName.CancelTask })
 			await new Promise((resolve) => setTimeout(resolve, 5_000))
@@ -286,7 +286,7 @@ export const runTaskWithCli = async ({ run, task, publish, logger, jobToken }: R
 	logger.info("setting task finished at")
 	await updateTask(task.id, { finishedAt: new Date() })
 
-	if (rooTaskId && !isClientDisconnected) {
+	if (clawTaskId && !isClientDisconnected) {
 		logger.info("closing task")
 		client.sendCommand({ commandName: TaskCommandName.CloseTask })
 		await new Promise((resolve) => setTimeout(resolve, 2_000))

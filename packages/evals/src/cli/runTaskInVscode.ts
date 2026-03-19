@@ -27,18 +27,18 @@ export const runTaskInVscode = async ({ run, task, publish, logger, jobToken }: 
 	const prompt = fs.readFileSync(path.resolve(EVALS_REPO_PATH, `prompts/${language}.md`), "utf-8")
 	const workspacePath = path.resolve(EVALS_REPO_PATH, language, exercise)
 	const ipcSocketPath = path.resolve(os.tmpdir(), `evals-${run.id}-${task.id}.sock`)
-	const env = { ROO_CODE_IPC_SOCKET_PATH: ipcSocketPath }
+	const env = { CLAW_PILOT_IPC_SOCKET_PATH: ipcSocketPath }
 	const controller = new AbortController()
 	const cancelSignal = controller.signal
 	const containerized = isDockerContainer()
 	const logDir = containerized ? `/var/log/evals/runs/${run.id}` : `/tmp/evals/runs/${run.id}`
 
 	let codeCommand = containerized
-		? `xvfb-run --auto-servernum --server-num=1 code --wait --log trace --disable-workspace-trust --disable-gpu --disable-lcd-text --no-sandbox --user-data-dir /roo/.vscode --password-store="basic" -n ${workspacePath}`
+		? `xvfb-run --auto-servernum --server-num=1 code --wait --log trace --disable-workspace-trust --disable-gpu --disable-lcd-text --no-sandbox --user-data-dir /claw/.vscode --password-store="basic" -n ${workspacePath}`
 		: `code --disable-workspace-trust -n ${workspacePath}`
 
 	if (jobToken) {
-		codeCommand = `ROO_CODE_CLOUD_TOKEN=${jobToken} ${codeCommand}`
+		codeCommand = `CLAW_PILOT_CLOUD_TOKEN=${jobToken} ${codeCommand}`
 	}
 
 	logger.info(codeCommand)
@@ -81,7 +81,7 @@ export const runTaskInVscode = async ({ run, task, publish, logger, jobToken }: 
 	let taskAbortedAt: number | undefined
 	let taskTimedOut: boolean = false
 	let taskMetricsId: number | undefined
-	let rooTaskId: string | undefined
+	let clawTaskId: string | undefined
 	let isClientDisconnected = false
 	// Track accumulated tool usage across task instances (handles rehydration after abort)
 	const accumulatedToolUsage: ToolUsage = {}
@@ -101,7 +101,7 @@ export const runTaskInVscode = async ({ run, task, publish, logger, jobToken }: 
 	const loggableSays: ClineSay[] = [
 		"error",
 		"command_output",
-		"rooignore_error",
+		"clawignore_error",
 		"diff_error",
 		"condense_context",
 		"condense_context_error",
@@ -182,7 +182,7 @@ export const runTaskInVscode = async ({ run, task, publish, logger, jobToken }: 
 
 			taskStartedAt = Date.now()
 			taskMetricsId = taskMetrics.id
-			rooTaskId = payload[0]
+			clawTaskId = payload[0]
 
 			// Signal that taskMetricsId is now ready for other handlers
 			resolveTaskMetricsReady()
@@ -268,7 +268,7 @@ export const runTaskInVscode = async ({ run, task, publish, logger, jobToken }: 
 		taskTimedOut = true
 		logger.error("time limit reached")
 
-		if (rooTaskId && !isClientDisconnected) {
+		if (clawTaskId && !isClientDisconnected) {
 			logger.info("cancelling task")
 			client.sendCommand({ commandName: TaskCommandName.CancelTask })
 			await new Promise((resolve) => setTimeout(resolve, 5_000)) // Allow some time for the task to cancel.
@@ -287,7 +287,7 @@ export const runTaskInVscode = async ({ run, task, publish, logger, jobToken }: 
 	logger.info("setting task finished at")
 	await updateTask(task.id, { finishedAt: new Date() })
 
-	if (rooTaskId && !isClientDisconnected) {
+	if (clawTaskId && !isClientDisconnected) {
 		logger.info("closing task")
 		client.sendCommand({ commandName: TaskCommandName.CloseTask })
 		await new Promise((resolve) => setTimeout(resolve, 2_000)) // Allow some time for the window to close.
@@ -305,9 +305,9 @@ export const runTaskInVscode = async ({ run, task, publish, logger, jobToken }: 
 
 	// Copy conversation history files from VS Code extension storage to the log directory
 	// for post-mortem analysis. Only do this in containerized mode where we have a known path.
-	if (containerized && rooTaskId) {
+	if (containerized && clawTaskId) {
 		await copyConversationHistory({
-			rooTaskId,
+			clawTaskId,
 			logDir,
 			language,
 			exercise,

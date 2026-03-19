@@ -1,34 +1,34 @@
 import EventEmitter from "events"
 
-export type RooTerminalProvider = "vscode" | "execa"
+export type ClawTerminalProvider = "vscode" | "execa"
 
-export interface RooTerminal {
-	provider: RooTerminalProvider
+export interface ClawTerminal {
+	provider: ClawTerminalProvider
 	id: number
 	busy: boolean
 	running: boolean
 	taskId?: string
-	process?: RooTerminalProcess
+	process?: ClawTerminalProcess
 	getCurrentWorkingDirectory(): string
 	isClosed: () => boolean
-	runCommand: (command: string, callbacks: RooTerminalCallbacks) => RooTerminalProcessResultPromise
+	runCommand: (command: string, callbacks: ClawTerminalCallbacks) => ClawTerminalProcessResultPromise
 	setActiveStream(stream: AsyncIterable<string> | undefined, pid?: number): void
 	shellExecutionComplete(exitDetails: ExitCodeDetails): void
-	getProcessesWithOutput(): RooTerminalProcess[]
+	getProcessesWithOutput(): ClawTerminalProcess[]
 	getUnretrievedOutput(): string
 	getLastCommand(): string
 	cleanCompletedProcessQueue(): void
 }
 
-export interface RooTerminalCallbacks {
-	onLine: (line: string, process: RooTerminalProcess) => void
-	onCompleted: (output: string | undefined, process: RooTerminalProcess) => void | Promise<void>
-	onShellExecutionStarted: (pid: number | undefined, process: RooTerminalProcess) => void
-	onShellExecutionComplete: (details: ExitCodeDetails, process: RooTerminalProcess) => void
-	onNoShellIntegration?: (message: string, process: RooTerminalProcess) => void
+export interface ClawTerminalCallbacks {
+	onLine: (line: string, process: ClawTerminalProcess) => void
+	onCompleted: (output: string | undefined, process: ClawTerminalProcess) => void | Promise<void>
+	onShellExecutionStarted: (pid: number | undefined, process: ClawTerminalProcess) => void
+	onShellExecutionComplete: (details: ExitCodeDetails, process: ClawTerminalProcess) => void
+	onNoShellIntegration?: (message: string, process: ClawTerminalProcess) => void
 }
 
-export interface RooTerminalProcess extends EventEmitter<RooTerminalProcessEvents> {
+export interface ClawTerminalProcess extends EventEmitter<ClawTerminalProcessEvents> {
 	command: string
 	isHot: boolean
 	run: (command: string) => Promise<void>
@@ -39,9 +39,9 @@ export interface RooTerminalProcess extends EventEmitter<RooTerminalProcessEvent
 	trimRetrievedOutput: () => void
 }
 
-export type RooTerminalProcessResultPromise = RooTerminalProcess & Promise<void>
+export type ClawTerminalProcessResultPromise = ClawTerminalProcess & Promise<void>
 
-export interface RooTerminalProcessEvents {
+export interface ClawTerminalProcessEvents {
 	line: [line: string]
 	continue: []
 	completed: [output?: string]
@@ -58,3 +58,10 @@ export interface ExitCodeDetails {
 	signalName?: string
 	coreDumpPossible?: boolean
 }
+
+export type RooTerminalProvider = ClawTerminalProvider
+export type RooTerminal = ClawTerminal
+export type RooTerminalCallbacks = ClawTerminalCallbacks
+export type RooTerminalProcess = ClawTerminalProcess
+export type RooTerminalProcessResultPromise = ClawTerminalProcessResultPromise
+export type RooTerminalProcessEvents = ClawTerminalProcessEvents

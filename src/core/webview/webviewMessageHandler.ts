@@ -2,7 +2,7 @@ import { safeWriteJson } from "../../utils/safeWriteJson"
 import * as path from "path"
 import * as os from "os"
 import * as fs from "fs/promises"
-import { getRooDirectoriesForCwd } from "../../services/roo-config/index.js"
+import { getClawDirectoriesForCwd } from "../../services/claw-config/index.js"
 import pWaitFor from "p-wait-for"
 import * as vscode from "vscode"
 
@@ -62,7 +62,7 @@ import { getOpenAiModels } from "../../api/providers/openai"
 import { getVsCodeLmModels } from "../../api/providers/vscode-lm"
 import { openMention } from "../mentions"
 import { resolveImageMentions } from "../mentions/resolveImageMentions"
-import { RooIgnoreController } from "../ignore/RooIgnoreController"
+import { ClawIgnoreController } from "../ignore/ClawIgnoreController"
 import { getWorkspacePath } from "../../utils/path"
 import { isPathOutsideWorkspace } from "../../utils/pathUtils"
 import { Mode, defaultModeSlug } from "../../shared/modes"
@@ -182,7 +182,7 @@ export const webviewMessageHandler = async (
 			text,
 			images,
 			cwd: getCurrentCwd(),
-			rooIgnoreController: currentTask?.rooIgnoreController,
+			clawIgnoreController: currentTask?.clawIgnoreController,
 			maxImageFileSize: state.maxImageFileSize,
 			maxTotalImageSize: state.maxTotalImageSize,
 		})
@@ -955,6 +955,7 @@ export const webviewMessageHandler = async (
 						ollama: {},
 						lmstudio: {},
 						roo: {},
+						claw: {},
 					}
 
 			const safeGetModels = async (options: GetModelsOptions): Promise<ModelRecord> => {
@@ -993,7 +994,17 @@ export const webviewMessageHandler = async (
 					key: "roo",
 					options: {
 						provider: "roo",
-						baseUrl: process.env.ROO_CODE_PROVIDER_URL ?? "https://api.clawpilot.com/proxy",
+						baseUrl: process.env.CLAW_PILOT_PROVIDER_URL ?? "https://api.clawpilot.com/proxy",
+						apiKey: CloudService.hasInstance()
+							? CloudService.instance.authService?.getSessionToken()
+							: undefined,
+					},
+				},
+				{
+					key: "claw",
+					options: {
+						provider: "claw",
+						baseUrl: process.env.CLAW_PILOT_PROVIDER_URL ?? "https://api.clawpilot.com/proxy",
 						apiKey: CloudService.hasInstance()
 							? CloudService.instance.authService?.getSessionToken()
 							: undefined,
@@ -1113,12 +1124,12 @@ export const webviewMessageHandler = async (
 			}
 			break
 		}
-		case "requestRooModels": {
+		case "requestClawModels": {
 			// Specific handler for Roo models only - flushes cache to ensure fresh auth token is used
 			try {
 				const rooOptions = {
 					provider: "roo" as const,
-					baseUrl: process.env.ROO_CODE_PROVIDER_URL ?? "https://api.clawpilot.com/proxy",
+					baseUrl: process.env.CLAW_PILOT_PROVIDER_URL ?? "https://api.clawpilot.com/proxy",
 					apiKey: CloudService.hasInstance()
 						? CloudService.instance.authService?.getSessionToken()
 						: undefined,
@@ -1146,7 +1157,7 @@ export const webviewMessageHandler = async (
 			}
 			break
 		}
-		case "requestRooCreditBalance": {
+		case "requestClawCreditBalance": {
 			// Fetch Roo credit balance using CloudAPI
 			const requestId = message.requestId
 			try {
@@ -1157,14 +1168,14 @@ export const webviewMessageHandler = async (
 				const balance = await CloudService.instance.cloudAPI.creditBalance()
 
 				provider.postMessageToWebview({
-					type: "rooCreditBalance",
+					type: "clawCreditBalance",
 					requestId,
 					values: { balance },
 				})
 			} catch (error) {
 				const errorMessage = error instanceof Error ? error.message : String(error)
 				provider.postMessageToWebview({
-					type: "rooCreditBalance",
+					type: "clawCreditBalance",
 					requestId,
 					values: { error: errorMessage },
 				})
@@ -1768,26 +1779,26 @@ export const webviewMessageHandler = async (
 					20, // Use default limit, as filtering is now done in the backend
 				)
 
-				// Get the RooIgnoreController from the current task, or create a new one
+				// Get the ClawIgnoreController from the current task, or create a new one
 				const currentTask = provider.getCurrentTask()
-				let rooIgnoreController = currentTask?.rooIgnoreController
-				let tempController: RooIgnoreController | undefined
+				let clawIgnoreController = currentTask?.clawIgnoreController
+				let tempController: ClawIgnoreController | undefined
 
 				// If no current task or no controller, create a temporary one
-				if (!rooIgnoreController) {
-					tempController = new RooIgnoreController(workspacePath)
+				if (!clawIgnoreController) {
+					tempController = new ClawIgnoreController(workspacePath)
 					await tempController.initialize()
-					rooIgnoreController = tempController
+					clawIgnoreController = tempController
 				}
 
 				try {
-					// Get showRooIgnoredFiles setting from state
-					const { showRooIgnoredFiles = false } = (await provider.getState()) ?? {}
+					// Get showClawIgnoredFiles setting from state
+					const { showClawIgnoredFiles = false } = (await provider.getState()) ?? {}
 
-					// Filter results using RooIgnoreController if showRooIgnoredFiles is false
+					// Filter results using ClawIgnoreController if showClawIgnoredFiles is false
 					let filteredResults = results
-					if (!showRooIgnoredFiles && rooIgnoreController) {
-						const allowedPaths = rooIgnoreController.filterPaths(results.map((r) => r.path))
+					if (!showClawIgnoredFiles && clawIgnoreController) {
+						const allowedPaths = clawIgnoreController.filterPaths(results.map((r) => r.path))
 						filteredResults = results.filter((r) => allowedPaths.includes(r.path))
 					}
 
@@ -1824,7 +1835,7 @@ export const webviewMessageHandler = async (
 		}
 		case "refreshCustomTools": {
 			try {
-				const toolDirs = getRooDirectoriesForCwd(getCurrentCwd()).map((dir) => path.join(dir, "tools"))
+				const toolDirs = getClawDirectoriesForCwd(getCurrentCwd()).map((dir) => path.join(dir, "tools"))
 				await customToolRegistry.loadFromDirectories(toolDirs)
 
 				await provider.postMessageToWebview({
@@ -2334,7 +2345,7 @@ export const webviewMessageHandler = async (
 			provider.postMessageToWebview({ type: "action", action: "cloudButtonClicked" })
 			break
 		}
-		case "rooCloudSignIn": {
+		case "clawCloudSignIn": {
 			try {
 				TelemetryService.instance.captureEvent(TelemetryEventName.AUTHENTICATION_INITIATED)
 				// Use provider signup flow if useProviderSignup is explicitly true
@@ -2357,7 +2368,7 @@ export const webviewMessageHandler = async (
 			}
 			break
 		}
-		case "rooCloudSignOut": {
+		case "clawCloudSignOut": {
 			try {
 				await CloudService.instance.logout()
 				await provider.postStateToWebview()
@@ -2408,7 +2419,7 @@ export const webviewMessageHandler = async (
 			}
 			break
 		}
-		case "rooCloudManualUrl": {
+		case "clawCloudManualUrl": {
 			try {
 				if (!message.text) {
 					vscode.window.showErrorMessage(t("common:errors.manual_url_empty"))
@@ -2452,7 +2463,7 @@ export const webviewMessageHandler = async (
 		}
 		case "clearCloudAuthSkipModel": {
 			// Clear the flag that indicates auth completed without model selection
-			await provider.context.globalState.update("roo-auth-skip-model", undefined)
+			await provider.context.globalState.update("claw-auth-skip-model", undefined)
 			await provider.postStateToWebview()
 			break
 		}

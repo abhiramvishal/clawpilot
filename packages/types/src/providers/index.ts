@@ -15,7 +15,7 @@ export * from "./openai-codex-rate-limits.js"
 export * from "./openrouter.js"
 export * from "./qwen-code.js"
 export * from "./requesty.js"
-export * from "./roo.js"
+export * from "./claw.js"
 export * from "./sambanova.js"
 export * from "./unbound.js"
 export * from "./vertex.js"
@@ -38,7 +38,7 @@ import { openAiCodexDefaultModelId } from "./openai-codex.js"
 import { openRouterDefaultModelId } from "./openrouter.js"
 import { qwenCodeDefaultModelId } from "./qwen-code.js"
 import { requestyDefaultModelId } from "./requesty.js"
-import { rooDefaultModelId } from "./roo.js"
+import { rooDefaultModelId } from "./claw.js"
 import { sambaNovaDefaultModelId } from "./sambanova.js"
 import { unboundDefaultModelId } from "./unbound.js"
 import { vertexDefaultModelId } from "./vertex.js"
@@ -49,7 +49,7 @@ import { internationalZAiDefaultModelId, mainlandZAiDefaultModelId } from "./zai
 import { minimaxDefaultModelId } from "./minimax.js"
 
 // Import the ProviderName type from provider-settings to avoid duplication
-import type { ProviderName } from "../provider-settings.js"
+import type { ProviderNameWithRetired } from "../provider-settings.js"
 
 /**
  * Get the default model ID for a given provider.
@@ -57,7 +57,7 @@ import type { ProviderName } from "../provider-settings.js"
  * Used as a fallback when provider models are still loading.
  */
 export function getProviderDefaultModelId(
-	provider: ProviderName,
+	provider: ProviderNameWithRetired,
 	options: { isChina?: boolean } = { isChina: false },
 ): string {
 	switch (provider) {
@@ -103,7 +103,10 @@ export function getProviderDefaultModelId(
 			return sambaNovaDefaultModelId
 		case "fireworks":
 			return fireworksDefaultModelId
+		case "claw":
+			return rooDefaultModelId
 		case "roo":
+			// Legacy fallthrough: treat "roo" as "claw"
 			return rooDefaultModelId
 		case "qwen-code":
 			return qwenCodeDefaultModelId

@@ -72,7 +72,7 @@ export interface ExtensionMessage {
 		| "condenseTaskContextStarted"
 		| "condenseTaskContextResponse"
 		| "singleRouterModelFetchResponse"
-		| "rooCreditBalance"
+		| "clawCreditBalance"
 		| "indexingStatusUpdate"
 		| "indexCleared"
 		| "codebaseIndexConfig"
@@ -325,7 +325,7 @@ export type ExtensionState = Pick<
 	checkpointTimeout: number // Timeout for checkpoint initialization in seconds (default: 15)
 	maxOpenTabsContext: number // Maximum number of VSCode open tabs to include in context (0-500)
 	maxWorkspaceFiles: number // Maximum number of files to include in current working directory details (0-500)
-	showRooIgnoredFiles: boolean // Whether to show .rooignore'd files in listings
+	showClawIgnoredFiles: boolean // Whether to show .clawignore'd files in listings
 	enableSubfolderRules: boolean // Whether to load rules from subdirectories
 	maxReadFileLine?: number // Maximum line limit for read_file tool (-1 for default)
 	maxImageFileSize: number // Maximum size of image files to process in MB
@@ -441,8 +441,8 @@ export interface WebviewMessage {
 		| "requestOpenAiModels"
 		| "requestOllamaModels"
 		| "requestLmStudioModels"
-		| "requestRooModels"
-		| "requestRooCreditBalance"
+		| "requestClawModels"
+		| "requestClawCreditBalance"
 		| "requestVsCodeLmModels"
 		| "openImage"
 		| "saveImage"
@@ -501,10 +501,10 @@ export interface WebviewMessage {
 		| "lockApiConfigAcrossModes"
 		| "clearCloudAuthSkipModel"
 		| "cloudButtonClicked"
-		| "rooCloudSignIn"
+		| "clawCloudSignIn"
 		| "cloudLandingPageSignIn"
-		| "rooCloudSignOut"
-		| "rooCloudManualUrl"
+		| "clawCloudSignOut"
+		| "clawCloudManualUrl"
 		| "openAiCodexSignIn"
 		| "openAiCodexSignOut"
 		| "switchOrganization"
@@ -646,7 +646,7 @@ export interface WebviewMessage {
 	upsellId?: string // For dismissUpsell
 	list?: string[] // For dismissedUpsells response
 	organizationId?: string | null // For organization switching
-	useProviderSignup?: boolean // For rooCloudSignIn to use provider signup flow
+	useProviderSignup?: boolean // For clawCloudSignIn to use provider signup flow
 	codeIndexSettings?: {
 		// Global state settings
 		codebaseIndexEnabled: boolean

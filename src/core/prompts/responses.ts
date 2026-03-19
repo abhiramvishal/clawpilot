@@ -1,8 +1,8 @@
 import { Anthropic } from "@anthropic-ai/sdk"
 import * as path from "path"
 import * as diff from "diff"
-import { RooIgnoreController, LOCK_TEXT_SYMBOL } from "../ignore/RooIgnoreController"
-import { RooProtectedController } from "../protect/RooProtectedController"
+import { ClawIgnoreController, LOCK_TEXT_SYMBOL } from "../ignore/ClawIgnoreController"
+import { ClawProtectedController } from "../protect/ClawProtectedController"
 
 export const formatResponse = {
 	toolDenied: () =>
@@ -30,13 +30,13 @@ export const formatResponse = {
 			error,
 		}),
 
-	rooIgnoreError: (path: string) =>
+	clawIgnoreError: (path: string) =>
 		JSON.stringify({
 			status: "error",
 			type: "access_denied",
-			message: "Access blocked by .rooignore",
+			message: "Access blocked by .clawignore",
 			path,
-			suggestion: "Try to continue without this file, or ask the user to update the .rooignore file",
+			suggestion: "Try to continue without this file, or ask the user to update the .clawignore file",
 		}),
 
 	noToolsUsed: () => {
@@ -118,9 +118,9 @@ Otherwise, if you have not completed the task and do not need additional informa
 		absolutePath: string,
 		files: string[],
 		didHitLimit: boolean,
-		rooIgnoreController: RooIgnoreController | undefined,
-		showRooIgnoredFiles: boolean,
-		rooProtectedController?: RooProtectedController,
+		clawIgnoreController: ClawIgnoreController | undefined,
+		showClawIgnoredFiles: boolean,
+		rooProtectedController?: ClawProtectedController,
 	): string => {
 		const sorted = files
 			.map((file) => {
@@ -152,18 +152,18 @@ Otherwise, if you have not completed the task and do not need additional informa
 
 		let rooIgnoreParsed: string[] = sorted
 
-		if (rooIgnoreController) {
+		if (clawIgnoreController) {
 			rooIgnoreParsed = []
 			for (const filePath of sorted) {
 				// path is relative to absolute path, not cwd
 				// validateAccess expects either path relative to cwd or absolute path
 				// otherwise, for validating against ignore patterns like "assets/icons", we would end up with just "icons", which would result in the path not being ignored.
 				const absoluteFilePath = path.resolve(absolutePath, filePath)
-				const isIgnored = !rooIgnoreController.validateAccess(absoluteFilePath)
+				const isIgnored = !clawIgnoreController.validateAccess(absoluteFilePath)
 
 				if (isIgnored) {
 					// If file is ignored and we're not showing ignored files, skip it
-					if (!showRooIgnoredFiles) {
+					if (!showClawIgnoredFiles) {
 						continue
 					}
 					// Otherwise, mark it with a lock symbol

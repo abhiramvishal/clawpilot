@@ -35,9 +35,10 @@ export async function getEnvironmentDetails(cline: Task, includeFileDetails: boo
 		.map((absolutePath) => path.relative(cline.cwd, absolutePath))
 		.slice(0, maxWorkspaceFiles)
 
-	// Filter paths through rooIgnoreController
-	const allowedVisibleFiles = cline.rooIgnoreController
-		? cline.rooIgnoreController.filterPaths(visibleFilePaths)
+	// Filter paths through clawIgnoreController
+	const clawIgnoreController = cline.clawIgnoreController
+	const allowedVisibleFiles = clawIgnoreController
+		? clawIgnoreController.filterPaths(visibleFilePaths)
 		: visibleFilePaths.map((p) => p.toPosix()).join("\n")
 
 	if (allowedVisibleFiles) {
@@ -55,9 +56,9 @@ export async function getEnvironmentDetails(cline: Task, includeFileDetails: boo
 		.map((absolutePath) => path.relative(cline.cwd, absolutePath).toPosix())
 		.slice(0, maxTabs)
 
-	// Filter paths through rooIgnoreController
-	const allowedOpenTabs = cline.rooIgnoreController
-		? cline.rooIgnoreController.filterPaths(openTabPaths)
+	// Filter paths through clawIgnoreController
+	const allowedOpenTabs = clawIgnoreController
+		? clawIgnoreController.filterPaths(openTabPaths)
 		: openTabPaths.map((p) => p.toPosix()).join("\n")
 
 	if (allowedOpenTabs) {
@@ -242,14 +243,14 @@ export async function getEnvironmentDetails(cline: Task, includeFileDetails: boo
 				details += "(Workspace files context disabled. Use list_files to explore if needed.)"
 			} else {
 				const [files, didHitLimit] = await listFiles(cline.cwd, true, maxFiles)
-				const { showRooIgnoredFiles = false } = state ?? {}
+				const { showClawIgnoredFiles = false } = state ?? {}
 
 				const result = formatResponse.formatFilesList(
 					cline.cwd,
 					files,
 					didHitLimit,
-					cline.rooIgnoreController,
-					showRooIgnoredFiles,
+					clawIgnoreController,
+					showClawIgnoredFiles,
 				)
 
 				details += result

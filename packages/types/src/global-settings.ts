@@ -89,7 +89,7 @@ export const globalSettingsSchema = z.object({
 	dismissedUpsells: z.array(z.string()).optional(),
 
 	// Image generation settings (experimental) - flattened for simplicity
-	imageGenerationProvider: z.enum(["openrouter", "roo"]).optional(),
+	imageGenerationProvider: z.enum(["openrouter", "claw"]).optional(),
 	openRouterImageApiKey: z.string().optional(),
 	openRouterImageGenerationSelectedModel: z.string().optional(),
 
@@ -162,7 +162,7 @@ export const globalSettingsSchema = z.object({
 
 	maxOpenTabsContext: z.number().optional(),
 	maxWorkspaceFiles: z.number().optional(),
-	showRooIgnoredFiles: z.boolean().optional(),
+	showClawIgnoredFiles: z.boolean().optional(),
 	enableSubfolderRules: z.boolean().optional(),
 	maxImageFileSize: z.number().optional(),
 	maxTotalImageSize: z.number().optional(),
@@ -242,7 +242,8 @@ export const GLOBAL_SETTINGS_KEYS = globalSettingsSchema.keyof().options
  * ClawPilotSettings
  */
 
-export const rooCodeSettingsSchema = providerSettingsSchema.merge(globalSettingsSchema)
+export const clawPilotSettingsSchema = providerSettingsSchema.merge(globalSettingsSchema)
+export { clawPilotSettingsSchema as rooCodeSettingsSchema }
 
 export type ClawPilotSettings = GlobalSettings & ProviderSettings
 
@@ -365,7 +366,7 @@ export const EVALS_SETTINGS: ClawPilotSettings = {
 	maxOpenTabsContext: 20,
 	maxWorkspaceFiles: 200,
 	maxGitStatusFiles: 20,
-	showRooIgnoredFiles: true,
+	showClawIgnoredFiles: true,
 
 	includeDiagnosticMessages: true,
 	maxDiagnosticMessages: 50,

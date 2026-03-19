@@ -84,9 +84,9 @@ vi.mock("vscode", () => ({
 const GLOBAL_ROO_DIR = p(HOME_DIR, ".roo")
 const GLOBAL_AGENTS_DIR = p(HOME_DIR, ".agents")
 
-// Mock roo-config
-vi.mock("../../roo-config", () => ({
-	getGlobalRooDirectory: () => GLOBAL_ROO_DIR,
+// Mock claw-config
+vi.mock("../../claw-config", () => ({
+	getGlobalClawDirectory: () => GLOBAL_ROO_DIR,
 	getGlobalAgentsDirectory: () => GLOBAL_AGENTS_DIR,
 	getProjectAgentsDirectoryForCwd: (cwd: string) => p(cwd, ".agents"),
 	directoryExists: mockDirectoryExists,

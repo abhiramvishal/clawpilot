@@ -849,9 +849,9 @@ describe("Context Management", () => {
 	})
 
 	/**
-	 * Tests for filesReadByRoo being passed to summarizeConversation
+	 * Tests for filesReadByClaw being passed to summarizeConversation
 	 */
-	describe("filesReadByRoo parameters", () => {
+	describe("filesReadByClaw parameters", () => {
 		const createModelInfo = (contextWindow: number, maxTokens?: number): ModelInfo => ({
 			contextWindow,
 			supportsPromptCache: true,
@@ -866,7 +866,7 @@ describe("Context Management", () => {
 			{ role: "user", content: "Fifth message" },
 		]
 
-		it("should pass filesReadByRoo, cwd, and rooIgnoreController to summarizeConversation when provided", async () => {
+		it("should pass filesReadByClaw, cwd, and clawIgnoreController to summarizeConversation when provided", async () => {
 			// Mock the summarizeConversation function
 			const mockSummary = "Summary with folded context"
 			const mockCost = 0.05
@@ -892,11 +892,11 @@ describe("Context Management", () => {
 				{ ...messages[messages.length - 1], content: "" },
 			]
 
-			const filesReadByRoo = ["src/test.ts", "src/utils.ts"]
+			const filesReadByClaw = ["src/test.ts", "src/utils.ts"]
 			const cwd = "/test/project"
 			const mockRooIgnoreController = {
 				filterPaths: vi.fn(),
-			} as unknown as import("../../ignore/RooIgnoreController").RooIgnoreController
+			} as unknown as import("../../ignore/ClawIgnoreController").ClawIgnoreController
 
 			const result = await manageContext({
 				messages: messagesWithSmallContent,
@@ -910,21 +910,21 @@ describe("Context Management", () => {
 				taskId,
 				profileThresholds: {},
 				currentProfileId: "default",
-				filesReadByRoo,
+				filesReadByClaw,
 				cwd,
-				rooIgnoreController: mockRooIgnoreController,
+				clawIgnoreController: mockRooIgnoreController,
 			})
 
-			// Verify summarizeConversation was called with filesReadByRoo, cwd, and rooIgnoreController
+			// Verify summarizeConversation was called with filesReadByClaw, cwd, and clawIgnoreController
 			expect(summarizeSpy).toHaveBeenCalledWith({
 				messages: messagesWithSmallContent,
 				apiHandler: mockApiHandler,
 				systemPrompt: "System prompt",
 				taskId,
 				isAutomaticTrigger: true,
-				filesReadByRoo,
+				filesReadByClaw,
 				cwd,
-				rooIgnoreController: mockRooIgnoreController,
+				clawIgnoreController: mockRooIgnoreController,
 			})
 
 			// Verify the result contains the summary information
@@ -939,7 +939,7 @@ describe("Context Management", () => {
 			summarizeSpy.mockRestore()
 		})
 
-		it("should pass undefined filesReadByRoo parameters when not provided", async () => {
+		it("should pass undefined filesReadByClaw parameters when not provided", async () => {
 			// Mock the summarizeConversation function
 			const mockSummary = "Summary without folded context"
 			const mockCost = 0.03
@@ -977,7 +977,7 @@ describe("Context Management", () => {
 				taskId,
 				profileThresholds: {},
 				currentProfileId: "default",
-				// filesReadByRoo, cwd, rooIgnoreController are NOT provided
+				// filesReadByClaw, cwd, clawIgnoreController are NOT provided
 			})
 
 			// Verify summarizeConversation was called with undefined parameters
@@ -999,7 +999,7 @@ describe("Context Management", () => {
 			summarizeSpy.mockRestore()
 		})
 
-		it("should pass empty array filesReadByRoo when provided as empty", async () => {
+		it("should pass empty array filesReadByClaw when provided as empty", async () => {
 			// Mock the summarizeConversation function
 			const mockSummary = "Summary with empty file list"
 			const mockCost = 0.04
@@ -1037,7 +1037,7 @@ describe("Context Management", () => {
 				taskId,
 				profileThresholds: {},
 				currentProfileId: "default",
-				filesReadByRoo: [], // Empty array
+				filesReadByClaw: [], // Empty array
 				cwd: "/test/project",
 			})
 
@@ -1048,7 +1048,7 @@ describe("Context Management", () => {
 				systemPrompt: "System prompt",
 				taskId,
 				isAutomaticTrigger: true,
-				filesReadByRoo: [],
+				filesReadByClaw: [],
 				cwd: "/test/project",
 			})
 

@@ -161,7 +161,7 @@ export type TelemetryEvent = {
  * ClawPilotTelemetryEvent
  */
 
-export const rooCodeTelemetryEventSchema = z.discriminatedUnion("type", [
+export const clawPilotTelemetryEventSchema = z.discriminatedUnion("type", [
 	z.object({
 		type: z.enum([
 			TelemetryEventName.TASK_CREATED,
@@ -237,7 +237,7 @@ export const rooCodeTelemetryEventSchema = z.discriminatedUnion("type", [
 	}),
 ])
 
-export type ClawPilotTelemetryEvent = z.infer<typeof rooCodeTelemetryEventSchema>
+export type ClawPilotTelemetryEvent = z.infer<typeof clawPilotTelemetryEventSchema>
 
 /**
  * TelemetryEventSubscription
@@ -486,7 +486,7 @@ export function extractApiProviderErrorProperties(error: ApiProviderError): Reco
 export type ConsecutiveMistakeReason = "no_tools_used" | "tool_repetition" | "unknown"
 
 /**
- * Error class for "Roo is having trouble" consecutive mistake scenarios.
+ * Error class for "ClawPilot is having trouble" consecutive mistake scenarios.
  * Triggered when the task reaches the configured consecutive mistake limit.
  * Used for structured exception tracking via PostHog.
  */
@@ -533,3 +533,5 @@ export function extractConsecutiveMistakeErrorProperties(error: ConsecutiveMista
 		...(error.modelId !== undefined && { modelId: error.modelId }),
 	}
 }
+
+export { clawPilotTelemetryEventSchema as rooCodeTelemetryEventSchema }

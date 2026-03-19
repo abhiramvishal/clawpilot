@@ -37,8 +37,8 @@ export async function processUserContentMentions({
 	userContent,
 	cwd,
 	fileContextTracker,
-	rooIgnoreController,
-	showRooIgnoredFiles = false,
+	clawIgnoreController,
+	showClawIgnoredFiles = false,
 	includeDiagnosticMessages = true,
 	maxDiagnosticMessages = 50,
 	skillsManager,
@@ -47,8 +47,8 @@ export async function processUserContentMentions({
 	userContent: Anthropic.Messages.ContentBlockParam[]
 	cwd: string
 	fileContextTracker: FileContextTracker
-	rooIgnoreController?: any
-	showRooIgnoredFiles?: boolean
+	clawIgnoreController?: any
+	showClawIgnoredFiles?: boolean
 	includeDiagnosticMessages?: boolean
 	maxDiagnosticMessages?: number
 	skillsManager?: SkillLookup
@@ -70,8 +70,8 @@ export async function processUserContentMentions({
 							block.text,
 							cwd,
 							fileContextTracker,
-							rooIgnoreController,
-							showRooIgnoredFiles,
+							clawIgnoreController,
+							showClawIgnoredFiles,
 							includeDiagnosticMessages,
 							maxDiagnosticMessages,
 							skillsManager,
@@ -115,8 +115,8 @@ export async function processUserContentMentions({
 								block.content,
 								cwd,
 								fileContextTracker,
-								rooIgnoreController,
-								showRooIgnoredFiles,
+								clawIgnoreController,
+								showClawIgnoredFiles,
 								includeDiagnosticMessages,
 								maxDiagnosticMessages,
 								skillsManager,
@@ -166,8 +166,8 @@ export async function processUserContentMentions({
 											contentBlock.text,
 											cwd,
 											fileContextTracker,
-											rooIgnoreController,
-											showRooIgnoredFiles,
+											clawIgnoreController,
+											showClawIgnoredFiles,
 											includeDiagnosticMessages,
 											maxDiagnosticMessages,
 											skillsManager,

@@ -95,7 +95,7 @@ export const organizationDefaultSettingsSchema = globalSettingsSchema
 		enableCheckpoints: true,
 		maxOpenTabsContext: true,
 		maxWorkspaceFiles: true,
-		showRooIgnoredFiles: true,
+		showClawIgnoredFiles: true,
 		terminalCommandDelay: true,
 		terminalShellIntegrationDisabled: true,
 		terminalShellIntegrationTimeout: true,

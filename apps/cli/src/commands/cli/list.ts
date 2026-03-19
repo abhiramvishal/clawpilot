@@ -106,14 +106,14 @@ function outputSessionsText(sessions: SessionLike[]): void {
 async function createListHost(options: BaseListOptions, hostOptions: ListHostOptions): Promise<ExtensionHost> {
 	const workspacePath = resolveWorkspacePath(options.workspace)
 	const extensionPath = resolveExtensionPath(options.extension)
-	const apiKey = options.apiKey || (await loadToken()) || getApiKeyFromEnv("roo")
+	const apiKey = options.apiKey || (await loadToken()) || getApiKeyFromEnv("claw")
 
 	const extensionHostOptions: ExtensionHostOptions = {
 		mode: "code",
 		reasoningEffort: undefined,
 		user: null,
-		provider: "roo",
-		model: getProviderDefaultModelId("roo"),
+		provider: "claw",
+		model: getProviderDefaultModelId("claw"),
 		apiKey,
 		workspacePath,
 		extensionPath,
@@ -215,14 +215,14 @@ function requestModes(host: ExtensionHost): Promise<ModeLike[]> {
 	})
 }
 
-function requestRooModels(host: ExtensionHost): Promise<ModelRecord> {
-	return requestFromExtension(host, "requestRooModels", (message) => {
+function requestClawModels(host: ExtensionHost): Promise<ModelRecord> {
+	return requestFromExtension(host, "requestClawModels", (message) => {
 		if (message.type !== "singleRouterModelFetchResponse") {
 			return undefined
 		}
 
 		const values = isRecord(message.values) ? message.values : undefined
-		if (values?.provider !== "roo") {
+		if (values?.provider !== "claw") {
 			return undefined
 		}
 
@@ -230,7 +230,7 @@ function requestRooModels(host: ExtensionHost): Promise<ModelRecord> {
 			const errorMessage =
 				typeof message.error === "string" && message.error.length > 0
 					? message.error
-					: "Failed to fetch Roo models"
+					: "Failed to fetch Claw models"
 			throw new Error(errorMessage)
 		}
 
@@ -299,7 +299,7 @@ export async function listModels(options: BaseListOptions): Promise<void> {
 	const format = parseFormat(options.format)
 
 	await withHostAndSignalHandlers(options, { ephemeral: true }, async (host) => {
-		const models = await requestRooModels(host)
+		const models = await requestClawModels(host)
 
 		if (format === "json") {
 			outputJson({ models })

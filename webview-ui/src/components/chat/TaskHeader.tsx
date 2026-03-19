@@ -8,8 +8,8 @@ import prettyBytes from "pretty-bytes"
 
 import type { ClineMessage } from "@clawpilot/types"
 
-import { getModelMaxOutputTokens } from "@roo/api"
-import { findLastIndex } from "@roo/array"
+import { getModelMaxOutputTokens } from "@claw/api"
+import { findLastIndex } from "@claw/array"
 
 import { formatLargeNumber } from "@src/utils/format"
 import { cn } from "@src/lib/utils"

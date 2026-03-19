@@ -10,7 +10,7 @@ import {
 	mcpExecutionStatusSchema,
 } from "@clawpilot/types"
 
-import { safeJsonParse } from "@roo/core"
+import { safeJsonParse } from "@claw/core"
 
 import { cn } from "@src/lib/utils"
 import { Button } from "@src/components/ui"

@@ -60,7 +60,7 @@ export enum ClawPilotEventName {
  * ClawPilotEvents
  */
 
-export const rooCodeEventsSchema = z.object({
+export const clawPilotEventsSchema = z.object({
 	[ClawPilotEventName.TaskCreated]: z.tuple([z.string()]),
 
 	[ClawPilotEventName.TaskStarted]: z.tuple([z.string()]),
@@ -130,7 +130,7 @@ export const rooCodeEventsSchema = z.object({
 	[ClawPilotEventName.ModelsResponse]: z.tuple([z.record(z.string(), modelInfoSchema)]),
 })
 
-export type ClawPilotEvents = z.infer<typeof rooCodeEventsSchema>
+export type ClawPilotEvents = z.infer<typeof clawPilotEventsSchema>
 
 /**
  * TaskEvent
@@ -140,137 +140,137 @@ export const taskEventSchema = z.discriminatedUnion("eventName", [
 	// Task Provider Lifecycle
 	z.object({
 		eventName: z.literal(ClawPilotEventName.TaskCreated),
-		payload: rooCodeEventsSchema.shape[ClawPilotEventName.TaskCreated],
+		payload: clawPilotEventsSchema.shape[ClawPilotEventName.TaskCreated],
 		taskId: z.number().optional(),
 	}),
 
 	// Task Lifecycle
 	z.object({
 		eventName: z.literal(ClawPilotEventName.TaskStarted),
-		payload: rooCodeEventsSchema.shape[ClawPilotEventName.TaskStarted],
+		payload: clawPilotEventsSchema.shape[ClawPilotEventName.TaskStarted],
 		taskId: z.number().optional(),
 	}),
 	z.object({
 		eventName: z.literal(ClawPilotEventName.TaskCompleted),
-		payload: rooCodeEventsSchema.shape[ClawPilotEventName.TaskCompleted],
+		payload: clawPilotEventsSchema.shape[ClawPilotEventName.TaskCompleted],
 		taskId: z.number().optional(),
 	}),
 	z.object({
 		eventName: z.literal(ClawPilotEventName.TaskAborted),
-		payload: rooCodeEventsSchema.shape[ClawPilotEventName.TaskAborted],
+		payload: clawPilotEventsSchema.shape[ClawPilotEventName.TaskAborted],
 		taskId: z.number().optional(),
 	}),
 	z.object({
 		eventName: z.literal(ClawPilotEventName.TaskFocused),
-		payload: rooCodeEventsSchema.shape[ClawPilotEventName.TaskFocused],
+		payload: clawPilotEventsSchema.shape[ClawPilotEventName.TaskFocused],
 		taskId: z.number().optional(),
 	}),
 	z.object({
 		eventName: z.literal(ClawPilotEventName.TaskUnfocused),
-		payload: rooCodeEventsSchema.shape[ClawPilotEventName.TaskUnfocused],
+		payload: clawPilotEventsSchema.shape[ClawPilotEventName.TaskUnfocused],
 		taskId: z.number().optional(),
 	}),
 	z.object({
 		eventName: z.literal(ClawPilotEventName.TaskActive),
-		payload: rooCodeEventsSchema.shape[ClawPilotEventName.TaskActive],
+		payload: clawPilotEventsSchema.shape[ClawPilotEventName.TaskActive],
 		taskId: z.number().optional(),
 	}),
 	z.object({
 		eventName: z.literal(ClawPilotEventName.TaskInteractive),
-		payload: rooCodeEventsSchema.shape[ClawPilotEventName.TaskInteractive],
+		payload: clawPilotEventsSchema.shape[ClawPilotEventName.TaskInteractive],
 		taskId: z.number().optional(),
 	}),
 	z.object({
 		eventName: z.literal(ClawPilotEventName.TaskResumable),
-		payload: rooCodeEventsSchema.shape[ClawPilotEventName.TaskResumable],
+		payload: clawPilotEventsSchema.shape[ClawPilotEventName.TaskResumable],
 		taskId: z.number().optional(),
 	}),
 	z.object({
 		eventName: z.literal(ClawPilotEventName.TaskIdle),
-		payload: rooCodeEventsSchema.shape[ClawPilotEventName.TaskIdle],
+		payload: clawPilotEventsSchema.shape[ClawPilotEventName.TaskIdle],
 		taskId: z.number().optional(),
 	}),
 
 	// Subtask Lifecycle
 	z.object({
 		eventName: z.literal(ClawPilotEventName.TaskPaused),
-		payload: rooCodeEventsSchema.shape[ClawPilotEventName.TaskPaused],
+		payload: clawPilotEventsSchema.shape[ClawPilotEventName.TaskPaused],
 		taskId: z.number().optional(),
 	}),
 	z.object({
 		eventName: z.literal(ClawPilotEventName.TaskUnpaused),
-		payload: rooCodeEventsSchema.shape[ClawPilotEventName.TaskUnpaused],
+		payload: clawPilotEventsSchema.shape[ClawPilotEventName.TaskUnpaused],
 		taskId: z.number().optional(),
 	}),
 	z.object({
 		eventName: z.literal(ClawPilotEventName.TaskSpawned),
-		payload: rooCodeEventsSchema.shape[ClawPilotEventName.TaskSpawned],
+		payload: clawPilotEventsSchema.shape[ClawPilotEventName.TaskSpawned],
 		taskId: z.number().optional(),
 	}),
 	z.object({
 		eventName: z.literal(ClawPilotEventName.TaskDelegated),
-		payload: rooCodeEventsSchema.shape[ClawPilotEventName.TaskDelegated],
+		payload: clawPilotEventsSchema.shape[ClawPilotEventName.TaskDelegated],
 		taskId: z.number().optional(),
 	}),
 	z.object({
 		eventName: z.literal(ClawPilotEventName.TaskDelegationCompleted),
-		payload: rooCodeEventsSchema.shape[ClawPilotEventName.TaskDelegationCompleted],
+		payload: clawPilotEventsSchema.shape[ClawPilotEventName.TaskDelegationCompleted],
 		taskId: z.number().optional(),
 	}),
 	z.object({
 		eventName: z.literal(ClawPilotEventName.TaskDelegationResumed),
-		payload: rooCodeEventsSchema.shape[ClawPilotEventName.TaskDelegationResumed],
+		payload: clawPilotEventsSchema.shape[ClawPilotEventName.TaskDelegationResumed],
 		taskId: z.number().optional(),
 	}),
 
 	// Task Execution
 	z.object({
 		eventName: z.literal(ClawPilotEventName.Message),
-		payload: rooCodeEventsSchema.shape[ClawPilotEventName.Message],
+		payload: clawPilotEventsSchema.shape[ClawPilotEventName.Message],
 		taskId: z.number().optional(),
 	}),
 	z.object({
 		eventName: z.literal(ClawPilotEventName.TaskModeSwitched),
-		payload: rooCodeEventsSchema.shape[ClawPilotEventName.TaskModeSwitched],
+		payload: clawPilotEventsSchema.shape[ClawPilotEventName.TaskModeSwitched],
 		taskId: z.number().optional(),
 	}),
 	z.object({
 		eventName: z.literal(ClawPilotEventName.TaskAskResponded),
-		payload: rooCodeEventsSchema.shape[ClawPilotEventName.TaskAskResponded],
+		payload: clawPilotEventsSchema.shape[ClawPilotEventName.TaskAskResponded],
 		taskId: z.number().optional(),
 	}),
 	z.object({
 		eventName: z.literal(ClawPilotEventName.QueuedMessagesUpdated),
-		payload: rooCodeEventsSchema.shape[ClawPilotEventName.QueuedMessagesUpdated],
+		payload: clawPilotEventsSchema.shape[ClawPilotEventName.QueuedMessagesUpdated],
 		taskId: z.number().optional(),
 	}),
 
 	// Task Analytics
 	z.object({
 		eventName: z.literal(ClawPilotEventName.TaskToolFailed),
-		payload: rooCodeEventsSchema.shape[ClawPilotEventName.TaskToolFailed],
+		payload: clawPilotEventsSchema.shape[ClawPilotEventName.TaskToolFailed],
 		taskId: z.number().optional(),
 	}),
 	z.object({
 		eventName: z.literal(ClawPilotEventName.TaskTokenUsageUpdated),
-		payload: rooCodeEventsSchema.shape[ClawPilotEventName.TaskTokenUsageUpdated],
+		payload: clawPilotEventsSchema.shape[ClawPilotEventName.TaskTokenUsageUpdated],
 		taskId: z.number().optional(),
 	}),
 
 	// Query Responses
 	z.object({
 		eventName: z.literal(ClawPilotEventName.CommandsResponse),
-		payload: rooCodeEventsSchema.shape[ClawPilotEventName.CommandsResponse],
+		payload: clawPilotEventsSchema.shape[ClawPilotEventName.CommandsResponse],
 		taskId: z.number().optional(),
 	}),
 	z.object({
 		eventName: z.literal(ClawPilotEventName.ModesResponse),
-		payload: rooCodeEventsSchema.shape[ClawPilotEventName.ModesResponse],
+		payload: clawPilotEventsSchema.shape[ClawPilotEventName.ModesResponse],
 		taskId: z.number().optional(),
 	}),
 	z.object({
 		eventName: z.literal(ClawPilotEventName.ModelsResponse),
-		payload: rooCodeEventsSchema.shape[ClawPilotEventName.ModelsResponse],
+		payload: clawPilotEventsSchema.shape[ClawPilotEventName.ModelsResponse],
 		taskId: z.number().optional(),
 	}),
 
@@ -288,3 +288,5 @@ export const taskEventSchema = z.discriminatedUnion("eventName", [
 ])
 
 export type TaskEvent = z.infer<typeof taskEventSchema>
+
+export { clawPilotEventsSchema as rooCodeEventsSchema }

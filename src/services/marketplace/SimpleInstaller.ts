@@ -2,7 +2,12 @@ import * as vscode from "vscode"
 import * as path from "path"
 import * as fs from "fs/promises"
 import * as yaml from "yaml"
-import type { MarketplaceItem, MarketplaceItemType, InstallMarketplaceItemOptions, McpParameter } from "@clawpilot/types"
+import type {
+	MarketplaceItem,
+	MarketplaceItemType,
+	InstallMarketplaceItemOptions,
+	McpParameter,
+} from "@clawpilot/types"
 import { GlobalFileNames } from "../../shared/globalFileNames"
 import { ensureSettingsDirectoryExists } from "../../utils/globalContext"
 import type { CustomModesManager } from "../../core/config/CustomModesManager"
@@ -237,7 +242,7 @@ export class SimpleInstaller {
 				existingData = { mcpServers: {} }
 			} else if (error instanceof SyntaxError) {
 				// JSON parsing error - don't overwrite the file!
-				const fileName = target === "project" ? ".roo/mcp.json" : "mcp-settings.json"
+				const fileName = target === "project" ? ".claw/mcp.json" : "mcp-settings.json"
 				throw new Error(
 					`Cannot install MCP server: The ${fileName} file contains invalid JSON. ` +
 						`Please fix the syntax errors in the file before installing new servers.`,

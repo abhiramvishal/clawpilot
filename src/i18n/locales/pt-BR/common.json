@@ -1,6 +1,6 @@
 {
 	"input": {
-		"task_prompt": "O que você quer que o Roo faça?",
+		"task_prompt": "O que você quer que o Claw faça?",
 		"task_placeholder": "Digite sua tarefa aqui"
 	},
 	"extension": {
@@ -115,8 +115,8 @@
 			"thinking_complete_safety": "(Pensamento concluído, mas a saída foi bloqueada devido às configurações de segurança.)",
 			"thinking_complete_recitation": "(Pensamento concluído, mas a saída foi bloqueada devido à verificação de recitação.)"
 		},
-		"roo": {
-			"authenticationRequired": "O provedor Roo requer autenticação na nuvem. Faça login no ClawPilot Cloud."
+		"claw": {
+			"authenticationRequired": "O provedor Claw requer autenticação na nuvem. Faça login no ClawPilot Cloud."
 		},
 		"api": {
 			"invalidKeyInvalidChars": "A chave API contém caracteres inválidos.",

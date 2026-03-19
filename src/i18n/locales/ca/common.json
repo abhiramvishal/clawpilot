@@ -1,6 +1,6 @@
 {
 	"input": {
-		"task_prompt": "Què vols que faci Roo?",
+		"task_prompt": "Què vols que faci Claw?",
 		"task_placeholder": "Escriu la teva tasca aquí"
 	},
 	"extension": {
@@ -114,8 +114,8 @@
 			"thinking_complete_safety": "(Pensament completat, però la sortida s'ha bloquejat a causa de la configuració de seguretat.)",
 			"thinking_complete_recitation": "(Pensament completat, però la sortida s'ha bloquejat a causa de la comprovació de recitació.)"
 		},
-		"roo": {
-			"authenticationRequired": "El proveïdor Roo requereix autenticació al núvol. Si us plau, inicieu sessió a ClawPilot Cloud."
+		"claw": {
+			"authenticationRequired": "El proveïdor Claw requereix autenticació al núvol. Si us plau, inicieu sessió a ClawPilot Cloud."
 		},
 		"openAiCodex": {
 			"notAuthenticated": "No esteu autenticat amb OpenAI Codex. Si us plau, inicieu sessió mitjançant el flux OAuth d'OpenAI Codex.",

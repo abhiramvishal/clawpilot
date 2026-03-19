@@ -18,7 +18,7 @@ vi.mock("@/i18n/TranslationContext", () => {
 	}
 })
 
-vi.mock("@roo/package", () => ({
+vi.mock("@claw/package", () => ({
 	Package: {
 		version: "1.0.0",
 		sha: "abc12345",

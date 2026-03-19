@@ -105,7 +105,7 @@ import { TemperatureControl } from "./TemperatureControl"
 import { RateLimitSecondsControl } from "./RateLimitSecondsControl"
 import { ConsecutiveMistakeLimitControl } from "./ConsecutiveMistakeLimitControl"
 import { BedrockCustomArn } from "./providers/BedrockCustomArn"
-import { RooBalanceDisplay } from "./providers/RooBalanceDisplay"
+import { ClawBalanceDisplay } from "./providers/ClawBalanceDisplay"
 import { buildDocLink } from "@src/utils/docLinks"
 import { BookOpenText } from "lucide-react"
 
@@ -238,7 +238,7 @@ const ApiOptions = ({
 				vscode.postMessage({ type: "requestLmStudioModels" })
 			} else if (selectedProvider === "vscode-lm") {
 				vscode.postMessage({ type: "requestVsCodeLmModels" })
-			} else if (selectedProvider === "litellm" || selectedProvider === "roo") {
+			} else if (selectedProvider === "litellm" || selectedProvider === "claw") {
 				vscode.postMessage({ type: "requestRouterModels" })
 			}
 		},
@@ -356,7 +356,7 @@ const ApiOptions = ({
 							: internationalZAiDefaultModelId,
 				},
 				fireworks: { field: "apiModelId", default: fireworksDefaultModelId },
-				roo: { field: "apiModelId", default: rooDefaultModelId },
+				claw: { field: "apiModelId", default: rooDefaultModelId },
 				"vercel-ai-gateway": { field: "vercelAiGatewayModelId", default: vercelAiGatewayDefaultModelId },
 				openai: { field: "openAiModelId" },
 				ollama: { field: "ollamaModelId" },
@@ -462,8 +462,8 @@ const ApiOptions = ({
 			<div className="flex flex-col gap-1 relative">
 				<div className="flex justify-between items-center">
 					<label className="block font-medium">{t("settings:providers.apiProvider")}</label>
-					{selectedProvider === "roo" && cloudIsAuthenticated ? (
-						<RooBalanceDisplay />
+					{selectedProvider === "claw" && cloudIsAuthenticated ? (
+						<ClawBalanceDisplay />
 					) : (
 						docs && (
 							<VSCodeLink href={docs.url} target="_blank" className="flex gap-2">
@@ -703,7 +703,7 @@ const ApiOptions = ({
 						/>
 					)}
 
-					{selectedProvider === "roo" && (
+					{selectedProvider === "claw" && (
 						<ClawRouter
 							apiConfiguration={apiConfiguration}
 							setApiConfigurationField={setApiConfigurationField}

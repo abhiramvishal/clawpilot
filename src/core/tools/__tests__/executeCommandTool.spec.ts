@@ -64,7 +64,7 @@ describe("executeCommandTool", () => {
 			sayAndCreateMissingParamError: vitest.fn().mockResolvedValue("Missing parameter error"),
 			consecutiveMistakeCount: 0,
 			didRejectTool: false,
-			rooIgnoreController: {
+			clawIgnoreController: {
 				validateCommand: vitest.fn().mockReturnValue(null),
 			},
 			recordToolUsage: vitest.fn().mockReturnValue({} as ToolUsage),
@@ -232,12 +232,12 @@ describe("executeCommandTool", () => {
 			mockToolUse.nativeArgs = { command: "cat .env" }
 			// Override the validateCommand mock to return a filename
 			const validateCommandMock = vitest.fn().mockReturnValue(".env")
-			mockCline.rooIgnoreController = {
+			mockCline.clawIgnoreController = {
 				validateCommand: validateCommandMock,
 			}
 
-			const mockRooIgnoreError = "RooIgnore error"
-			;(formatResponse.rooIgnoreError as any).mockReturnValue(mockRooIgnoreError)
+			const mockClawIgnoreError = "RooIgnore error"
+			;(formatResponse.clawIgnoreError as any).mockReturnValue(mockClawIgnoreError)
 
 			// Execute
 			await executeCommandTool.handle(mockCline as unknown as Task, mockToolUse, {
@@ -248,9 +248,9 @@ describe("executeCommandTool", () => {
 
 			// Verify
 			expect(validateCommandMock).toHaveBeenCalledWith("cat .env")
-			expect(mockCline.say).toHaveBeenCalledWith("rooignore_error", ".env")
-			expect(formatResponse.rooIgnoreError).toHaveBeenCalledWith(".env")
-			expect(mockPushToolResult).toHaveBeenCalledWith(mockRooIgnoreError)
+			expect(mockCline.say).toHaveBeenCalledWith("clawignore_error", ".env")
+			expect(formatResponse.clawIgnoreError).toHaveBeenCalledWith(".env")
+			expect(mockPushToolResult).toHaveBeenCalledWith(mockClawIgnoreError)
 			expect(mockAskApproval).not.toHaveBeenCalled()
 			// executeCommandInTerminal should not be called since rooignore blocked it
 		})

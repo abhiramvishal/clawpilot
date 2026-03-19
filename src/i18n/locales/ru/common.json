@@ -111,8 +111,8 @@
 			"thinking_complete_safety": "(Размышление завершено, но вывод заблокирован настройками безопасности.)",
 			"thinking_complete_recitation": "(Размышление завершено, но вывод заблокирован проверкой цитирования.)"
 		},
-		"roo": {
-			"authenticationRequired": "Провайдер Roo требует облачной аутентификации. Войдите в ClawPilot Cloud."
+		"claw": {
+			"authenticationRequired": "Провайдер Claw требует облачной аутентификации. Войдите в ClawPilot Cloud."
 		},
 		"api": {
 			"invalidKeyInvalidChars": "API-ключ содержит недопустимые символы.",
@@ -192,7 +192,7 @@
 		"enter_valid_path": "Пожалуйста, введите корректный путь"
 	},
 	"input": {
-		"task_prompt": "Что должен сделать Roo?",
+		"task_prompt": "Что должен сделать Claw?",
 		"task_placeholder": "Введите вашу задачу здесь"
 	},
 	"settings": {

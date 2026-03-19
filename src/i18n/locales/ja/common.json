@@ -111,8 +111,8 @@
 			"thinking_complete_safety": "（思考完了、安全設定により出力ブロック）",
 			"thinking_complete_recitation": "（思考完了、引用チェックにより出力ブロック）"
 		},
-		"roo": {
-			"authenticationRequired": "Rooプロバイダーはクラウド認証が必要です。ClawPilot Cloudにサインインしてください。"
+		"claw": {
+			"authenticationRequired": "Clawプロバイダーはクラウド認証が必要です。ClawPilot Cloudにサインインしてください。"
 		},
 		"api": {
 			"invalidKeyInvalidChars": "APIキーに無効な文字が含まれています。",
@@ -192,7 +192,7 @@
 		"enter_valid_path": "有効なパスを入力してください"
 	},
 	"input": {
-		"task_prompt": "Rooにどんなことをさせますか？",
+		"task_prompt": "Clawにどんなことをさせますか？",
 		"task_placeholder": "タスクをここに入力してください"
 	},
 	"settings": {

@@ -218,7 +218,7 @@ describe("webviewMessageHandler - image mentions", () => {
 		const mockHandleWebviewAskResponse = vi.fn()
 		vi.mocked(mockClineProvider.getCurrentTask).mockReturnValue({
 			cwd: "/mock/workspace",
-			rooIgnoreController: undefined,
+			clawIgnoreController: undefined,
 			handleWebviewAskResponse: mockHandleWebviewAskResponse,
 		} as any)
 

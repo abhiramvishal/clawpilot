@@ -4,14 +4,14 @@ import { Check, X } from "lucide-react"
 
 import { type ModeConfig, type CustomModePrompts, TelemetryEventName } from "@clawpilot/types"
 
-import { type Mode, getAllModes, defaultModeSlug } from "@roo/modes"
+import { type Mode, getAllModes, defaultModeSlug } from "@claw/modes"
 
 import { vscode } from "@/utils/vscode"
 import { telemetryClient } from "@/utils/TelemetryClient"
 import { cn } from "@/lib/utils"
 import { useExtensionState } from "@/context/ExtensionStateContext"
 import { useAppTranslation } from "@/i18n/TranslationContext"
-import { useRooPortal } from "@/components/ui/hooks/useRooPortal"
+import { useClawPortal } from "@/components/ui/hooks/useClawPortal"
 import { Popover, PopoverContent, PopoverTrigger, StandardTooltip } from "@/components/ui"
 
 import { IconButton } from "./IconButton"
@@ -47,7 +47,7 @@ export const ModeSelector = ({
 	const selectedItemRef = React.useRef<HTMLDivElement>(null)
 	const scrollContainerRef = React.useRef<HTMLDivElement>(null)
 	const lastNotifiedInvalidModeRef = React.useRef<string | null>(null)
-	const portalContainer = useRooPortal("roo-portal")
+	const portalContainer = useClawPortal("claw-portal")
 	const { hasOpenedModeSelector, setHasOpenedModeSelector } = useExtensionState()
 	const { t } = useAppTranslation()
 

@@ -21,8 +21,8 @@ import {
 	getAllModes,
 	findModeBySlug as findCustomModeBySlug,
 	defaultModeSlug,
-} from "@roo/modes"
-import { TOOL_GROUPS } from "@roo/tools"
+} from "@claw/modes"
+import { TOOL_GROUPS } from "@claw/tools"
 
 import { vscode } from "@src/utils/vscode"
 import { buildDocLink } from "@src/utils/docLinks"
@@ -1269,7 +1269,7 @@ const ModesView = () => {
 											// Open or create an empty file
 											vscode.postMessage({
 												type: "openFile",
-												text: `./.roo/rules-${currentMode.slug}/rules.md`,
+												text: `./.claw/rules-${currentMode.slug}/rules.md`,
 												values: {
 													create: true,
 													content: "",
@@ -1370,7 +1370,7 @@ const ModesView = () => {
 										onClick={() =>
 											vscode.postMessage({
 												type: "openFile",
-												text: "./.roo/rules/rules.md",
+												text: "./.claw/rules/rules.md",
 												values: {
 													create: true,
 													content: "",

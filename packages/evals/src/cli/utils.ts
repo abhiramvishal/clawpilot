@@ -142,14 +142,14 @@ export class Logger {
  * files for post-mortem analysis alongside the log files.
  */
 export async function copyConversationHistory({
-	rooTaskId,
+	clawTaskId,
 	logDir,
 	language,
 	exercise,
 	iteration,
 	logger,
 }: {
-	rooTaskId: string
+	clawTaskId: string
 	logDir: string
 	language: string
 	exercise: string
@@ -157,8 +157,8 @@ export async function copyConversationHistory({
 	logger: Logger
 }): Promise<void> {
 	// VS Code extension global storage path within the container
-	const extensionStoragePath = "/roo/.vscode/User/globalStorage/rooveterinaryinc.clawpilot"
-	const taskStoragePath = path.join(extensionStoragePath, "tasks", rooTaskId)
+	const extensionStoragePath = "/claw/.vscode/User/globalStorage/rooveterinaryinc.clawpilot"
+	const taskStoragePath = path.join(extensionStoragePath, "tasks", clawTaskId)
 
 	const filesToCopy = ["api_conversation_history.json", "ui_messages.json"]
 

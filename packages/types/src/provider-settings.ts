@@ -34,7 +34,7 @@ export const DEFAULT_CONSECUTIVE_MISTAKE_LIMIT = 3
  * Dynamic provider requires external API calls in order to get the model list.
  */
 
-export const dynamicProviders = ["openrouter", "vercel-ai-gateway", "litellm", "requesty", "roo", "unbound"] as const
+export const dynamicProviders = ["openrouter", "vercel-ai-gateway", "litellm", "requesty", "claw", "unbound"] as const
 
 export type DynamicProvider = (typeof dynamicProviders)[number]
 
@@ -115,7 +115,7 @@ export const providerNames = [
 	"openai-codex",
 	"openai-native",
 	"qwen-code",
-	"roo",
+	"claw",
 	"sambanova",
 	"vertex",
 	"xai",
@@ -142,6 +142,7 @@ export const retiredProviderNames = [
 	"groq",
 	"huggingface",
 	"io-intelligence",
+	"roo",
 ] as const
 
 export const retiredProviderNamesSchema = z.enum(retiredProviderNames)
@@ -369,7 +370,7 @@ const qwenCodeSchema = apiModelIdProviderModelSchema.extend({
 
 const rooSchema = apiModelIdProviderModelSchema.extend({
 	// Can use cloud authentication or provide an API key (cli).
-	rooApiKey: z.string().optional(),
+	clawApiKey: z.string().optional(),
 })
 
 const vercelAiGatewaySchema = baseProviderSettingsSchema.extend({
@@ -412,7 +413,7 @@ export const providerSettingsSchemaDiscriminated = z.discriminatedUnion("apiProv
 	zaiSchema.merge(z.object({ apiProvider: z.literal("zai") })),
 	fireworksSchema.merge(z.object({ apiProvider: z.literal("fireworks") })),
 	qwenCodeSchema.merge(z.object({ apiProvider: z.literal("qwen-code") })),
-	rooSchema.merge(z.object({ apiProvider: z.literal("roo") })),
+	rooSchema.merge(z.object({ apiProvider: z.literal("claw") })),
 	vercelAiGatewaySchema.merge(z.object({ apiProvider: z.literal("vercel-ai-gateway") })),
 	defaultSchema,
 ])
@@ -519,7 +520,7 @@ export const modelIdKeysByProvider: Record<TypicalProvider, ModelIdKey> = {
 	sambanova: "apiModelId",
 	zai: "apiModelId",
 	fireworks: "apiModelId",
-	roo: "apiModelId",
+	claw: "apiModelId",
 	"vercel-ai-gateway": "vercelAiGatewayModelId",
 }
 
@@ -542,7 +543,7 @@ export const getApiProtocol = (provider: ProviderName | undefined, modelId?: str
 	// Vercel AI Gateway uses anthropic protocol for anthropic models.
 	if (
 		provider &&
-		["vercel-ai-gateway", "roo"].includes(provider) &&
+		["vercel-ai-gateway", "roo", "claw"].includes(provider) &&
 		modelId &&
 		modelId.toLowerCase().startsWith("anthropic/")
 	) {
@@ -611,7 +612,7 @@ export const MODELS_BY_PROVIDER: Record<
 		models: Object.keys(openAiNativeModels),
 	},
 	"qwen-code": { id: "qwen-code", label: "Qwen Code", models: Object.keys(qwenCodeModels) },
-	roo: { id: "roo", label: "ClawPilot Router", models: [] },
+	claw: { id: "claw", label: "ClawPilot Router", models: [] },
 	sambanova: {
 		id: "sambanova",
 		label: "SambaNova",

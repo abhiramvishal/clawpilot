@@ -81,7 +81,7 @@ import { RepoPerTaskCheckpointService } from "../../services/checkpoints"
 // integrations
 import { DiffViewProvider } from "../../integrations/editor/DiffViewProvider"
 import { findToolName } from "../../integrations/misc/export-markdown"
-import { RooTerminalProcess } from "../../integrations/terminal/types"
+import { ClawTerminalProcess } from "../../integrations/terminal/types"
 import { TerminalRegistry } from "../../integrations/terminal/TerminalRegistry"
 import { OutputInterceptor } from "../../integrations/terminal/OutputInterceptor"
 
@@ -100,8 +100,8 @@ import { buildNativeToolsArrayWithRestrictions } from "./build-tools"
 import { ToolRepetitionDetector } from "../tools/ToolRepetitionDetector"
 import { restoreTodoListForTask } from "../tools/UpdateTodoListTool"
 import { FileContextTracker } from "../context-tracking/FileContextTracker"
-import { RooIgnoreController } from "../ignore/RooIgnoreController"
-import { RooProtectedController } from "../protect/RooProtectedController"
+import { ClawIgnoreController } from "../ignore/ClawIgnoreController"
+import { ClawProtectedController } from "../protect/ClawProtectedController"
 import { type AssistantMessageContent, presentAssistantMessage } from "../assistant-message"
 import { NativeToolCallParser } from "../assistant-message/NativeToolCallParser"
 import { manageContext, willManageContext } from "../context-management"
@@ -295,10 +295,10 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 	}
 
 	toolRepetitionDetector: ToolRepetitionDetector
-	rooIgnoreController?: RooIgnoreController
-	rooProtectedController?: RooProtectedController
+	clawIgnoreController?: ClawIgnoreController
+	rooProtectedController?: ClawProtectedController
 	fileContextTracker: FileContextTracker
-	terminalProcess?: RooTerminalProcess
+	terminalProcess?: ClawTerminalProcess
 
 	// Editing
 	diffViewProvider: DiffViewProvider
@@ -475,12 +475,12 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 		this.instanceId = crypto.randomUUID().slice(0, 8)
 		this.taskNumber = -1
 
-		this.rooIgnoreController = new RooIgnoreController(this.cwd)
-		this.rooProtectedController = new RooProtectedController(this.cwd)
+		this.clawIgnoreController = new ClawIgnoreController(this.cwd)
+		this.rooProtectedController = new ClawProtectedController(this.cwd)
 		this.fileContextTracker = new FileContextTracker(provider, this.taskId)
 
-		this.rooIgnoreController.initialize().catch((error) => {
-			console.error("Failed to initialize RooIgnoreController:", error)
+		this.clawIgnoreController.initialize().catch((error) => {
+			console.error("Failed to initialize ClawIgnoreController:", error)
 		})
 
 		this.apiConfiguration = apiConfiguration
@@ -1636,11 +1636,11 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 		}
 	}
 
-	private async getFilesReadByRooSafely(context: string): Promise<string[] | undefined> {
+	private async getFilesReadByClawSafely(context: string): Promise<string[] | undefined> {
 		try {
-			return await this.fileContextTracker.getFilesReadByRoo()
+			return await this.fileContextTracker.getFilesReadByClaw()
 		} catch (error) {
-			console.error(`[Task#${context}] Failed to get files read by Roo:`, error)
+			console.error(`[Task#${context}] Failed to get files read by Claw:`, error)
 			return undefined
 		}
 	}
@@ -1693,7 +1693,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 		// Generate environment details to include in the condensed summary
 		const environmentDetails = await getEnvironmentDetails(this, true)
 
-		const filesReadByRoo = await this.getFilesReadByRooSafely("condenseContext")
+		const filesReadByClaw = await this.getFilesReadByClawSafely("condenseContext")
 
 		const {
 			messages,
@@ -1712,9 +1712,9 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 			customCondensingPrompt,
 			metadata,
 			environmentDetails,
-			filesReadByRoo,
+			filesReadByClaw,
 			cwd: this.cwd,
-			rooIgnoreController: this.rooIgnoreController,
+			clawIgnoreController: this.clawIgnoreController,
 		})
 		if (error) {
 			await this.say(
@@ -2349,12 +2349,12 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 			})
 
 		try {
-			if (this.rooIgnoreController) {
-				this.rooIgnoreController.dispose()
-				this.rooIgnoreController = undefined
+			if (this.clawIgnoreController) {
+				this.clawIgnoreController.dispose()
+				this.clawIgnoreController = undefined
 			}
 		} catch (error) {
-			console.error("Error disposing RooIgnoreController:", error)
+			console.error("Error disposing ClawIgnoreController:", error)
 			// This is the critical one for the leak fix.
 		}
 
@@ -2595,7 +2595,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 			const provider = this.providerRef.deref()
 			const state = provider ? await provider.getState() : undefined
 
-			const showRooIgnoredFiles = state?.showRooIgnoredFiles ?? false
+			const showClawIgnoredFiles = state?.showClawIgnoredFiles ?? false
 			const includeDiagnosticMessages = state?.includeDiagnosticMessages ?? true
 			const maxDiagnosticMessages = state?.maxDiagnosticMessages ?? 50
 			const currentMode = state?.mode ?? defaultModeSlug
@@ -2604,8 +2604,8 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 				userContent: currentUserContent,
 				cwd: this.cwd,
 				fileContextTracker: this.fileContextTracker,
-				rooIgnoreController: this.rooIgnoreController,
-				showRooIgnoredFiles,
+				clawIgnoreController: this.clawIgnoreController,
+				showClawIgnoredFiles,
 				includeDiagnosticMessages,
 				maxDiagnosticMessages,
 				skillsManager: provider?.getSkillsManager(),
@@ -3764,7 +3764,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 			})
 		}
 
-		const rooIgnoreInstructions = this.rooIgnoreController?.getInstructions()
+		const clawIgnoreInstructions = this.clawIgnoreController?.getInstructions()
 
 		const state = await this.providerRef.deref()?.getState()
 
@@ -3800,7 +3800,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 				customInstructions,
 				experiments,
 				language,
-				rooIgnoreInstructions,
+				clawIgnoreInstructions,
 				{
 					todoListEnabled: apiConfiguration?.todoListEnabled ?? true,
 					useAgentRules:
@@ -4106,9 +4106,9 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 				: undefined
 
 			// Get files read by Roo for code folding - only when context management will run
-			const contextMgmtFilesReadByRoo =
+			const contextMgmtFilesReadByClaw =
 				contextManagementWillRun && autoCondenseContext
-					? await this.getFilesReadByRooSafely("attemptApiRequest")
+					? await this.getFilesReadByClawSafely("attemptApiRequest")
 					: undefined
 
 			try {
@@ -4127,9 +4127,9 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 					currentProfileId,
 					metadata: contextMgmtMetadata,
 					environmentDetails: contextMgmtEnvironmentDetails,
-					filesReadByRoo: contextMgmtFilesReadByRoo,
+					filesReadByClaw: contextMgmtFilesReadByClaw,
 					cwd: this.cwd,
-					rooIgnoreController: this.rooIgnoreController,
+					clawIgnoreController: this.clawIgnoreController,
 				})
 				if (truncateResult.messages !== this.apiConversationHistory) {
 					await this.overwriteApiConversationHistory(truncateResult.messages)

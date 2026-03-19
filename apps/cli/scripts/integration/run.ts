@@ -58,7 +58,7 @@ async function runCase(caseFile: string): Promise<void> {
 		reject: true,
 		env: {
 			...process.env,
-			ROO_CLI_ROOT: cliRoot,
+			CLAW_CLI_ROOT: cliRoot,
 		},
 	})
 

@@ -210,7 +210,7 @@ export async function activate(context: vscode.ExtensionContext) {
 						: undefined
 					await refreshModels({
 						provider: "roo",
-						baseUrl: process.env.ROO_CODE_PROVIDER_URL ?? "https://api.clawpilot.com/proxy",
+						baseUrl: process.env.CLAW_PILOT_PROVIDER_URL ?? "https://api.clawpilot.com/proxy",
 						apiKey: sessionToken,
 					})
 				} else {

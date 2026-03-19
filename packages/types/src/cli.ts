@@ -1,86 +1,86 @@
 import { z } from "zod"
 
-import { rooCodeSettingsSchema } from "./global-settings.js"
+import { clawPilotSettingsSchema } from "./global-settings.js"
 
 /**
  * Roo CLI stdin commands
  */
 
-export const rooCliCommandNames = ["start", "message", "cancel", "ping", "shutdown"] as const
+export const clawCliCommandNames = ["start", "message", "cancel", "ping", "shutdown"] as const
 
-export const rooCliCommandNameSchema = z.enum(rooCliCommandNames)
+export const clawCliCommandNameSchema = z.enum(clawCliCommandNames)
 
-export type RooCliCommandName = z.infer<typeof rooCliCommandNameSchema>
+export type ClawCliCommandName = z.infer<typeof clawCliCommandNameSchema>
 
-export const rooCliCommandBaseSchema = z.object({
-	command: rooCliCommandNameSchema,
+export const clawCliCommandBaseSchema = z.object({
+	command: clawCliCommandNameSchema,
 	requestId: z.string().min(1),
 })
 
-export type RooCliCommandBase = z.infer<typeof rooCliCommandBaseSchema>
+export type ClawCliCommandBase = z.infer<typeof clawCliCommandBaseSchema>
 
-const rooCliSessionIdSchema = z
+const clawCliSessionIdSchema = z
 	.string()
 	.trim()
 	.regex(/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i)
 
-export const rooCliStartCommandSchema = rooCliCommandBaseSchema.extend({
+export const clawCliStartCommandSchema = clawCliCommandBaseSchema.extend({
 	command: z.literal("start"),
 	prompt: z.string(),
-	taskId: rooCliSessionIdSchema.optional(),
+	taskId: clawCliSessionIdSchema.optional(),
 	images: z.array(z.string()).optional(),
-	configuration: rooCodeSettingsSchema.optional(),
+	configuration: clawPilotSettingsSchema.optional(),
 })
 
-export type RooCliStartCommand = z.infer<typeof rooCliStartCommandSchema>
+export type ClawCliStartCommand = z.infer<typeof clawCliStartCommandSchema>
 
-export const rooCliMessageCommandSchema = rooCliCommandBaseSchema.extend({
+export const clawCliMessageCommandSchema = clawCliCommandBaseSchema.extend({
 	command: z.literal("message"),
 	prompt: z.string(),
 	images: z.array(z.string()).optional(),
 })
 
-export type RooCliMessageCommand = z.infer<typeof rooCliMessageCommandSchema>
+export type ClawCliMessageCommand = z.infer<typeof clawCliMessageCommandSchema>
 
-export const rooCliCancelCommandSchema = rooCliCommandBaseSchema.extend({
+export const clawCliCancelCommandSchema = clawCliCommandBaseSchema.extend({
 	command: z.literal("cancel"),
 })
 
-export type RooCliCancelCommand = z.infer<typeof rooCliCancelCommandSchema>
+export type ClawCliCancelCommand = z.infer<typeof clawCliCancelCommandSchema>
 
-export const rooCliPingCommandSchema = rooCliCommandBaseSchema.extend({
+export const clawCliPingCommandSchema = clawCliCommandBaseSchema.extend({
 	command: z.literal("ping"),
 })
 
-export type RooCliPingCommand = z.infer<typeof rooCliPingCommandSchema>
+export type ClawCliPingCommand = z.infer<typeof clawCliPingCommandSchema>
 
-export const rooCliShutdownCommandSchema = rooCliCommandBaseSchema.extend({
+export const clawCliShutdownCommandSchema = clawCliCommandBaseSchema.extend({
 	command: z.literal("shutdown"),
 })
 
-export type RooCliShutdownCommand = z.infer<typeof rooCliShutdownCommandSchema>
+export type ClawCliShutdownCommand = z.infer<typeof clawCliShutdownCommandSchema>
 
-export const rooCliInputCommandSchema = z.discriminatedUnion("command", [
-	rooCliStartCommandSchema,
-	rooCliMessageCommandSchema,
-	rooCliCancelCommandSchema,
-	rooCliPingCommandSchema,
-	rooCliShutdownCommandSchema,
+export const clawCliInputCommandSchema = z.discriminatedUnion("command", [
+	clawCliStartCommandSchema,
+	clawCliMessageCommandSchema,
+	clawCliCancelCommandSchema,
+	clawCliPingCommandSchema,
+	clawCliShutdownCommandSchema,
 ])
 
-export type RooCliInputCommand = z.infer<typeof rooCliInputCommandSchema>
+export type ClawCliInputCommand = z.infer<typeof clawCliInputCommandSchema>
 
 /**
  * Roo CLI stream-json output
  */
 
-export const rooCliOutputFormats = ["text", "json", "stream-json"] as const
+export const clawCliOutputFormats = ["text", "json", "stream-json"] as const
 
-export const rooCliOutputFormatSchema = z.enum(rooCliOutputFormats)
+export const clawCliOutputFormatSchema = z.enum(clawCliOutputFormats)
 
-export type RooCliOutputFormat = z.infer<typeof rooCliOutputFormatSchema>
+export type ClawCliOutputFormat = z.infer<typeof clawCliOutputFormatSchema>
 
-export const rooCliEventTypes = [
+export const clawCliEventTypes = [
 	"system",
 	"control",
 	"queue",
@@ -93,42 +93,42 @@ export const rooCliEventTypes = [
 	"result",
 ] as const
 
-export const rooCliEventTypeSchema = z.enum(rooCliEventTypes)
+export const clawCliEventTypeSchema = z.enum(clawCliEventTypes)
 
-export type RooCliEventType = z.infer<typeof rooCliEventTypeSchema>
+export type ClawCliEventType = z.infer<typeof clawCliEventTypeSchema>
 
-export const rooCliControlSubtypes = ["ack", "done", "error"] as const
+export const clawCliControlSubtypes = ["ack", "done", "error"] as const
 
-export const rooCliControlSubtypeSchema = z.enum(rooCliControlSubtypes)
+export const clawCliControlSubtypeSchema = z.enum(clawCliControlSubtypes)
 
-export type RooCliControlSubtype = z.infer<typeof rooCliControlSubtypeSchema>
+export type ClawCliControlSubtype = z.infer<typeof clawCliControlSubtypeSchema>
 
-export const rooCliQueueItemSchema = z.object({
+export const clawCliQueueItemSchema = z.object({
 	id: z.string().min(1),
 	text: z.string().optional(),
 	imageCount: z.number().optional(),
 	timestamp: z.number().optional(),
 })
 
-export type RooCliQueueItem = z.infer<typeof rooCliQueueItemSchema>
+export type ClawCliQueueItem = z.infer<typeof clawCliQueueItemSchema>
 
-export const rooCliToolUseSchema = z.object({
+export const clawCliToolUseSchema = z.object({
 	name: z.string(),
 	input: z.record(z.unknown()).optional(),
 })
 
-export type RooCliToolUse = z.infer<typeof rooCliToolUseSchema>
+export type ClawCliToolUse = z.infer<typeof clawCliToolUseSchema>
 
-export const rooCliToolResultSchema = z.object({
+export const clawCliToolResultSchema = z.object({
 	name: z.string(),
 	output: z.string().optional(),
 	error: z.string().optional(),
 	exitCode: z.number().optional(),
 })
 
-export type RooCliToolResult = z.infer<typeof rooCliToolResultSchema>
+export type ClawCliToolResult = z.infer<typeof clawCliToolResultSchema>
 
-export const rooCliCostSchema = z.object({
+export const clawCliCostSchema = z.object({
 	totalCost: z.number().optional(),
 	inputTokens: z.number().optional(),
 	outputTokens: z.number().optional(),
@@ -136,14 +136,14 @@ export const rooCliCostSchema = z.object({
 	cacheReads: z.number().optional(),
 })
 
-export type RooCliCost = z.infer<typeof rooCliCostSchema>
+export type ClawCliCost = z.infer<typeof clawCliCostSchema>
 
-export const rooCliStreamEventSchema = z
+export const clawCliStreamEventSchema = z
 	.object({
-		type: rooCliEventTypeSchema.optional(),
+		type: clawCliEventTypeSchema.optional(),
 		subtype: z.string().optional(),
 		requestId: z.string().optional(),
-		command: rooCliCommandNameSchema.optional(),
+		command: clawCliCommandNameSchema.optional(),
 		taskId: z.string().optional(),
 		code: z.string().optional(),
 		content: z.string().optional(),
@@ -151,32 +151,56 @@ export const rooCliStreamEventSchema = z
 		id: z.number().optional(),
 		done: z.boolean().optional(),
 		queueDepth: z.number().optional(),
-		queue: z.array(rooCliQueueItemSchema).optional(),
+		queue: z.array(clawCliQueueItemSchema).optional(),
 		schemaVersion: z.number().optional(),
 		protocol: z.string().optional(),
 		capabilities: z.array(z.string()).optional(),
-		tool_use: rooCliToolUseSchema.optional(),
-		tool_result: rooCliToolResultSchema.optional(),
-		cost: rooCliCostSchema.optional(),
+		tool_use: clawCliToolUseSchema.optional(),
+		tool_result: clawCliToolResultSchema.optional(),
+		cost: clawCliCostSchema.optional(),
 	})
 	.passthrough()
 
-export type RooCliStreamEvent = z.infer<typeof rooCliStreamEventSchema>
+export type ClawCliStreamEvent = z.infer<typeof clawCliStreamEventSchema>
 
-export const rooCliControlEventSchema = rooCliStreamEventSchema.extend({
+export const clawCliControlEventSchema = clawCliStreamEventSchema.extend({
 	type: z.literal("control"),
-	subtype: rooCliControlSubtypeSchema,
+	subtype: clawCliControlSubtypeSchema,
 	requestId: z.string().min(1),
 })
 
-export type RooCliControlEvent = z.infer<typeof rooCliControlEventSchema>
+export type ClawCliControlEvent = z.infer<typeof clawCliControlEventSchema>
 
-export const rooCliFinalOutputSchema = z.object({
+export const clawCliFinalOutputSchema = z.object({
 	type: z.literal("result"),
 	success: z.boolean(),
 	content: z.string().optional(),
-	cost: rooCliCostSchema.optional(),
-	events: z.array(rooCliStreamEventSchema),
+	cost: clawCliCostSchema.optional(),
+	events: z.array(clawCliStreamEventSchema),
 })
 
-export type RooCliFinalOutput = z.infer<typeof rooCliFinalOutputSchema>
+export type ClawCliFinalOutput = z.infer<typeof clawCliFinalOutputSchema>
+
+export { clawCliCommandNames as rooCliCommandNames }
+export { clawCliCommandNameSchema as rooCliCommandNameSchema }
+export type { ClawCliCommandName as RooCliCommandName }
+export { clawCliCommandBaseSchema as rooCliCommandBaseSchema }
+export type { ClawCliCommandBase as RooCliCommandBase }
+export { clawCliStartCommandSchema as rooCliStartCommandSchema }
+export type { ClawCliStartCommand as RooCliStartCommand }
+export { clawCliMessageCommandSchema as rooCliMessageCommandSchema }
+export type { ClawCliMessageCommand as RooCliMessageCommand }
+export { clawCliCancelCommandSchema as rooCliCancelCommandSchema }
+export type { ClawCliCancelCommand as RooCliCancelCommand }
+export { clawCliPingCommandSchema as rooCliPingCommandSchema }
+export type { ClawCliPingCommand as RooCliPingCommand }
+export { clawCliShutdownCommandSchema as rooCliShutdownCommandSchema }
+export type { ClawCliShutdownCommand as RooCliShutdownCommand }
+export { clawCliInputCommandSchema as rooCliInputCommandSchema }
+export type { ClawCliInputCommand as RooCliInputCommand }
+export { clawCliStreamEventSchema as rooCliStreamEventSchema }
+export type { ClawCliStreamEvent as RooCliStreamEvent }
+export { clawCliControlEventSchema as rooCliControlEventSchema }
+export type { ClawCliControlEvent as RooCliControlEvent }
+export { clawCliFinalOutputSchema as rooCliFinalOutputSchema }
+export type { ClawCliFinalOutput as RooCliFinalOutput }

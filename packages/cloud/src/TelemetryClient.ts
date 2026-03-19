@@ -5,7 +5,7 @@ import {
 	type AuthService,
 	type SettingsService,
 	TelemetryEventName,
-	rooCodeTelemetryEventSchema,
+	clawPilotTelemetryEventSchema,
 	TelemetryPropertiesProvider,
 	TelemetryEventSubscription,
 } from "@clawpilot/types"
@@ -172,7 +172,7 @@ export class CloudTelemetryClient extends BaseTelemetryClient {
 			console.info(`[TelemetryClient#capture] ${JSON.stringify(payload)}`)
 		}
 
-		const result = rooCodeTelemetryEventSchema.safeParse(payload)
+		const result = clawPilotTelemetryEventSchema.safeParse(payload)
 
 		if (!result.success) {
 			console.error(
@@ -264,7 +264,7 @@ export class CloudTelemetryClient extends BaseTelemetryClient {
 	public override updateTelemetryState(_didUserOptIn: boolean) {}
 
 	public override isTelemetryEnabled(): boolean {
-		if (process.env.ROO_CODE_DISABLE_TELEMETRY === "1") {
+		if (process.env.CLAW_PILOT_DISABLE_TELEMETRY === "1") {
 			return false
 		}
 

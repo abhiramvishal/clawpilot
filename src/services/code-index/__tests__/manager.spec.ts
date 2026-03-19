@@ -70,13 +70,13 @@ vi.mock("../../../utils/path", () => {
 // Mock fs/promises for RooIgnoreController
 vi.mock("fs/promises", () => ({
 	default: {
-		readFile: vi.fn().mockRejectedValue(new Error("File not found")), // Simulate no .gitignore/.rooignore
+		readFile: vi.fn().mockRejectedValue(new Error("File not found")), // Simulate no .gitignore/.clawignore
 	},
 }))
 
 // Mock file utils for RooIgnoreController
 vi.mock("../../../utils/fs", () => ({
-	fileExistsAtPath: vi.fn().mockResolvedValue(false), // Simulate no .rooignore file
+	fileExistsAtPath: vi.fn().mockResolvedValue(false), // Simulate no .clawignore file
 }))
 
 // Mock ignore module

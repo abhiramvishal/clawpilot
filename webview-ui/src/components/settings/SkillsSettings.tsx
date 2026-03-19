@@ -4,7 +4,7 @@ import { Trans } from "react-i18next"
 
 import type { SkillMetadata } from "@clawpilot/types"
 
-import { getAllModes } from "@roo/modes"
+import { getAllModes } from "@claw/modes"
 
 import { useAppTranslation } from "@/i18n/TranslationContext"
 import { useExtensionState } from "@/context/ExtensionStateContext"

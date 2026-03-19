@@ -15,14 +15,14 @@ import { batchConsecutive } from "@src/utils/batchConsecutive"
 import type { ClineAsk, ClineSayTool, ClineMessage, ExtensionMessage, AudioType } from "@clawpilot/types"
 import { isRetiredProvider } from "@clawpilot/types"
 
-import { findLast } from "@roo/array"
+import { findLast } from "@claw/array"
 import { SuggestionItem } from "@clawpilot/types"
-import { combineApiRequests } from "@roo/combineApiRequests"
-import { combineCommandSequences } from "@roo/combineCommandSequences"
-import { getApiMetrics } from "@roo/getApiMetrics"
-import { getAllModes } from "@roo/modes"
-import { ProfileValidator } from "@roo/ProfileValidator"
-import { getLatestTodo } from "@roo/todo"
+import { combineApiRequests } from "@claw/combineApiRequests"
+import { combineCommandSequences } from "@claw/combineCommandSequences"
+import { getApiMetrics } from "@claw/getApiMetrics"
+import { getAllModes } from "@claw/modes"
+import { ProfileValidator } from "@claw/ProfileValidator"
+import { getLatestTodo } from "@claw/todo"
 
 import { vscode } from "@src/utils/vscode"
 import { useAppTranslation } from "@src/i18n/TranslationContext"
@@ -1769,7 +1769,7 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 				</div>
 			)}
 
-			<div id="roo-portal" />
+			<div id="claw-portal" />
 			<CloudUpsellDialog open={isUpsellOpen} onOpenChange={closeUpsell} onConnect={handleConnect} />
 		</div>
 	)

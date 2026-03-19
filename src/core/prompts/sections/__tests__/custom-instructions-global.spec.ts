@@ -41,12 +41,12 @@ vi.mock("fs/promises", () => ({
 	},
 }))
 
-// Mock the roo-config service
-vi.mock("../../../../services/roo-config", () => ({
-	getRooDirectoriesForCwd: mockGetRooDirectoriesForCwd,
-	getAllRooDirectoriesForCwd: mockGetAllRooDirectoriesForCwd,
+// Mock the claw-config service
+vi.mock("../../../../services/claw-config", () => ({
+	getClawDirectoriesForCwd: mockGetRooDirectoriesForCwd,
+	getAllClawDirectoriesForCwd: mockGetAllRooDirectoriesForCwd,
 	getAgentsDirectoriesForCwd: mockGetAgentsDirectoriesForCwd,
-	getGlobalRooDirectory: mockGetGlobalRooDirectory,
+	getGlobalClawDirectory: mockGetGlobalRooDirectory,
 }))
 
 import { loadRuleFiles, addCustomInstructions } from "../custom-instructions"

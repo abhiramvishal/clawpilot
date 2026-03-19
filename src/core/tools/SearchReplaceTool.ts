@@ -69,11 +69,11 @@ export class SearchReplaceTool extends BaseTool<"search_replace"> {
 				relPath = file_path
 			}
 
-			const accessAllowed = task.rooIgnoreController?.validateAccess(relPath)
+			const accessAllowed = task.clawIgnoreController?.validateAccess(relPath)
 
 			if (!accessAllowed) {
-				await task.say("rooignore_error", relPath)
-				pushToolResult(formatResponse.rooIgnoreError(relPath))
+				await task.say("clawignore_error", relPath)
+				pushToolResult(formatResponse.clawIgnoreError(relPath))
 				return
 			}
 

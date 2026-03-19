@@ -116,8 +116,8 @@
 			"thinking_complete_safety": "（思考完成，但由于安全设置输出被阻止。）",
 			"thinking_complete_recitation": "（思考完成，但由于引用检查输出被阻止。）"
 		},
-		"roo": {
-			"authenticationRequired": "Roo 提供商需要云认证。请登录 ClawPilot Cloud。"
+		"claw": {
+			"authenticationRequired": "Claw 提供商需要云认证。请登录 ClawPilot Cloud。"
 		},
 		"api": {
 			"invalidKeyInvalidChars": "API 密钥包含无效字符.",
@@ -197,7 +197,7 @@
 		"enter_valid_path": "请输入有效的路径"
 	},
 	"input": {
-		"task_prompt": "让Roo做什么？",
+		"task_prompt": "让Claw做什么？",
 		"task_placeholder": "在这里输入任务"
 	},
 	"settings": {

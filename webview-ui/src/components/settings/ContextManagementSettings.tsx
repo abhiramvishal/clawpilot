@@ -4,7 +4,7 @@ import { useAppTranslation } from "@/i18n/TranslationContext"
 import { VSCodeCheckbox, VSCodeTextArea } from "@vscode/webview-ui-toolkit/react"
 import { FoldVertical } from "lucide-react"
 
-import { supportPrompt } from "@roo/support-prompt"
+import { supportPrompt } from "@claw/support-prompt"
 
 import { cn } from "@/lib/utils"
 import {
@@ -31,7 +31,7 @@ type ContextManagementSettingsProps = HTMLAttributes<HTMLDivElement> & {
 	listApiConfigMeta: any[]
 	maxOpenTabsContext: number
 	maxWorkspaceFiles: number
-	showRooIgnoredFiles?: boolean
+	showClawIgnoredFiles?: boolean
 	enableSubfolderRules?: boolean
 	maxImageFileSize?: number
 	maxTotalImageSize?: number
@@ -49,7 +49,7 @@ type ContextManagementSettingsProps = HTMLAttributes<HTMLDivElement> & {
 		| "autoCondenseContextPercent"
 		| "maxOpenTabsContext"
 		| "maxWorkspaceFiles"
-		| "showRooIgnoredFiles"
+		| "showClawIgnoredFiles"
 		| "enableSubfolderRules"
 		| "maxImageFileSize"
 		| "maxTotalImageSize"
@@ -69,7 +69,7 @@ export const ContextManagementSettings = ({
 	listApiConfigMeta,
 	maxOpenTabsContext,
 	maxWorkspaceFiles,
-	showRooIgnoredFiles,
+	showClawIgnoredFiles,
 	enableSubfolderRules,
 	setCachedStateField,
 	maxImageFileSize,
@@ -217,8 +217,8 @@ export const ContextManagementSettings = ({
 					section="contextManagement"
 					label={t("settings:contextManagement.rooignore.label")}>
 					<VSCodeCheckbox
-						checked={showRooIgnoredFiles}
-						onChange={(e: any) => setCachedStateField("showRooIgnoredFiles", e.target.checked)}
+						checked={showClawIgnoredFiles}
+						onChange={(e: any) => setCachedStateField("showClawIgnoredFiles", e.target.checked)}
 						data-testid="show-rooignored-files-checkbox">
 						<label className="block font-medium mb-1">
 							{t("settings:contextManagement.rooignore.label")}

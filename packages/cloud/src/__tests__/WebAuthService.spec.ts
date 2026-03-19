@@ -394,8 +394,8 @@ describe("WebAuthService", () => {
 
 			await authService.handleCallback("auth-code", storedState, null, "xai/grok-code-fast-1")
 
-			expect(mockContext.globalState.update).toHaveBeenCalledWith("roo-provider-model", "xai/grok-code-fast-1")
-			expect(mockContext.globalState.update).toHaveBeenCalledWith("roo-auth-skip-model", undefined)
+			expect(mockContext.globalState.update).toHaveBeenCalledWith("claw-provider-model", "xai/grok-code-fast-1")
+			expect(mockContext.globalState.update).toHaveBeenCalledWith("claw-auth-skip-model", undefined)
 			expect(mockLog).toHaveBeenCalledWith("[auth] Stored provider model: xai/grok-code-fast-1")
 		})
 
@@ -423,7 +423,7 @@ describe("WebAuthService", () => {
 			// Call without provider model
 			await authService.handleCallback("auth-code", storedState, null)
 
-			expect(mockContext.globalState.update).toHaveBeenCalledWith("roo-auth-skip-model", true)
+			expect(mockContext.globalState.update).toHaveBeenCalledWith("claw-auth-skip-model", true)
 			expect(mockLog).toHaveBeenCalledWith("[auth] No provider model selected during signup")
 		})
 

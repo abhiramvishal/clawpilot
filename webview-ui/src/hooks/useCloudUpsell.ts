@@ -54,7 +54,7 @@ export const useCloudUpsell = (options: UseCloudUpsellOptions = {}) => {
 		setShouldOpenOnAuth(true)
 
 		// Send message to VS Code to initiate sign in
-		vscode.postMessage({ type: "rooCloudSignIn" })
+		vscode.postMessage({ type: "clawCloudSignIn" })
 
 		// Close the upsell dialog
 		closeUpsell()

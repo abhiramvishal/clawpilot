@@ -4,8 +4,8 @@ import * as vscode from "vscode"
 import matter from "gray-matter"
 
 import type { ClineProvider } from "../../core/webview/ClineProvider"
-import { getGlobalRooDirectory, getGlobalAgentsDirectory, getProjectAgentsDirectoryForCwd } from "../roo-config"
-import { directoryExists, fileExists } from "../roo-config"
+import { getGlobalClawDirectory, getGlobalAgentsDirectory, getProjectAgentsDirectoryForCwd } from "../claw-config"
+import { directoryExists, fileExists } from "../claw-config"
 import { SkillMetadata, SkillContent } from "../../shared/skills"
 import { modes, getAllModes } from "../../shared/modes"
 import {
@@ -37,8 +37,8 @@ export class SkillsManager {
 	 * Discover all skills from global and project directories.
 	 * Supports both generic skills (skills/) and mode-specific skills (skills-{mode}/).
 	 * Also supports symlinks:
-	 * - .roo/skills can be a symlink to a directory containing skill subdirectories
-	 * - .roo/skills/[dirname] can be a symlink to a skill directory
+	 * - .claw/skills can be a symlink to a directory containing skill subdirectories
+	 * - .claw/skills/[dirname] can be a symlink to a skill directory
 	 */
 	async discoverSkills(): Promise<void> {
 		this.skills.clear()
@@ -366,7 +366,7 @@ export class SkillsManager {
 		// Determine base directory
 		let baseDir: string
 		if (source === "global") {
-			baseDir = getGlobalRooDirectory()
+			baseDir = getGlobalClawDirectory()
 		} else {
 			const provider = this.providerRef.deref()
 			if (!provider?.cwd) {
@@ -475,7 +475,7 @@ Add your skill instructions here.
 		// Determine base directory
 		let baseDir: string
 		if (source === "global") {
-			baseDir = getGlobalRooDirectory()
+			baseDir = getGlobalClawDirectory()
 		} else {
 			const provider = this.providerRef.deref()
 			if (!provider?.cwd) {
@@ -572,10 +572,10 @@ Add your skill instructions here.
 		}>
 	> {
 		const dirs: Array<{ dir: string; source: "global" | "project"; mode?: string }> = []
-		const globalRooDir = getGlobalRooDirectory()
+		const globalRooDir = getGlobalClawDirectory()
 		const globalAgentsDir = getGlobalAgentsDirectory()
 		const provider = this.providerRef.deref()
-		const projectRooDir = provider?.cwd ? path.join(provider.cwd, ".roo") : null
+		const projectRooDir = provider?.cwd ? path.join(provider.cwd, ".claw") : null
 		const projectAgentsDir = provider?.cwd ? getProjectAgentsDirectoryForCwd(provider.cwd) : null
 
 		// Get list of modes to check for mode-specific skills
@@ -587,8 +587,8 @@ Add your skill instructions here.
 		//    (via Map.set replacement during discovery - same source+mode+name key gets replaced)
 		//
 		// Processing order (later directories override earlier ones at the same source level):
-		// - Global: .agents/skills first, then .roo/skills (so .roo wins)
-		// - Project: .agents/skills first, then .roo/skills (so .roo wins)
+		// - Global: .agents/skills first, then .claw/skills (so .claw wins)
+		// - Project: .agents/skills first, then .claw/skills (so .claw wins)
 
 		// Global .agents directories (lowest priority - shared across agents)
 		dirs.push({ dir: path.join(globalAgentsDir, "skills"), source: "global" })
@@ -604,13 +604,13 @@ Add your skill instructions here.
 			}
 		}
 
-		// Global .roo directories (Roo-specific, higher priority than .agents)
+		// Global .claw directories (Claw-specific, higher priority than .agents)
 		dirs.push({ dir: path.join(globalRooDir, "skills"), source: "global" })
 		for (const mode of modesList) {
 			dirs.push({ dir: path.join(globalRooDir, `skills-${mode}`), source: "global", mode })
 		}
 
-		// Project .roo directories (highest priority)
+		// Project .claw directories (highest priority)
 		if (projectRooDir) {
 			dirs.push({ dir: path.join(projectRooDir, "skills"), source: "project" })
 			for (const mode of modesList) {
@@ -655,7 +655,7 @@ Add your skill instructions here.
 		if (!provider?.cwd) return
 
 		// Watch for changes in skills directories
-		const globalRooDir = getGlobalRooDirectory()
+		const globalRooDir = getGlobalClawDirectory()
 		const globalAgentsDir = getGlobalAgentsDirectory()
 		const projectRooDir = path.join(provider.cwd, ".roo")
 		const projectAgentsDir = getProjectAgentsDirectoryForCwd(provider.cwd)

@@ -40,7 +40,7 @@ import {
 	StandardTooltip,
 	Button,
 } from "@src/components/ui"
-import { useRooPortal } from "@src/components/ui/hooks/useRooPortal"
+import { useClawPortal } from "@src/components/ui/hooks/useClawPortal"
 import { useEscapeKey } from "@src/hooks/useEscapeKey"
 import {
 	useOpenRouterModelProviders,
@@ -594,7 +594,7 @@ export const CodeIndexPopover: React.FC<CodeIndexPopoverProps> = ({
 		},
 	)
 
-	const portalContainer = useRooPortal("roo-portal")
+	const portalContainer = useClawPortal("claw-portal")
 
 	return (
 		<>

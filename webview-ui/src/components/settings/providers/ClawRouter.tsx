@@ -37,14 +37,14 @@ export const ClawRouter = ({
 			{cloudIsAuthenticated ? (
 				<div className="flex justify-between items-center mb-2">
 					<div className="text-sm text-vscode-descriptionForeground">
-						{t("settings:providers.roo.authenticatedMessage")}
+						{t("settings:providers.claw.authenticatedMessage")}
 					</div>
 				</div>
 			) : (
 				<div className="flex flex-col gap-2">
 					<Button
 						variant="primary"
-						onClick={() => vscode.postMessage({ type: "rooCloudSignIn" })}
+						onClick={() => vscode.postMessage({ type: "clawCloudSignIn" })}
 						className="w-fit">
 						{t("settings:providers.roo.connectButton")}
 					</Button>
@@ -54,7 +54,7 @@ export const ClawRouter = ({
 				apiConfiguration={apiConfiguration}
 				setApiConfigurationField={setApiConfigurationField}
 				defaultModelId={rooDefaultModelId}
-				models={routerModels?.roo ?? {}}
+				models={routerModels?.claw ?? {}}
 				modelIdKey="apiModelId"
 				serviceName="ClawPilot Router"
 				serviceUrl="https://app.clawpilot.com"

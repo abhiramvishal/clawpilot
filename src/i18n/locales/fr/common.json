@@ -111,8 +111,8 @@
 			"thinking_complete_safety": "(Réflexion terminée, mais la sortie a été bloquée en raison des paramètres de sécurité.)",
 			"thinking_complete_recitation": "(Réflexion terminée, mais la sortie a été bloquée en raison de la vérification de récitation.)"
 		},
-		"roo": {
-			"authenticationRequired": "Le fournisseur Roo nécessite une authentification cloud. Veuillez vous connecter à ClawPilot Cloud."
+		"claw": {
+			"authenticationRequired": "Le fournisseur Claw nécessite une authentification cloud. Veuillez vous connecter à ClawPilot Cloud."
 		},
 		"api": {
 			"invalidKeyInvalidChars": "La clé API contient des caractères invalides.",
@@ -192,7 +192,7 @@
 		"enter_valid_path": "Veuillez entrer un chemin valide"
 	},
 	"input": {
-		"task_prompt": "Que doit faire Roo ?",
+		"task_prompt": "Que doit faire Claw ?",
 		"task_placeholder": "Écris ta tâche ici"
 	},
 	"settings": {

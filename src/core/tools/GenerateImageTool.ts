@@ -14,7 +14,7 @@ import { getReadablePath } from "../../utils/path"
 import { isPathOutsideWorkspace } from "../../utils/pathUtils"
 import { EXPERIMENT_IDS, experiments } from "../../shared/experiments"
 import { OpenRouterHandler } from "../../api/providers/openrouter"
-import { RooHandler } from "../../api/providers/roo"
+import { RooHandler } from "../../api/providers/claw"
 import { BaseTool, ToolCallbacks } from "./BaseTool"
 import type { ToolUse } from "../../shared/tools"
 import { t } from "../../i18n"
@@ -56,10 +56,10 @@ export class GenerateImageTool extends BaseTool<"generate_image"> {
 			return
 		}
 
-		const accessAllowed = task.rooIgnoreController?.validateAccess(relPath)
+		const accessAllowed = task.clawIgnoreController?.validateAccess(relPath)
 		if (!accessAllowed) {
-			await task.say("rooignore_error", relPath)
-			pushToolResult(formatResponse.rooIgnoreError(relPath))
+			await task.say("clawignore_error", relPath)
+			pushToolResult(formatResponse.clawIgnoreError(relPath))
 			return
 		}
 
@@ -77,10 +77,10 @@ export class GenerateImageTool extends BaseTool<"generate_image"> {
 				return
 			}
 
-			const inputImageAccessAllowed = task.rooIgnoreController?.validateAccess(inputImagePath)
+			const inputImageAccessAllowed = task.clawIgnoreController?.validateAccess(inputImagePath)
 			if (!inputImageAccessAllowed) {
-				await task.say("rooignore_error", inputImagePath)
-				pushToolResult(formatResponse.rooIgnoreError(inputImagePath))
+				await task.say("clawignore_error", inputImagePath)
+				pushToolResult(formatResponse.clawIgnoreError(inputImagePath))
 				return
 			}
 
@@ -190,7 +190,7 @@ export class GenerateImageTool extends BaseTool<"generate_image"> {
 			}
 
 			let result
-			if (modelProvider === "roo") {
+			if (modelProvider === "claw") {
 				// Use ClawPilot Cloud provider (supports both chat completions and images API)
 				const rooHandler = new RooHandler({} as any)
 				result = await rooHandler.generateImage(prompt, selectedModel, inputImageData, apiMethod)

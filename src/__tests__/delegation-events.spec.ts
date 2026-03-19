@@ -1,23 +1,27 @@
 // npx vitest run __tests__/delegation-events.spec.ts
 
-import { ClawPilotEventName, rooCodeEventsSchema, taskEventSchema } from "@clawpilot/types"
+import { ClawPilotEventName, clawPilotEventsSchema, taskEventSchema } from "@clawpilot/types"
 
 describe("delegation event schemas", () => {
-	test("rooCodeEventsSchema validates tuples", () => {
-		expect(() => (rooCodeEventsSchema.shape as any)[ClawPilotEventName.TaskDelegated].parse(["p", "c"])).not.toThrow()
+	test("clawPilotEventsSchema validates tuples", () => {
 		expect(() =>
-			(rooCodeEventsSchema.shape as any)[ClawPilotEventName.TaskDelegationCompleted].parse(["p", "c", "s"]),
+			(clawPilotEventsSchema.shape as any)[ClawPilotEventName.TaskDelegated].parse(["p", "c"]),
 		).not.toThrow()
 		expect(() =>
-			(rooCodeEventsSchema.shape as any)[ClawPilotEventName.TaskDelegationResumed].parse(["p", "c"]),
+			(clawPilotEventsSchema.shape as any)[ClawPilotEventName.TaskDelegationCompleted].parse(["p", "c", "s"]),
+		).not.toThrow()
+		expect(() =>
+			(clawPilotEventsSchema.shape as any)[ClawPilotEventName.TaskDelegationResumed].parse(["p", "c"]),
 		).not.toThrow()
 
 		// invalid shapes
-		expect(() => (rooCodeEventsSchema.shape as any)[ClawPilotEventName.TaskDelegated].parse(["p"])).toThrow()
+		expect(() => (clawPilotEventsSchema.shape as any)[ClawPilotEventName.TaskDelegated].parse(["p"])).toThrow()
 		expect(() =>
-			(rooCodeEventsSchema.shape as any)[ClawPilotEventName.TaskDelegationCompleted].parse(["p", "c"]),
+			(clawPilotEventsSchema.shape as any)[ClawPilotEventName.TaskDelegationCompleted].parse(["p", "c"]),
 		).toThrow()
-		expect(() => (rooCodeEventsSchema.shape as any)[ClawPilotEventName.TaskDelegationResumed].parse(["p"])).toThrow()
+		expect(() =>
+			(clawPilotEventsSchema.shape as any)[ClawPilotEventName.TaskDelegationResumed].parse(["p"]),
+		).toThrow()
 	})
 
 	test("taskEventSchema discriminated union includes delegation events", () => {

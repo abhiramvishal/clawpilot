@@ -148,7 +148,7 @@ describe("WelcomeViewProvider", () => {
 			fireEvent.click(getStartedButton)
 
 			expect(vscode.postMessage).toHaveBeenCalledWith({
-				type: "rooCloudSignIn",
+				type: "clawCloudSignIn",
 				useProviderSignup: true,
 			})
 		})
@@ -177,7 +177,7 @@ describe("WelcomeViewProvider", () => {
 
 			// Should now show provider selection screen with radio buttons
 			expect(screen.getByTestId("radio-group")).toBeInTheDocument()
-			expect(screen.getByTestId("radio-roo")).toBeInTheDocument()
+			expect(screen.getByTestId("radio-claw")).toBeInTheDocument()
 			expect(screen.getByTestId("radio-custom")).toBeInTheDocument()
 			expect(screen.getByTestId("trans-welcome:providerSignup.chooseProvider")).toBeInTheDocument()
 		})
@@ -191,7 +191,7 @@ describe("WelcomeViewProvider", () => {
 			fireEvent.click(noAccountLink!)
 		}
 
-		it("shows radio buttons for Roo and Custom providers", () => {
+		it("shows radio buttons for Claw and Custom providers", () => {
 			renderWelcomeViewProvider()
 			navigateToProviderSelection()
 
@@ -199,25 +199,25 @@ describe("WelcomeViewProvider", () => {
 			expect(screen.getByTestId("radio-group")).toBeInTheDocument()
 
 			// Should show both radio options
-			expect(screen.getByTestId("radio-roo")).toBeInTheDocument()
+			expect(screen.getByTestId("radio-claw")).toBeInTheDocument()
 			expect(screen.getByTestId("radio-custom")).toBeInTheDocument()
 
-			// Should show Roo provider description
+			// Should show Claw provider description
 			expect(screen.getByText(/welcome:providerSignup.rooCloudDescription/)).toBeInTheDocument()
 
 			// Should show custom provider description
 			expect(screen.getByText(/welcome:providerSignup.useAnotherProviderDescription/)).toBeInTheDocument()
 		})
 
-		it("Roo provider is selected by default", () => {
+		it("Claw provider is selected by default", () => {
 			renderWelcomeViewProvider()
 			navigateToProviderSelection()
 
 			const radioGroup = screen.getByTestId("radio-group")
-			expect(radioGroup).toHaveAttribute("data-value", "roo")
+			expect(radioGroup).toHaveAttribute("data-value", "claw")
 		})
 
-		it("does not show API options when Roo provider is selected", () => {
+		it("does not show API options when Claw provider is selected", () => {
 			renderWelcomeViewProvider()
 			navigateToProviderSelection()
 
@@ -228,7 +228,7 @@ describe("WelcomeViewProvider", () => {
 			expect(apiOptions).toBeInTheDocument()
 		})
 
-		it("triggers auth when Get Started is clicked on Roo provider (not authenticated)", () => {
+		it("triggers auth when Get Started is clicked on Claw provider (not authenticated)", () => {
 			renderWelcomeViewProvider({ cloudIsAuthenticated: false })
 			navigateToProviderSelection()
 
@@ -236,12 +236,12 @@ describe("WelcomeViewProvider", () => {
 			fireEvent.click(getStartedButton)
 
 			expect(vscode.postMessage).toHaveBeenCalledWith({
-				type: "rooCloudSignIn",
+				type: "clawCloudSignIn",
 				useProviderSignup: true,
 			})
 		})
 
-		it("saves config immediately when Get Started is clicked on Roo provider (already authenticated)", () => {
+		it("saves config immediately when Get Started is clicked on Claw provider (already authenticated)", () => {
 			renderWelcomeViewProvider({ cloudIsAuthenticated: true })
 			navigateToProviderSelection()
 
@@ -252,7 +252,7 @@ describe("WelcomeViewProvider", () => {
 				type: "upsertApiConfiguration",
 				text: "default",
 				apiConfiguration: {
-					apiProvider: "roo",
+					apiProvider: "claw",
 				},
 			})
 		})
@@ -331,7 +331,7 @@ describe("WelcomeViewProvider", () => {
 				.find((link) => link.textContent?.includes("welcome:landing.noAccount"))
 			fireEvent.click(noAccountLink!)
 
-			// Start auth from provider selection (Roo is selected by default)
+			// Start auth from provider selection (Claw is selected by default)
 			const getStartedButton = screen.getByTestId("button-primary")
 			fireEvent.click(getStartedButton)
 

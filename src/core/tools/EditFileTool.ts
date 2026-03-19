@@ -206,14 +206,14 @@ export class EditFileTool extends BaseTool<"edit_file"> {
 							return `replacing: "${preview}"`
 						})()
 
-			const accessAllowed = task.rooIgnoreController?.validateAccess(relPath)
+			const accessAllowed = task.clawIgnoreController?.validateAccess(relPath)
 
 			if (!accessAllowed) {
 				// Finalize the partial tool preview before emitting any say() messages.
 				await finalizePartialToolAskIfNeeded(relPath)
 				task.didToolFailInCurrentTurn = true
-				await task.say("rooignore_error", relPath)
-				pushToolResult(formatResponse.rooIgnoreError(relPath))
+				await task.say("clawignore_error", relPath)
+				pushToolResult(formatResponse.clawIgnoreError(relPath))
 				return
 			}
 

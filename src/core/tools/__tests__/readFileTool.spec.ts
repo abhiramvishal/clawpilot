@@ -83,9 +83,9 @@ vi.mock("../../prompts/responses", () => ({
 			(feedback?: string) =>
 				`The user approved this operation and responded with the message:\n<user_message>\n${feedback}\n</user_message>`,
 		),
-		rooIgnoreError: vi.fn(
+		clawIgnoreError: vi.fn(
 			(filePath: string) =>
-				`Access to ${filePath} is blocked by the .rooignore file settings. You must try to continue in the task without using this file, or ask the user to update the .rooignore file.`,
+				`Access to ${filePath} is blocked by the .clawignore file settings. You must try to continue in the task without using this file, or ask the user to update the .clawignore file.`,
 		),
 		toolResult: vi.fn((text: string, images?: string[]) => {
 			if (images && images.length > 0) {
@@ -151,7 +151,7 @@ function createMockTask(options: MockTaskOptions = {}) {
 		say: vi.fn().mockResolvedValue(undefined),
 		sayAndCreateMissingParamError: vi.fn().mockResolvedValue("Missing required parameter: path"),
 		recordToolError: vi.fn(),
-		rooIgnoreController: {
+		clawIgnoreController: {
 			validateAccess: vi.fn().mockReturnValue(rooIgnoreAllowed),
 		},
 		fileContextTracker: {
@@ -286,9 +286,9 @@ describe("ReadFileTool", () => {
 
 			await readFileTool.execute({ path: "secret.env" }, mockTask as any, callbacks)
 
-			expect(mockTask.say).toHaveBeenCalledWith("rooignore_error", "secret.env")
-			expect(formatResponse.rooIgnoreError).toHaveBeenCalledWith("secret.env")
-			expect(callbacks.pushToolResult).toHaveBeenCalledWith(expect.stringContaining("blocked by the .rooignore"))
+			expect(mockTask.say).toHaveBeenCalledWith("clawignore_error", "secret.env")
+			expect(formatResponse.clawIgnoreError).toHaveBeenCalledWith("secret.env")
+			expect(callbacks.pushToolResult).toHaveBeenCalledWith(expect.stringContaining("blocked by the .clawignore"))
 		})
 	})
 

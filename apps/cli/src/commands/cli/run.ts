@@ -36,7 +36,7 @@ import { isExpectedControlFlowError } from "./cancellation.js"
 import { runStdinStreamMode } from "./stdin-stream.js"
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const ROO_MODEL_WARMUP_TIMEOUT_MS = 10_000
+const CLAW_PILOT_MODEL_WARMUP_TIMEOUT_MS = 10_000
 const SIGNAL_ONLY_EXIT_KEEPALIVE_MS = 60_000
 const STREAM_RESUME_WAIT_TIMEOUT_MS = 2_000
 
@@ -54,7 +54,7 @@ function normalizeError(error: unknown): Error {
 	return error instanceof Error ? error : new Error(String(error))
 }
 
-async function warmRooModels(host: ExtensionHost): Promise<void> {
+async function warmClawModels(host: ExtensionHost): Promise<void> {
 	await new Promise<void>((resolve, reject) => {
 		let settled = false
 
@@ -81,7 +81,7 @@ async function warmRooModels(host: ExtensionHost): Promise<void> {
 
 			const values = isRecord(message.values) ? message.values : undefined
 
-			if (values?.provider !== "roo") {
+			if (values?.provider !== "claw") {
 				return
 			}
 
@@ -89,7 +89,7 @@ async function warmRooModels(host: ExtensionHost): Promise<void> {
 				const errorMessage =
 					typeof message.error === "string" && message.error.length > 0
 						? message.error
-						: "failed to refresh Roo models"
+						: "failed to refresh Claw models"
 
 				finish(() => reject(new Error(errorMessage)))
 				return
@@ -99,11 +99,13 @@ async function warmRooModels(host: ExtensionHost): Promise<void> {
 		}
 
 		const timeoutId = setTimeout(() => {
-			finish(() => reject(new Error(`timed out waiting for Roo models after ${ROO_MODEL_WARMUP_TIMEOUT_MS}ms`)))
-		}, ROO_MODEL_WARMUP_TIMEOUT_MS)
+			finish(() =>
+				reject(new Error(`timed out waiting for Claw models after ${CLAW_PILOT_MODEL_WARMUP_TIMEOUT_MS}ms`)),
+			)
+		}, CLAW_PILOT_MODEL_WARMUP_TIMEOUT_MS)
 
 		host.on("extensionWebviewMessage", onMessage)
-		host.sendToExtension({ type: "requestRooModels" })
+		host.sendToExtension({ type: "requestClawModels" })
 	})
 }
 
@@ -163,25 +165,25 @@ export async function run(promptArg: string | undefined, flagOptions: FlagOption
 
 	if (isResumeRequested && prompt) {
 		console.error("[CLI] Error: cannot use prompt or --prompt-file with --session-id/--continue")
-		console.error("[CLI] Usage: roo [--session-id <session-id> | --continue] [options]")
+		console.error("[CLI] Usage: claw [--session-id <session-id> | --continue] [options]")
 		process.exit(1)
 	}
 
 	// Options
 
-	let rooToken = await loadToken()
+	let clawToken = await loadToken()
 	const settings = await loadSettings()
 
 	const isTuiSupported = process.stdin.isTTY && process.stdout.isTTY
 	const isTuiEnabled = !flagOptions.print && isTuiSupported
-	const isOnboardingEnabled = isTuiEnabled && !rooToken && !flagOptions.provider && !settings.provider
+	const isOnboardingEnabled = isTuiEnabled && !clawToken && !flagOptions.provider && !settings.provider
 
 	// Determine effective values: CLI flags > settings file > DEFAULT_FLAGS.
 	const effectiveMode = flagOptions.mode || settings.mode || DEFAULT_FLAGS.mode
 	const effectiveModel = flagOptions.model || settings.model || DEFAULT_FLAGS.model
 	const effectiveReasoningEffort =
 		flagOptions.reasoningEffort || settings.reasoningEffort || DEFAULT_FLAGS.reasoningEffort
-	const effectiveProvider = flagOptions.provider ?? settings.provider ?? (rooToken ? "roo" : "openrouter")
+	const effectiveProvider = flagOptions.provider ?? settings.provider ?? (clawToken ? "claw" : "openrouter")
 	const effectiveWorkspacePath = flagOptions.workspace ? path.resolve(flagOptions.workspace) : process.cwd()
 	const legacyRequireApprovalFromSettings =
 		settings.requireApproval ??
@@ -217,7 +219,7 @@ export async function run(promptArg: string | undefined, flagOptions: FlagOption
 		reasoningEffort: effectiveReasoningEffort === "unspecified" ? undefined : effectiveReasoningEffort,
 		consecutiveMistakeLimit: effectiveConsecutiveMistakeLimit,
 		user: null,
-		provider: effectiveProvider,
+		provider: effectiveProvider as ExtensionHostOptions["provider"],
 		model: effectiveModel,
 		workspacePath: effectiveWorkspacePath,
 		extensionPath: path.resolve(flagOptions.extension || getDefaultExtensionPath(__dirname)),
@@ -237,39 +239,39 @@ export async function run(promptArg: string | undefined, flagOptions: FlagOption
 		if (!onboardingProviderChoice) {
 			const { choice, token } = await runOnboarding()
 			onboardingProviderChoice = choice
-			rooToken = token ?? null
+			clawToken = token ?? null
 		}
 
-		if (onboardingProviderChoice === OnboardingProviderChoice.Roo) {
-			extensionHostOptions.provider = "roo"
+		if (onboardingProviderChoice === OnboardingProviderChoice.Claw) {
+			extensionHostOptions.provider = "claw" as unknown as ExtensionHostOptions["provider"]
 		}
 	}
 
-	if (extensionHostOptions.provider === "roo") {
-		if (rooToken) {
+	if ((extensionHostOptions.provider as string) === "claw") {
+		if (clawToken) {
 			try {
-				const client = createClient({ url: SDK_BASE_URL, authToken: rooToken })
+				const client = createClient({ url: SDK_BASE_URL, authToken: clawToken })
 				const me = await client.auth.me.query()
 
 				if (me?.type !== "user") {
 					throw new Error("Invalid token")
 				}
 
-				extensionHostOptions.apiKey = rooToken
+				extensionHostOptions.apiKey = clawToken
 				extensionHostOptions.user = me.user
 			} catch {
 				// If an explicit API key was provided via flag or env var, fall through
 				// to the general API key resolution below instead of exiting.
 				if (!flagOptions.apiKey && !getApiKeyFromEnv(extensionHostOptions.provider)) {
 					console.error("[CLI] Your ClawPilot Router token is not valid.")
-					console.error("[CLI] Please run: roo auth login")
-					console.error("[CLI] Or use --api-key or set ROO_API_KEY to provide your own API key.")
+					console.error("[CLI] Please run: claw auth login")
+					console.error("[CLI] Or use --api-key or set CLAW_API_KEY to provide your own API key.")
 					process.exit(1)
 				}
 			}
 		}
-		// If no rooToken, fall through to the general API key resolution below
-		// which will check flagOptions.apiKey and ROO_API_KEY env var.
+		// If no clawToken, fall through to the general API key resolution below
+		// which will check flagOptions.apiKey and CLAW_API_KEY env var.
 	}
 
 	// Validations
@@ -287,9 +289,9 @@ export async function run(promptArg: string | undefined, flagOptions: FlagOption
 		extensionHostOptions.apiKey || flagOptions.apiKey || getApiKeyFromEnv(extensionHostOptions.provider)
 
 	if (!extensionHostOptions.apiKey) {
-		if (extensionHostOptions.provider === "roo") {
+		if ((extensionHostOptions.provider as string) === "claw") {
 			console.error("[CLI] Error: Authentication with ClawPilot Cloud failed or was cancelled.")
-			console.error("[CLI] Please run: roo auth login")
+			console.error("[CLI] Please run: claw auth login")
 			console.error("[CLI] Or use --api-key to provide your own API key.")
 		} else {
 			console.error(
@@ -328,39 +330,39 @@ export async function run(promptArg: string | undefined, flagOptions: FlagOption
 	// Output format only works with --print mode
 	if (outputFormat !== "text" && !flagOptions.print && isTuiSupported) {
 		console.error("[CLI] Error: --output-format requires --print mode")
-		console.error("[CLI] Usage: roo --print --output-format json")
+		console.error("[CLI] Usage: claw --print --output-format json")
 		process.exit(1)
 	}
 
 	if (flagOptions.stdinPromptStream && !flagOptions.print) {
 		console.error("[CLI] Error: --stdin-prompt-stream requires --print mode")
-		console.error("[CLI] Usage: roo --print --output-format stream-json --stdin-prompt-stream [options]")
+		console.error("[CLI] Usage: claw --print --output-format stream-json --stdin-prompt-stream [options]")
 		process.exit(1)
 	}
 
 	if (flagOptions.signalOnlyExit && !flagOptions.stdinPromptStream) {
 		console.error("[CLI] Error: --signal-only-exit requires --stdin-prompt-stream")
-		console.error("[CLI] Usage: roo --print --output-format stream-json --stdin-prompt-stream --signal-only-exit")
+		console.error("[CLI] Usage: claw --print --output-format stream-json --stdin-prompt-stream --signal-only-exit")
 		process.exit(1)
 	}
 
 	if (flagOptions.stdinPromptStream && outputFormat !== "stream-json") {
 		console.error("[CLI] Error: --stdin-prompt-stream requires --output-format=stream-json")
-		console.error("[CLI] Usage: roo --print --output-format stream-json --stdin-prompt-stream [options]")
+		console.error("[CLI] Usage: claw --print --output-format stream-json --stdin-prompt-stream [options]")
 		process.exit(1)
 	}
 
 	if (flagOptions.stdinPromptStream && process.stdin.isTTY) {
 		console.error("[CLI] Error: --stdin-prompt-stream requires piped stdin")
 		console.error(
-			'[CLI] Example: printf \'{"command":"start","requestId":"1","prompt":"1+1=?"}\\n\' | roo --print --output-format stream-json --stdin-prompt-stream [options]',
+			'[CLI] Example: printf \'{"command":"start","requestId":"1","prompt":"1+1=?"}\\n\' | claw --print --output-format stream-json --stdin-prompt-stream [options]',
 		)
 		process.exit(1)
 	}
 
 	if (flagOptions.stdinPromptStream && prompt) {
 		console.error("[CLI] Error: cannot use positional prompt or --prompt-file with --stdin-prompt-stream")
-		console.error("[CLI] Usage: roo --print --output-format stream-json --stdin-prompt-stream [options]")
+		console.error("[CLI] Usage: claw --print --output-format stream-json --stdin-prompt-stream [options]")
 		process.exit(1)
 	}
 
@@ -388,13 +390,13 @@ export async function run(promptArg: string | undefined, flagOptions: FlagOption
 		if (!prompt && !useStdinPromptStream && !isResumeRequested) {
 			if (flagOptions.print) {
 				console.error("[CLI] Error: no prompt provided")
-				console.error("[CLI] Usage: roo --print [options] <prompt>")
+				console.error("[CLI] Usage: claw --print [options] <prompt>")
 				console.error(
-					"[CLI] For stdin control mode: roo --print --output-format stream-json --stdin-prompt-stream [options]",
+					"[CLI] For stdin control mode: claw --print --output-format stream-json --stdin-prompt-stream [options]",
 				)
 			} else {
 				console.error("[CLI] Error: prompt is required in non-interactive mode")
-				console.error("[CLI] Usage: roo <prompt> [options]")
+				console.error("[CLI] Usage: claw <prompt> [options]")
 				console.error("[CLI] Run without -p for interactive mode")
 			}
 
@@ -606,13 +608,13 @@ export async function run(promptArg: string | undefined, flagOptions: FlagOption
 
 		try {
 			await host.activate()
-			if (extensionHostOptions.provider === "roo") {
+			if ((extensionHostOptions.provider as string) === "claw") {
 				try {
-					await warmRooModels(host)
+					await warmClawModels(host)
 				} catch (warmupError) {
 					if (flagOptions.debug) {
 						const message = warmupError instanceof Error ? warmupError.message : String(warmupError)
-						console.error(`[CLI] Warning: Roo model warmup failed: ${message}`)
+						console.error(`[CLI] Warning: Claw model warmup failed: ${message}`)
 					}
 				}
 			}

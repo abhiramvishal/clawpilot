@@ -84,7 +84,7 @@ export const processTaskInContainer = async ({
 	]
 
 	if (jobToken) {
-		baseArgs.push(`-e ROO_CODE_CLOUD_TOKEN=${jobToken}`)
+		baseArgs.push(`-e CLAW_PILOT_CLOUD_TOKEN=${jobToken}`)
 	}
 
 	// Pass API keys to the container so the CLI can authenticate
