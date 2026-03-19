@@ -954,6 +954,7 @@ export const webviewMessageHandler = async (
 						unbound: {},
 						ollama: {},
 						lmstudio: {},
+						roo: {},
 						claw: {},
 					}
 
@@ -989,6 +990,16 @@ export const webviewMessageHandler = async (
 					},
 				},
 				{ key: "vercel-ai-gateway", options: { provider: "vercel-ai-gateway" } },
+				{
+					key: "roo",
+					options: {
+						provider: "roo",
+						baseUrl: process.env.CLAW_PILOT_PROVIDER_URL ?? "https://api.clawpilot.com/proxy",
+						apiKey: CloudService.hasInstance()
+							? CloudService.instance.authService?.getSessionToken()
+							: undefined,
+					},
+				},
 				{
 					key: "claw",
 					options: {
