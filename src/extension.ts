@@ -209,13 +209,13 @@ export async function activate(context: vscode.ExtensionContext) {
 						? CloudService.instance.authService?.getSessionToken()
 						: undefined
 					await refreshModels({
-						provider: "roo",
+						provider: "claw",
 						baseUrl: process.env.CLAW_PILOT_PROVIDER_URL ?? "https://api.clawpilot.com/proxy",
 						apiKey: sessionToken,
 					})
 				} else {
 					// Flush without refresh on logout
-					await flushModels({ provider: "roo" }, false)
+					await flushModels({ provider: "claw" }, false)
 				}
 			} catch (error) {
 				cloudLogger(
@@ -230,7 +230,7 @@ export async function activate(context: vscode.ExtensionContext) {
 			// Apply stored provider model to API configuration if present
 			if (data.state === "active-session") {
 				try {
-					const storedModel = context.globalState.get<string>("roo-provider-model")
+					const storedModel = context.globalState.get<string>("claw-provider-model")
 					if (storedModel) {
 						cloudLogger(`[authStateChangedHandler] Applying stored provider model: ${storedModel}`)
 						// Get the current API configuration name
@@ -238,11 +238,11 @@ export async function activate(context: vscode.ExtensionContext) {
 							provider.contextProxy.getGlobalState("currentApiConfigName") || "default"
 						// Update it with the stored model using upsertProviderProfile
 						await provider.upsertProviderProfile(currentConfigName, {
-							apiProvider: "roo",
+							apiProvider: "claw",
 							apiModelId: storedModel,
 						})
 						// Clear the stored model after applying
-						await context.globalState.update("roo-provider-model", undefined)
+						await context.globalState.update("claw-provider-model", undefined)
 						cloudLogger(`[authStateChangedHandler] Applied and cleared stored provider model`)
 					}
 				} catch (error) {
