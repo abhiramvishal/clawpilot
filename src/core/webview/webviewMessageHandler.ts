@@ -954,7 +954,6 @@ export const webviewMessageHandler = async (
 						unbound: {},
 						ollama: {},
 						lmstudio: {},
-						roo: {},
 						claw: {},
 					}
 
@@ -991,9 +990,9 @@ export const webviewMessageHandler = async (
 				},
 				{ key: "vercel-ai-gateway", options: { provider: "vercel-ai-gateway" } },
 				{
-					key: "roo",
+					key: "claw",
 					options: {
-						provider: "roo",
+						provider: "claw",
 						baseUrl: process.env.CLAW_PILOT_PROVIDER_URL ?? "https://api.clawpilot.com/proxy",
 						apiKey: CloudService.hasInstance()
 							? CloudService.instance.authService?.getSessionToken()
@@ -1128,7 +1127,7 @@ export const webviewMessageHandler = async (
 			// Specific handler for Roo models only - flushes cache to ensure fresh auth token is used
 			try {
 				const rooOptions = {
-					provider: "roo" as const,
+					provider: "claw" as const,
 					baseUrl: process.env.CLAW_PILOT_PROVIDER_URL ?? "https://api.clawpilot.com/proxy",
 					apiKey: CloudService.hasInstance()
 						? CloudService.instance.authService?.getSessionToken()
@@ -1143,7 +1142,7 @@ export const webviewMessageHandler = async (
 				provider.postMessageToWebview({
 					type: "singleRouterModelFetchResponse",
 					success: true,
-					values: { provider: "roo", models: rooModels },
+					values: { provider: "claw", models: rooModels },
 				})
 			} catch (error) {
 				// Send error response
@@ -1152,7 +1151,7 @@ export const webviewMessageHandler = async (
 					type: "singleRouterModelFetchResponse",
 					success: false,
 					error: errorMessage,
-					values: { provider: "roo" },
+					values: { provider: "claw" },
 				})
 			}
 			break
