@@ -468,7 +468,7 @@
 			"description": "Ollama permet executar models localment al vostre ordinador. Per a instruccions sobre com començar, consulteu la Guia d'inici ràpid.",
 			"warning": "Nota: ClawPilot utilitza prompts complexos i funciona millor amb models Claude. Els models menys capaços poden no funcionar com s'espera."
 		},
-		"roo": {
+		"claw": {
 			"authenticatedMessage": "Autenticat de forma segura a través del teu compte de ClawPilot Cloud.",
 			"connectButton": "Connecta amb ClawPilot Cloud"
 		},

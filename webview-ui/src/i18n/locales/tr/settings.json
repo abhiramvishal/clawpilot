@@ -468,7 +468,7 @@
 			"description": "Ollama, modelleri bilgisayarınızda yerel olarak çalıştırmanıza olanak tanır. Başlamak için hızlı başlangıç kılavuzlarına bakın.",
 			"warning": "Not: ClawPilot karmaşık istemler kullanır ve Claude modelleriyle en iyi şekilde çalışır. Daha az yetenekli modeller beklendiği gibi çalışmayabilir."
 		},
-		"roo": {
+		"claw": {
 			"authenticatedMessage": "ClawPilot Cloud hesabın üzerinden güvenli bir şekilde kimlik doğrulandı.",
 			"connectButton": "ClawPilot Cloud'a Bağlan"
 		},

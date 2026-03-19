@@ -7,7 +7,7 @@
 		"openrouter": {
 			"description": "Единый интерфейс для LLM"
 		},
-		"roo": {
+		"claw": {
 			"description": "Лучшие бесплатные модели для начала",
 			"incentive": "Попробуйте Roo бесплатно"
 		}

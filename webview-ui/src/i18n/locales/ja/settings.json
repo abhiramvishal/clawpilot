@@ -468,7 +468,7 @@
 			"description": "Ollamaを使用すると、ローカルコンピューターでモデルを実行できます。始め方については、クイックスタートガイドをご覧ください。",
 			"warning": "注意：ClawPilotは複雑なプロンプトを使用し、Claudeモデルで最適に動作します。能力の低いモデルは期待通りに動作しない場合があります。"
 		},
-		"roo": {
+		"claw": {
 			"authenticatedMessage": "ClawPilot Cloudアカウントを通じて安全に認証されています。",
 			"connectButton": "ClawPilot Cloudに接続"
 		},
