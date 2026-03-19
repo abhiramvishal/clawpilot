@@ -1,4 +1,4 @@
-// npx vitest run api/providers/__tests__/roo.spec.ts
+// npx vitest run api/providers/__tests__/claw.spec.ts
 
 import { Anthropic } from "@anthropic-ai/sdk"
 import { rooDefaultModelId } from "@clawpilot/types"

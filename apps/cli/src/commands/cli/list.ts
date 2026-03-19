@@ -222,7 +222,7 @@ function requestClawModels(host: ExtensionHost): Promise<ModelRecord> {
 		}
 
 		const values = isRecord(message.values) ? message.values : undefined
-		if (values?.provider !== "roo") {
+		if (values?.provider !== "claw") {
 			return undefined
 		}
 
@@ -230,7 +230,7 @@ function requestClawModels(host: ExtensionHost): Promise<ModelRecord> {
 			const errorMessage =
 				typeof message.error === "string" && message.error.length > 0
 					? message.error
-					: "Failed to fetch Roo models"
+					: "Failed to fetch Claw models"
 			throw new Error(errorMessage)
 		}
 
