@@ -129,7 +129,7 @@
 		"title": "Chế độ",
 		"marketplace": "Chợ Chế độ",
 		"settings": "Cài đặt Chế độ",
-		"description": "Các nhân cách chuyên biệt điều chỉnh hành vi của Roo.",
+		"description": "Các nhân cách chuyên biệt điều chỉnh hành vi của Claw.",
 		"searchPlaceholder": "Tìm kiếm chế độ...",
 		"noResults": "Không tìm thấy kết quả nào"
 	},
@@ -143,7 +143,7 @@
 	"diffError": {
 		"title": "Chỉnh sửa không thành công"
 	},
-	"troubleMessage": "Roo đang gặp sự cố...",
+	"troubleMessage": "Claw đang gặp sự cố...",
 	"apiRequest": {
 		"title": "Yêu cầu API",
 		"failed": "Yêu cầu API thất bại",
@@ -186,43 +186,43 @@
 		"current": "Hiện tại"
 	},
 	"instructions": {
-		"wantsToFetch": "Roo muốn lấy hướng dẫn chi tiết để hỗ trợ nhiệm vụ hiện tại"
+		"wantsToFetch": "Claw muốn lấy hướng dẫn chi tiết để hỗ trợ nhiệm vụ hiện tại"
 	},
 	"fileOperations": {
-		"wantsToRead": "Roo muốn đọc tệp này",
-		"wantsToReadOutsideWorkspace": "Roo muốn đọc tệp này bên ngoài không gian làm việc",
-		"didRead": "Roo đã đọc tệp này",
-		"wantsToEdit": "Roo muốn chỉnh sửa tệp này",
-		"wantsToEditOutsideWorkspace": "Roo muốn chỉnh sửa tệp này bên ngoài không gian làm việc",
-		"wantsToEditProtected": "Roo muốn chỉnh sửa tệp cấu hình được bảo vệ",
-		"wantsToCreate": "Roo muốn tạo một tệp mới",
-		"wantsToSearchReplace": "Roo muốn thực hiện tìm kiếm và thay thế trong tệp này",
-		"didSearchReplace": "Roo đã thực hiện tìm kiếm và thay thế trong tệp này",
-		"wantsToInsert": "Roo muốn chèn nội dung vào tệp này",
-		"wantsToInsertWithLineNumber": "Roo muốn chèn nội dung vào dòng {{lineNumber}} của tệp này",
-		"wantsToInsertAtEnd": "Roo muốn thêm nội dung vào cuối tệp này",
-		"wantsToReadAndXMore": "Roo muốn đọc tệp này và {{count}} tệp khác",
-		"wantsToReadMultiple": "Roo muốn đọc nhiều tệp",
-		"wantsToApplyBatchChanges": "Roo muốn áp dụng thay đổi cho nhiều tệp",
-		"wantsToGenerateImage": "Roo muốn tạo một hình ảnh",
-		"wantsToGenerateImageOutsideWorkspace": "Roo muốn tạo hình ảnh bên ngoài không gian làm việc",
-		"wantsToGenerateImageProtected": "Roo muốn tạo hình ảnh ở vị trí được bảo vệ",
-		"didGenerateImage": "Roo đã tạo một hình ảnh"
+		"wantsToRead": "Claw muốn đọc tệp này",
+		"wantsToReadOutsideWorkspace": "Claw muốn đọc tệp này bên ngoài không gian làm việc",
+		"didRead": "Claw đã đọc tệp này",
+		"wantsToEdit": "Claw muốn chỉnh sửa tệp này",
+		"wantsToEditOutsideWorkspace": "Claw muốn chỉnh sửa tệp này bên ngoài không gian làm việc",
+		"wantsToEditProtected": "Claw muốn chỉnh sửa tệp cấu hình được bảo vệ",
+		"wantsToCreate": "Claw muốn tạo một tệp mới",
+		"wantsToSearchReplace": "Claw muốn thực hiện tìm kiếm và thay thế trong tệp này",
+		"didSearchReplace": "Claw đã thực hiện tìm kiếm và thay thế trong tệp này",
+		"wantsToInsert": "Claw muốn chèn nội dung vào tệp này",
+		"wantsToInsertWithLineNumber": "Claw muốn chèn nội dung vào dòng {{lineNumber}} của tệp này",
+		"wantsToInsertAtEnd": "Claw muốn thêm nội dung vào cuối tệp này",
+		"wantsToReadAndXMore": "Claw muốn đọc tệp này và {{count}} tệp khác",
+		"wantsToReadMultiple": "Claw muốn đọc nhiều tệp",
+		"wantsToApplyBatchChanges": "Claw muốn áp dụng thay đổi cho nhiều tệp",
+		"wantsToGenerateImage": "Claw muốn tạo một hình ảnh",
+		"wantsToGenerateImageOutsideWorkspace": "Claw muốn tạo hình ảnh bên ngoài không gian làm việc",
+		"wantsToGenerateImageProtected": "Claw muốn tạo hình ảnh ở vị trí được bảo vệ",
+		"didGenerateImage": "Claw đã tạo một hình ảnh"
 	},
 	"directoryOperations": {
-		"wantsToViewTopLevel": "Roo muốn xem các tệp cấp cao nhất trong thư mục này",
-		"didViewTopLevel": "Roo đã xem các tệp cấp cao nhất trong thư mục này",
-		"wantsToViewRecursive": "Roo muốn xem đệ quy tất cả các tệp trong thư mục này",
-		"didViewRecursive": "Roo đã xem đệ quy tất cả các tệp trong thư mục này",
-		"wantsToSearch": "Roo muốn tìm kiếm trong thư mục này cho <code>{{regex}}</code>",
-		"didSearch": "Roo đã tìm kiếm trong thư mục này cho <code>{{regex}}</code>",
-		"wantsToSearchOutsideWorkspace": "Roo muốn tìm kiếm trong thư mục này (ngoài không gian làm việc) cho <code>{{regex}}</code>",
-		"didSearchOutsideWorkspace": "Roo đã tìm kiếm trong thư mục này (ngoài không gian làm việc) cho <code>{{regex}}</code>",
-		"wantsToViewTopLevelOutsideWorkspace": "Roo muốn xem các tệp cấp cao nhất trong thư mục này (ngoài không gian làm việc)",
-		"didViewTopLevelOutsideWorkspace": "Roo đã xem các tệp cấp cao nhất trong thư mục này (ngoài không gian làm việc)",
-		"wantsToViewRecursiveOutsideWorkspace": "Roo muốn xem đệ quy tất cả các tệp trong thư mục này (ngoài không gian làm việc)",
-		"didViewRecursiveOutsideWorkspace": "Roo đã xem đệ quy tất cả các tệp trong thư mục này (ngoài không gian làm việc)",
-		"wantsToViewMultipleDirectories": "Roo muốn xem nhiều thư mục"
+		"wantsToViewTopLevel": "Claw muốn xem các tệp cấp cao nhất trong thư mục này",
+		"didViewTopLevel": "Claw đã xem các tệp cấp cao nhất trong thư mục này",
+		"wantsToViewRecursive": "Claw muốn xem đệ quy tất cả các tệp trong thư mục này",
+		"didViewRecursive": "Claw đã xem đệ quy tất cả các tệp trong thư mục này",
+		"wantsToSearch": "Claw muốn tìm kiếm trong thư mục này cho <code>{{regex}}</code>",
+		"didSearch": "Claw đã tìm kiếm trong thư mục này cho <code>{{regex}}</code>",
+		"wantsToSearchOutsideWorkspace": "Claw muốn tìm kiếm trong thư mục này (ngoài không gian làm việc) cho <code>{{regex}}</code>",
+		"didSearchOutsideWorkspace": "Claw đã tìm kiếm trong thư mục này (ngoài không gian làm việc) cho <code>{{regex}}</code>",
+		"wantsToViewTopLevelOutsideWorkspace": "Claw muốn xem các tệp cấp cao nhất trong thư mục này (ngoài không gian làm việc)",
+		"didViewTopLevelOutsideWorkspace": "Claw đã xem các tệp cấp cao nhất trong thư mục này (ngoài không gian làm việc)",
+		"wantsToViewRecursiveOutsideWorkspace": "Claw muốn xem đệ quy tất cả các tệp trong thư mục này (ngoài không gian làm việc)",
+		"didViewRecursiveOutsideWorkspace": "Claw đã xem đệ quy tất cả các tệp trong thư mục này (ngoài không gian làm việc)",
+		"wantsToViewMultipleDirectories": "Claw muốn xem nhiều thư mục"
 	},
 	"commandOutput": "Kết quả lệnh",
 	"commandExecution": {
@@ -245,24 +245,24 @@
 	"response": "Phản hồi",
 	"arguments": "Tham số",
 	"text": {
-		"rooSaid": "Roo đã nói"
+		"rooSaid": "Claw đã nói"
 	},
 	"feedback": {
 		"youSaid": "Bạn đã nói"
 	},
 	"mcp": {
-		"wantsToUseTool": "Roo muốn sử dụng một công cụ trên máy chủ MCP {{serverName}}",
-		"wantsToAccessResource": "Roo muốn truy cập một tài nguyên trên máy chủ MCP {{serverName}}"
+		"wantsToUseTool": "Claw muốn sử dụng một công cụ trên máy chủ MCP {{serverName}}",
+		"wantsToAccessResource": "Claw muốn truy cập một tài nguyên trên máy chủ MCP {{serverName}}"
 	},
 	"modes": {
-		"wantsToSwitch": "Roo muốn chuyển sang chế độ <code>{{mode}}</code>",
-		"wantsToSwitchWithReason": "Roo muốn chuyển sang chế độ <code>{{mode}}</code> vì: {{reason}}",
-		"didSwitch": "Roo đã chuyển sang chế độ <code>{{mode}}</code>",
-		"didSwitchWithReason": "Roo đã chuyển sang chế độ <code>{{mode}}</code> vì: {{reason}}"
+		"wantsToSwitch": "Claw muốn chuyển sang chế độ <code>{{mode}}</code>",
+		"wantsToSwitchWithReason": "Claw muốn chuyển sang chế độ <code>{{mode}}</code> vì: {{reason}}",
+		"didSwitch": "Claw đã chuyển sang chế độ <code>{{mode}}</code>",
+		"didSwitchWithReason": "Claw đã chuyển sang chế độ <code>{{mode}}</code> vì: {{reason}}"
 	},
 	"subtasks": {
-		"wantsToCreate": "Roo muốn tạo một nhiệm vụ phụ mới trong chế độ <code>{{mode}}</code>",
-		"wantsToFinish": "Roo muốn hoàn thành nhiệm vụ phụ này",
+		"wantsToCreate": "Claw muốn tạo một nhiệm vụ phụ mới trong chế độ <code>{{mode}}</code>",
+		"wantsToFinish": "Claw muốn hoàn thành nhiệm vụ phụ này",
 		"newTaskContent": "Hướng dẫn nhiệm vụ phụ",
 		"completionContent": "Nhiệm vụ phụ đã hoàn thành",
 		"resultContent": "Kết quả nhiệm vụ phụ",
@@ -271,7 +271,7 @@
 		"goToSubtask": "Xem nhiệm vụ"
 	},
 	"questions": {
-		"hasQuestion": "Roo có một câu hỏi"
+		"hasQuestion": "Claw có một câu hỏi"
 	},
 	"taskCompleted": "Nhiệm vụ hoàn thành",
 	"modelResponseIncomplete": "Phản hồi của mô hình không đầy đủ",
@@ -287,7 +287,7 @@
 		"copyToClipboard": "Sao chép vào clipboard",
 		"copied": "Đã sao chép!",
 		"diagnostics": "Nhận thông tin lỗi chi tiết",
-		"proxyProvider": "Có vẻ bạn đang sử dụng nhà cung cấp dựa trên proxy. Hãy chắc chắn kiểm tra các nhật ký của nó và đảm bảo nó không viết lại các yêu cầu của Roo."
+		"proxyProvider": "Có vẻ bạn đang sử dụng nhà cung cấp dựa trên proxy. Hãy chắc chắn kiểm tra các nhật ký của nó và đảm bảo nó không viết lại các yêu cầu của Claw."
 	},
 	"powershell": {
 		"issues": "Có vẻ như bạn đang gặp vấn đề với Windows PowerShell, vui lòng xem"
@@ -330,8 +330,8 @@
 		}
 	},
 	"skill": {
-		"wantsToLoad": "Roo muốn tải một kỹ năng",
-		"didLoad": "Roo đã tải một kỹ năng"
+		"wantsToLoad": "Claw muốn tải một kỹ năng",
+		"didLoad": "Claw đã tải một kỹ năng"
 	},
 	"followUpSuggest": {
 		"copyToInput": "Sao chép vào ô nhập liệu (hoặc Shift + nhấp chuột)",
@@ -384,18 +384,18 @@
 	"ask": {
 		"autoApprovedRequestLimitReached": {
 			"title": "Đã Đạt Giới Hạn Yêu Cầu Tự Động Phê Duyệt",
-			"description": "Roo đã đạt đến giới hạn tự động phê duyệt là {{count}} yêu cầu API. Bạn có muốn đặt lại bộ đếm và tiếp tục nhiệm vụ không?",
+			"description": "Claw đã đạt đến giới hạn tự động phê duyệt là {{count}} yêu cầu API. Bạn có muốn đặt lại bộ đếm và tiếp tục nhiệm vụ không?",
 			"button": "Đặt lại và Tiếp tục"
 		},
 		"autoApprovedCostLimitReached": {
 			"button": "Đặt lại và Tiếp tục",
 			"title": "Đã Đạt Giới Hạn Chi Phí Tự Động Phê Duyệt",
-			"description": "Roo đã đạt đến giới hạn chi phí tự động phê duyệt là ${{count}}. Bạn có muốn đặt lại chi phí và tiếp tục với nhiệm vụ không?"
+			"description": "Claw đã đạt đến giới hạn chi phí tự động phê duyệt là ${{count}}. Bạn có muốn đặt lại chi phí và tiếp tục với nhiệm vụ không?"
 		}
 	},
 	"codebaseSearch": {
-		"wantsToSearch": "Roo muốn tìm kiếm trong cơ sở mã cho <code>{{query}}</code>",
-		"wantsToSearchWithPath": "Roo muốn tìm kiếm trong cơ sở mã cho <code>{{query}}</code> trong <code>{{path}}</code>",
+		"wantsToSearch": "Claw muốn tìm kiếm trong cơ sở mã cho <code>{{query}}</code>",
+		"wantsToSearchWithPath": "Claw muốn tìm kiếm trong cơ sở mã cho <code>{{query}}</code> trong <code>{{path}}</code>",
 		"didSearch_one": "Đã tìm thấy 1 kết quả",
 		"didSearch_other": "Đã tìm thấy {{count}} kết quả",
 		"resultTooltip": "Điểm tương tự: {{score}} (nhấp để mở tệp)"
@@ -477,8 +477,8 @@
 		"clickToEdit": "Nhấp để chỉnh sửa tin nhắn"
 	},
 	"slashCommand": {
-		"wantsToRun": "Roo muốn chạy lệnh slash",
-		"didRun": "Roo đã chạy lệnh slash"
+		"wantsToRun": "Claw muốn chạy lệnh slash",
+		"didRun": "Claw đã chạy lệnh slash"
 	},
 	"todo": {
 		"partial": "{{completed}} trong tổng số {{total}} công việc đã hoàn thành",
@@ -497,11 +497,11 @@
 		"openMcpSettings": "Mở cài đặt MCP"
 	},
 	"readCommandOutput": {
-		"title": "Roo read command output"
+		"title": "Claw read command output"
 	},
 	"retiredProvider": {
 		"title": "Nhà cung cấp không còn được hỗ trợ",
-		"message": "Xin lỗi, nhà cung cấp này không còn được hỗ trợ. Chúng tôi nhận thấy rất ít người dùng Roo thực sự sử dụng nó và chúng tôi cần thu hẹp phạm vi mã nguồn để tiếp tục phát triển nhanh và phục vụ tốt cộng đồng. Đây là một quyết định thực sự khó khăn nhưng nó cho phép chúng tôi tập trung vào điều quan trọng nhất với bạn. Chúng tôi biết điều này thật phiền, xin thông cảm.",
+		"message": "Xin lỗi, nhà cung cấp này không còn được hỗ trợ. Chúng tôi nhận thấy rất ít người dùng Claw thực sự sử dụng nó và chúng tôi cần thu hẹp phạm vi mã nguồn để tiếp tục phát triển nhanh và phục vụ tốt cộng đồng. Đây là một quyết định thực sự khó khăn nhưng nó cho phép chúng tôi tập trung vào điều quan trọng nhất với bạn. Chúng tôi biết điều này thật phiền, xin thông cảm.",
 		"openSettings": "Mở cài đặt"
 	}
 }

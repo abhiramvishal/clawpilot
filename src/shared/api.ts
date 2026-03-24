@@ -176,8 +176,6 @@ const dynamicProviderExtras = {
 	unbound: {} as { apiKey?: string },
 	ollama: {} as {}, // eslint-disable-line @typescript-eslint/no-empty-object-type
 	lmstudio: {} as {}, // eslint-disable-line @typescript-eslint/no-empty-object-type
-	// Backward compatibility while some callers still emit "roo".
-	roo: {} as { apiKey?: string; baseUrl?: string },
 	claw: {} as { apiKey?: string; baseUrl?: string },
 } as const satisfies Record<RouterName, object>
 

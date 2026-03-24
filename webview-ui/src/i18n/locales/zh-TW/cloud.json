@@ -6,7 +6,7 @@
 	"signIn": "連線至 ClawPilot Cloud",
 	"connect": "開始使用",
 	"cloudBenefitsTitle": "試用 ClawPilot Cloud",
-	"cloudBenefitProvider": "存取與 Roo 完美配合的免費和付費模型",
+	"cloudBenefitProvider": "存取與 Claw 完美配合的免費和付費模型",
 	"cloudBenefitCloudAgents": "將工作分配給自主雲端代理",
 	"cloudBenefitTriggers": "在 GitHub 上取得程式碼審查、從 Slack 啟動工作等等",
 	"cloudBenefitWalkaway": "隨時隨地（包括您的手機）追蹤和控制工作",
@@ -26,8 +26,8 @@
 	"createTeamAccount": "建立團隊帳戶",
 	"cloudUrlPillLabel": "ClawPilot Cloud URL",
 	"upsell": {
-		"autoApprovePowerUser": "給 Roo 一點獨立性？使用 ClawPilot Cloud 隨時隨地掌控工作進度。<learnMoreLink>了解更多</learnMoreLink>。",
+		"autoApprovePowerUser": "給 Claw 一點獨立性？使用 ClawPilot Cloud 隨時隨地掌控工作進度。<learnMoreLink>了解更多</learnMoreLink>。",
 		"longRunningTask": "這可能需要一些時間。使用雲端隨時隨地繼續。",
-		"taskList": "喜歡 Roo 嗎？快來看看 ClawPilot Cloud：隨時隨地追蹤和控制您的任務，執行自主雲端代理，取得使用統計資料等等。<learnMoreLink>了解更多</learnMoreLink>。"
+		"taskList": "喜歡 Claw 嗎？快來看看 ClawPilot Cloud：隨時隨地追蹤和控制您的任務，執行自主雲端代理，取得使用統計資料等等。<learnMoreLink>了解更多</learnMoreLink>。"
 	}
 }

@@ -9,19 +9,19 @@
 		},
 		"claw": {
 			"description": "Najlepsze bezpłatne modele dla początkujących",
-			"incentive": "Wypróbuj Roo bezpłatnie"
+			"incentive": "Wypróbuj Claw bezpłatnie"
 		}
 	},
 	"landing": {
 		"greeting": "Witaj w ClawPilot!",
 		"introduction": "Dzięki szerokiej gamie wbudowanych i rozszerzalnych Trybów, ClawPilot pozwala planować, projektować architekturę, kodować, debugować i zwiększać produktywność jak nigdy dotąd.",
 		"accountMention": "Aby rozpocząć, utwórz konto ClawPilot Cloud. Otrzymaj potężne modele, kontrolę internetową, analizę, wsparcie i wiele więcej.",
-		"getStarted": "Utwórz konto Roo",
+		"getStarted": "Utwórz konto Claw",
 		"noAccount": "lub używaj bez konta"
 	},
 	"providerSignup": {
 		"heading": "Wybierz swojego dostawcę",
-		"chooseProvider": "Roo potrzebuje dostawcy LLM, aby działać. Wybierz jeden, aby zacząć, możesz dodać więcej później.",
+		"chooseProvider": "Claw potrzebuje dostawcy LLM, aby działać. Wybierz jeden, aby zacząć, możesz dodać więcej później.",
 		"rooCloudProvider": "Dostawca ClawPilot Cloud",
 		"rooCloudDescription": "Najłatwiejszy sposób na rozpoczęcie to skorzystanie z Dostawcy ClawPilot Cloud: starannie wybrany mix bezpłatnych i płatnych modeli w niskiej cenie.",
 		"learnMore": "Dowiedz się więcej",

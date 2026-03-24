@@ -14,7 +14,7 @@ import { getReadablePath } from "../../utils/path"
 import { isPathOutsideWorkspace } from "../../utils/pathUtils"
 import { EXPERIMENT_IDS, experiments } from "../../shared/experiments"
 import { OpenRouterHandler } from "../../api/providers/openrouter"
-import { RooHandler } from "../../api/providers/claw"
+import { ClawHandler } from "../../api/providers/claw"
 import { BaseTool, ToolCallbacks } from "./BaseTool"
 import type { ToolUse } from "../../shared/tools"
 import { t } from "../../i18n"
@@ -192,7 +192,7 @@ export class GenerateImageTool extends BaseTool<"generate_image"> {
 			let result
 			if (modelProvider === "claw") {
 				// Use ClawPilot Cloud provider (supports both chat completions and images API)
-				const rooHandler = new RooHandler({} as any)
+				const rooHandler = new ClawHandler({} as any)
 				result = await rooHandler.generateImage(prompt, selectedModel, inputImageData, apiMethod)
 			} else {
 				// Use OpenRouter provider (only supports chat completions API)

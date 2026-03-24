@@ -9,19 +9,19 @@
 		},
 		"claw": {
 			"description": "開始使用的最佳免費模型",
-			"incentive": "免費試用 Roo"
+			"incentive": "免費試用 Claw"
 		}
 	},
 	"landing": {
 		"greeting": "歡迎使用 ClawPilot！",
 		"introduction": "ClawPilot 提供一系列內建和可擴充的模式，讓您以前所未有的方式規劃專案、設計架構、編寫程式碼、除錯並提升工作效率。",
 		"accountMention": "開始使用，請建立您的 ClawPilot Cloud 帳戶。取得強大的模型、網路控制、分析、支援等功能。",
-		"getStarted": "建立 Roo 帳戶",
+		"getStarted": "建立 Claw 帳戶",
 		"noAccount": "或不使用帳戶"
 	},
 	"providerSignup": {
 		"heading": "選擇供應商",
-		"chooseProvider": "Roo 需要 LLM 供應商才能運作。選擇一個以開始使用，您可以稍後新增更多。",
+		"chooseProvider": "Claw 需要 LLM 供應商才能運作。選擇一個以開始使用，您可以稍後新增更多。",
 		"rooCloudProvider": "ClawPilot Router",
 		"rooCloudDescription": "開始使用最簡單的方式是使用 ClawPilot Router：精選的免費和付費模型組合，價格低廉。",
 		"learnMore": "了解更多",

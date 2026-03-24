@@ -120,7 +120,7 @@
 		"title": "Modi",
 		"marketplace": "Modus Marktplaats",
 		"settings": "Modus Instellingen",
-		"description": "Gespecialiseerde persona's die het gedrag van Roo aanpassen.",
+		"description": "Gespecialiseerde persona's die het gedrag van Claw aanpassen.",
 		"searchPlaceholder": "Zoek modi...",
 		"noResults": "Geen resultaten gevonden"
 	},
@@ -181,43 +181,43 @@
 		"current": "Huidig"
 	},
 	"instructions": {
-		"wantsToFetch": "Roo wil gedetailleerde instructies ophalen om te helpen met de huidige taak"
+		"wantsToFetch": "Claw wil gedetailleerde instructies ophalen om te helpen met de huidige taak"
 	},
 	"fileOperations": {
-		"wantsToRead": "Roo wil dit bestand lezen",
-		"wantsToReadOutsideWorkspace": "Roo wil dit bestand buiten de werkruimte lezen",
-		"didRead": "Roo heeft dit bestand gelezen",
-		"wantsToEdit": "Roo wil dit bestand bewerken",
-		"wantsToEditOutsideWorkspace": "Roo wil dit bestand buiten de werkruimte bewerken",
-		"wantsToEditProtected": "Roo wil een beveiligd configuratiebestand bewerken",
-		"wantsToCreate": "Roo wil een nieuw bestand aanmaken",
-		"wantsToSearchReplace": "Roo wil zoeken en vervangen in dit bestand",
-		"didSearchReplace": "Roo heeft zoeken en vervangen uitgevoerd op dit bestand",
-		"wantsToInsert": "Roo wil inhoud invoegen in dit bestand",
-		"wantsToInsertWithLineNumber": "Roo wil inhoud invoegen in dit bestand op regel {{lineNumber}}",
-		"wantsToInsertAtEnd": "Roo wil inhoud toevoegen aan het einde van dit bestand",
-		"wantsToReadAndXMore": "Roo wil dit bestand en nog {{count}} andere lezen",
-		"wantsToReadMultiple": "Roo wil meerdere bestanden lezen",
-		"wantsToApplyBatchChanges": "Roo wil wijzigingen toepassen op meerdere bestanden",
-		"wantsToGenerateImage": "Roo wil een afbeelding genereren",
-		"wantsToGenerateImageOutsideWorkspace": "Roo wil een afbeelding genereren buiten de werkruimte",
-		"wantsToGenerateImageProtected": "Roo wil een afbeelding genereren op een beschermde locatie",
-		"didGenerateImage": "Roo heeft een afbeelding gegenereerd"
+		"wantsToRead": "Claw wil dit bestand lezen",
+		"wantsToReadOutsideWorkspace": "Claw wil dit bestand buiten de werkruimte lezen",
+		"didRead": "Claw heeft dit bestand gelezen",
+		"wantsToEdit": "Claw wil dit bestand bewerken",
+		"wantsToEditOutsideWorkspace": "Claw wil dit bestand buiten de werkruimte bewerken",
+		"wantsToEditProtected": "Claw wil een beveiligd configuratiebestand bewerken",
+		"wantsToCreate": "Claw wil een nieuw bestand aanmaken",
+		"wantsToSearchReplace": "Claw wil zoeken en vervangen in dit bestand",
+		"didSearchReplace": "Claw heeft zoeken en vervangen uitgevoerd op dit bestand",
+		"wantsToInsert": "Claw wil inhoud invoegen in dit bestand",
+		"wantsToInsertWithLineNumber": "Claw wil inhoud invoegen in dit bestand op regel {{lineNumber}}",
+		"wantsToInsertAtEnd": "Claw wil inhoud toevoegen aan het einde van dit bestand",
+		"wantsToReadAndXMore": "Claw wil dit bestand en nog {{count}} andere lezen",
+		"wantsToReadMultiple": "Claw wil meerdere bestanden lezen",
+		"wantsToApplyBatchChanges": "Claw wil wijzigingen toepassen op meerdere bestanden",
+		"wantsToGenerateImage": "Claw wil een afbeelding genereren",
+		"wantsToGenerateImageOutsideWorkspace": "Claw wil een afbeelding genereren buiten de werkruimte",
+		"wantsToGenerateImageProtected": "Claw wil een afbeelding genereren op een beschermde locatie",
+		"didGenerateImage": "Claw heeft een afbeelding gegenereerd"
 	},
 	"directoryOperations": {
-		"wantsToViewTopLevel": "Roo wil de bovenliggende bestanden in deze map bekijken",
-		"didViewTopLevel": "Roo heeft de bovenliggende bestanden in deze map bekeken",
-		"wantsToViewRecursive": "Roo wil alle bestanden in deze map recursief bekijken",
-		"didViewRecursive": "Roo heeft alle bestanden in deze map recursief bekeken",
-		"wantsToSearch": "Roo wil deze map doorzoeken op <code>{{regex}}</code>",
-		"didSearch": "Roo heeft deze map doorzocht op <code>{{regex}}</code>",
-		"wantsToSearchOutsideWorkspace": "Roo wil deze map (buiten werkruimte) doorzoeken op <code>{{regex}}</code>",
-		"didSearchOutsideWorkspace": "Roo heeft deze map (buiten werkruimte) doorzocht op <code>{{regex}}</code>",
-		"wantsToViewTopLevelOutsideWorkspace": "Roo wil de bovenliggende bestanden in deze map (buiten werkruimte) bekijken",
-		"didViewTopLevelOutsideWorkspace": "Roo heeft de bovenliggende bestanden in deze map (buiten werkruimte) bekeken",
-		"wantsToViewRecursiveOutsideWorkspace": "Roo wil alle bestanden in deze map (buiten werkruimte) recursief bekijken",
-		"didViewRecursiveOutsideWorkspace": "Roo heeft alle bestanden in deze map (buiten werkruimte) recursief bekeken",
-		"wantsToViewMultipleDirectories": "Roo wil meerdere mappen bekijken"
+		"wantsToViewTopLevel": "Claw wil de bovenliggende bestanden in deze map bekijken",
+		"didViewTopLevel": "Claw heeft de bovenliggende bestanden in deze map bekeken",
+		"wantsToViewRecursive": "Claw wil alle bestanden in deze map recursief bekijken",
+		"didViewRecursive": "Claw heeft alle bestanden in deze map recursief bekeken",
+		"wantsToSearch": "Claw wil deze map doorzoeken op <code>{{regex}}</code>",
+		"didSearch": "Claw heeft deze map doorzocht op <code>{{regex}}</code>",
+		"wantsToSearchOutsideWorkspace": "Claw wil deze map (buiten werkruimte) doorzoeken op <code>{{regex}}</code>",
+		"didSearchOutsideWorkspace": "Claw heeft deze map (buiten werkruimte) doorzocht op <code>{{regex}}</code>",
+		"wantsToViewTopLevelOutsideWorkspace": "Claw wil de bovenliggende bestanden in deze map (buiten werkruimte) bekijken",
+		"didViewTopLevelOutsideWorkspace": "Claw heeft de bovenliggende bestanden in deze map (buiten werkruimte) bekeken",
+		"wantsToViewRecursiveOutsideWorkspace": "Claw wil alle bestanden in deze map (buiten werkruimte) recursief bekijken",
+		"didViewRecursiveOutsideWorkspace": "Claw heeft alle bestanden in deze map (buiten werkruimte) recursief bekeken",
+		"wantsToViewMultipleDirectories": "Claw wil meerdere mappen bekijken"
 	},
 	"commandOutput": "Commando-uitvoer",
 	"commandExecution": {
@@ -239,24 +239,24 @@
 	"response": "Antwoord",
 	"arguments": "Argumenten",
 	"text": {
-		"rooSaid": "Roo zei"
+		"rooSaid": "Claw zei"
 	},
 	"feedback": {
 		"youSaid": "Jij zei"
 	},
 	"mcp": {
-		"wantsToUseTool": "Roo wil een tool gebruiken op de {{serverName}} MCP-server",
-		"wantsToAccessResource": "Roo wil een bron benaderen op de {{serverName}} MCP-server"
+		"wantsToUseTool": "Claw wil een tool gebruiken op de {{serverName}} MCP-server",
+		"wantsToAccessResource": "Claw wil een bron benaderen op de {{serverName}} MCP-server"
 	},
 	"modes": {
-		"wantsToSwitch": "Roo wil overschakelen naar {{mode}} modus",
-		"wantsToSwitchWithReason": "Roo wil overschakelen naar {{mode}} modus omdat: {{reason}}",
-		"didSwitch": "Roo is overgeschakeld naar {{mode}} modus",
-		"didSwitchWithReason": "Roo is overgeschakeld naar {{mode}} modus omdat: {{reason}}"
+		"wantsToSwitch": "Claw wil overschakelen naar {{mode}} modus",
+		"wantsToSwitchWithReason": "Claw wil overschakelen naar {{mode}} modus omdat: {{reason}}",
+		"didSwitch": "Claw is overgeschakeld naar {{mode}} modus",
+		"didSwitchWithReason": "Claw is overgeschakeld naar {{mode}} modus omdat: {{reason}}"
 	},
 	"subtasks": {
-		"wantsToCreate": "Roo wil een nieuwe subtaak aanmaken in {{mode}} modus",
-		"wantsToFinish": "Roo wil deze subtaak voltooien",
+		"wantsToCreate": "Claw wil een nieuwe subtaak aanmaken in {{mode}} modus",
+		"wantsToFinish": "Claw wil deze subtaak voltooien",
 		"newTaskContent": "Subtaak-instructies",
 		"completionContent": "Subtaak voltooid",
 		"resultContent": "Subtaakresultaten",
@@ -265,7 +265,7 @@
 		"goToSubtask": "Taak weergeven"
 	},
 	"questions": {
-		"hasQuestion": "Roo heeft een vraag"
+		"hasQuestion": "Claw heeft een vraag"
 	},
 	"taskCompleted": "Taak voltooid",
 	"error": "Fout",
@@ -279,14 +279,14 @@
 	"diffError": {
 		"title": "Bewerking mislukt"
 	},
-	"troubleMessage": "Roo ondervindt problemen...",
+	"troubleMessage": "Claw ondervindt problemen...",
 	"errorDetails": {
 		"link": "Details",
 		"title": "Foutdetails",
 		"copyToClipboard": "Naar klembord kopiëren",
 		"copied": "Gekopieerd!",
 		"diagnostics": "Gedetailleerde foutinformatie ophalen",
-		"proxyProvider": "Je lijkt een proxy-gebaseerde provider te gebruiken. Zorg ervoor dat je de logs controleert en dat het geen Roo-verzoeken herschrijft."
+		"proxyProvider": "Je lijkt een proxy-gebaseerde provider te gebruiken. Zorg ervoor dat je de logs controleert en dat het geen Claw-verzoeken herschrijft."
 	},
 	"powershell": {
 		"issues": "Het lijkt erop dat je problemen hebt met Windows PowerShell, zie deze"
@@ -355,8 +355,8 @@
 		}
 	},
 	"skill": {
-		"wantsToLoad": "Roo wil een vaardigheid laden",
-		"didLoad": "Roo heeft een vaardigheid geladen"
+		"wantsToLoad": "Claw wil een vaardigheid laden",
+		"didLoad": "Claw heeft een vaardigheid geladen"
 	},
 	"followUpSuggest": {
 		"copyToInput": "Kopiëren naar invoer (zelfde als shift + klik)",
@@ -383,18 +383,18 @@
 	"ask": {
 		"autoApprovedRequestLimitReached": {
 			"title": "Limiet voor automatisch goedgekeurde verzoeken bereikt",
-			"description": "Roo heeft de automatisch goedgekeurde limiet van {{count}} API-verzoek(en) bereikt. Wil je de teller resetten en doorgaan met de taak?",
+			"description": "Claw heeft de automatisch goedgekeurde limiet van {{count}} API-verzoek(en) bereikt. Wil je de teller resetten en doorgaan met de taak?",
 			"button": "Resetten en doorgaan"
 		},
 		"autoApprovedCostLimitReached": {
 			"title": "Limiet voor automatisch goedgekeurde kosten bereikt",
 			"button": "Resetten en doorgaan",
-			"description": "Roo heeft de automatisch goedgekeurde kostenlimiet van ${{count}} bereikt. Wilt u de kosten resetten en doorgaan met de taak?"
+			"description": "Claw heeft de automatisch goedgekeurde kostenlimiet van ${{count}} bereikt. Wilt u de kosten resetten en doorgaan met de taak?"
 		}
 	},
 	"codebaseSearch": {
-		"wantsToSearch": "Roo wil de codebase doorzoeken op <code>{{query}}</code>",
-		"wantsToSearchWithPath": "Roo wil de codebase doorzoeken op <code>{{query}}</code> in <code>{{path}}</code>",
+		"wantsToSearch": "Claw wil de codebase doorzoeken op <code>{{query}}</code>",
+		"wantsToSearchWithPath": "Claw wil de codebase doorzoeken op <code>{{query}}</code> in <code>{{path}}</code>",
 		"didSearch_one": "1 resultaat gevonden",
 		"didSearch_other": "{{count}} resultaten gevonden",
 		"resultTooltip": "Gelijkenisscore: {{score}} (klik om bestand te openen)"
@@ -476,8 +476,8 @@
 		"clickToEdit": "Klik om bericht te bewerken"
 	},
 	"slashCommand": {
-		"wantsToRun": "Roo wil een slash commando uitvoeren",
-		"didRun": "Roo heeft een slash commando uitgevoerd"
+		"wantsToRun": "Claw wil een slash commando uitvoeren",
+		"didRun": "Claw heeft een slash commando uitgevoerd"
 	},
 	"todo": {
 		"partial": "{{completed}} van {{total}} to-do's voltooid",
@@ -496,11 +496,11 @@
 		"openMcpSettings": "MCP-instellingen openen"
 	},
 	"readCommandOutput": {
-		"title": "Roo read command output"
+		"title": "Claw read command output"
 	},
 	"retiredProvider": {
 		"title": "Provider wordt niet meer ondersteund",
-		"message": "Sorry, deze provider wordt niet meer ondersteund. We zagen dat heel weinig Roo-gebruikers het daadwerkelijk gebruikten en we moeten de omvang van onze codebase verkleinen zodat we snel kunnen blijven leveren en onze community goed kunnen blijven bedienen. Het was een heel moeilijke beslissing, maar het stelt ons in staat om ons te richten op wat het belangrijkst voor je is. Het is vervelend, dat weten we.",
+		"message": "Sorry, deze provider wordt niet meer ondersteund. We zagen dat heel weinig Claw-gebruikers het daadwerkelijk gebruikten en we moeten de omvang van onze codebase verkleinen zodat we snel kunnen blijven leveren en onze community goed kunnen blijven bedienen. Het was een heel moeilijke beslissing, maar het stelt ons in staat om ons te richten op wat het belangrijkst voor je is. Het is vervelend, dat weten we.",
 		"openSettings": "Instellingen openen"
 	}
 }

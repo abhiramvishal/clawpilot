@@ -433,6 +433,3 @@ export class ClawHandler extends BaseOpenAiCompatibleProvider<string> {
 		})
 	}
 }
-
-// Backward compatibility alias
-export { ClawHandler as RooHandler }

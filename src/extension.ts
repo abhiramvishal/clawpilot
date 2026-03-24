@@ -200,7 +200,7 @@ export async function activate(context: vscode.ExtensionContext) {
 	authStateChangedHandler = async (data: { state: AuthState; previousState: AuthState }) => {
 		postStateListener()
 
-		// Handle Roo models cache based on auth state (ROO-202)
+		// Handle Claw models cache based on auth state
 		const handleRooModelsCache = async () => {
 			try {
 				if (data.state === "active-session") {
@@ -219,7 +219,7 @@ export async function activate(context: vscode.ExtensionContext) {
 				}
 			} catch (error) {
 				cloudLogger(
-					`[authStateChangedHandler] Failed to handle Roo models cache: ${error instanceof Error ? error.message : String(error)}`,
+					`[authStateChangedHandler] Failed to handle Claw models cache: ${error instanceof Error ? error.message : String(error)}`,
 				)
 			}
 		}
@@ -355,7 +355,7 @@ export async function activate(context: vscode.ExtensionContext) {
 	registerCodeActions(context)
 	registerTerminalActions(context)
 
-	// Allows other extensions to activate once Roo is ready.
+	// Allows other extensions to activate once Claw is ready.
 	vscode.commands.executeCommand(`${Package.name}.activationCompleted`)
 
 	// Implements the `ClawPilotAPI` interface.

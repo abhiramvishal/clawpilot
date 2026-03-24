@@ -103,7 +103,7 @@
 		"footer": "Sık kullanılan komutlara ve iş akışlarına hızlı erişim için eğik çizgi komutlarını kullanın."
 	},
 	"prompts": {
-		"description": "Prompt geliştirme, kod açıklama ve sorun çözme gibi hızlı eylemler için kullanılan destek promptlarını yapılandırın. Bu promptlar, Roo'nun yaygın geliştirme görevleri için daha iyi destek sağlamasına yardımcı olur."
+		"description": "Prompt geliştirme, kod açıklama ve sorun çözme gibi hızlı eylemler için kullanılan destek promptlarını yapılandırın. Bu promptlar, Claw'nun yaygın geliştirme görevleri için daha iyi destek sağlamasına yardımcı olur."
 	},
 	"codeIndex": {
 		"title": "Kod Tabanı İndeksleme",
@@ -220,16 +220,16 @@
 	},
 	"autoApprove": {
 		"toggleShortcut": "<SettingsLink>IDE tercihlerinizde</SettingsLink> bu ayar için genel bir kısayol yapılandırabilirsiniz.",
-		"description": "Roo'nun onay gerektirmeden otomatik olarak işlemler gerçekleştirmesine izin verin. Bu ayarları yalnızca yapay zekaya tamamen güveniyorsanız ve ilgili güvenlik risklerini anlıyorsanız etkinleştirin.",
+		"description": "Claw'nun onay gerektirmeden otomatik olarak işlemler gerçekleştirmesine izin verin. Bu ayarları yalnızca yapay zekaya tamamen güveniyorsanız ve ilgili güvenlik risklerini anlıyorsanız etkinleştirin.",
 		"enabled": "Oto-onay etkinleştirildi",
 		"toggleAriaLabel": "Otomatik onayı değiştir",
 		"disabledAriaLabel": "Otomatik onay devre dışı - önce seçenekleri belirleyin",
 		"readOnly": {
 			"label": "Okuma",
-			"description": "Etkinleştirildiğinde, Roo otomatik olarak dizin içeriğini görüntüleyecek ve Onayla düğmesine tıklamanıza gerek kalmadan dosyaları okuyacaktır.",
+			"description": "Etkinleştirildiğinde, Claw otomatik olarak dizin içeriğini görüntüleyecek ve Onayla düğmesine tıklamanıza gerek kalmadan dosyaları okuyacaktır.",
 			"outsideWorkspace": {
 				"label": "Çalışma alanı dışındaki dosyaları dahil et",
-				"description": "Roo'nun onay gerektirmeden mevcut çalışma alanı dışındaki dosyaları okumasına izin ver."
+				"description": "Claw'nun onay gerektirmeden mevcut çalışma alanı dışındaki dosyaları okumasına izin ver."
 			}
 		},
 		"write": {
@@ -238,7 +238,7 @@
 			"delayLabel": "Tanılamanın potansiyel sorunları tespit etmesine izin vermek için yazmalardan sonra gecikme",
 			"outsideWorkspace": {
 				"label": "Çalışma alanı dışındaki dosyaları dahil et",
-				"description": "Roo'nun onay gerektirmeden mevcut çalışma alanı dışında dosya oluşturmasına ve düzenlemesine izin ver."
+				"description": "Claw'nun onay gerektirmeden mevcut çalışma alanı dışında dosya oluşturmasına ve düzenlemesine izin ver."
 			},
 			"protected": {
 				"label": "Korumalı dosyaları dahil et",
@@ -309,7 +309,7 @@
 		"searchProviderPlaceholder": "Sağlayıcıları ara",
 		"noProviderMatchFound": "Eşleşen sağlayıcı bulunamadı",
 		"noMatchFound": "Eşleşen profil bulunamadı",
-		"retiredProviderMessage": "Üzgünüz, bu sağlayıcı artık desteklenmiyor. Çok az Roo kullanıcısının bunu gerçekten kullandığını gördük ve hızlı gelişmeye devam edip topluluğumuza iyi hizmet verebilmek için kod tabanımızın kapsamını daraltmamız gerekiyor. Gerçekten zor bir karardı ama senin için en önemli olana odaklanmamızı sağlıyor. Bunun can sıkıcı olduğunu biliyoruz.",
+		"retiredProviderMessage": "Üzgünüz, bu sağlayıcı artık desteklenmiyor. Çok az Claw kullanıcısının bunu gerçekten kullandığını gördük ve hızlı gelişmeye devam edip topluluğumuza iyi hizmet verebilmek için kod tabanımızın kapsamını daraltmamız gerekiyor. Gerçekten zor bir karardı ama senin için en önemli olana odaklanmamızı sağlıyor. Bunun can sıkıcı olduğunu biliyoruz.",
 		"vscodeLmDescription": "VS Code Dil Modeli API'si, diğer VS Code uzantıları tarafından sağlanan modelleri çalıştırmanıza olanak tanır (GitHub Copilot dahil ancak bunlarla sınırlı değildir). Başlamanın en kolay yolu, VS Code Marketplace'ten Copilot ve Copilot Chat uzantılarını yüklemektir.",
 		"awsCustomArnUse": "Kullanmak istediğiniz model için geçerli bir Amazon Bedrock ARN'si girin. Format örnekleri:",
 		"awsCustomArnDesc": "ARN içindeki bölgenin yukarıda seçilen AWS Bölgesiyle eşleştiğinden emin olun.",
@@ -527,7 +527,7 @@
 		},
 		"consecutiveMistakeLimit": {
 			"label": "Hata ve Tekrar Limiti",
-			"description": "'Roo sorun yaşıyor' iletişim kutusunu göstermeden önceki ardışık hata veya tekrarlanan eylem sayısı. Bu güvenlik mekanizmasını devre dışı bırakmak için 0 olarak ayarlayın (asla tetiklenmez).",
+			"description": "'Claw sorun yaşıyor' iletişim kutusunu göstermeden önceki ardışık hata veya tekrarlanan eylem sayısı. Bu güvenlik mekanizmasını devre dışı bırakmak için 0 olarak ayarlayın (asla tetiklenmez).",
 			"unlimitedDescription": "Sınırsız yeniden deneme etkin (otomatik devam et). Diyalog asla görünmeyecek.",
 			"warning": "⚠️ 0'a ayarlamak, önemli API kullanımına neden olabilecek sınırsız yeniden denemeye izin verir"
 		},
@@ -563,18 +563,18 @@
 		},
 		"enable": {
 			"label": "Otomatik kontrol noktalarını etkinleştir",
-			"description": "Etkinleştirildiğinde, Roo görev yürütme sırasında otomatik olarak kontrol noktaları oluşturarak değişiklikleri gözden geçirmeyi veya önceki durumlara dönmeyi kolaylaştırır. <0>Daha fazla bilgi</0>"
+			"description": "Etkinleştirildiğinde, Claw görev yürütme sırasında otomatik olarak kontrol noktaları oluşturarak değişiklikleri gözden geçirmeyi veya önceki durumlara dönmeyi kolaylaştırır. <0>Daha fazla bilgi</0>"
 		}
 	},
 	"notifications": {
 		"sound": {
 			"label": "Ses efektlerini etkinleştir",
-			"description": "Etkinleştirildiğinde, Roo bildirimler ve olaylar için ses efektleri çalacaktır.",
+			"description": "Etkinleştirildiğinde, Claw bildirimler ve olaylar için ses efektleri çalacaktır.",
 			"volumeLabel": "Ses Düzeyi"
 		},
 		"tts": {
 			"label": "Metinden sese özelliğini etkinleştir",
-			"description": "Etkinleştirildiğinde, Roo yanıtlarını metinden sese teknolojisi kullanarak sesli okuyacaktır.",
+			"description": "Etkinleştirildiğinde, Claw yanıtlarını metinden sese teknolojisi kullanarak sesli okuyacaktır.",
 			"speedLabel": "Hız"
 		}
 	},
@@ -582,7 +582,7 @@
 		"description": "Yapay zekanın bağlam penceresine hangi bilgilerin dahil edileceğini kontrol edin, token kullanımını ve yanıt kalitesini etkiler",
 		"autoCondenseContextPercent": {
 			"label": "Akıllı bağlam sıkıştırmayı tetikleyecek eşik",
-			"description": "Bağlam penceresi bu eşiğe ulaştığında, Roo otomatik olarak sıkıştıracaktır."
+			"description": "Bağlam penceresi bu eşiğe ulaştığında, Claw otomatik olarak sıkıştıracaktır."
 		},
 		"condensingApiConfiguration": {
 			"label": "Bağlam Yoğunlaştırma için API Yapılandırması",
@@ -598,7 +598,7 @@
 		},
 		"autoCondenseContext": {
 			"name": "Akıllı bağlam sıkıştırmayı otomatik olarak tetikle",
-			"description": "Etkinleştirildiğinde, Roo eşiğe ulaşıldığında bağlamı otomatik olarak sıkıştırır. Devre dışı bırakıldığında, bağlam sıkıştırmayı hala manuel olarak tetikleyebilirsiniz."
+			"description": "Etkinleştirildiğinde, Claw eşiğe ulaşıldığında bağlamı otomatik olarak sıkıştırır. Devre dışı bırakıldığında, bağlam sıkıştırmayı hala manuel olarak tetikleyebilirsiniz."
 		},
 		"openTabs": {
 			"label": "Açık sekmeler bağlam sınırı",
@@ -614,7 +614,7 @@
 		},
 		"maxReadFile": {
 			"label": "Dosya okuma otomatik kısaltma eşiği",
-			"description": "Model başlangıç/bitiş değerlerini belirtmediğinde Roo bu sayıda satırı okur. Bu sayı dosyanın toplam satır sayısından azsa, Roo kod tanımlamalarının satır numarası dizinini oluşturur. Özel durumlar: -1, Roo'ya tüm dosyayı okumasını (dizinleme olmadan), 0 ise hiç satır okumamasını ve minimum bağlam için yalnızca satır dizinleri sağlamasını belirtir. Düşük değerler başlangıç bağlam kullanımını en aza indirir ve sonraki hassas satır aralığı okumalarına olanak tanır. Açık başlangıç/bitiş istekleri bu ayarla sınırlı değildir.",
+			"description": "Model başlangıç/bitiş değerlerini belirtmediğinde Claw bu sayıda satırı okur. Bu sayı dosyanın toplam satır sayısından azsa, Claw kod tanımlamalarının satır numarası dizinini oluşturur. Özel durumlar: -1, Claw'ya tüm dosyayı okumasını (dizinleme olmadan), 0 ise hiç satır okumamasını ve minimum bağlam için yalnızca satır dizinleri sağlamasını belirtir. Düşük değerler başlangıç bağlam kullanımını en aza indirir ve sonraki hassas satır aralığı okumalarına olanak tanır. Açık başlangıç/bitiş istekleri bu ayarla sınırlı değildir.",
 			"lines": "satır",
 			"always_full_read": "Her zaman tüm dosyayı oku"
 		},
@@ -685,15 +685,15 @@
 		},
 		"outputLineLimit": {
 			"label": "Terminal çıktı sınırı",
-			"description": "Sınırın altında kalmak için ilk ve son satırları tutar ve ortadakileri atar. Jetonları kaydetmek için düşürün; Roo'ya daha fazla orta ayrıntı vermek için yükseltin. Roo, içeriğin atlandığı yerde bir yer tutucu görür.<0>Daha fazla bilgi edinin</0>"
+			"description": "Sınırın altında kalmak için ilk ve son satırları tutar ve ortadakileri atar. Jetonları kaydetmek için düşürün; Claw'ya daha fazla orta ayrıntı vermek için yükseltin. Claw, içeriğin atlandığı yerde bir yer tutucu görür.<0>Daha fazla bilgi edinin</0>"
 		},
 		"outputCharacterLimit": {
 			"label": "Terminal karakter sınırı",
-			"description": "Çıktı boyutuna katı bir üst sınır uygulayarak bellek sorunlarını önlemek için satır sınırını geçersiz kılar. Aşılırsa, başlangıcı ve sonu tutar ve içeriğin atlandığı yerde Roo'ya bir yer tutucu gösterir. <0>Daha fazla bilgi edinin</0>"
+			"description": "Çıktı boyutuna katı bir üst sınır uygulayarak bellek sorunlarını önlemek için satır sınırını geçersiz kılar. Aşılırsa, başlangıcı ve sonu tutar ve içeriğin atlandığı yerde Claw'ya bir yer tutucu gösterir. <0>Daha fazla bilgi edinin</0>"
 		},
 		"outputPreviewSize": {
 			"label": "Komut çıktısı önizleme boyutu",
-			"description": "Roo'nun doğrudan gördüğü komut çıktısı miktarını kontrol eder. Tam çıktı her zaman kaydedilir ve gerektiğinde erişilebilir.",
+			"description": "Claw'nun doğrudan gördüğü komut çıktısı miktarını kontrol eder. Tam çıktı her zaman kaydedilir ve gerektiğinde erişilebilir.",
 			"options": {
 				"small": "Küçük (5KB)",
 				"medium": "Orta (10KB)",
@@ -706,7 +706,7 @@
 		},
 		"shellIntegrationDisabled": {
 			"label": "Satır İçi Terminal Kullan (önerilir)",
-			"description": "Daha hızlı, daha güvenilir çalıştırmalar için kabuk profillerini/entegrasyonunu atlamak için Satır İçi Terminal'de (sohbet) komutları çalıştırın. Devre dışı bırakıldığında Roo, kabuk profiliniz, istemleriniz ve eklentilerinizle VS Code terminalini kullanır. <0>Daha fazla bilgi edinin</0>"
+			"description": "Daha hızlı, daha güvenilir çalıştırmalar için kabuk profillerini/entegrasyonunu atlamak için Satır İçi Terminal'de (sohbet) komutları çalıştırın. Devre dışı bırakıldığında Claw, kabuk profiliniz, istemleriniz ve eklentilerinizle VS Code terminalini kullanır. <0>Daha fazla bilgi edinin</0>"
 		},
 		"commandDelay": {
 			"label": "Terminal komut delay",
@@ -743,7 +743,7 @@
 	"advanced": {
 		"diff": {
 			"label": "Diff'ler aracılığıyla düzenlemeyi etkinleştir",
-			"description": "Etkinleştirildiğinde, Roo dosyaları daha hızlı düzenleyebilecek ve kesik tam dosya yazımlarını otomatik olarak reddedecektir",
+			"description": "Etkinleştirildiğinde, Claw dosyaları daha hızlı düzenleyebilecek ve kesik tam dosya yazımlarını otomatik olarak reddedecektir",
 			"strategy": {
 				"label": "Diff stratejisi",
 				"options": {
@@ -760,7 +760,7 @@
 		},
 		"todoList": {
 			"label": "Yapılacaklar listesi aracını etkinleştir",
-			"description": "Etkinleştirildiğinde, Roo görev ilerlemesini takip etmek için yapılacaklar listeleri oluşturabilir ve yönetebilir. Bu, karmaşık görevleri yönetilebilir adımlara organize etmeye yardımcı olur."
+			"description": "Etkinleştirildiğinde, Claw görev ilerlemesini takip etmek için yapılacaklar listeleri oluşturabilir ve yönetebilir. Bu, karmaşık görevleri yönetilebilir adımlara organize etmeye yardımcı olur."
 		}
 	},
 	"experimental": {
@@ -770,15 +770,15 @@
 		},
 		"INSERT_BLOCK": {
 			"name": "Deneysel içerik ekleme aracını kullan",
-			"description": "Deneysel içerik ekleme aracını etkinleştir, Roo'nun bir diff oluşturma gereği duymadan belirli satır numaralarına içerik eklemesine olanak tanır."
+			"description": "Deneysel içerik ekleme aracını etkinleştir, Claw'nun bir diff oluşturma gereği duymadan belirli satır numaralarına içerik eklemesine olanak tanır."
 		},
 		"MULTI_SEARCH_AND_REPLACE": {
 			"name": "Deneysel çoklu blok diff aracını kullan",
-			"description": "Etkinleştirildiğinde, Roo çoklu blok diff aracını kullanacaktır. Bu, tek bir istekte dosyadaki birden fazla kod bloğunu güncellemeye çalışacaktır."
+			"description": "Etkinleştirildiğinde, Claw çoklu blok diff aracını kullanacaktır. Bu, tek bir istekte dosyadaki birden fazla kod bloğunu güncellemeye çalışacaktır."
 		},
 		"CONCURRENT_FILE_READS": {
 			"name": "Eşzamanlı dosya okumayı etkinleştir",
-			"description": "Etkinleştirildiğinde, Roo tek bir istekte birden fazla dosya okuyabilir. Devre dışı bırakıldığında, Roo dosyaları birer birer okumalıdır. Daha az yetenekli modellerle çalışırken veya dosya erişimi üzerinde daha fazla kontrol istediğinizde devre dışı bırakmak yardımcı olabilir."
+			"description": "Etkinleştirildiğinde, Claw tek bir istekte birden fazla dosya okuyabilir. Devre dışı bırakıldığında, Claw dosyaları birer birer okumalıdır. Daha az yetenekli modellerle çalışırken veya dosya erişimi üzerinde daha fazla kontrol istediğinizde devre dışı bırakmak yardımcı olabilir."
 		},
 		"MARKETPLACE": {
 			"name": "Marketplace'i Etkinleştir",
@@ -786,7 +786,7 @@
 		},
 		"PREVENT_FOCUS_DISRUPTION": {
 			"name": "Arka plan düzenleme",
-			"description": "Etkinleştirildiğinde editör odak kesintisini önler. Dosya düzenlemeleri diff görünümlerini açmadan veya odağı çalmadan arka planda gerçekleşir. Roo değişiklikler yaparken kesintisiz çalışmaya devam edebilirsiniz. Dosyalar tanılamayı yakalamak için odaksız açılabilir veya tamamen kapalı kalabilir."
+			"description": "Etkinleştirildiğinde editör odak kesintisini önler. Dosya düzenlemeleri diff görünümlerini açmadan veya odağı çalmadan arka planda gerçekleşir. Claw değişiklikler yaparken kesintisiz çalışmaya devam edebilirsiniz. Dosyalar tanılamayı yakalamak için odaksız açılabilir veya tamamen kapalı kalabilir."
 		},
 		"ASSISTANT_MESSAGE_PARSER": {
 			"name": "Yeni mesaj ayrıştırıcıyı kullan",
@@ -800,7 +800,7 @@
 			"providerLabel": "Sağlayıcı",
 			"providerDescription": "Görüntü oluşturma için kullanılacak sağlayıcıyı seçin.",
 			"name": "AI görüntü üretimini etkinleştir",
-			"description": "Etkinleştirildiğinde, Roo OpenRouter'ın görüntü üretim modellerini kullanarak metin istemlerinden görüntüler üretebilir. Yapılandırılmış bir OpenRouter API anahtarı gerektirir.",
+			"description": "Etkinleştirildiğinde, Claw OpenRouter'ın görüntü üretim modellerini kullanarak metin istemlerinden görüntüler üretebilir. Yapılandırılmış bir OpenRouter API anahtarı gerektirir.",
 			"openRouterApiKeyLabel": "OpenRouter API Anahtarı",
 			"openRouterApiKeyPlaceholder": "OpenRouter API anahtarınızı girin",
 			"getApiKeyText": "API anahtarınızı alın",
@@ -811,7 +811,7 @@
 		},
 		"RUN_SLASH_COMMAND": {
 			"name": "Model tarafından başlatılan slash komutlarını etkinleştir",
-			"description": "Etkinleştirildiğinde, Roo iş akışlarını yürütmek için slash komutlarınızı çalıştırabilir."
+			"description": "Etkinleştirildiğinde, Claw iş akışlarını yürütmek için slash komutlarınızı çalıştırabilir."
 		},
 		"CUSTOM_TOOLS": {
 			"name": "Özel araçları etkinleştir",
@@ -827,7 +827,7 @@
 	},
 	"promptCaching": {
 		"label": "Prompt önbelleğini devre dışı bırak",
-		"description": "İşaretlendiğinde, Roo bu model için prompt önbelleğini kullanmayacaktır."
+		"description": "İşaretlendiğinde, Claw bu model için prompt önbelleğini kullanmayacaktır."
 	},
 	"temperature": {
 		"useCustom": "Özel sıcaklık kullan",

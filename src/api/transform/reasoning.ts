@@ -104,9 +104,6 @@ export const getClawReasoning = ({
 	return { enabled: true, effort: reasoningEffort as ReasoningEffortExtended }
 }
 
-export type { ClawReasoningParams as RooReasoningParams }
-export { getClawReasoning as getRooReasoning }
-
 export const getAnthropicReasoning = ({
 	model,
 	reasoningBudget,

@@ -129,7 +129,7 @@
 		"title": "Modes",
 		"marketplace": "Marketplace de Modes",
 		"settings": "Paramètres des Modes",
-		"description": "Personas spécialisés qui adaptent le comportement de Roo.",
+		"description": "Personas spécialisés qui adaptent le comportement de Claw.",
 		"searchPlaceholder": "Rechercher des modes...",
 		"noResults": "Aucun résultat trouvé"
 	},
@@ -143,7 +143,7 @@
 	"diffError": {
 		"title": "Modification échouée"
 	},
-	"troubleMessage": "Roo rencontre des difficultés...",
+	"troubleMessage": "Claw rencontre des difficultés...",
 	"apiRequest": {
 		"title": "Requête API",
 		"failed": "Échec de la requête API",
@@ -186,43 +186,43 @@
 		"current": "Actuel"
 	},
 	"fileOperations": {
-		"wantsToRead": "Roo veut lire ce fichier",
-		"wantsToReadOutsideWorkspace": "Roo veut lire ce fichier en dehors de l'espace de travail",
-		"didRead": "Roo a lu ce fichier",
-		"wantsToEdit": "Roo veut éditer ce fichier",
-		"wantsToEditOutsideWorkspace": "Roo veut éditer ce fichier en dehors de l'espace de travail",
-		"wantsToEditProtected": "Roo veut éditer un fichier de configuration protégé",
-		"wantsToCreate": "Roo veut créer un nouveau fichier",
-		"wantsToSearchReplace": "Roo veut effectuer une recherche et remplacement sur ce fichier",
-		"didSearchReplace": "Roo a effectué une recherche et remplacement sur ce fichier",
-		"wantsToInsert": "Roo veut insérer du contenu dans ce fichier",
-		"wantsToInsertWithLineNumber": "Roo veut insérer du contenu dans ce fichier à la ligne {{lineNumber}}",
-		"wantsToInsertAtEnd": "Roo veut ajouter du contenu à la fin de ce fichier",
-		"wantsToReadAndXMore": "Roo veut lire ce fichier et {{count}} de plus",
-		"wantsToReadMultiple": "Roo souhaite lire plusieurs fichiers",
-		"wantsToApplyBatchChanges": "Roo veut appliquer des modifications à plusieurs fichiers",
-		"wantsToGenerateImage": "Roo veut générer une image",
-		"wantsToGenerateImageOutsideWorkspace": "Roo veut générer une image en dehors de l'espace de travail",
-		"wantsToGenerateImageProtected": "Roo veut générer une image dans un emplacement protégé",
-		"didGenerateImage": "Roo a généré une image"
+		"wantsToRead": "Claw veut lire ce fichier",
+		"wantsToReadOutsideWorkspace": "Claw veut lire ce fichier en dehors de l'espace de travail",
+		"didRead": "Claw a lu ce fichier",
+		"wantsToEdit": "Claw veut éditer ce fichier",
+		"wantsToEditOutsideWorkspace": "Claw veut éditer ce fichier en dehors de l'espace de travail",
+		"wantsToEditProtected": "Claw veut éditer un fichier de configuration protégé",
+		"wantsToCreate": "Claw veut créer un nouveau fichier",
+		"wantsToSearchReplace": "Claw veut effectuer une recherche et remplacement sur ce fichier",
+		"didSearchReplace": "Claw a effectué une recherche et remplacement sur ce fichier",
+		"wantsToInsert": "Claw veut insérer du contenu dans ce fichier",
+		"wantsToInsertWithLineNumber": "Claw veut insérer du contenu dans ce fichier à la ligne {{lineNumber}}",
+		"wantsToInsertAtEnd": "Claw veut ajouter du contenu à la fin de ce fichier",
+		"wantsToReadAndXMore": "Claw veut lire ce fichier et {{count}} de plus",
+		"wantsToReadMultiple": "Claw souhaite lire plusieurs fichiers",
+		"wantsToApplyBatchChanges": "Claw veut appliquer des modifications à plusieurs fichiers",
+		"wantsToGenerateImage": "Claw veut générer une image",
+		"wantsToGenerateImageOutsideWorkspace": "Claw veut générer une image en dehors de l'espace de travail",
+		"wantsToGenerateImageProtected": "Claw veut générer une image dans un emplacement protégé",
+		"didGenerateImage": "Claw a généré une image"
 	},
 	"instructions": {
-		"wantsToFetch": "Roo veut récupérer des instructions détaillées pour aider à la tâche actuelle"
+		"wantsToFetch": "Claw veut récupérer des instructions détaillées pour aider à la tâche actuelle"
 	},
 	"directoryOperations": {
-		"wantsToViewTopLevel": "Roo veut voir les fichiers de premier niveau dans ce répertoire",
-		"didViewTopLevel": "Roo a vu les fichiers de premier niveau dans ce répertoire",
-		"wantsToViewRecursive": "Roo veut voir récursivement tous les fichiers dans ce répertoire",
-		"didViewRecursive": "Roo a vu récursivement tous les fichiers dans ce répertoire",
-		"wantsToSearch": "Roo veut rechercher dans ce répertoire <code>{{regex}}</code>",
-		"didSearch": "Roo a recherché dans ce répertoire <code>{{regex}}</code>",
-		"wantsToSearchOutsideWorkspace": "Roo veut rechercher dans ce répertoire (hors espace de travail) <code>{{regex}}</code>",
-		"didSearchOutsideWorkspace": "Roo a recherché dans ce répertoire (hors espace de travail) <code>{{regex}}</code>",
-		"wantsToViewTopLevelOutsideWorkspace": "Roo veut voir les fichiers de premier niveau dans ce répertoire (hors espace de travail)",
-		"didViewTopLevelOutsideWorkspace": "Roo a vu les fichiers de premier niveau dans ce répertoire (hors espace de travail)",
-		"wantsToViewRecursiveOutsideWorkspace": "Roo veut voir récursivement tous les fichiers dans ce répertoire (hors espace de travail)",
-		"didViewRecursiveOutsideWorkspace": "Roo a vu récursivement tous les fichiers dans ce répertoire (hors espace de travail)",
-		"wantsToViewMultipleDirectories": "Roo veut voir plusieurs répertoires"
+		"wantsToViewTopLevel": "Claw veut voir les fichiers de premier niveau dans ce répertoire",
+		"didViewTopLevel": "Claw a vu les fichiers de premier niveau dans ce répertoire",
+		"wantsToViewRecursive": "Claw veut voir récursivement tous les fichiers dans ce répertoire",
+		"didViewRecursive": "Claw a vu récursivement tous les fichiers dans ce répertoire",
+		"wantsToSearch": "Claw veut rechercher dans ce répertoire <code>{{regex}}</code>",
+		"didSearch": "Claw a recherché dans ce répertoire <code>{{regex}}</code>",
+		"wantsToSearchOutsideWorkspace": "Claw veut rechercher dans ce répertoire (hors espace de travail) <code>{{regex}}</code>",
+		"didSearchOutsideWorkspace": "Claw a recherché dans ce répertoire (hors espace de travail) <code>{{regex}}</code>",
+		"wantsToViewTopLevelOutsideWorkspace": "Claw veut voir les fichiers de premier niveau dans ce répertoire (hors espace de travail)",
+		"didViewTopLevelOutsideWorkspace": "Claw a vu les fichiers de premier niveau dans ce répertoire (hors espace de travail)",
+		"wantsToViewRecursiveOutsideWorkspace": "Claw veut voir récursivement tous les fichiers dans ce répertoire (hors espace de travail)",
+		"didViewRecursiveOutsideWorkspace": "Claw a vu récursivement tous les fichiers dans ce répertoire (hors espace de travail)",
+		"wantsToViewMultipleDirectories": "Claw veut voir plusieurs répertoires"
 	},
 	"commandOutput": "Sortie de la Commande",
 	"commandExecution": {
@@ -244,24 +244,24 @@
 	"response": "Réponse",
 	"arguments": "Arguments",
 	"text": {
-		"rooSaid": "Roo a dit"
+		"rooSaid": "Claw a dit"
 	},
 	"feedback": {
 		"youSaid": "Tu as dit"
 	},
 	"mcp": {
-		"wantsToUseTool": "Roo veut utiliser un outil sur le serveur MCP {{serverName}}",
-		"wantsToAccessResource": "Roo veut accéder à une ressource sur le serveur MCP {{serverName}}"
+		"wantsToUseTool": "Claw veut utiliser un outil sur le serveur MCP {{serverName}}",
+		"wantsToAccessResource": "Claw veut accéder à une ressource sur le serveur MCP {{serverName}}"
 	},
 	"modes": {
-		"wantsToSwitch": "Roo veut passer au mode <code>{{mode}}</code>",
-		"wantsToSwitchWithReason": "Roo veut passer au mode <code>{{mode}}</code> car : {{reason}}",
-		"didSwitch": "Roo est passé au mode <code>{{mode}}</code>",
-		"didSwitchWithReason": "Roo est passé au mode <code>{{mode}}</code> car : {{reason}}"
+		"wantsToSwitch": "Claw veut passer au mode <code>{{mode}}</code>",
+		"wantsToSwitchWithReason": "Claw veut passer au mode <code>{{mode}}</code> car : {{reason}}",
+		"didSwitch": "Claw est passé au mode <code>{{mode}}</code>",
+		"didSwitchWithReason": "Claw est passé au mode <code>{{mode}}</code> car : {{reason}}"
 	},
 	"subtasks": {
-		"wantsToCreate": "Roo veut créer une nouvelle sous-tâche en mode <code>{{mode}}</code>",
-		"wantsToFinish": "Roo veut terminer cette sous-tâche",
+		"wantsToCreate": "Claw veut créer une nouvelle sous-tâche en mode <code>{{mode}}</code>",
+		"wantsToFinish": "Claw veut terminer cette sous-tâche",
 		"newTaskContent": "Instructions de la sous-tâche",
 		"completionContent": "Sous-tâche terminée",
 		"resultContent": "Résultats de la sous-tâche",
@@ -270,7 +270,7 @@
 		"goToSubtask": "Afficher la tâche"
 	},
 	"questions": {
-		"hasQuestion": "Roo a une question"
+		"hasQuestion": "Claw a une question"
 	},
 	"taskCompleted": "Tâche terminée",
 	"modelResponseIncomplete": "Réponse du modèle incomplète",
@@ -286,7 +286,7 @@
 		"copyToClipboard": "Copier dans le presse-papiers",
 		"copied": "Copié !",
 		"diagnostics": "Obtenir les détails de l'erreur",
-		"proxyProvider": "Il semble que tu utilises un fournisseur basé sur un proxy. Assure-toi de vérifier ses journaux et de t'assurer qu'il ne réécrit pas les demandes de Roo."
+		"proxyProvider": "Il semble que tu utilises un fournisseur basé sur un proxy. Assure-toi de vérifier ses journaux et de t'assurer qu'il ne réécrit pas les demandes de Claw."
 	},
 	"powershell": {
 		"issues": "Il semble que vous rencontriez des problèmes avec Windows PowerShell, veuillez consulter ce"
@@ -329,8 +329,8 @@
 		}
 	},
 	"skill": {
-		"wantsToLoad": "Roo veut charger une compétence",
-		"didLoad": "Roo a chargé une compétence"
+		"wantsToLoad": "Claw veut charger une compétence",
+		"didLoad": "Claw a chargé une compétence"
 	},
 	"followUpSuggest": {
 		"copyToInput": "Copier vers l'entrée (ou Shift + clic)",
@@ -383,18 +383,18 @@
 	"ask": {
 		"autoApprovedRequestLimitReached": {
 			"title": "Limite de requêtes auto-approuvées atteinte",
-			"description": "Roo a atteint la limite auto-approuvée de {{count}} requête(s) API. Souhaitez-vous réinitialiser le compteur et poursuivre la tâche ?",
+			"description": "Claw a atteint la limite auto-approuvée de {{count}} requête(s) API. Souhaitez-vous réinitialiser le compteur et poursuivre la tâche ?",
 			"button": "Réinitialiser et continuer"
 		},
 		"autoApprovedCostLimitReached": {
 			"title": "Limite de coût en auto-approbation atteinte",
-			"description": "Roo a atteint la limite de coût auto-approuvée de ${{count}}. Souhaitez-vous réinitialiser le coût et poursuivre la tâche ?",
+			"description": "Claw a atteint la limite de coût auto-approuvée de ${{count}}. Souhaitez-vous réinitialiser le coût et poursuivre la tâche ?",
 			"button": "Réinitialiser et Continuer"
 		}
 	},
 	"codebaseSearch": {
-		"wantsToSearch": "Roo veut rechercher dans la base de code <code>{{query}}</code>",
-		"wantsToSearchWithPath": "Roo veut rechercher dans la base de code <code>{{query}}</code> dans <code>{{path}}</code>",
+		"wantsToSearch": "Claw veut rechercher dans la base de code <code>{{query}}</code>",
+		"wantsToSearchWithPath": "Claw veut rechercher dans la base de code <code>{{query}}</code> dans <code>{{path}}</code>",
 		"didSearch_one": "1 résultat trouvé",
 		"didSearch_other": "{{count}} résultats trouvés",
 		"resultTooltip": "Score de similarité : {{score}} (cliquer pour ouvrir le fichier)"
@@ -476,8 +476,8 @@
 		"clickToEdit": "Cliquez pour modifier le message"
 	},
 	"slashCommand": {
-		"wantsToRun": "Roo veut exécuter une commande slash",
-		"didRun": "Roo a exécuté une commande slash"
+		"wantsToRun": "Claw veut exécuter une commande slash",
+		"didRun": "Claw a exécuté une commande slash"
 	},
 	"todo": {
 		"partial": "{{completed}} sur {{total}} tâches terminées",
@@ -496,11 +496,11 @@
 		"openMcpSettings": "Ouvrir les paramètres MCP"
 	},
 	"readCommandOutput": {
-		"title": "Roo read command output"
+		"title": "Claw read command output"
 	},
 	"retiredProvider": {
 		"title": "Fournisseur plus pris en charge",
-		"message": "Désolé, ce fournisseur n'est plus pris en charge. Nous avons constaté que très peu d'utilisateurs de Roo l'utilisaient réellement et nous devons réduire la portée de notre code pour continuer à avancer rapidement et bien servir notre communauté. C'était une décision vraiment difficile, mais elle nous permet de nous concentrer sur ce qui compte le plus pour toi. C'est rageant, on le sait.",
+		"message": "Désolé, ce fournisseur n'est plus pris en charge. Nous avons constaté que très peu d'utilisateurs de Claw l'utilisaient réellement et nous devons réduire la portée de notre code pour continuer à avancer rapidement et bien servir notre communauté. C'était une décision vraiment difficile, mais elle nous permet de nous concentrer sur ce qui compte le plus pour toi. C'est rageant, on le sait.",
 		"openSettings": "Ouvrir les paramètres"
 	}
 }

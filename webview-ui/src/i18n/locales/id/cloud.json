@@ -6,7 +6,7 @@
 	"signIn": "Hubungkan ke ClawPilot Cloud",
 	"connect": "Mulai",
 	"cloudBenefitsTitle": "Coba ClawPilot Cloud",
-	"cloudBenefitProvider": "Akses model gratis dan berbayar yang bekerja sangat baik dengan Roo",
+	"cloudBenefitProvider": "Akses model gratis dan berbayar yang bekerja sangat baik dengan Claw",
 	"cloudBenefitCloudAgents": "Berikan tugas kepada agen Cloud otonom",
 	"cloudBenefitTriggers": "Dapatkan ulasan kode di GitHub, mulai tugas dari Slack, dan lainnya",
 	"cloudBenefitWalkaway": "Ikuti dan kontrol tugas dari mana saja (termasuk ponsel Anda)",
@@ -26,8 +26,8 @@
 	"createTeamAccount": "Buat Akun Tim",
 	"cloudUrlPillLabel": "URL ClawPilot Cloud",
 	"upsell": {
-		"autoApprovePowerUser": "Memberi Roo sedikit kebebasan? Kendalikan dari mana saja dengan ClawPilot Cloud. <learnMoreLink>Pelajari lebih lanjut</learnMoreLink>.",
+		"autoApprovePowerUser": "Memberi Claw sedikit kebebasan? Kendalikan dari mana saja dengan ClawPilot Cloud. <learnMoreLink>Pelajari lebih lanjut</learnMoreLink>.",
 		"longRunningTask": "Ini mungkin akan memakan waktu cukup lama. Lanjutkan dari mana saja dengan Cloud.",
-		"taskList": "Menikmati Roo? Coba ClawPilot Cloud: ikuti dan kendalikan tugas Anda dari mana saja, jalankan agen Cloud otonom, dapatkan statistik penggunaan, dan lainnya. <learnMoreLink>Pelajari lebih lanjut</learnMoreLink>."
+		"taskList": "Menikmati Claw? Coba ClawPilot Cloud: ikuti dan kendalikan tugas Anda dari mana saja, jalankan agen Cloud otonom, dapatkan statistik penggunaan, dan lainnya. <learnMoreLink>Pelajari lebih lanjut</learnMoreLink>."
 	}
 }

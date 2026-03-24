@@ -9,19 +9,19 @@
 		},
 		"claw": {
 			"description": "Başlamak için en iyi ücretsiz modeller",
-			"incentive": "Roo'yu ücretsiz dene"
+			"incentive": "Claw'yu ücretsiz dene"
 		}
 	},
 	"landing": {
 		"greeting": "ClawPilot'a Hoş Geldin!",
 		"introduction": "Yerleşik ve genişletilebilir Modlar yelpazesiyle ClawPilot, daha önce hiç olmadığı gibi planlama, mimari tasarım, kodlama, hata ayıklama ve üretkenliğini artırmanı sağlar.",
 		"accountMention": "Başlamak için ClawPilot Cloud hesabını oluştur. Güçlü modeller, web kontrolü, analizler, destek ve daha fazlasını al.",
-		"getStarted": "Roo Hesabı Oluştur",
+		"getStarted": "Claw Hesabı Oluştur",
 		"noAccount": "veya hesap olmadan kullan"
 	},
 	"providerSignup": {
 		"heading": "Sağlayıcınızı seçin",
-		"chooseProvider": "Roo'nun çalışması için bir LLM sağlayıcısına ihtiyacı var. Başlamak için bir tane seç, sonra daha fazlasını ekleyebilirsin.",
+		"chooseProvider": "Claw'nun çalışması için bir LLM sağlayıcısına ihtiyacı var. Başlamak için bir tane seç, sonra daha fazlasını ekleyebilirsin.",
 		"rooCloudProvider": "ClawPilot Cloud Sağlayıcı",
 		"rooCloudDescription": "Başlamak için en kolay yol ClawPilot Cloud Sağlayıcısı'nı kullanmaktır: ücretsiz ve ücretli modellerin dikkatli seçilmiş bir karışımı, düşük maliyette.",
 		"learnMore": "Daha fazla bilgi",

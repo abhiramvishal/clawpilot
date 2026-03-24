@@ -3,7 +3,7 @@ import { z } from "zod"
 import { clawPilotSettingsSchema } from "./global-settings.js"
 
 /**
- * Roo CLI stdin commands
+ * Claw CLI stdin commands
  */
 
 export const clawCliCommandNames = ["start", "message", "cancel", "ping", "shutdown"] as const
@@ -71,7 +71,7 @@ export const clawCliInputCommandSchema = z.discriminatedUnion("command", [
 export type ClawCliInputCommand = z.infer<typeof clawCliInputCommandSchema>
 
 /**
- * Roo CLI stream-json output
+ * Claw CLI stream-json output
  */
 
 export const clawCliOutputFormats = ["text", "json", "stream-json"] as const
