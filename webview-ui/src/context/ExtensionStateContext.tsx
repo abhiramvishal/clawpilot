@@ -474,12 +474,12 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 		vscode.postMessage({ type: "webviewDidLaunch" })
 	}, [])
 
-	// Watch for authentication state changes and refresh Roo models
+	// Watch for authentication state changes and refresh Claw models
 	useEffect(() => {
 		const currentAuth = state.cloudIsAuthenticated ?? false
 		const currentProvider = state.apiConfiguration?.apiProvider
 		if (!prevCloudIsAuthenticated && currentAuth && currentProvider === "claw") {
-			// User just authenticated and Roo is the active provider - refresh Roo models
+			// User just authenticated and Claw is the active provider - refresh Claw models
 			vscode.postMessage({ type: "requestClawModels" })
 		}
 		setPrevCloudIsAuthenticated(currentAuth)

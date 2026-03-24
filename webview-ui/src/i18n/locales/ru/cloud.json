@@ -6,7 +6,7 @@
 	"signIn": "Подключиться к ClawPilot Cloud",
 	"connect": "Начать",
 	"cloudBenefitsTitle": "Попробуйте ClawPilot Cloud",
-	"cloudBenefitProvider": "Доступ к бесплатным и платным моделям, которые отлично работают с Roo",
+	"cloudBenefitProvider": "Доступ к бесплатным и платным моделям, которые отлично работают с Claw",
 	"cloudBenefitCloudAgents": "Поручайте задачи автономным облачным агентам",
 	"cloudBenefitTriggers": "Получайте код-ревью на GitHub, запускайте задачи из Slack и многое другое",
 	"cloudBenefitWalkaway": "Отслеживайте и управляйте задачами откуда угодно (включая телефон)",
@@ -26,8 +26,8 @@
 	"createTeamAccount": "Создать командный аккаунт",
 	"cloudUrlPillLabel": "URL ClawPilot Cloud",
 	"upsell": {
-		"autoApprovePowerUser": "Предоставить Roo немного независимости? Управляйте им из любого места с помощью ClawPilot Cloud. <learnMoreLink>Узнать больше</learnMoreLink>.",
+		"autoApprovePowerUser": "Предоставить Claw немного независимости? Управляйте им из любого места с помощью ClawPilot Cloud. <learnMoreLink>Узнать больше</learnMoreLink>.",
 		"longRunningTask": "Это может занять некоторое время. Продолжайте из любого места с помощью Облака.",
-		"taskList": "Нравится Roo? Посмотрите ClawPilot Cloud: отслеживайте и контролируйте свои задачи из любого места, запускайте автономных облачных агентов, получайте статистику использования и многое другое. <learnMoreLink>Узнать больше</learnMoreLink>."
+		"taskList": "Нравится Claw? Посмотрите ClawPilot Cloud: отслеживайте и контролируйте свои задачи из любого места, запускайте автономных облачных агентов, получайте статистику использования и многое другое. <learnMoreLink>Узнать больше</learnMoreLink>."
 	}
 }

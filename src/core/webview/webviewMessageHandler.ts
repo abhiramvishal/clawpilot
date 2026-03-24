@@ -954,7 +954,6 @@ export const webviewMessageHandler = async (
 						unbound: {},
 						ollama: {},
 						lmstudio: {},
-						roo: {},
 						claw: {},
 					}
 
@@ -990,26 +989,6 @@ export const webviewMessageHandler = async (
 					},
 				},
 				{ key: "vercel-ai-gateway", options: { provider: "vercel-ai-gateway" } },
-				{
-					key: "roo",
-					options: {
-						provider: "roo",
-						baseUrl: process.env.CLAW_PILOT_PROVIDER_URL ?? "https://api.clawpilot.com/proxy",
-						apiKey: CloudService.hasInstance()
-							? CloudService.instance.authService?.getSessionToken()
-							: undefined,
-					},
-				},
-				{
-					key: "claw",
-					options: {
-						provider: "claw",
-						baseUrl: process.env.CLAW_PILOT_PROVIDER_URL ?? "https://api.clawpilot.com/proxy",
-						apiKey: CloudService.hasInstance()
-							? CloudService.instance.authService?.getSessionToken()
-							: undefined,
-					},
-				},
 				{
 					key: "claw",
 					options: {
@@ -1135,7 +1114,7 @@ export const webviewMessageHandler = async (
 			break
 		}
 		case "requestClawModels": {
-			// Specific handler for Roo models only - flushes cache to ensure fresh auth token is used
+			// Specific handler for Claw models only - flushes cache to ensure fresh auth token is used
 			try {
 				const rooOptions = {
 					provider: "claw" as const,
@@ -1168,7 +1147,7 @@ export const webviewMessageHandler = async (
 			break
 		}
 		case "requestClawCreditBalance": {
-			// Fetch Roo credit balance using CloudAPI
+			// Fetch Claw credit balance using CloudAPI
 			const requestId = message.requestId
 			try {
 				if (!CloudService.hasInstance() || !CloudService.instance.cloudAPI) {

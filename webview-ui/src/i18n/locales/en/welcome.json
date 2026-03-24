@@ -9,19 +9,19 @@
 		},
 		"claw": {
 			"description": "The best free models to get started",
-			"incentive": "Try Roo out for free"
+			"incentive": "Try Claw out for free"
 		}
 	},
 	"landing": {
 		"greeting": "Welcome to ClawPilot!",
 		"introduction": "With a range of built-in and extensible Modes, ClawPilot lets you plan, architect, code, debug and boost your productivity like never before.",
 		"accountMention": "To get started, create your ClawPilot Cloud account. Get powerful models, web control, analytics, support and more.",
-		"getStarted": "Create Roo Account",
+		"getStarted": "Create Claw Account",
 		"noAccount": "or use without an account"
 	},
 	"providerSignup": {
 		"heading": "Choose your provider",
-		"chooseProvider": "Roo needs an LLM provider to work. Choose one to get started, you can add more later.",
+		"chooseProvider": "Claw needs an LLM provider to work. Choose one to get started, you can add more later.",
 		"rooCloudProvider": "ClawPilot Router",
 		"rooCloudDescription": "The easiest way to start is with the ClawPilot Router: a curated mix of free and paid models at a low cost.",
 		"learnMore": "Learn more",

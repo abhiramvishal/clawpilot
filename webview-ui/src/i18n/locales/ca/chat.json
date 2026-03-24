@@ -129,7 +129,7 @@
 		"title": "Modes",
 		"marketplace": "Marketplace de Modes",
 		"settings": "Configuració de Modes",
-		"description": "Personalitats especialitzades que adapten el comportament de Roo.",
+		"description": "Personalitats especialitzades que adapten el comportament de Claw.",
 		"searchPlaceholder": "Cerca modes...",
 		"noResults": "No s'han trobat resultats"
 	},
@@ -143,7 +143,7 @@
 	"diffError": {
 		"title": "Edició fallida"
 	},
-	"troubleMessage": "Roo està tenint problemes...",
+	"troubleMessage": "Claw està tenint problemes...",
 	"apiRequest": {
 		"title": "Sol·licitud API",
 		"failed": "Sol·licitud API ha fallat",
@@ -186,43 +186,43 @@
 		"current": "Actual"
 	},
 	"instructions": {
-		"wantsToFetch": "Roo vol obtenir instruccions detallades per ajudar amb la tasca actual."
+		"wantsToFetch": "Claw vol obtenir instruccions detallades per ajudar amb la tasca actual."
 	},
 	"fileOperations": {
-		"wantsToRead": "Roo vol llegir aquest fitxer",
-		"wantsToReadOutsideWorkspace": "Roo vol llegir aquest fitxer fora de l'espai de treball",
-		"didRead": "Roo ha llegit aquest fitxer",
-		"wantsToEdit": "Roo vol editar aquest fitxer",
-		"wantsToEditOutsideWorkspace": "Roo vol editar aquest fitxer fora de l'espai de treball",
-		"wantsToEditProtected": "Roo vol editar un fitxer de configuració protegit",
-		"wantsToCreate": "Roo vol crear un nou fitxer",
-		"wantsToSearchReplace": "Roo vol realitzar cerca i substitució en aquest fitxer",
-		"didSearchReplace": "Roo ha realitzat cerca i substitució en aquest fitxer",
-		"wantsToInsert": "Roo vol inserir contingut en aquest fitxer",
-		"wantsToInsertWithLineNumber": "Roo vol inserir contingut a la línia {{lineNumber}} d'aquest fitxer",
-		"wantsToInsertAtEnd": "Roo vol afegir contingut al final d'aquest fitxer",
-		"wantsToReadAndXMore": "En Roo vol llegir aquest fitxer i {{count}} més",
-		"wantsToReadMultiple": "Roo vol llegir diversos fitxers",
-		"wantsToApplyBatchChanges": "Roo vol aplicar canvis a múltiples fitxers",
-		"wantsToGenerateImage": "Roo vol generar una imatge",
-		"wantsToGenerateImageOutsideWorkspace": "Roo vol generar una imatge fora de l'espai de treball",
-		"wantsToGenerateImageProtected": "Roo vol generar una imatge en una ubicació protegida",
-		"didGenerateImage": "Roo ha generat una imatge"
+		"wantsToRead": "Claw vol llegir aquest fitxer",
+		"wantsToReadOutsideWorkspace": "Claw vol llegir aquest fitxer fora de l'espai de treball",
+		"didRead": "Claw ha llegit aquest fitxer",
+		"wantsToEdit": "Claw vol editar aquest fitxer",
+		"wantsToEditOutsideWorkspace": "Claw vol editar aquest fitxer fora de l'espai de treball",
+		"wantsToEditProtected": "Claw vol editar un fitxer de configuració protegit",
+		"wantsToCreate": "Claw vol crear un nou fitxer",
+		"wantsToSearchReplace": "Claw vol realitzar cerca i substitució en aquest fitxer",
+		"didSearchReplace": "Claw ha realitzat cerca i substitució en aquest fitxer",
+		"wantsToInsert": "Claw vol inserir contingut en aquest fitxer",
+		"wantsToInsertWithLineNumber": "Claw vol inserir contingut a la línia {{lineNumber}} d'aquest fitxer",
+		"wantsToInsertAtEnd": "Claw vol afegir contingut al final d'aquest fitxer",
+		"wantsToReadAndXMore": "En Claw vol llegir aquest fitxer i {{count}} més",
+		"wantsToReadMultiple": "Claw vol llegir diversos fitxers",
+		"wantsToApplyBatchChanges": "Claw vol aplicar canvis a múltiples fitxers",
+		"wantsToGenerateImage": "Claw vol generar una imatge",
+		"wantsToGenerateImageOutsideWorkspace": "Claw vol generar una imatge fora de l'espai de treball",
+		"wantsToGenerateImageProtected": "Claw vol generar una imatge en una ubicació protegida",
+		"didGenerateImage": "Claw ha generat una imatge"
 	},
 	"directoryOperations": {
-		"wantsToViewTopLevel": "Roo vol veure els fitxers de nivell superior en aquest directori",
-		"didViewTopLevel": "Roo ha vist els fitxers de nivell superior en aquest directori",
-		"wantsToViewRecursive": "Roo vol veure recursivament tots els fitxers en aquest directori",
-		"didViewRecursive": "Roo ha vist recursivament tots els fitxers en aquest directori",
-		"wantsToSearch": "Roo vol cercar en aquest directori <code>{{regex}}</code>",
-		"didSearch": "Roo ha cercat en aquest directori <code>{{regex}}</code>",
-		"wantsToSearchOutsideWorkspace": "Roo vol cercar en aquest directori (fora de l'espai de treball) <code>{{regex}}</code>",
-		"didSearchOutsideWorkspace": "Roo ha cercat en aquest directori (fora de l'espai de treball) <code>{{regex}}</code>",
-		"wantsToViewTopLevelOutsideWorkspace": "Roo vol veure els fitxers de nivell superior en aquest directori (fora de l'espai de treball)",
-		"didViewTopLevelOutsideWorkspace": "Roo ha vist els fitxers de nivell superior en aquest directori (fora de l'espai de treball)",
-		"wantsToViewRecursiveOutsideWorkspace": "Roo vol veure recursivament tots els fitxers en aquest directori (fora de l'espai de treball)",
-		"didViewRecursiveOutsideWorkspace": "Roo ha vist recursivament tots els fitxers en aquest directori (fora de l'espai de treball)",
-		"wantsToViewMultipleDirectories": "Roo vol veure diversos directoris"
+		"wantsToViewTopLevel": "Claw vol veure els fitxers de nivell superior en aquest directori",
+		"didViewTopLevel": "Claw ha vist els fitxers de nivell superior en aquest directori",
+		"wantsToViewRecursive": "Claw vol veure recursivament tots els fitxers en aquest directori",
+		"didViewRecursive": "Claw ha vist recursivament tots els fitxers en aquest directori",
+		"wantsToSearch": "Claw vol cercar en aquest directori <code>{{regex}}</code>",
+		"didSearch": "Claw ha cercat en aquest directori <code>{{regex}}</code>",
+		"wantsToSearchOutsideWorkspace": "Claw vol cercar en aquest directori (fora de l'espai de treball) <code>{{regex}}</code>",
+		"didSearchOutsideWorkspace": "Claw ha cercat en aquest directori (fora de l'espai de treball) <code>{{regex}}</code>",
+		"wantsToViewTopLevelOutsideWorkspace": "Claw vol veure els fitxers de nivell superior en aquest directori (fora de l'espai de treball)",
+		"didViewTopLevelOutsideWorkspace": "Claw ha vist els fitxers de nivell superior en aquest directori (fora de l'espai de treball)",
+		"wantsToViewRecursiveOutsideWorkspace": "Claw vol veure recursivament tots els fitxers en aquest directori (fora de l'espai de treball)",
+		"didViewRecursiveOutsideWorkspace": "Claw ha vist recursivament tots els fitxers en aquest directori (fora de l'espai de treball)",
+		"wantsToViewMultipleDirectories": "Claw vol veure diversos directoris"
 	},
 	"commandOutput": "Sortida de la comanda",
 	"commandExecution": {
@@ -244,24 +244,24 @@
 	"response": "Resposta",
 	"arguments": "Arguments",
 	"text": {
-		"rooSaid": "En Roo ha dit"
+		"rooSaid": "En Claw ha dit"
 	},
 	"feedback": {
 		"youSaid": "Has dit"
 	},
 	"mcp": {
-		"wantsToUseTool": "Roo vol utilitzar una eina al servidor MCP {{serverName}}",
-		"wantsToAccessResource": "Roo vol accedir a un recurs al servidor MCP {{serverName}}"
+		"wantsToUseTool": "Claw vol utilitzar una eina al servidor MCP {{serverName}}",
+		"wantsToAccessResource": "Claw vol accedir a un recurs al servidor MCP {{serverName}}"
 	},
 	"modes": {
-		"wantsToSwitch": "Roo vol canviar a mode <code>{{mode}}</code>",
-		"wantsToSwitchWithReason": "Roo vol canviar a mode <code>{{mode}}</code> perquè: {{reason}}",
-		"didSwitch": "Roo ha canviat a mode <code>{{mode}}</code>",
-		"didSwitchWithReason": "Roo ha canviat a mode <code>{{mode}}</code> perquè: {{reason}}"
+		"wantsToSwitch": "Claw vol canviar a mode <code>{{mode}}</code>",
+		"wantsToSwitchWithReason": "Claw vol canviar a mode <code>{{mode}}</code> perquè: {{reason}}",
+		"didSwitch": "Claw ha canviat a mode <code>{{mode}}</code>",
+		"didSwitchWithReason": "Claw ha canviat a mode <code>{{mode}}</code> perquè: {{reason}}"
 	},
 	"subtasks": {
-		"wantsToCreate": "Roo vol crear una nova subtasca en mode <code>{{mode}}</code>",
-		"wantsToFinish": "Roo vol finalitzar aquesta subtasca",
+		"wantsToCreate": "Claw vol crear una nova subtasca en mode <code>{{mode}}</code>",
+		"wantsToFinish": "Claw vol finalitzar aquesta subtasca",
 		"newTaskContent": "Instruccions de la subtasca",
 		"completionContent": "Subtasca completada",
 		"resultContent": "Resultats de la subtasca",
@@ -270,7 +270,7 @@
 		"goToSubtask": "Veure tasca"
 	},
 	"questions": {
-		"hasQuestion": "Roo té una pregunta"
+		"hasQuestion": "Claw té una pregunta"
 	},
 	"taskCompleted": "Tasca completada",
 	"modelResponseIncomplete": "Resposta del model incompleta",
@@ -286,7 +286,7 @@
 		"copyToClipboard": "Copiar al porta-retalls",
 		"copied": "Copiat!",
 		"diagnostics": "Obtenir informació d'error detallada",
-		"proxyProvider": "Sembla que estàs utilitzant un proveïdor basat en proxy. Assegura't de comprovar els seus registres i de garantir que no estàs reescrivint les sol·licituds de Roo."
+		"proxyProvider": "Sembla que estàs utilitzant un proveïdor basat en proxy. Assegura't de comprovar els seus registres i de garantir que no estàs reescrivint les sol·licituds de Claw."
 	},
 	"powershell": {
 		"issues": "Sembla que estàs tenint problemes amb Windows PowerShell, si us plau consulta aquesta documentació per a més informació."
@@ -329,8 +329,8 @@
 		}
 	},
 	"skill": {
-		"wantsToLoad": "En Roo vol carregar una habilitat",
-		"didLoad": "En Roo ha carregat una habilitat"
+		"wantsToLoad": "En Claw vol carregar una habilitat",
+		"didLoad": "En Claw ha carregat una habilitat"
 	},
 	"followUpSuggest": {
 		"copyToInput": "Copiar a l'entrada (o Shift + clic)",
@@ -383,18 +383,18 @@
 	"ask": {
 		"autoApprovedRequestLimitReached": {
 			"title": "S'ha arribat al límit de sol·licituds aprovades automàticament",
-			"description": "Roo ha arribat al límit aprovat automàticament de {{count}} sol·licitud(s) d'API. Vols reiniciar el comptador i continuar amb la tasca?",
+			"description": "Claw ha arribat al límit aprovat automàticament de {{count}} sol·licitud(s) d'API. Vols reiniciar el comptador i continuar amb la tasca?",
 			"button": "Reiniciar i continuar"
 		},
 		"autoApprovedCostLimitReached": {
 			"title": "S'ha arribat al límit de cost d'aprovació automàtica",
 			"button": "Restableix i continua",
-			"description": "Roo ha arribat al límit de cost aprovat automàticament de ${{count}}. Vols restablir el cost i continuar amb la tasca?"
+			"description": "Claw ha arribat al límit de cost aprovat automàticament de ${{count}}. Vols restablir el cost i continuar amb la tasca?"
 		}
 	},
 	"codebaseSearch": {
-		"wantsToSearch": "Roo vol cercar a la base de codi <code>{{query}}</code>",
-		"wantsToSearchWithPath": "Roo vol cercar a la base de codi <code>{{query}}</code> a <code>{{path}}</code>",
+		"wantsToSearch": "Claw vol cercar a la base de codi <code>{{query}}</code>",
+		"wantsToSearchWithPath": "Claw vol cercar a la base de codi <code>{{query}}</code> a <code>{{path}}</code>",
 		"didSearch_one": "S'ha trobat 1 resultat",
 		"didSearch_other": "S'han trobat {{count}} resultats",
 		"resultTooltip": "Puntuació de similitud: {{score}} (fes clic per obrir el fitxer)"
@@ -470,8 +470,8 @@
 		"clickToEdit": "Feu clic per editar el missatge"
 	},
 	"slashCommand": {
-		"wantsToRun": "Roo vol executar una comanda slash",
-		"didRun": "Roo ha executat una comanda slash"
+		"wantsToRun": "Claw vol executar una comanda slash",
+		"didRun": "Claw ha executat una comanda slash"
 	},
 	"contextMenu": {
 		"noResults": "Sense resultats",
@@ -496,11 +496,11 @@
 		"openMcpSettings": "Obrir configuració de MCP"
 	},
 	"readCommandOutput": {
-		"title": "Roo read command output"
+		"title": "Claw read command output"
 	},
 	"retiredProvider": {
 		"title": "Proveïdor ja no compatible",
-		"message": "Ho sentim, aquest proveïdor ja no és compatible. Hem vist molt pocs usuaris de Roo que realment l'utilitzaven i necessitem reduir l'abast del nostre codi per poder seguir avançant ràpidament i servir bé la nostra comunitat en aquest espai. Va ser una decisió molt difícil, però ens permet centrar-nos en el que més t'importa. Ho sabem, és una llàstima.",
+		"message": "Ho sentim, aquest proveïdor ja no és compatible. Hem vist molt pocs usuaris de Claw que realment l'utilitzaven i necessitem reduir l'abast del nostre codi per poder seguir avançant ràpidament i servir bé la nostra comunitat en aquest espai. Va ser una decisió molt difícil, però ens permet centrar-nos en el que més t'importa. Ho sabem, és una llàstima.",
 		"openSettings": "Obrir configuració"
 	}
 }

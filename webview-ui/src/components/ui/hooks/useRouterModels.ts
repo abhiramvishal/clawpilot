@@ -5,7 +5,7 @@ import { type RouterModels, type ExtensionMessage } from "@clawpilot/types"
 import { vscode } from "@src/utils/vscode"
 
 type UseRouterModelsOptions = {
-	provider?: string // single provider filter (e.g. "roo")
+	provider?: string // single provider filter (e.g. "claw")
 	enabled?: boolean // gate fetching entirely
 }
 

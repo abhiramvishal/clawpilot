@@ -100,7 +100,7 @@ describe("OpenRouterHandler", () => {
 			baseURL: "https://openrouter.ai/api/v1",
 			apiKey: mockOptions.openRouterApiKey,
 			defaultHeaders: {
-				"HTTP-Referer": "https://github.com/abhiramvishal/Roo-Cline",
+				"HTTP-Referer": "https://github.com/abhiramvishal/clawpilot",
 				"X-Title": "ClawPilot",
 				"User-Agent": `ClawPilot/${Package.version}`,
 			},

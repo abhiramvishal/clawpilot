@@ -6,7 +6,7 @@
 	"signIn": "Connecta't a ClawPilot Cloud",
 	"connect": "Comença",
 	"cloudBenefitsTitle": "Prova ClawPilot Cloud",
-	"cloudBenefitProvider": "Accedeix a models gratuïts i de pagament que funcionen molt bé amb Roo",
+	"cloudBenefitProvider": "Accedeix a models gratuïts i de pagament que funcionen molt bé amb Claw",
 	"cloudBenefitCloudAgents": "Dona tasques a agents autònoms al núvol",
 	"cloudBenefitTriggers": "Obtén revisions de codi a GitHub, inicia tasques des de Slack i més",
 	"cloudBenefitWalkaway": "Segueix i controla tasques des de qualsevol lloc (inclòs el telèfon)",
@@ -26,8 +26,8 @@
 	"createTeamAccount": "Crear Compte d'Equip",
 	"switchAccount": "Canviar Compte de ClawPilot Cloud",
 	"upsell": {
-		"autoApprovePowerUser": "Donant-li una mica d'independència a Roo? Controla'l des de qualsevol lloc amb ClawPilot Cloud. <learnMoreLink>Més informació</learnMoreLink>.",
+		"autoApprovePowerUser": "Donant-li una mica d'independència a Claw? Controla'l des de qualsevol lloc amb ClawPilot Cloud. <learnMoreLink>Més informació</learnMoreLink>.",
 		"longRunningTask": "Això pot trigar una estona. Continua des de qualsevol lloc amb Cloud.",
-		"taskList": "T'agrada Roo? Fes una ullada a ClawPilot Cloud: segueix i controla les teves tasques des de qualsevol lloc, executa agents autònoms al núvol, obtén estadístiques d'ús i més. <learnMoreLink>Aprèn-ne més</learnMoreLink>."
+		"taskList": "T'agrada Claw? Fes una ullada a ClawPilot Cloud: segueix i controla les teves tasques des de qualsevol lloc, executa agents autònoms al núvol, obtén estadístiques d'ús i més. <learnMoreLink>Aprèn-ne més</learnMoreLink>."
 	}
 }

@@ -9,19 +9,19 @@
 		},
 		"claw": {
 			"description": "Model gratis terbaik untuk memulai",
-			"incentive": "Coba Roo gratis"
+			"incentive": "Coba Claw gratis"
 		}
 	},
 	"landing": {
 		"greeting": "Selamat datang di ClawPilot!",
 		"introduction": "Dengan berbagai Mode bawaan dan dapat diperluas, ClawPilot memungkinkan Anda merencanakan, merancang, coding, debug, dan meningkatkan produktivitas seperti yang belum pernah terjadi sebelumnya.",
 		"accountMention": "Untuk memulai, buat akun ClawPilot Cloud Anda. Dapatkan model yang kuat, kontrol web, analitik, dukungan, dan banyak lagi.",
-		"getStarted": "Buat Akun Roo",
+		"getStarted": "Buat Akun Claw",
 		"noAccount": "atau gunakan tanpa akun"
 	},
 	"providerSignup": {
 		"heading": "Pilih penyedia Anda",
-		"chooseProvider": "Roo memerlukan penyedia LLM untuk bekerja. Pilih satu untuk memulai, Anda dapat menambahkan lebih banyak nanti.",
+		"chooseProvider": "Claw memerlukan penyedia LLM untuk bekerja. Pilih satu untuk memulai, Anda dapat menambahkan lebih banyak nanti.",
 		"rooCloudProvider": "Penyedia ClawPilot Cloud",
 		"rooCloudDescription": "Cara termudah untuk memulai adalah dengan Penyedia ClawPilot Cloud: campuran model gratis dan berbayar yang dikurasi dengan hati-hati dengan biaya rendah.",
 		"learnMore": "Pelajari lebih lanjut",

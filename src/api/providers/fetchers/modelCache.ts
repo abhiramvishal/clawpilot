@@ -92,13 +92,6 @@ async function fetchModelsFromProvider(options: GetModelsOptions): Promise<Model
 			models = await getClawModels(clawBaseUrl, options.apiKey)
 			break
 		}
-		case "roo": {
-			// Legacy alias - treat "roo" provider as "claw".
-			const clawBaseUrl =
-				options.baseUrl ?? process.env.CLAW_PILOT_PROVIDER_URL ?? "https://api.clawpilot.com/proxy"
-			models = await getClawModels(clawBaseUrl, options.apiKey)
-			break
-		}
 		default: {
 			// Ensures router is exhaustively checked if RouterName is a strict union.
 			const exhaustiveCheck: never = provider

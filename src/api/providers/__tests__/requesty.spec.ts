@@ -58,7 +58,7 @@ describe("RequestyHandler", () => {
 			baseURL: "https://router.requesty.ai/v1",
 			apiKey: mockOptions.requestyApiKey,
 			defaultHeaders: {
-				"HTTP-Referer": "https://github.com/abhiramvishal/Roo-Cline",
+				"HTTP-Referer": "https://github.com/abhiramvishal/clawpilot",
 				"X-Title": "ClawPilot",
 				"User-Agent": `ClawPilot/${Package.version}`,
 			},
@@ -73,7 +73,7 @@ describe("RequestyHandler", () => {
 			baseURL: "https://custom.requesty.ai/v1",
 			apiKey: mockOptions.requestyApiKey,
 			defaultHeaders: {
-				"HTTP-Referer": "https://github.com/abhiramvishal/Roo-Cline",
+				"HTTP-Referer": "https://github.com/abhiramvishal/clawpilot",
 				"X-Title": "ClawPilot",
 				"User-Agent": `ClawPilot/${Package.version}`,
 			},

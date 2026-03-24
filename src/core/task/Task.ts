@@ -1243,7 +1243,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 			await this.providerRef.deref()?.updateTaskHistory(historyItem)
 			return true
 		} catch (error) {
-			console.error("Failed to save Roo messages:", error)
+			console.error("Failed to save Claw messages:", error)
 			return false
 		}
 	}
@@ -1869,7 +1869,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 	async sayAndCreateMissingParamError(toolName: ToolName, paramName: string, relPath?: string) {
 		await this.say(
 			"error",
-			`Roo tried to use ${toolName}${
+			`Claw tried to use ${toolName}${
 				relPath ? ` for '${relPath.toPosix()}'` : ""
 			} without value for required parameter '${paramName}'. Retrying...`,
 		)
@@ -2522,7 +2522,9 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 			const currentIncludeFileDetails = currentItem.includeFileDetails
 
 			if (this.abort) {
-				throw new Error(`[ClawPilot#recursivelyMakeRooRequests] task ${this.taskId}.${this.instanceId} aborted`)
+				throw new Error(
+					`[ClawPilot#recursivelyMakeClawRequests] task ${this.taskId}.${this.instanceId} aborted`,
+				)
 			}
 
 			if (this.consecutiveMistakeLimit > 0 && this.consecutiveMistakeCount >= this.consecutiveMistakeLimit) {
@@ -3305,7 +3307,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 				// Need to call here in case the stream was aborted.
 				if (this.abort || this.abandoned) {
 					throw new Error(
-						`[ClawPilot#recursivelyMakeRooRequests] task ${this.taskId}.${this.instanceId} aborted`,
+						`[ClawPilot#recursivelyMakeClawRequests] task ${this.taskId}.${this.instanceId} aborted`,
 					)
 				}
 
@@ -4105,7 +4107,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 				? await getEnvironmentDetails(this, true)
 				: undefined
 
-			// Get files read by Roo for code folding - only when context management will run
+			// Get files read by Claw for code folding - only when context management will run
 			const contextMgmtFilesReadByClaw =
 				contextManagementWillRun && autoCondenseContext
 					? await this.getFilesReadByClawSafely("attemptApiRequest")

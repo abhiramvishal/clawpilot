@@ -47,7 +47,7 @@ const WelcomeViewProvider = () => {
 
 	// When auth completes during the provider signup flow, either:
 	// 1. If user skipped model selection (cloudAuthSkipModel=true), navigate to provider selection with "custom" selected
-	// 2. Otherwise, save the Roo config and navigate to chat
+	// 2. Otherwise, save the Claw config and navigate to chat
 	useEffect(() => {
 		if (cloudIsAuthenticated && authInProgress) {
 			if (cloudAuthSkipModel) {
@@ -91,7 +91,7 @@ const WelcomeViewProvider = () => {
 	)
 
 	const handleGetStarted = useCallback(() => {
-		// Landing screen - always trigger auth with Roo
+		// Landing screen - always trigger auth with Claw
 		if (selectedProvider === null) {
 			setAuthOrigin("landing")
 			vscode.postMessage({ type: "clawCloudSignIn", useProviderSignup: true })

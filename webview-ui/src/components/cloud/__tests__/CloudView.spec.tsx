@@ -11,7 +11,7 @@ vi.mock("@src/i18n/TranslationContext", () => ({
 				"settings:common.done": "Done",
 				"cloud:signIn": "Connect to ClawPilot Cloud",
 				"cloud:cloudBenefitsTitle": "Try ClawPilot Cloud",
-				"cloud:cloudBenefitProvider": "Access free and paid models that work great with Roo",
+				"cloud:cloudBenefitProvider": "Access free and paid models that work great with Claw",
 				"cloud:cloudBenefitCloudAgents": "Give tasks to autonomous Cloud agents",
 				"cloud:cloudBenefitTriggers": "Get code reviews on GitHub, start tasks from Slack and more",
 				"cloud:cloudBenefitWalkaway": "Follow and control tasks from anywhere (including your phone)",
@@ -68,7 +68,7 @@ describe("CloudView", () => {
 
 		// Check that the benefits section is displayed
 		expect(screen.getByRole("heading", { name: "Try ClawPilot Cloud" })).toBeInTheDocument()
-		expect(screen.getByText("Access free and paid models that work great with Roo")).toBeInTheDocument()
+		expect(screen.getByText("Access free and paid models that work great with Claw")).toBeInTheDocument()
 		expect(screen.getByText("Give tasks to autonomous Cloud agents")).toBeInTheDocument()
 		expect(screen.getByText("Get code reviews on GitHub, start tasks from Slack and more")).toBeInTheDocument()
 		expect(screen.getByText("Follow and control tasks from anywhere (including your phone)")).toBeInTheDocument()
@@ -90,7 +90,7 @@ describe("CloudView", () => {
 		render(<CloudView userInfo={mockUserInfo} isAuthenticated={true} cloudApiUrl="https://app.clawpilot.com" />)
 
 		// Check that the benefits section is NOT displayed
-		expect(screen.queryByText("Access free and paid models that work great with Roo")).not.toBeInTheDocument()
+		expect(screen.queryByText("Access free and paid models that work great with Claw")).not.toBeInTheDocument()
 		expect(screen.queryByText("Give tasks to autonomous Cloud agents")).not.toBeInTheDocument()
 		expect(
 			screen.queryByText("Get code reviews on GitHub, start tasks from Slack and more"),

@@ -477,11 +477,11 @@ describe("ClawHandler", () => {
 		})
 
 		it("should use correct API endpoint", () => {
-			// The base URL should be set to Roo's API endpoint
+			// The base URL should be set to Claw's API endpoint
 			// We can't directly test the OpenAI client configuration, but we can verify the handler initializes
 			handler = new ClawHandler(mockOptions)
 			expect(handler).toBeInstanceOf(ClawHandler)
-			// The handler should work with the Roo API endpoint
+			// The handler should work with the Claw API endpoint
 		})
 	})
 

@@ -8,7 +8,7 @@ vi.mock("react-i18next", () => ({
 		t: (key: string) => {
 			const translations: Record<string, string> = {
 				"cloud:cloudBenefitsTitle": "Try ClawPilot Cloud",
-				"cloud:cloudBenefitProvider": "Access free and paid models that work great with Roo",
+				"cloud:cloudBenefitProvider": "Access free and paid models that work great with Claw",
 				"cloud:cloudBenefitCloudAgents": "Give tasks to autonomous Cloud agents",
 				"cloud:cloudBenefitTriggers": "Get code reviews on GitHub, start tasks from Slack and more",
 				"cloud:cloudBenefitWalkaway": "Follow and control tasks from anywhere (including your phone)",
@@ -33,7 +33,7 @@ describe("CloudUpsellDialog", () => {
 		render(<CloudUpsellDialog open={true} onOpenChange={mockOnOpenChange} onConnect={mockOnConnect} />)
 
 		expect(screen.getByText("Try ClawPilot Cloud")).toBeInTheDocument()
-		expect(screen.getByText("Access free and paid models that work great with Roo")).toBeInTheDocument()
+		expect(screen.getByText("Access free and paid models that work great with Claw")).toBeInTheDocument()
 		expect(screen.getByText("Give tasks to autonomous Cloud agents")).toBeInTheDocument()
 		expect(screen.getByText("Get code reviews on GitHub, start tasks from Slack and more")).toBeInTheDocument()
 		expect(screen.getByText("Follow and control tasks from anywhere (including your phone)")).toBeInTheDocument()

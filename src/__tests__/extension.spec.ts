@@ -262,7 +262,7 @@ describe("extension.ts", () => {
 		expect(dotenvx.config).toHaveBeenCalledTimes(1)
 	})
 
-	describe("Roo model cache refresh on auth state change (ROO-202)", () => {
+	describe("Claw model cache refresh on auth state change", () => {
 		beforeEach(() => {
 			vi.resetModules()
 			mockRefreshModels.mockClear()
