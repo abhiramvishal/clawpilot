@@ -468,7 +468,7 @@
 			"description": "Ollama memungkinkan kamu menjalankan model secara lokal di komputer. Untuk instruksi cara memulai, lihat panduan quickstart mereka.",
 			"warning": "Catatan: ClawPilot menggunakan prompt kompleks dan bekerja terbaik dengan model Claude. Model yang kurang mampu mungkin tidak bekerja seperti yang diharapkan."
 		},
-		"roo": {
+		"claw": {
 			"authenticatedMessage": "Terautentikasi dengan aman melalui akun ClawPilot Cloud Anda.",
 			"connectButton": "Hubungkan ke ClawPilot Cloud"
 		},

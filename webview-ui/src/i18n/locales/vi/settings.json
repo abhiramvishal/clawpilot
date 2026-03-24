@@ -468,7 +468,7 @@
 			"description": "Ollama cho phép bạn chạy các mô hình cục bộ trên máy tính của bạn. Để biết hướng dẫn về cách bắt đầu, xem hướng dẫn nhanh của họ.",
 			"warning": "Lưu ý: ClawPilot sử dụng các lời nhắc phức tạp và hoạt động tốt nhất với các mô hình Claude. Các mô hình kém mạnh hơn có thể không hoạt động như mong đợi."
 		},
-		"roo": {
+		"claw": {
 			"authenticatedMessage": "Đã xác thực an toàn thông qua tài khoản ClawPilot Cloud của bạn.",
 			"connectButton": "Kết nối với ClawPilot Cloud"
 		},
