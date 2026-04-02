@@ -106,6 +106,15 @@ export interface ApiHandler {
 	 * @returns A promise resolving to the token count
 	 */
 	countTokens(content: Array<Anthropic.Messages.ContentBlockParam>): Promise<number>
+
+	/**
+	 * Extracts text from an image using GLM-OCR (Z.ai layout_parsing API).
+	 * Only available when the provider is Z.ai.
+	 * Returns extracted text in Markdown format, or undefined if not supported.
+	 *
+	 * @param imageDataUrl A data URI (data:image/...;base64,...) of the image to process
+	 */
+	performOcr?(imageDataUrl: string): Promise<string>
 }
 
 export function buildApiHandler(configuration: ProviderSettings): ApiHandler {

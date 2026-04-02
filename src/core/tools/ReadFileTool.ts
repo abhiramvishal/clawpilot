@@ -368,6 +368,21 @@ export class ReadFileTool extends BaseTool<"read_file"> {
 				imageMemoryTracker.addMemoryUsage(imageResult.sizeInMB)
 				await task.fileContextTracker.trackFileContext(relPath, "read_tool" as RecordSource)
 
+				// Use GLM-OCR (Z.ai) when available — sends the image to the tiny 0.9B
+				// GLM-OCR model instead of the main LLM, which is much faster and avoids
+				// passing large base64 payloads to the chat model.
+				if (task.api.performOcr) {
+					try {
+						const ocrText = await task.api.performOcr(imageResult.dataUrl)
+						updateFileResult(relPath, {
+							nativeContent: `File: ${relPath}\n[Extracted via GLM-OCR]\n${ocrText}`,
+						})
+						return
+					} catch {
+						// OCR failed — fall through to sending the raw image as usual
+					}
+				}
+
 				updateFileResult(relPath, {
 					nativeContent: `File: ${relPath}\nNote: ${imageResult.notice}`,
 					imageDataUrl: imageResult.dataUrl,

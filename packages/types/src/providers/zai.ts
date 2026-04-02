@@ -379,21 +379,25 @@ export const zaiApiLineConfigs = {
 	international_coding: {
 		name: "International Coding",
 		baseUrl: "https://api.z.ai/api/coding/paas/v4",
+		layoutParsingUrl: "https://api.z.ai/api/paas/v4/layout_parsing",
 		isChina: false,
 	},
 	china_coding: {
 		name: "China Coding",
 		baseUrl: "https://open.bigmodel.cn/api/coding/paas/v4",
+		layoutParsingUrl: "https://open.bigmodel.cn/api/paas/v4/layout_parsing",
 		isChina: true,
 	},
 	international_api: {
 		name: "International API",
 		baseUrl: "https://api.z.ai/api/paas/v4",
+		layoutParsingUrl: "https://api.z.ai/api/paas/v4/layout_parsing",
 		isChina: false,
 	},
 	china_api: {
 		name: "China API",
 		baseUrl: "https://open.bigmodel.cn/api/paas/v4",
+		layoutParsingUrl: "https://open.bigmodel.cn/api/paas/v4/layout_parsing",
 		isChina: true,
 	},
-} satisfies Record<ZaiApiLine, { name: string; baseUrl: string; isChina: boolean }>
+} satisfies Record<ZaiApiLine, { name: string; baseUrl: string; layoutParsingUrl: string; isChina: boolean }>

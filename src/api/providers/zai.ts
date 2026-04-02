@@ -69,6 +69,36 @@ export class ZAiHandler extends BaseOpenAiCompatibleProvider<string> {
 	}
 
 	/**
+	 * Extracts text from an image using GLM-OCR via the Z.ai layout_parsing API.
+	 * GLM-OCR is a 0.9B model optimised for fast, accurate document and image OCR.
+	 * Using it avoids sending large base64 images to the main (larger) chat model.
+	 *
+	 * @param imageDataUrl A data URI (data:image/...;base64,...) of the image to process
+	 * @returns Extracted text in Markdown format
+	 */
+	async performOcr(imageDataUrl: string): Promise<string> {
+		const apiLine = this.options.zaiApiLine ?? "international_coding"
+		const { layoutParsingUrl } = zaiApiLineConfigs[apiLine]
+		const apiKey = this.options.zaiApiKey ?? "not-provided"
+
+		const response = await fetch(layoutParsingUrl, {
+			method: "POST",
+			headers: {
+				Authorization: `Bearer ${apiKey}`,
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({ model: "glm-ocr", file: imageDataUrl }),
+		})
+
+		if (!response.ok) {
+			throw new Error(`GLM-OCR request failed: ${response.status} ${response.statusText}`)
+		}
+
+		const data = (await response.json()) as { md_results?: string }
+		return data.md_results ?? ""
+	}
+
+	/**
 	 * Creates a stream with explicit thinking control for GLM-4.7
 	 */
 	private createStreamWithThinking(
